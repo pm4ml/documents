@@ -1,0 +1,5 @@
+.xref:index.adoc[ModusBox Guide to Payment Manager Connection Wizard]
+* xref:introduction.adoc[Introduction]
+* xref:overview_page.adoc[{connection-wizard} overview page]
+* xref:phase_1_business_setup.adoc[Phase 1: Business Setup]
+* xref:phase_2_technical_setup.adoc[Phase 2: Technical Setup]

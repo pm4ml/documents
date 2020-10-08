@@ -1,0 +1,16 @@
+= {product-name} for {hub}
+
+Building, validating, and operating a service that connects a Digital Financial Service Provider's (DFSP's) core systems to a {hub} real-time payments network requires a detailed understanding of the business, technical, and operational requirements of that network. {company-name} makes the integration path to {hub} easier with {product-name}. 
+
+{product-name} provides tools to manage connections, services, and transaction monitoring, and it also provides a single point to configure the DFSP environment to go from a test to a real-time one.
+
+{product-name} is made up of the following major components:
+
+* **Core Connector**: Integrates a DFSP's Core Banking Service to {product-name} acting as a "translator". It includes standard templates – written in Java on Apache Camel – that can be deployed for major systems.
+* **Core Payments Manager**: The main transaction service has the ability to manage, monitor, and report on different operational and technical processes from the Core and {hub} Connectors, as well as on the associated movement of transfers and funds.
+* **Mojaloop Connector**: Simplifies and automates certificate creation and the configuration of the connections required to different environments. It also provides the interpretation of the Mojaloop API and the appropriate security controls, providing DFSPs with the confidence they are connecting to {hub} using security best practices.
+* **Portals**: The portals provide dashboards for monitoring liquidity, transaction details, and operational health, and they also allow DFSPs to manage their certificates and endpoint information required for connecting to {hub}. 
+
+image::PM4ML_architecture.png[]
+
+//{product-name-short} can reduce technical risk, as well as ongoing operational capability needs, thereby reducing costs for development and integration with a Mojaloop Hub. Enterprise Support is also offered by {company-name} to provide business confidence that there is continued investment in the solution and maintenance is available.

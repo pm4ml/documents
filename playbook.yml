@@ -1,0 +1,33 @@
+site:
+  title: ModusBox Payment Manager
+  start_page: payment_manager::index.adoc
+content:
+  sources:
+  - url: .
+    branches: HEAD
+    #start_path: docs
+asciidoc:
+  attributes:
+    idprefix: ''
+    idseparator: '-'
+    company-name: ModusBox
+    product-name: Payment Manager
+    hub: Mojaloop
+    connection-wizard: Connection Wizard
+    hide: ''
+##ui:
+  ##bundle:
+    ##url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/master/raw/build/ui-bundle.zip?job=bundle-stable
+    ##snapshot: true
+output:
+  dir: ./public
+runtime:
+  cache_dir: ./.cache/antora
+
+ui:
+  bundle:
+    url: ui-bundle/ui-bundle.zip
+    snapshot: true
+
+
+

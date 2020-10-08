@@ -1,0 +1,23 @@
+= {connection-wizard} overview page
+
+The overview page of {connection-wizard} provides a list of the environments that the DFSP can connect to during the course of their onboarding journey.
+
+.{connection-wizard} overview page
+image::connection_wizard_overview_page.png[]
+
+For each environment, the overview page displays:
+
+* A status indicator with colour coding showing whether connection to a particular environment has started, is in progress, or has completed.
+* A progress indicator showing how close to completion the connection process is (expressed in percentages).
+* A *View Details* button that takes the user to a page with a detailed break-down of steps to be carried out in that particular environment.
+
+Clicking an environment on the overview page displays the phases that have to be completed in order for connection to happen. 
+
+.{connection-wizard} overview page, detailed view
+image::connection_wizard_overview_page_detailed.png[]
+
+For each phase, the overview page displays:
+
+* A status indicator with colour coding showing whether a particular phase has started, is in progress, or has completed.
+* A progress indicator showing how close to completion the phase is (expressed in the number of steps completed out of the total number of steps).
+* An *Open Phase* button that takes the user to a page with a detailed break-down of steps to be carried out in that particular phase.

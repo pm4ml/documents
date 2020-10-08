@@ -1,0 +1,5 @@
+name: payment_manager
+version: '1.0'
+title: Payment Manager
+nav:
+- modules/connection_wizard/nav.adoc

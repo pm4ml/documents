@@ -1,0 +1,8 @@
+= Phase 2: Technical Setup
+
+In Phase 2 of the onboarding journey, the Hub Operator and the DFSP share endpoint details and certificates through the *Phase 2: Technical Setup* section of the {connection-wizard}.
+
+.Phase 2: Technical Setup
+image::phase2_technical_setup.png[]
+
+
