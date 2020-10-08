@@ -1,0 +1,73 @@
+GIT
+  remote: https://github.com/asciidoctor/asciidoctor-pdf.git
+  revision: 800b9d9dbc0059d8da1cd5a167108068adb95b0a
+  specs:
+    asciidoctor-pdf (2.0.0.dev)
+      asciidoctor (~> 2.0)
+      concurrent-ruby (~> 1.1)
+      prawn (~> 2.3.0)
+      prawn-icon (~> 2.5.0)
+      prawn-svg (~> 0.30.0)
+      prawn-table (~> 0.2.0)
+      prawn-templates (~> 0.1.0)
+      safe_yaml (~> 1.0.0)
+      treetop (~> 1.6.0)
+
+GIT
+  remote: https://github.com/prawnpdf/prawn-table.git
+  revision: 515f2db294866a343b05d15f94e5fb417a32f6ff
+  specs:
+    prawn-table (0.2.3)
+      prawn (>= 1.3.0, < 3.0.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    Ascii85 (1.0.3)
+    addressable (2.7.0)
+      public_suffix (>= 2.0.2, < 5.0)
+    afm (0.2.2)
+    asciidoctor (2.0.10)
+    concurrent-ruby (1.1.7)
+    css_parser (1.7.1)
+      addressable
+    hashery (2.1.2)
+    pdf-core (0.8.1)
+    pdf-reader (2.4.1)
+      Ascii85 (~> 1.0.0)
+      afm (~> 0.2.1)
+      hashery (~> 2.0)
+      ruby-rc4
+      ttfunk
+    polyglot (0.3.5)
+    prawn (2.3.0)
+      pdf-core (~> 0.8.1)
+      ttfunk (~> 1.6)
+    prawn-icon (2.5.0)
+      prawn (>= 1.1.0, < 3.0.0)
+    prawn-svg (0.30.0)
+      css_parser (~> 1.6)
+      prawn (>= 0.11.1, < 3)
+    prawn-templates (0.1.2)
+      pdf-reader (~> 2.0)
+      prawn (~> 2.2)
+    public_suffix (4.0.6)
+    rghost (0.9.7)
+    rouge (3.23.0)
+    ruby-rc4 (0.1.5)
+    safe_yaml (1.0.5)
+    treetop (1.6.11)
+      polyglot (~> 0.3)
+    ttfunk (1.6.2.1)
+
+PLATFORMS
+  x64-mingw32
+
+DEPENDENCIES
+  asciidoctor-pdf!
+  prawn-table!
+  rghost
+  rouge
+
+BUNDLED WITH
+   2.1.2

@@ -1,0 +1,17 @@
+build_dir: ./build/pdf
+clean: true
+command: bundle.bat exec asciidoctor-pdf
+plimit: 5
+asciidoc:
+  attributes:
+    chapter-signifier: ''
+    icons: font
+    #optimize: prepress
+    pdf-theme: pdf-theme.yml
+    # setting pdf-version to 1.3 allows non-ASCII characters to be used in title field of PDF info
+    pdf-version: '1.3'
+    #sectnums: ''
+    source-highighter: rouge
+    toc: ''
+    toclevels: 3
+    xrefstyle: short
