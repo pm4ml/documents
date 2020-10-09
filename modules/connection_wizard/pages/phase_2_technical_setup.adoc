@@ -5,4 +5,16 @@ In Phase 2 of the onboarding journey, the Hub Operator and the DFSP share endpoi
 .Phase 2: Technical Setup
 image::phase2_technical_setup.png[]
 
+Within the technical setup phase, DFSPs complete the following steps:
 
+.Steps in Phase 2: Technical Setup
+[options="header"]
+[cols="1,3,5"]
+|===
+| |Step | Details
+|1 |xref:endpoints.adoc[Endpoints] |Record egress (outbound) and ingress (inbound) endpoints for sharing with the Hub, and retrieve endpoint information submitted by the Hub.
+|2 |xref:csr_exchange.adoc[CSR Exchange] |Submit a certificate signing request (CSR) to the Hub.
+|3 |Certificate Authority |Record details of Certificate Authority (CA), and retrieve the root certificate of the Hub's CA.
+|4 |Server Cetificates Exchange |Share CA-signed TLS server certificate and CA certificates, and retrieve the same for the Hub.
+|5 |JWS Certificates |Upload JSON Web Signature (JWS) certificate and retrieve other DFSPs' JWS certificates.
+|===

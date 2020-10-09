@@ -3,3 +3,5 @@
 * xref:overview_page.adoc[{connection-wizard} overview page]
 * xref:phase_1_business_setup.adoc[Phase 1: Business Setup]
 * xref:phase_2_technical_setup.adoc[Phase 2: Technical Setup]
+** xref:endpoints.adoc[Endpoints]
+** xref:csr_exchange.adoc[CSR Exchange]
