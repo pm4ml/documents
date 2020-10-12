@@ -1,0 +1,52 @@
+= Certificate Authority
+
+The *Certificate Authority* page allows you to:
+
+* record details of the Certificate Authority (CA) that you use to sign the Hub's TLS client certificate
+* retrieve the root certificate of the Hub' CA for importing into your trust store
+
+.Certificate Authority
+image::certificate_authority.png[]
+
+== DFSP CA certificates
+
+.DFSP CA certificates
+image::dfsp_certificate_authority.png[]
+
+The CA used to sign the Hub's TLS client certificate can be your own self-signed CA or a trusted third-party CA. {connection-wizard} uses the DFSP CA details added here to validate that the Hub TLS client certificate was signed by the DFSP's CA.
+
+=== Upload certificates
+
+To record details of your CA, complete the following steps:
+
+1. Upload the root certificate of your CA. In the *DFSP Root Certificate* field, click **Choose File**, and select the root certificate saved on your computer.
+2. Upload the intermediate certificate of your CA. In the *DFSP Intermediate Chain* field, click **Choose File**, and select the intermediate certificate saved on your computer.
+
+NOTE: On uploading a certificate, {connection-wizard} renames the file so that the file name includes information about the name of the DFSP. This means that you will see the original file name of your CA certificate change to a value assigned by {connection-wizard}.
+
+NOTE: The intermediate chain must be presented as a single file. If your intermediate chain is made up of multiple files, combine them into one file in the following order: host certificate first, then the certificate that signs it, then the certificate that signs the previous certificate, and so on. Go from the most specific certificate to the least specific certificate, with each certificate verifying the previous one. *Is this true?*
+
+On uploading the certificates, they are validated. The following details are validated:
+
+* The root certificate is a root certificate indeed. It can be self-signed or signed by a global root. *Is this true?*
+* The root and intermediate CA certificates must have the CA basic constraint extension (CA = true) and the keyCertSign key usage extension. *Is this true?*
+* The intermediate chain is made up of valid CAs and the top of the chain is signed by the root. *Is this true?*
+
+Click *View* to view details of the certificate. Click *Download* to download the certificate for manually handing over to the Hub (if required).
+
+=== Remove or replace a certificate
+
+If you wish to remove or replace a certificate after it has been uploaded, complete the following steps:
+
+1. Click *Remove File* next to the relevant field. This removes the certificate.
+2. To add a new certificate in place of the one you removed in Step 1, upload the new certificate by clicking *Choose File* next to the relevant field and selecting the certificate file on your computer.
+
+== Hub CA certificate
+
+.Hub CA certificates
+image::hub_certificate_authority.png[]
+
+The *Hub Root's Certificate* field gives you access to the root certificate of the Hub's CA for importing into your trust store.
+
+Click *View* to view details of the certificate, or click *Download* to downoad the certificate.
+

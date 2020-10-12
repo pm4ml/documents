@@ -5,3 +5,4 @@
 * xref:phase_2_technical_setup.adoc[Phase 2: Technical Setup]
 ** xref:endpoints.adoc[Endpoints]
 ** xref:csr_exchange.adoc[CSR Exchange]
+** xref:certificate_authority.adoc[Certificate Authority]
