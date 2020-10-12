@@ -1,2 +1,2 @@
-# payment-manager-docs
-Documentation for Payment Manager
+# mojaloop-payment-manager-docs
+Documentation for Mojaloop Payment Manager
