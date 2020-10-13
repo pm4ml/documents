@@ -6,3 +6,5 @@
 ** xref:endpoints.adoc[Endpoints]
 ** xref:csr_exchange.adoc[CSR Exchange]
 ** xref:certificate_authority.adoc[Certificate Authority]
+** xref:server_certificates_exchange.adoc[Server Certificates Exchange]
+** xref:jws_certificates.adoc[JWS Certificates]

@@ -1,0 +1,50 @@
+= Server Certificates Exchange
+
+The *Server Certificates Exchange* page allows you to:
+
+* upload your CA-signed TLS server certificate, as well as the root and intermediate certificates of the Certificate Authroity (CA) that signed the TLS server certificate
+* retrieve the Hub's CA-signed TLS server certificate, as well as the root and intermediate certificates of the CA that signed the TLS server certificate
+
+.Server Certificates Exchange
+image::server_certificates_exchange.png[]
+
+== DFSP server certificates
+
+The *DFSP Server Certificates* tab allows you to share your CA-signed TLS server certificate chain with the Hub Operator.
+
+.DFSP Server Certificates
+image::dfsp_server_certificates.png[]
+
+=== Upload certificates
+
+To upload your CA-signed TLS server certificate chain, complete the following steps:
+
+1. In the *Server Certificate* field, click **Choose File**, and select your CA-signed TLS server certificate saved on your computer.
+2. To upload the root certificate of your CA, in the *Root Certificate* field, click **Choose File**, and select the root certificate of your CA saved on your computer.
+3. To upload the intermediate certificate of your CA, in the *Intermediate Chain* field, click **Choose File**, and select the intermediate certificate of your CA saved on your computer.
+4. Click **Submit**. On submitting the certificates, they are validated. To see validation rules, click **View Details**. The following details are validated:
+
+include::partial$certificate_validation_rules.adoc[]
+
+include::partial$certificate_file_name_change.adoc[]
+
+include::partial$intermediate_chain_as_single_file.adoc[]
+
+Click *View* to view details of the certificate. Click *Download* to download a certificate for manually handing over to the Hub (if required).
+
+include::partial$remove_replace_certificate.adoc[]
+
+== Hub server certificates
+
+The *Hub Server Certificates* tab allows you to download Hub Operator's TLS server certificate chain.
+
+The DFSP must obtain the root and intermediate certificates of the Hub's CA that signed the Hub's TLS server certificate. These need to be installed on the DFSP outbound gateway.
+
+.Hub Server Certificates
+image::hub_server_certificates.png[]
+
+To retrieve the Hub's TLS server certificate chain, click *Download* for each certificate that you want to download.
+
+Information about the validity of each certificate is also displayed. Click *View Details* for details on validation rules. The following details are validated:
+
+include::partial$certificate_validation_rules.adoc[]

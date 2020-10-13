@@ -1,0 +1,1 @@
+NOTE: On uploading a certificate, {connection-wizard} renames the file so that the file name includes information about the name of the DFSP and the type of the certificate (root, intermediate, server). This means that you will see the original file name of your certificate change to a value assigned by {connection-wizard}.
