@@ -10,10 +10,10 @@ image::certificate_authority.png[]
 
 == DFSP CA certificates
 
+The CA used to sign the Hub's TLS client certificate can be your own self-signed CA or a trusted third-party CA. {connection-wizard} uses the DFSP CA details added here to validate that the Hub TLS client certificate was signed by your CA.
+
 .DFSP CA certificates
 image::dfsp_certificate_authority.png[]
-
-The CA used to sign the Hub's TLS client certificate can be your own self-signed CA or a trusted third-party CA. {connection-wizard} uses the DFSP CA details added here to validate that the Hub TLS client certificate was signed by the DFSP's CA.
 
 === Upload certificates
 
@@ -26,21 +26,21 @@ include::partial$certificate_file_name_change.adoc[]
 
 include::partial$intermediate_chain_as_single_file.adoc[]
 
-On uploading the certificates, they are validated. To see validation rules, click **View Details**. The following details are validated:
+On uploading the certificates, they are validated. To see validation rules or issues found during validation, click **View Details**. The following details are validated:
 
-* The root certificate is a root certificate indeed. It can be self-signed or signed by a global root. *Is this true?*
-* The root and intermediate CA certificates must have the CA basic constraint extension (CA = true) and the keyCertSign key usage extension. *Is this true?*
-* The intermediate chain is made up of valid CAs and the top of the chain is signed by the root. *Is this true?*
+* The root certificate is a root certificate indeed. It can be self-signed or signed by a global root.
+* The root and intermediate CA certificates must have the CA basic constraint extension (CA = true) and the keyCertSign key usage extension.
+* The intermediate chain is made up of valid CAs and the top of the chain is signed by the root.
 
-Click *View* to view details of the certificate. Click *Download* to download the certificate for manually handing over to the Hub (if required).
+Click *View* to view details of a certificate. Click *Download* to download a certificate for manually handing over to the Hub (if required).
 
 include::partial$remove_replace_certificate.adoc[]
 
 == Hub CA certificate
 
-.Hub CA certificates
-image::hub_certificate_authority.png[]
-
 The *Hub Root's Certificate* field gives you access to the root certificate of the Hub's CA for importing into your trust store.
 
-Click *View* to view details of the certificate, or click *Download* to download the certificate.
+.Hub CA certificate
+image::hub_certificate_authority.png[]
+
+Click *View* to view details of a certificate, or click *Download* to download a certificate.

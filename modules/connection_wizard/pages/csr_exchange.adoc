@@ -3,7 +3,7 @@
 The *CSR Exchange* page allows you to:
 
 * submit a <<csr,certificate signing request (CSR)>> to the Hub to request that your TLS client certificate be signed by the Hub's Certificate Authority (CA)
-* view the status of <<sent_csrs,sent CSRs>> and view or download the CSR or the signed certificate itself
+* view the status of <<sent_csrs,sent CSRs>>, and view or download the CSR or the signed certificate itself
 
 .CSR Exchange
 image::csr_exchange.png[]
@@ -13,7 +13,7 @@ image::csr_exchange.png[]
 .CSR
 image::csr.png[]
 
-To create a CSR for sending to the Hub, complete the following steps:
+To share a CSR with the Hub, complete the following steps:
 
 1. Go to the *CSR* tab.
 2. In the *CSR* field, click **Choose File**, and select the CSR file saved on your computer.
@@ -28,9 +28,10 @@ NOTE: If you have accidentally uploaded the wrong CSR, you can re-upload a new C
 .Sent CSRs
 image::sent_csrs.png[]
 
-The *Status* indicator displays the status of your sent CSR. If it says **CSR created**, then that means that the CSR has been signed.
+The *Status* indicator displays the status of your sent CSR/client certificate:
 
-If *Status* says *Certificate created*, that means that *???*
+* **CSR created**: the CSR has been created
+* *Certificate created*: the certificate has been signed
 
 //If the CSR has been signed by the Hub using an external CA, an information label is displayed indicating exactly which external CA was used.
 
@@ -39,27 +40,27 @@ To view a CSR, click **View CSR**. A dialog box pops up displaying your CSR.
 .Viewing CSR details
 image::view_csr.png[]
 
-To retrieve a TLS client certificate signed by the Hub, complete the following steps:
+To download a CSR, click **Download CSR**, and open or save the file when prompted.
 
-1. Go to the *Sent CSRs* tab. You can search for a sent CSR by typing a keyword in the *Search DFSP CSRs* search box and pressing kbd:[Enter].
-2. Click *Download Certificate* to download your signed certificate, which is now ready to be installed.
-
-To view a certificate, click **View Certificate**. A dialog box pops up displaying your certificate.
+To view a certificate, click *View Certificate*. A dialog box pops up displaying your certificate.
 
 .Viewing certificate details
 image::view_certificate.png[]
 
-To download a certificate, click **Download Certificate**. A dialog box pops up prompting you to open or save your certificate.
+To retrieve a TLS client certificate signed by the Hub, complete the following steps:
+
+1. Go to the *Sent CSRs* tab. You can search for a sent CSR by typing a keyword in the *Search DFSP CSRs* search box and pressing *Enter*.
+2. Click *Download Certificate* to download your signed certificate. A dialog box pops up prompting you to open or save your certificate.
 
 Information about the validity of CSRs and certificates is also displayed. Click *View Details* for information on possible validity issues. The following details are validated:
 
 * The CSR's signature must match the public key.
-* The CSR's signature algorithm must be "sha256WithRSAEncryption". Note that the validation also accepts "sha512WithRSAEncryption". *Is this true?*
+* The CSR's signature algorithm must be "sha256WithRSAEncryption". Note that the validation also accepts "sha512WithRSAEncryption".
 * The CSR public key length must be 4096 bits.
 * The CSR and certificate must have the same public key.
 * The CSR and certificate must have the same Subject information.
 * The CSR and certificate must have the same Common Name (CN) information.
-* The CSR must have all mandatory Distinguished Name attributes. These are: Common Name (CN), Organizational Unit (OU), Organization (O), Locality (L), State (ST), Country (C), and Email Address (E). *Is this true?*
+* The CSR must have all mandatory Distinguished Name attributes. These are: Common Name (CN), Organizational Unit (OU), Organization (O), Locality (L), State (ST), Country +(C)+, and Email Address (E).
 * The certificate must be valid at the present time according to the certificate validity period.
 * The certificate's signature algorithm must be "sha256WithRSAEncryption".
 //* The certificate public key must match the private key used to sign the CSR. Only available if the CSR was manually created ({connection-wizard} has the private key) instead of uploaded.

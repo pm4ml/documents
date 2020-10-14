@@ -7,7 +7,7 @@ Building, validating, and operating a service that connects a Digital Financial 
 {product-name} is made up of the following major components:
 
 * **Core Connector**: Integrates a DFSP's Core Banking Service to {product-name} acting as a "translator". It includes standard templates – written in Java on Apache Camel – that can be deployed for major systems.
-* **Core Payments Manager**: The main transaction service has the ability to manage, monitor, and report on different operational and technical processes from the Core and {hub} Connectors, as well as on the associated movement of transfers and funds.
+* **Core {product-name}**: The main transaction service has the ability to manage, monitor, and report on different operational and technical processes from the Core and {hub} Connectors, as well as on the associated movement of transfers and funds.
 * **Mojaloop Connector**: Simplifies and automates certificate creation and the configuration of the connections required to different environments. It also provides the interpretation of the Mojaloop API and the appropriate security controls, providing DFSPs with the confidence they are connecting to {hub} using security best practices.
 * **Portals**: The portals provide dashboards for monitoring liquidity, transaction details, and operational health, and they also allow DFSPs to manage their certificates and endpoint information required for connecting to {hub}. 
 

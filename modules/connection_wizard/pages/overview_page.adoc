@@ -7,7 +7,7 @@ image::connection_wizard_overview_page.png[]
 
 For each environment, the overview page displays:
 
-* A status indicator with colour coding showing whether connection to a particular environment has started, is in progress, or has completed.
+* A status indicator with colour coding, showing whether connection to a particular environment has started, is in progress, or has completed.
 * A progress indicator showing how close to completion the connection process is (expressed in percentages).
 * A *View Details* button that takes the user to a page with a detailed break-down of steps to be carried out in that particular environment.
 

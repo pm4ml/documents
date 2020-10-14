@@ -1,16 +1,16 @@
 = Introduction to {product-name} {connection-wizard}
 
-The {connection-wizard} guides Digital Financial Service Providers (DFSPs) through their onboarding to the {hub} Hub, allowing them to generate and share certificates, as well as to exchange  endpoint information with the Hub Operator using a web portal.
+The {connection-wizard} guides Digital Financial Service Providers (DFSPs) through their onboarding to the {hub} Hub, allowing them to share certificates, as well as to exchange  endpoint information with the Hub Operator using a web portal.
 
 The {connection-wizard} is built around the following major stages of the DFSP onboarding journey:
 
 * **ModusBox & Mojaloop Labs**: The Labs provide a controlled online environment, where DFSPs interact with a mock implementation in a self-service manner, getting familiar with basic concepts and processes, and learning how API services work. The Labs is also available as a locally hosted environment, allowing DFSPs to test their implementation against mock services locally.
-* **Pre-qualification Sandbox**: After a DFSP has completed development work to implement the API services required to integrate with the {hub} Hub, they gain access to a Sandbox environment. In the sandbox, DFSPs can run further test API calls, validating their code against a real implementation of the Hub, interacting with an environment as if it was real, but still controlled.
-* **Production Connection**: Once the DFSP has finished development and testing, and demonstrated compliance with all prerequisites required for entry to the Production environment, they are granted access to the live operational environment.
+* **Pre-qualification Sandbox**: After a DFSP has completed development work to implement the API services required to integrate with the {hub} Hub, they gain access to a sandbox environment. In the sandbox, DFSPs can run further test API calls, validating their code against a real implementation of the Hub, interacting with an environment as if it was real, but still controlled.
+* **Production Connection**: Once the DFSP has demonstrated compliance with all prerequisites required for entry to the Production environment, they are granted access to the live operational environment.
 
 In each environment, DFSPs are taken through the following phases:
 
-* **Phase 1: Business Setup**: In Phase 1, the Hub Operator sets up identifiers for the DFSP and shares them with the DFSP.
+* **Phase 1: Business Setup**: In Phase 1, the Hub Operator sets up system identifiers and shares them with the DFSP.
 * **Phase 2: Technical Setup**: Phase 2 is about sharing endpoint details and certificates.
 
 //* **Phase 3: Testing**: ???
