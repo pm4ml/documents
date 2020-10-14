@@ -1,0 +1,21 @@
+= Appendix B: Extract a public key from a JWS certificate
+
+The JWS certificates of other DFSPs or the Hub downloaded from {connection-wizard} are certificate chains, the public keys have to be extracted.
+
+This section provides instructions about how to extract the public key from a DFSP's or the Hub's JWS certificate using the https://keystore-explorer.org/[KeyStore Explorer] tool.
+
+Perform the following steps:
+
+. Open a keystore.
+. Import the other DFSP's or the Hub's JWS certificate using the *Tools > Import Trusted Certificate* menu. The *Trusted Certificate Entry Alias* window pops up. +
+image:keystore_explorer_import_trusted_certificate.png[]
+. Leave the alias value as is. Click *OK*. +
+image:keystore_explorer_trusted_certificate_entry_alias.png[]
+. In KeyStore Explorer, right-click the certificate.
+. Select *Export > Export Public Key*. The *Export Public Key as OpenSSL* window pops up. +
+image:keystore_explorer_export_public_key.png[] +
+. Ensure that the *PEM* checkbox is selected. +
+image:keystore_explorer_export_public_key_popup.png[]
+. Specify where you want to download the public key. The name of the key must remain the `fspId` name of the other DFSP as previously assigned by the Hub. Ensure that the file extension is `.pem`.
+. Click *Export*. You have successfully exported the public key. +
+image:keystore_explorer_export_certificate_successful.png[]
