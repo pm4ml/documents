@@ -17,11 +17,11 @@ image::egress_endpoints.png[]
 
 To configure egress (outbound) endpoints on the *Egress Endpoints* tab:
 
-1. In the *Egress IP Address* field, enter the IP address from which you will make API calls to the Hub.
-2. In the *Port(s)* field, you can specify a specific port or a range.
-3. To add further ports, click the *Add Port* button. There is no limit on the number of ports that can be specified.
-4. To add further IP addresses or hostnames, click the Add *Additional IP Address* button.
-5. Once you are done entering your data, click **Submit for Confirmation**. This will send the data to the Hub for processing.
+. In the *Egress IP Address* field, enter the IP address from which you will make API calls to the Hub.
+. In the *Port(s)* field, you can specify a specific port or a range.
+. To add further ports, click the *Add Port* button. There is no limit on the number of ports that can be specified.
+. To add further IP addresses or hostnames, click the Add *Additional IP Address* button.
+. Once you are done entering your data, click **Submit for Confirmation**. This will send the data to the Hub for processing.
 
 include::partial$submit_for_confirmation_data_lost.adoc[]
 
@@ -38,12 +38,12 @@ image::ingress_endpoints.png[]
 
 To configure inbound endpoints on the *Ingress Endpoints* tab:
 
-1. In the *URL* field, enter the URL that the Hub will connect to in order to make API callbacks to you. You must provide a full URL with protocol information (`http://` or `https://`) included. You can provide a port number and path information too. For example: `+https://inbound.dfsp.io:9876/example+`
-2. In the *Ingress IP Address* field, enter the IP address that the Hub will connect to in order to make API callbacks to you.
-3. In the *Port(s)* field, you can specify a specific port or a range.
-4. To add further ports, click the *Add Port* button. There is no limit on the number of ports that can be specified.
-5. To add further IP addresses or hostnames, click the *Add Additional IP Address* button.
-6. Once you are done entering your data, click **Submit for Confirmation**. This will send the data to the Hub for processing.
+. In the *URL* field, enter the URL that the Hub will connect to in order to make API callbacks to you. You must provide a full URL with protocol information (`http://` or `https://`) included. You can provide a port number and path information too. For example: `+https://inbound.dfsp.io:9876/example+`
+. In the *Ingress IP Address* field, enter the IP address that the Hub will connect to in order to make API callbacks to you.
+. In the *Port(s)* field, you can specify a specific port or a range.
+. To add further ports, click the *Add Port* button. There is no limit on the number of ports that can be specified.
+. To add further IP addresses or hostnames, click the *Add Additional IP Address* button.
+. Once you are done entering your data, click **Submit for Confirmation**. This will send the data to the Hub for processing.
 
 include::partial$submit_for_confirmation_data_lost.adoc[]
 

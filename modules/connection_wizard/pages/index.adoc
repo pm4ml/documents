@@ -8,4 +8,4 @@ DFSPs and the Hub communicate over TLSv1.2 with mutually authenticated X.509 cer
 
 Using the {connection-wizard}, DFSPs are able to share certificates and endpoint information via an easy-to-use portal.
 
-image::PM4ML_Mojaloop_Connector.png[]
+//image::PM4ML_Mojaloop_Connector.png[]

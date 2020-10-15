@@ -19,8 +19,8 @@ image::dfsp_certificate_authority.png[]
 
 To record details of your CA, complete the following steps:
 
-1. Upload the root certificate of your CA. In the *DFSP Root Certificate* field, click **Choose File**, and select the root certificate saved on your computer.
-2. Upload the intermediate certificate of your CA. In the *DFSP Intermediate Chain* field, click **Choose File**, and select the intermediate certificate saved on your computer.
+. Upload the root certificate of your CA. In the *DFSP Root Certificate* field, click **Choose File**, and select the root certificate saved on your computer.
+. Upload the intermediate certificate of your CA. In the *DFSP Intermediate Chain* field, click **Choose File**, and select the intermediate certificate saved on your computer.
 
 include::partial$certificate_file_name_change.adoc[]
 
