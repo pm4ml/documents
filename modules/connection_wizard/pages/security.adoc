@@ -5,7 +5,7 @@ Any implementation of a {hub} Hub employs the following security measures:
 
 * *Mutual Transport Layer Security (mTLS)* secures the communication channel for bi-directional asynchronous connections.
 * *OAuth 2* is used to provide role-based access to Hub endpoints (API authorization).
-* *IP whitelisting* reduces the attack surface of the Hub to known DFSP addresses.
+* *IP whitelisting* reduces the attack surface of the Hub.
 * *JSON Web Signature (JWS)* as defined in https://tools.ietf.org/html/rfc7515[RFC 7515] (JSON Web Signature (JWS)) ensures the Payer DFSP and the Payee DFSP can trust that messages shared between each other have not been modified by a third party.
 * *Interledger Protocol (ILP)* ensures the integrity of transfers and that the agreement between parties to make a transfer is binding. Any transfer is preceded by a preparation step to generate a condition that has to be fulfilled for the transfer to happen. The condition and the fulfilment also act as cryptographic proof that a transaction is secure and that messages exchanged between DFSPs have not been tampered with.
 
@@ -42,21 +42,21 @@ The above process requires that before connecting to any environment (pre-produc
 
 *TLS client certificates:*
 
-. Generate client certificate and Certificate Signing Request (CSR) and share with the other party.
-. Sign the other party's client certificate using your CA.
+. Generate a Certificate Signing Request (CSR) and share with the other party.
+. Sign the other party's CSR using your CA.
 . Share the signed client certificate as well as your CA's root certificate with the other party.
 . Install your own client certificate signed by the other party's CA in your API gateway.
 . Install the root certificate of the other party's CA in your firewall.
 
 === JWS certificates
 
-Whenever an API client sends an API message to a counterparty, the API client should sign the message using its JWS private key. After the counterparty receives the API message, it must validate the signature with the API client’s public JWS key. The signature at full payload level is used to protect the integrity of the full payload of an API message from end-to-end, and ensure that the original payload cannot be modified by an intermediary. 
+Whenever an API client sends an API message to a counterparty, the API client should sign the message using its JWS private key. After the counterparty receives the API message, it must validate the signature with the sending party’s public JWS key. JWS is used by the receiving party to validate that the message came from the expected sender, and that it has not been modified in transit.
 
 The above process requires that all DFSPs and the Hub itself have a JWS certificate and that before connecting to any environment (pre-production or production), the DFSP and the Hub each complete the following steps:
 
 . Create a key store (to hold your certificate and private key), an asymmetric key pair (a public key and a private key), and an associated certificate that identifies you.
 . Share your JWS public key.
-. Install the other parties' (Hub and all other DFSPs) JWS public key in your *where???*
+. Install the other parties' (Hub and all other DFSPs) JWS public key in your JWS keystore.
 
 == Endpoint information
 
