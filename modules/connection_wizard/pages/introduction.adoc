@@ -1,4 +1,4 @@
-= Introduction to {product-name} {connection-wizard}
+= Introduction to {connection-wizard}
 
 The {connection-wizard} guides Digital Financial Service Providers (DFSPs) through their onboarding to the {hub} Hub, allowing them to share certificates, as well as to exchange  endpoint information with the Hub Operator using a web portal.
 

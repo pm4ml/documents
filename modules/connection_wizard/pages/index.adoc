@@ -1,3 +1,4 @@
+ifndef::backend-pdf[]
 = {company-name} Guide to {product-name} {connection-wizard}
 
 The {connection-wizard} is a portal for Digital Financial Service Providers (DFSPs), which acts as the user interface to the {hub} Connector. The {connection-wizard} allows DFSPs and the Hub Operator to manage endpoint mapping and certificate-related processes in a guided way. 
@@ -9,3 +10,4 @@ DFSPs and the Hub communicate over TLSv1.2 with mutually authenticated X.509 cer
 Using the {connection-wizard}, DFSPs are able to share certificates and endpoint information via an easy-to-use portal.
 
 //image::PM4ML_Mojaloop_Connector.png[]
+endif::[]
