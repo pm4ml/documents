@@ -1,0 +1,4 @@
+= Introduction to {transfers}
+
+The *{transfers}* page provides visualization of transaction details and the ability to query and observe each transfer's status.
+

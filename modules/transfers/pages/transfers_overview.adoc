@@ -1,0 +1,62 @@
+= {transfers} page
+
+== Find a Transfer
+
+The *Find a Transfer* button at the top of the page allows you to find a particular transfer.
+
+On clicking the button, a window is displayed where you can:
+
+* search for a transfer by its Transfer ID
+* do advanced filtering if you do not have a Transfer ID  
+
+=== Basic Find a Transfer
+
+Use the *Basic Find a Transfer* tab to find a transfer based on its Transfer ID:
+
+. Enter the transfer's identifier in the *Transfer ID* field.
+. Click the *Find Transfers* button. 
+
+=== Advanced Filtering
+
+Use the *Advanced Filtering* tab to find a transfer when you do not know its Transfer ID. You can search for a transfer based on: 
+
+* the approximate time when the transfer occurred
+* the institution (DFSP) that was involved in the transfer
+* the status of the transfer
+
+To find a transfer:
+
+. Use the date picker fields to specify the time period in which when the transfer happened.
+. In the *Contains Institution* field, enter the `fspId` of the DFSP that participated in the transfer.
+. In the *Transfer Status* field, select the appropriate value (*Success*, *Pending*, *Error*) from the drop-down list.
+. Click the *Find Transfers* button. A list of transfers that match your search criteria is displayed. 
+. Click an entry in the search results to view details of that particular transfer. The *Transfer Details* window pops up, which displays: +
+* A *Basic Information* tab with details, such as transfer amount, sender, recipient, and so on.
+* A *Technical Details* tab with low-level technical details, such as the actual party lookup, quote, or transfer messages. This is useful for technical personnel performing a debug.
+
+
+== Successful Transfers
+
+The *Successful Transfers* graph is showing a timeline of the past 24 hours and displays the percentage of successful transfers per minute.
+
+The granularity of the timeline is customizable.
+
+You can zoom in on areas of interest and find out the timestamps of transfers that seem not to have been successful.
+
+You can also download an image of a chart in `.svg`, `.png`, or `.csv` format.
+
+== Average Transfer Time (E2E)
+
+The *Average Transfer Time (E2E)* graph is showing your transfer latency with the Hub.
+
+You can zoom in on particular areas if you spot an anomaly. This is useful when debugging issues.
+
+== Total Transfer Statuses
+
+The *Total Transfer Statuses* widgets display the total number of successful, pending, and failed transfers.
+
+== Transfers Errors Overview
+
+The *Transfers Errors Overview* pie chart shows a breakdown of the types of errors that caused failed transfers. 
+
+The table below the pie chart lists failed transfers and allows you to drill down into errors.

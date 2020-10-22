@@ -14,6 +14,7 @@ asciidoc:
     product-name: Payment Manager
     hub: Mojaloop
     connection-wizard: Connection Wizard
+    transfers: Transfers Overview
     hide: ''
 ##ui:
   ##bundle:

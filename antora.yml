@@ -3,3 +3,4 @@ version: '1.0'
 title: Payment Manager
 nav:
 - modules/connection_wizard/nav.adoc
+- modules/transfers/nav.adoc
