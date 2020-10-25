@@ -13,5 +13,3 @@ The following identifiers are displayed:
 * **DFSP ID**: The unique identifier of the DFSP.
 
 NOTE: Both the name and the ID must be the same as the `fspId` registered in the Hub.
-
-

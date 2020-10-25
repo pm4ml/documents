@@ -16,7 +16,8 @@ image::csr.png[]
 To share a CSR with the Hub, complete the following steps:
 
 . Go to the *CSR* tab.
-. In the *CSR* field, click **Choose File**, and select the CSR file saved on your computer.
+. In the *CSR* field, click *Choose File*, and select the CSR file saved on your computer. +
+Alternatively, if you have not created a CSR beforehand, click the *Auto generate* button and {connection-wizard} will automatically create one for you in the backend.
 . Click *Submit* to send the CSR to the Hub.
 
 NOTE: On uploading a CSR, {connection-wizard} renames the file so that the file name includes information about the name of the DFSP. This means that you will see the original file name of your CSR change to a value assigned by {connection-wizard}.
