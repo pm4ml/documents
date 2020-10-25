@@ -9,12 +9,19 @@ On clicking the button, a window is displayed where you can:
 * search for a transfer by its Transfer ID
 * do advanced filtering if you do not have a Transfer ID  
 
+.Finding a transfer
+image::find_a_transfer.png[]
+
 === Basic Find a Transfer
 
 Use the *Basic Find a Transfer* tab to find a transfer based on its Transfer ID:
 
 . Enter the transfer's identifier in the *Transfer ID* field.
-. Click the *Find Transfers* button. 
+. Click the *Find Transfers* button. +
+The list of results is displayed.
+
+.Basic Find a Transfer
+image::basic_find_a_transfer.png[]
 
 === Advanced Filtering
 
@@ -24,9 +31,12 @@ Use the *Advanced Filtering* tab to find a transfer when you do not know its Tra
 * the institution (DFSP) that was involved in the transfer
 * the status of the transfer
 
+.Advanced Filtering
+image::advanced_filtering.png[]
+
 To find a transfer:
 
-. Use the date picker fields to specify the time period in which when the transfer happened.
+. Use the date picker fields to specify the time period in which the transfer happened.
 . In the *Contains Institution* field, enter the `fspId` of the DFSP that participated in the transfer.
 . In the *Transfer Status* field, select the appropriate value (*Success*, *Pending*, *Error*) from the drop-down list.
 . Click the *Find Transfers* button. A list of transfers that match your search criteria is displayed. 
@@ -39,6 +49,9 @@ To find a transfer:
 
 The *Successful Transfers* graph is showing a timeline of the past 24 hours and displays the percentage of successful transfers per minute.
 
+.Successful Transfers
+image::successful_transfers.png[]
+
 The granularity of the timeline is customizable.
 
 You can zoom in on areas of interest and find out the timestamps of transfers that seem not to have been successful.
@@ -49,14 +62,23 @@ You can also download an image of a chart in `.svg`, `.png`, or `.csv` format.
 
 The *Average Transfer Time (E2E)* graph is showing your transfer latency with the Hub.
 
+.Average Transfer Time
+image::average_transfer_time.png[]
+
 You can zoom in on particular areas if you spot an anomaly. This is useful when debugging issues.
 
 == Total Transfer Statuses
 
 The *Total Transfer Statuses* widgets display the total number of successful, pending, and failed transfers.
 
+.Total Transfer Statuses
+image::total_transfer_statuses.png[]
+
 == Transfers Errors Overview
 
-The *Transfers Errors Overview* pie chart shows a breakdown of the types of errors that caused failed transfers. 
+The *Transfers Errors Overview* pie chart shows a breakdown of the types of errors that caused failed transfers.
+
+.Transfers Errors Overview
+image::transfers_errors_overview.png[]
 
 The table below the pie chart lists failed transfers and allows you to drill down into errors.
