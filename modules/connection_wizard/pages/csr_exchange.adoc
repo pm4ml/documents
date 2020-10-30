@@ -31,8 +31,8 @@ image::sent_csrs.png[]
 
 The *Status* indicator displays the status of your sent CSR/client certificate:
 
-* **CSR created**: the CSR has been created
-* *Certificate created*: the certificate has been signed
+* *CSR created*: The CSR has been sent.
+* *Certificate created*: The CSR has been signed.
 
 //If the CSR has been signed by the Hub using an external CA, an information label is displayed indicating exactly which external CA was used.
 
@@ -55,15 +55,23 @@ To retrieve a TLS client certificate signed by the Hub, complete the following s
 . Go to the *Sent CSRs* tab. You can search for a sent CSR by typing a keyword in the *Search DFSP CSRs* search box and pressing *Enter*.
 . Click *Download Certificate* to download your signed certificate. A dialog box pops up prompting you to open or save your certificate.
 
-Information about the validity of CSRs and certificates is also displayed. Click *View Details* for information on possible validity issues. The following details are validated:
+Information about the validity of CSRs and certificates is also displayed. Click *View Details* for information on possible validity issues. 
+
+The following details are validated for a sent CSR:
+
+* The CSR's signature algorithm must be "sha256WithRSAEncryption". Note that the validation also accepts "sha512WithRSAEncryption".
+* The CSR public key length must be 4096 bits.
+* The CSR must have all mandatory Distinguished Name attributes. These are: Common Name (CN), Organizational Unit (OU), Organization (O), Locality (L), State (ST), Country +(C)+, and Email Address (E).
+
+The following details are validated for a signed CSR:
 
 * The CSR's signature must match the public key.
 * The CSR's signature algorithm must be "sha256WithRSAEncryption". Note that the validation also accepts "sha512WithRSAEncryption".
 * The CSR public key length must be 4096 bits.
+* The CSR must have all mandatory Distinguished Name attributes. These are: Common Name (CN), Organizational Unit (OU), Organization (O), Locality (L), State (ST), Country +(C)+, and Email Address (E).
 * The CSR and certificate must have the same public key.
 * The CSR and certificate must have the same Subject information.
 * The CSR and certificate must have the same Common Name (CN) information.
-* The CSR must have all mandatory Distinguished Name attributes. These are: Common Name (CN), Organizational Unit (OU), Organization (O), Locality (L), State (ST), Country +(C)+, and Email Address (E).
 * The certificate must be valid at the present time according to the certificate validity period.
 * The certificate's signature algorithm must be "sha256WithRSAEncryption".
 //* The certificate public key must match the private key used to sign the CSR. Only available if the CSR was manually created ({connection-wizard} has the private key) instead of uploaded.

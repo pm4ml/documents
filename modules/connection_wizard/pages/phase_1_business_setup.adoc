@@ -9,7 +9,9 @@ The identifiers displayed in the *Phase 1: Business Setup* section are read-only
 
 The following identifiers are displayed:
 
-* **DFSP Name**: The name of the DFSP.
-* **DFSP ID**: The unique identifier of the DFSP.
+* *DFSP Name*: The name of the DFSP.
+* *DFSP ID*: The unique identifier of the DFSP.
 
 NOTE: Both the name and the ID must be the same as the `fspId` registered in the Hub.
+
+NOTE: If you have access to multiple environments in {connection-wizard}, it may happen that in some environments the Hub Operator has not yet added your identifiers, and therefore the *DFSP Name* and *DFSP ID* fields will be empty.
