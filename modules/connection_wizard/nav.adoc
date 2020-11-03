@@ -9,5 +9,6 @@
 ** xref:certificate_authority.adoc[Certificate Authority]
 ** xref:server_certificates_exchange.adoc[Server Certificates Exchange]
 ** xref:jws_certificates.adoc[JWS Certificates]
-* xref:appendix_create_jws_cert.adoc[Appendix A: Create a JWS certificate]
-* xref:appendix_extract_public_key_from_JWS_cert.adoc[Appendix B: Extract a public key from a JWS certificate]
+* xref:appendix_create_tls_cert.adoc[Appendix A: Create TLS certificates]
+* xref:appendix_create_jws_cert.adoc[Appendix B: Create a JWS certificate]
+* xref:appendix_extract_public_key_from_JWS_cert.adoc[Appendix C: Extract a public key from a JWS certificate]

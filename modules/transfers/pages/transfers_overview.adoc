@@ -44,6 +44,7 @@ To find a transfer:
 * A *Basic Information* tab with details, such as transfer amount, sender, recipient, and so on.
 * A *Technical Details* tab with low-level technical details, such as the actual party lookup, quote, or transfer messages. This is useful for technical personnel performing a debug.
 
+//On clicking the *View Error* button, a *Transfer Error* window pops up, which shows details of the error and the actual transfer as well.
 
 == Successful Transfers
 

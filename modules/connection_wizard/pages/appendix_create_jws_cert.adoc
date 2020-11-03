@@ -1,4 +1,4 @@
-= Appendix A: Create a JWS certificate
+= Appendix B: Create a JWS certificate
 
 The JWS certificates that either the Hub or DFSPs upload to {connection-wizard} must be "wrapped" public keys. To generate a JWS certificate, you can use openssl or https://keystore-explorer.org/[KeyStore Explorer].
 

@@ -54,7 +54,7 @@ Whenever an API client sends an API message to a counterparty, the API client sh
 
 The above process requires that all DFSPs and the Hub itself have a JWS certificate and that before connecting to any environment (pre-production or production), the DFSP and the Hub each complete the following steps:
 
-. Create a key store (to hold your certificate and private key), an asymmetric key pair (a public key and a private key), and an associated certificate that identifies you.
+. Create a keystore (to hold your certificate and private key), an asymmetric key pair (a public key and a private key), and an associated certificate that identifies you.
 . Share your JWS public key.
 . Install the other parties' (Hub and all other DFSPs) JWS public key in your JWS keystore.
 
