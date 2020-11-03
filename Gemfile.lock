@@ -28,10 +28,15 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     afm (0.2.2)
     asciidoctor (2.0.10)
+    cmdparse (3.0.6)
     concurrent-ruby (1.1.7)
     css_parser (1.7.1)
       addressable
+    geom2d (0.3.1)
     hashery (2.1.2)
+    hexapdf (0.12.3)
+      cmdparse (~> 3.0, >= 3.0.3)
+      geom2d (~> 0.3)
     pdf-core (0.8.1)
     pdf-reader (2.4.1)
       Ascii85 (~> 1.0.0)
@@ -52,7 +57,6 @@ GEM
       pdf-reader (~> 2.0)
       prawn (~> 2.2)
     public_suffix (4.0.6)
-    rghost (0.9.7)
     rouge (3.23.0)
     ruby-rc4 (0.1.5)
     safe_yaml (1.0.5)
@@ -65,8 +69,8 @@ PLATFORMS
 
 DEPENDENCIES
   asciidoctor-pdf!
+  hexapdf
   prawn-table!
-  rghost
   rouge
 
 BUNDLED WITH
