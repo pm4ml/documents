@@ -57,7 +57,7 @@ To be able to zoom, you must be in selection zoom mode. Ensure you have the *Sel
 
 Click the *Zoom In* or *Zoom Out* buttons image:zoom_in_zoom_out.png[width=44,height=26] to zoom in or out. To zoom in on a particular area of the graph, select an area by clicking the graph, drag the mouse left or right, and release the mouse.
 
-Click the house button image:house_button.png[width=23,height=23] to reset the timeline to the original 24-hour granularity.
+Click the *Reset Zoom* button image:house_button.png[width=23,height=23] to reset the timeline to the original 24-hour granularity.
 
 Another way to change the displayed range of the timeline is to pan an area. Click the *Panning* button image:panning_button.png[width=25,height=25], then click the timeline and drag your mouse to the left or right. Panning keeps the selected zoom granularity and lets you move along the X (time) axis.
 
