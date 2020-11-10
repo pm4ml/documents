@@ -6,11 +6,23 @@ Building, validating, and operating a service that connects a Digital Financial 
 
 {product-name} is made up of the following major components:
 
-* **Core Connector**: Integrates a DFSP's Core Banking Service to {product-name} acting as a "translator". It includes standard templates – written in Java on Apache Camel – that can be deployed for major systems.
+* **Core Connector**: Integrates a DFSP's Core Backend to Payment Manager as a "translator" for both parts so communication is possible between them. Core Connector is also responsible for orchestrating the transfer flow and for the persistence of transfer data. It uses standard templates written in Apache Camel, a declarative language for integration engineers that does not require writing code from scratch.
 * **Core {product-name}**: The main transaction service has the ability to manage, monitor, and report on different operational and technical processes from the Core and {hub} Connectors, as well as on the associated movement of transfers and funds.
-* **Mojaloop Connector**: Simplifies and automates certificate creation and the configuration of the connections required to different environments. It also provides the interpretation of the Mojaloop API and the appropriate security controls, providing DFSPs with the confidence they are connecting to {hub} using security best practices.
-* **Portals**: The portals provide dashboards for monitoring liquidity, transaction details, and operational health, and they also allow DFSPs to manage their certificates and endpoint information required for connecting to {hub}. 
+* **{hub} Connector**: Comes with the following key components:
+** A {hub}-SDK, which provides {hub}-compliant security components and HTTP header processing capabilities, as well as a simplified version of the {hub} API.
+** A Connection Manager Client, which simplifies and automates certificate creation, signing and exchange, as well as the configuration of the connections required to different environments. This tool allows a DFSP to connect to the {hub} Hub and integrate with its internal
+security requirements.
+* **Business and Technical Portals**: Provide dashboards for monitoring liquidity, managing settlement and reconciliation, as well as customer support, troubleshooting and debugging. They also allow DFSPs to
+manage their security keys, certificates and endpoint configuration required for connecting to {hub}-based schemes. 
 
 image::PM4ML_architecture.png[]
 
-//{product-name-short} can reduce technical risk, as well as ongoing operational capability needs, thereby reducing costs for development and integration with a Mojaloop Hub. Enterprise Support is also offered by {company-name} to provide business confidence that there is continued investment in the solution and maintenance is available.
+{product-name} abstracts away the complexity of the {hub} API and helps the DFSP understand their relationship with the scheme, focusing on the key business and technical areas.
+
+{product-name} can reduce technical risk, as well as ongoing operational capability needs, thereby reducing costs for development and integration with a {hub} Hub. Enterprise Support is also offered by {company-name} to provide business confidence that there is continued investment in the solution and maintenance is available.
+
+A few words about {product-name} technology:
+
+* {product-name} is provided as a set of Linux container images (docker) and may be hosted on-premise using commodity server infrastructure or in appropriate cloud infrastructure where available.
+* {product-name} scales from a very small footprint to handling many hundreds of transactions per second (dependent on the performance of the DFSP’s Core Backend).
+* {product-name} comes with turn-key integration options.
