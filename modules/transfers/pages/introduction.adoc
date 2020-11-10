@@ -4,3 +4,5 @@ The *{transfers}* page provides visualization of transaction details and the abi
 
 .*{transfers}* page
 image::transfers_overview.png[]
+
+//Change screenshot once there are transfers displayed in the new version

@@ -1,8 +1,8 @@
-= {transfers} page
+= {transfers}
 
 == Find a Transfer
 
-The *Find a Transfer* button at the top of the page allows you to find a particular transfer.
+The *Find a Transfer* button image:find_a_transfer_button.png[width=97,height=31] at the top of the page allows you to find a particular transfer.
 
 On clicking the button, a window is displayed where you can:
 
@@ -16,12 +16,10 @@ image::find_a_transfer.png[]
 
 Use the *Basic Find a Transfer* tab to find a transfer based on its Transfer ID:
 
-. Enter the transfer's identifier in the *Transfer ID* field.
+. Enter the transfer's identifier in the *Transfer ID* field. +
+image:basic_find_a_transfer.png[]
 . Click the *Find Transfers* button. +
 The list of results is displayed.
-
-.Basic Find a Transfer
-image::basic_find_a_transfer.png[]
 
 === Advanced Filtering
 
@@ -53,11 +51,19 @@ The *Successful Transfers* graph is showing a timeline of the past 24 hours and 
 .Successful Transfers
 image::successful_transfers.png[]
 
-The granularity of the timeline is customizable.
+The granularity of the graph is customizable. For example, you can zoom in on areas of interest and find out the timestamps of transfers that seem not to have been successful.
 
-You can zoom in on areas of interest and find out the timestamps of transfers that seem not to have been successful.
+To be able to zoom, you must be in selection zoom mode. Ensure you have the *Selection Zoom* button image:selection_zoom_button.png[width=22,height=21] selected. This is the default setting. 
 
-You can also download an image of a chart in `.svg`, `.png`, or `.csv` format.
+Click the *Zoom In* or *Zoom Out* buttons image:zoom_in_zoom_out.png[width=44,height=26] to zoom in or out. To zoom in on a particular area of the graph, select an area by clicking the graph, drag the mouse left or right, and release the mouse.
+
+Click the house button image:house_button.png[width=23,height=23] to reset the timeline to the original 24-hour granularity.
+
+Another way to change the displayed range of the timeline is to pan an area. Click the *Panning* button image:panning_button.png[width=25,height=25], then click the timeline and drag your mouse to the left or right. Panning keeps the selected zoom granularity and lets you move along the X (time) axis.
+
+To return to selection zoom mode, click the *Selection Zoom* button image:selection_zoom_button.png[width=22,height=21].
+
+To download a chart in `.svg`, `.png`, or `.csv` format, click the *Menu* button image:menu_button.png[width=23,height=22].
 
 == Average Transfer Time (E2E)
 
@@ -82,4 +88,12 @@ The *Transfers Errors Overview* pie chart shows a breakdown of the types of erro
 .Transfers Errors Overview
 image::transfers_errors_overview.png[]
 
-The table below the pie chart lists failed transfers and allows you to drill down into errors.
+The table below the pie chart lists failed transfers and allows you to drill down into errors. For a detailed view:
+
+. Click the *View All Errors* button. The *Transfers Errors* window pops up. +
+image:transfers_errors_popup.png[]
+. Optionally, search for transfers with a particular type of status by selecting a status value from the *Filter Status* drop-down list.
+. Click a row in the search results list to view details of the transfer. The *Transfer Details* window pops up.
+. To return to the main *Transfers Overview* page, click the *Close* button.
+
+//Check MP-2374, MP-2366.
