@@ -19,7 +19,7 @@ The next sections provide background information about the processes that {conne
 
 == Certificates
 
-=== TLS certificates
+=== TLS certificates[[tls_certificates]]
 
 Two-way TLS or mutual TLS authentication relies on both parties (client and server) sharing their public certificates with each other and performing verification/validation based on that.
 

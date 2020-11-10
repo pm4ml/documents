@@ -16,11 +16,16 @@ image::csr.png[]
 To share a CSR with the Hub, complete the following steps:
 
 . Go to the *CSR* tab.
-. In the *CSR* field, click *Choose File*, and select the CSR file saved on your computer. +
-Alternatively, if you have not created a CSR beforehand, click the *Auto generate* button and {connection-wizard} will automatically create one for you in the backend.
-. Click *Submit* to send the CSR to the Hub.
+. In the *CSR* field, click the *Auto generate* button and {connection-wizard} will automatically create a CSR for you in the backend. +
+Alternatively, if you wish to use a CSR that you created yourself, click *Choose File*, select the CSR file saved on your computer, and click *Submit* to send the CSR to the Hub. 
 
-NOTE: On uploading a CSR, {connection-wizard} renames the file so that the file name includes information about the name of the DFSP. This means that you will see the original file name of your CSR change to a value assigned by {connection-wizard}.
+If you need help creating a client CSR, see:
+
+* xref:appendix_create_tls_cert.adoc#create-keystore[Create a keystore] for instructions on how to create a keystore to hold your client key pair and CSR.
+* xref:appendix_create_tls_cert.adoc#create-server-client-key-pair[Create server key pair and client key pair] for instructions on how to create a client key pair.
+* xref:appendix_create_tls_cert.adoc#create-client-csr[Create the client CSR] for instructions on how to create the CSR from the client key pair.
+
+NOTE: On uploading your CSR, {connection-wizard} renames the file so that the file name includes information about the name of the DFSP. This means that you will see the original file name of your CSR change to a value assigned by {connection-wizard}.
 
 NOTE: If you have accidentally uploaded the wrong CSR, you can re-upload a new CSR and that will replace the old one.
 
@@ -74,5 +79,5 @@ The following details are validated for a signed CSR:
 * The CSR and certificate must have the same Common Name (CN) information.
 * The certificate must be valid at the present time according to the certificate validity period.
 * The certificate's signature algorithm must be "sha256WithRSAEncryption".
-//* The certificate public key must match the private key used to sign the CSR. Only available if the CSR was manually created ({connection-wizard} has the private key) instead of uploaded.
+* The certificate public key must match the private key used to sign the CSR. Only available if the CSR was manually created ({connection-wizard} has the private key) instead of uploaded.
 
