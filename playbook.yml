@@ -1,5 +1,5 @@
 site:
-  title: ModusBox Payment Manager
+  title: PortX Payment Manager Documentation
   start_page: payment_manager::index.adoc
 content:
   sources:
