@@ -7,23 +7,84 @@ The *Find a Transfer* button image:find_a_transfer_button.png[width=97,height=31
 On clicking the button, a window is displayed where you can:
 
 * search for a transfer by its Transfer ID
-* do advanced filtering if you do not have a Transfer ID  
+* do advanced filtering using multiple search criteria (this is useful when you do not have a Transfer ID at your disposal)  
 
 .Finding a transfer
 image::find_a_transfer.png[]
 
-=== Basic Find a Transfer
+=== Find a transfer based on its Transfer ID[[basic-find]]
 
 Use the *Basic Find a Transfer* tab to find a transfer based on its Transfer ID:
 
 . Enter the transfer's identifier in the *Transfer ID* field. +
 image:basic_find_a_transfer.png[]
 . Click the *Find Transfers* button. +
-The list of results is displayed.
+The list of results is displayed. +
+image:basic_find_a_transfer_results.png[] +
+. To find out more information about the transfer, click the transfer item once. +
+The *Transfer Details* window pops up showing detailed information about the transfer on a *Basic Information* tab and a *Technical Details* tab. 
 
-=== Advanced Filtering
+The *Basic Information* tab displays the following information: 
 
-Use the *Advanced Filtering* tab to find a transfer when you do not know its Transfer ID. You can search for a transfer based on: 
+* **Transfer ID**: The unique identifier of the transfer.
+* **Transfer State**: Indicates if the transfer has succeeded, is pending, or an error has occurred.
+* **Batch**: The unique identifier of the settlement batch in which the transfer was settled. If the transfer has not been settled yet, it says **N/A**.
+* **Date Submitted**: The date and time when the transfer was initiated.
+* **Amount**: The transfer amount.
+* **Currency**: The transfer currency.
+* **Sender**: The payer of the transfer.
+* **Sender Details**: The unique identifier of the payer (typically, a MISIDN, that is, a mobile number).
+* **Recipient**: The payee of the transfer.
+* **Recipient Details**: The unique identifier of the payee (typically, a MISIDN, that is, a mobile number).
+* **Institution**: The identifier of the DFSP serving the payee.
+* **Direction**: The direction of the transfer (outbound or inbound). 
+
+.**Basic Information** tab
+image:transfer_details_basic_info_success.png[] 
+
+The *Technical Details* tab displays the following information: 
+
+* **Scheme Transfer ID**: The unique identifier of the transfer assigned by the Hub.
+* **Transaction ID**: The unique identifier of the transaction.
+* **Quote ID**: The unique identifier of the quote.
+* **Home Transfer ID**: The unique identifier of the transfer assigned by the DFSP.
+* **Transfer State**: Indicates if the transfer has succeeded, is pending, or an error has occurred. In the case of an error, a *View Error* button is also displayed. On clicking that button, a *Transfer Error* window pops up, which shows details of the error and the actual transfer as well. 
+
+.**Technical Details** tab
+image:transfer_details_technical_details_error.png[] 
+
+.**Transfer Error** pop-up window
+image:transfer_error.png[] 
+
+The *Technical Details* tab also displays information about the Payer and Payee party of the transfer. On clicking the *Payer Information* or **Payee Information** button, a window pops up that displays the following details: 
+
+* **Id Type**: The type of payer/payee identifier used (for example, MSISDN).
+* **Id Value**: The value of the payer/payee identifier (for example, digits of a mobile number).
+* **Display Name**: The display name of a payer/payee, which may not be the full name of the party.
+* **First Name**: The first name of a payer/payee.
+* **Middle Name**: The middle name of a payer/payee.
+* **Last Name**: The last name of a payer/payee.
+* **Date Of Birth**: The date of birth of a payer/payee.
+* **Merchant Classification Code**: The unique identifier of a merchant (relevant in the case of person-to-business transfers).
+* **FSP Id**: The unique identifier of the DFSP serving the payer/payee. 
+
+.**Payee Party** pop-up window
+image:payee_party.png[] 
+
+In addition to party information, details about the transfer message sequence are also available by clicking these buttons: 
+
+* **Party Lookup Response**: Displays a *Party Lookup Response* pop-up window, which provides the API response message that is returned to a party lookup request.
+* **Quote Request**: Displays a *Quote Request* pop-up window, which provides the API request message that is sent to request a quote.
+* **Quote Response**: Displays a *Quote Response* pop-up window, which provides the API response message that is returned to a quote request.
+* **Transfer Prepare**: Displays a *Transfer Request* pop-up window, which provides the API request message that is sent to request a transfer.
+* **Transfer Fulfil**: Displays a *Transfer Fulfil* pop-up window, which provides the API response message that is returned to a transfer request. 
+
+.**Quote Response** pop-up window
+image:quote_response.png[]
+
+=== Find a transfer using multiple search criteria
+
+Use the *Advanced Filtering* tab to find a transfer when you do not know its Transfer ID. You can search for a transfer based on:
 
 * the approximate time when the transfer occurred
 * the institution (DFSP) that was involved in the transfer
@@ -37,12 +98,13 @@ To find a transfer:
 . Use the date picker fields to specify the time period in which the transfer happened.
 . In the *Contains Institution* field, enter the `fspId` of the DFSP that participated in the transfer.
 . In the *Transfer Status* field, select the appropriate value (*Success*, *Pending*, *Error*) from the drop-down list.
-. Click the *Find Transfers* button. A list of transfers that match your search criteria is displayed. 
+. Click the *Find Transfers* button. A list of transfers that match your search criteria is displayed. +
+image:advanced_filtering_search_results.png[]
 . Click an entry in the search results to view details of that particular transfer. The *Transfer Details* window pops up, which displays: +
 * A *Basic Information* tab with details, such as transfer amount, sender, recipient, and so on.
 * A *Technical Details* tab with low-level technical details, such as the actual party lookup, quote, or transfer messages. This is useful for technical personnel performing a debug.
 
-//On clicking the *View Error* button, a *Transfer Error* window pops up, which shows details of the error and the actual transfer as well.
+For further information on the details that the *Transfer Details* pop-up window provides, see the descriptions and screenshots in <<basic-find,Find a transfer based on its Transfer ID>>.
 
 == Successful Transfers
 
@@ -88,6 +150,7 @@ The *Transfers Errors Overview* pie chart shows a breakdown of the types of erro
 .Transfers Errors Overview
 image::transfers_errors_overview.png[]
 
+////
 The table below the pie chart lists failed transfers and allows you to drill down into errors. For a detailed view:
 
 . Click the *View All Errors* button. The *Transfers Errors* window pops up. +
@@ -95,5 +158,5 @@ image:transfers_errors_popup.png[]
 . Optionally, search for transfers with a particular type of status by selecting a status value from the *Filter Status* drop-down list.
 . Click a row in the search results list to view details of the transfer. The *Transfer Details* window pops up.
 . To return to the main *Transfers Overview* page, click the *Close* button.
-
+////
 //Check MP-2374, MP-2366.
