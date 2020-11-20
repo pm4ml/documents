@@ -37,7 +37,7 @@ The *Basic Information* tab displays the following information:
 * **Recipient**: The payee of the transfer.
 * **Recipient Details**: The unique identifier of the payee (typically, a MISIDN, that is, a mobile number).
 * **Institution**: The identifier of the DFSP serving the payee.
-* **Direction**: The direction of the transfer (outbound or inbound). 
+* **Direction**: The direction of the transfer (outbound or inbound from the perspective of the DFSP inspecting the transfer). 
 
 .**Basic Information** tab
 image:transfer_details_basic_info_success.png[] 
@@ -95,7 +95,7 @@ image::advanced_filtering.png[]
 
 To find a transfer:
 
-. Use the date picker fields to specify the time period in which the transfer happened.
+. Use the date picker fields to specify the time period in which the transfer happened. Note that the time of the transfer is the time in your timezone.
 . In the *Contains Institution* field, enter the `fspId` of the DFSP that participated in the transfer.
 . In the *Transfer Status* field, select the appropriate value (*Success*, *Pending*, *Error*) from the drop-down list.
 . Click the *Find Transfers* button. A list of transfers that match your search criteria is displayed. +
@@ -150,13 +150,12 @@ The *Transfers Errors Overview* pie chart shows a breakdown of the types of erro
 .Transfers Errors Overview
 image::transfers_errors_overview.png[]
 
-////
 The table below the pie chart lists failed transfers and allows you to drill down into errors. For a detailed view:
 
 . Click the *View All Errors* button. The *Transfers Errors* window pops up. +
-image:transfers_errors_popup.png[]
+image:transfers_errors_popup_2.png[]
 . Optionally, search for transfers with a particular type of status by selecting a status value from the *Filter Status* drop-down list.
 . Click a row in the search results list to view details of the transfer. The *Transfer Details* window pops up.
 . To return to the main *Transfers Overview* page, click the *Close* button.
-////
+
 //Check MP-2374, MP-2366.
