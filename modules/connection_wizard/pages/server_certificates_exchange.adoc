@@ -8,7 +8,7 @@ The *Server Certificates Exchange* page allows you to:
 .Server Certificates Exchange
 image::server_certificates_exchange.png[]
 
-If you need help creating the required server certificates, perform the procedures described in xref:appendix_create_tls_cert.adoc[Appendix A: Create TLS certificates]:
+If you want to set up your own CA and need help creating the required server certificates, perform the procedures described in xref:appendix_create_tls_cert.adoc[Appendix A: Create TLS certificates]:
 
 . xref:appendix_create_tls_cert.adoc#create-keystore[Create a keystore].
 . xref:appendix_create_tls_cert.adoc#root_keypair[Create a root key pair].
@@ -27,6 +27,9 @@ image::dfsp_server_certificates.png[]
 === Upload certificates
 
 To upload your CA-signed TLS server certificate chain, complete the following steps:
+
+NOTE: If your server certificate has been signed by a trusted Certificate Authority, then uploading the root and intermediate certificates of your CA is optional. +
+If your server certificate has been self-signed by your own Certificate Authority, uploading the root certificate of your CA is mandatory, while the intermediate certificate is optional.
 
 . In the *Server Certificate* field, click **Choose File**, and select your CA-signed TLS server certificate saved on your computer.
 . To upload the root certificate of your CA, in the *Root Certificate* field, click **Choose File**, and select the root certificate of your CA saved on your computer.
