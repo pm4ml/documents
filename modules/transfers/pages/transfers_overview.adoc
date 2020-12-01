@@ -40,7 +40,7 @@ The *Basic Information* tab displays the following information:
 * **Direction**: The direction of the transfer (outbound or inbound from the perspective of the DFSP inspecting the transfer). 
 
 .**Basic Information** tab
-image:transfer_details_basic_info_success.png[] 
+image::transfer_details_basic_info_success.png[] 
 
 The *Technical Details* tab displays the following information: 
 
@@ -51,10 +51,10 @@ The *Technical Details* tab displays the following information:
 * **Transfer State**: Indicates if the transfer has succeeded, is pending, or an error has occurred. In the case of an error, a *View Error* button is also displayed. On clicking that button, a *Transfer Error* window pops up, which shows details of the error and the actual transfer as well. 
 
 .**Technical Details** tab
-image:transfer_details_technical_details_error.png[] 
+image::transfer_details_technical_details_error.png[] 
 
 .**Transfer Error** pop-up window
-image:transfer_error.png[] 
+image::transfer_error.png[] 
 
 The *Technical Details* tab also displays information about the Payer and Payee party of the transfer. On clicking the *Payer Information* or **Payee Information** button, a window pops up that displays the following details: 
 
@@ -69,7 +69,7 @@ The *Technical Details* tab also displays information about the Payer and Payee 
 * **FSP Id**: The unique identifier of the DFSP serving the payer/payee. 
 
 .**Payee Party** pop-up window
-image:payee_party.png[] 
+image::payee_party.png[] 
 
 In addition to party information, details about the transfer message sequence are also available by clicking these buttons: 
 
@@ -80,7 +80,7 @@ In addition to party information, details about the transfer message sequence ar
 * **Transfer Fulfil**: Displays a *Transfer Fulfil* pop-up window, which provides the API response message that is returned to a transfer request. 
 
 .**Quote Response** pop-up window
-image:quote_response.png[]
+image::quote_response.png[]
 
 === Find a transfer using multiple search criteria
 

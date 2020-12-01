@@ -10,7 +10,7 @@ Any implementation of a {hub} Hub employs the following security measures:
 * *Interledger Protocol (ILP)* ensures the integrity of transfers and that the agreement between parties to make a transfer is binding. Any transfer is preceded by a preparation step to generate a condition that has to be fulfilled for the transfer to happen. The condition and the fulfilment also act as cryptographic proof that a transaction is secure and that messages exchanged between DFSPs have not been tampered with.
 
 .{hub} security overview
-image:security_overview.png[]
+image::security_overview.png[]
 
 Putting the above security measures into practice requires extensive information sharing and technical configuration from different teams in both DFSP and Hub entities. This is where {connection-wizard} can help. It facilitates the sharing of mTLS and JWS digital certificates, as well as endpoint information in a guided way.
 
