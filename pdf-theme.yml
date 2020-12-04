@@ -2,3 +2,14 @@ extends: default
 role:
   red:
     font-color: #ff0000
+
+header:
+  height: 0.75in
+  padding: [15, 0, 0, 3]
+  image-vertical-align: 2 # # (1)
+  recto:
+    right:
+      content: image:Modusbox_Logos_Modusbox_Horizontal_Blue.png[position=right,width=100]
+  verso:
+    right:
+      content: $header-recto-right-content
