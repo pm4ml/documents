@@ -15,6 +15,9 @@ asciidoc:
     hub: Mojaloop
     connection-wizard: Connection Wizard
     transfers: Transfers Overview
+    mojaloop-connector: Mojaloop Connector
+    core-connector: Core Connector
+    mcm-client: Connection Manager Client
     hide: ''
 ##ui:
   ##bundle:

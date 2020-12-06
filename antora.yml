@@ -4,3 +4,4 @@ title: Payment Manager for Mojaloop
 nav:
 - modules/connection_wizard/nav.adoc
 - modules/transfers/nav.adoc
+- modules/mojaloop_connector/nav.doc
