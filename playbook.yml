@@ -17,6 +17,7 @@ asciidoc:
     transfers: Transfers Overview
     mojaloop-connector: Mojaloop Connector
     core-connector: Core Connector
+    sdk: Mojaloop Connector SDK
     mcm-client: Connection Manager Client
     hide: ''
 ##ui:

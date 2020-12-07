@@ -1,8 +1,8 @@
 = Introduction
 
-In a {hub} Real-Time Payments (RTP) ecosystem, the {hub} Switch connects Digital Financial Service Providers (DFSPs) – such as banks or mobile wallet providers – in order to enable financial transactions between DFSPs' end users in an interoperable way. Designing, building, and validating a service that connects a DFSP’s Core Backend through to a Real-Time Payments System, such as {hub}, requires a detailed understanding of the business, technical, security, and operational requirements of that system. To facilitate integration, onboarding, and the day-to-day running of the service, {company-name} developed {product-name}. {product-name} acts as:
+In a {hub} Real-Time Payments (RTP) ecosystem, the {hub} Hub connects Digital Financial Service Providers (DFSPs) – such as banks or mobile wallet providers – in order to enable financial transactions between DFSPs' end users in an interoperable way. Designing, building, and validating a service that connects a DFSP’s Core Backend through to a Real-Time Payments System, such as {hub}, requires a detailed understanding of the business, technical, security, and operational requirements of that system. To facilitate integration, onboarding, and the day-to-day running of the service, {company-name} developed {product-name}. {product-name} acts as:
 
-* the integration layer between {hub} and the DFSP, enabling a simple, seamless, and secure way of connecting to a {hub} Switch 
+* the integration layer between {hub} and the DFSP, enabling a simple, seamless, and secure way of connecting to a {hub} Hub 
 * a toolkit that helps manage multiple connections as well as services and transaction monitoring
 
 == System architecture
@@ -16,15 +16,15 @@ image::payment_mamager_system_architecture.png[]
 
 * **{core-connector}**: Integrates a DFSP’s Core Backend to {product-name} as a "translator" for both parts so communication is possible between them. Core Connector is also responsible for orchestrating the transfer flow and for the persistence of transfer data. It uses standard templates written in Apache Camel, a declarative language for integration engineers that does not require writing code from scratch.
 * **{mojaloop-connector}**: Comes with the following key components: 
-** A {hub}-SDK, which provides {hub}-compliant security components and HTTP header processing capabilities, as well as a simplified version of the {hub} API. 
-** A {mcm-client}, which simplifies and automates certificate creation, signing and exchange, as well as the configuration of the connections required to different environments. This tool allows a DFSP to connect to the {hub} Switch and integrate with its internal security requirements.
+** A {sdk}, which provides {hub}-compliant security components and HTTP header processing capabilities, as well as a simplified version of the {hub} API. 
+** A {mcm-client}, which simplifies and automates certificate creation, signing and exchange, as well as the configuration of the connections required to different environments. This tool allows a DFSP to connect to the {hub} Hub and integrate with its internal security requirements.
 * **Business and Technical Portals**: Provide dashboards for monitoring liquidity, managing settlement and reconciliation, as well as customer support, troubleshooting and debugging. They also allow DFSPs to manage their security keys, certificates and endpoint configuration required for connecting to {hub}-based schemes.
 
 == {mojaloop-connector}
 
-=== {hub}-SDK
+=== {sdk}
 
-The {hub}-SDK implements Standard Components that establish a uniform way of connecting DFSP systems (mobile money platforms, mobile wallets, or core banking systems) to a {hub} Hub, helping DFSPs achieve consistency and hence interoperability in their implementation. It represents the way the {hub} API specification is to be interpreted, and implements the following functionality:
+The {sdk} implements Standard Components that establish a uniform way of connecting DFSP systems (mobile money platforms, mobile wallets, or core banking systems) to a {hub} Hub, helping DFSPs achieve consistency and hence interoperability in their implementation of the {hub} API. It represents the way the {hub} API specification is to be interpreted, and implements the following functionality:
 
 * Specification-compliant security:
 ** Two-way TLS with mutual X.509 authentication
@@ -34,8 +34,10 @@ The {hub}-SDK implements Standard Components that establish a uniform way of con
 
 In addition to the Standard Components, a Scheme Adapter is also provided. It presents a simplified version of the {hub} API to the DFSP’s backend system. This allows DFSPs to implement a simple API internally to interface with the {hub} Hub, while still being compliant with the {hub} API specification for interoperable external communications. Note that the simplified API implemented by a DFSP does not require the security layers referred to above as this is now an internal-facing resource – the security layer is provided by the Standard Components.
 
-The simplified API between the Mojaloop-SDK and the DFSP backend is a synchronous HTTP API, while the interface between the {hub}-SDK and the Hub is the asynchronous {hub} API.
+The simplified API between the {sdk} and the DFSP backend is a synchronous HTTP API, while the interface between the SDK and the Hub is the asynchronous {hub} API.
 
 === {mcm-client}
 
-The {hub}-SDK dynamically self-configures TLS and JWS secrets by pulling this data from the {mcm-client}. The TLS and JWS certificates shared by DFSPs and the Scheme Operator are stored in the {company-name} Connection Manager (MCM) Server. The {mcm-client} continuously polls the MCM Server and retrieves new TLS and JWS certificates.   
+The {sdk} dynamically self-configures TLS and JWS secrets by pulling this data from the {mcm-client}. The TLS and JWS certificates shared by DFSPs and the {hub} Hub Operator are stored in the {company-name} Connection Manager (MCM) Server. The {mcm-client} continuously polls the MCM Server and retrieves new TLS and JWS certificates.   
+
+In addition, the {mcm-client} comes with a {connection-wizard} portal for DFSPs, which allows DFSPs to manage endpoint mapping and certificate-related processes in a guided way. This tool, managed from within the DFSP’s environment, keeps all security-related information in one place, keeps tabs on the status of connections, automates certificate generation, and enforces compliance with certificate and signing request specifications.

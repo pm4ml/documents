@@ -1,0 +1,10 @@
+= Getting started with the Mojaloop-SDK mock DFSP backend
+
+The {sdk} mock DFSP backend is provided via the Mojaloop GitHub repository: https://github.com/mojaloop/sdk-mock-dfsp-backend. *Question: Is this link correct?* It is also available as a pre-built Docker image on Docker Hub: https://hub.docker.com/r/mojaloop/sdk-mock-dfsp-backend. *Question: Is this link correct?*
+
+The GitHub repository contains an HTTP server that provides a basic implementation of the Mojaloop-SDK simplified DFSP backend API. The repository also contains:
+
+* A https://github.com/mojaloop/sdk-mock-dfsp-backend/blob/master/Dockerfile[Dockerfile] that describes how to assemble https://hub.docker.com/r/mojaloop/sdk-mock-dfsp-backend[the image available in Docker Hub].
+* A https://github.com/mojaloop/sdk-mock-dfsp-backend/blob/master/src/docker-compose.yml[docker-compose.yml] file responsible for defining and running multi-container Docker applications. The Docker containers to run together are: Scheme Adapter, SDK mock DFSP backend, Cache. For quick start information on how to set up the {sdk} Scheme Adapter locally with a mock DFSP backend, see xref:???.adoc[Setting up the {sdk} Scheme Adapter with a mock DFSP backend].
+
+The mock DFSP backend comes with a set of configuration options. Configuration values are provided by DFSPs as environment variables in an environment file, which is passed to the Docker container when running it. For further details on mock DFSP backend configuration options, see xref:???.adoc[Configuring the {sdk} mock DFSP backend].
