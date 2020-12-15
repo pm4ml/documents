@@ -1,4 +1,4 @@
-extends: default
+extends: default-with-fallback-font
 role:
   red:
     font-color: #ff0000
@@ -13,3 +13,34 @@ header:
   verso:
     right:
       content: $header-recto-right-content
+
+
+font:
+  catalog:
+    merge: true # set value to true to merge catalog with theme you're extending
+    Fira Sans:
+      normal: ./font/fira-sans-normal.ttf
+      italic: ./font/fira-sans-italic.ttf
+      bold: ./font/fira-sans-bold.ttf
+      bold_italic: ./font/fira-sans-bold_italic.ttf
+    M+ 1mn:
+      normal: ./font/mplus1mn-normal.ttf
+      italic: ./font/mplus1mn-normal.ttf
+      bold: ./font/mplus1mn-bold.ttf
+      bold_italic: ./font/mplus1mn-bold.ttf
+    DroidSansFallback:
+      normal: ./font/droid-sans-fallback.ttf
+      italic: ./font/droid-sans-fallback.ttf
+      bold: ./font/droid-sans-fallback.ttf
+      bold_italic: ./font/droid-sans-fallback.ttf
+
+base:
+  font-family: Fira Sans
+
+heading:
+  font-family: Fira Sans
+  font-style: bold
+
+fallbacks:
+  - DroidSansFallback
+  - M+ 1mn  

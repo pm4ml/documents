@@ -11,6 +11,7 @@ asciidoc:
     icons: font
     optimize: ''
     pdf-theme: pdf-theme.yml
+    pdf-fontsdir: ./
     # setting pdf-version to 1.3 allows non-ASCII characters to be used in title field of PDF info
     pdf-version: '1.3'
     #sectnums: ''
