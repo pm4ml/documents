@@ -1,5 +1,7 @@
 = {connection-wizard} overview page
 
+To access the *{connection-wizard}* overview page, click *TECHNICAL OPS > {connection-wizard}* in the left-hand navigation pane.
+
 The overview page of {connection-wizard} provides a list of the environments that the DFSP can connect to during the course of their onboarding journey.
 
 .{connection-wizard} overview page

@@ -1,5 +1,7 @@
 = {transfers}
 
+To access the *{transfers}* page, click *BUSINESS OPS > Transfers* in the left-hand navigation pane. 
+
 == Find a Transfer
 
 The *Find a Transfer* button image:find_a_transfer_button.png[width=97,height=31] at the top of the page allows you to find a particular transfer.
@@ -114,6 +116,8 @@ The *Successful Transfers* graph is showing a timeline of the past 24 hours and 
 image::successful_transfers.png[]
 
 The granularity of the graph is customizable. For example, you can zoom in on areas of interest and find out the timestamps of transfers that seem not to have been successful.
+
+//include::ROOT:partial$graphs.adoc[]
 
 To be able to zoom, you must be in selection zoom mode. Ensure you have the *Selection Zoom* button image:selection_zoom_button.png[width=22,height=21] selected. This is the default setting. 
 
