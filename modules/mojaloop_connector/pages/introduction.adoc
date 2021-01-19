@@ -38,6 +38,6 @@ The simplified API between the {sdk} and the DFSP backend is a synchronous HTTP 
 
 === {mcm-client}
 
-The {sdk} dynamically self-configures TLS and JWS secrets by pulling this data from the {mcm-client}. The TLS and JWS certificates shared by DFSPs and the {hub} Hub Operator are stored in the {company-name} Connection Manager (MCM) Server. The {mcm-client} continuously polls the MCM Server and retrieves new TLS and JWS certificates.   
+The {sdk} dynamically self-configures TLS and JWS secrets by getting this data from the {mcm-client}. The TLS and JWS certificates shared by DFSPs and the {hub} Hub Operator are stored in the {company-name} Connection Manager (MCM) Server. The {mcm-client} continuously polls the MCM Server and retrieves new TLS and JWS certificates. Once it has the required security configuration, it pushes that into the {mojaloop-connector}.  
 
 In addition, the {mcm-client} comes with a {connection-wizard} portal for DFSPs, which allows DFSPs to manage endpoint mapping and certificate-related processes in a guided way. This tool, managed from within the DFSP’s environment, keeps all security-related information in one place, keeps tabs on the status of connections, automates certificate generation, and enforces compliance with certificate and signing request specifications.

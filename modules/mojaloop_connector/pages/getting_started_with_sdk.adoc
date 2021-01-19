@@ -1,4 +1,4 @@
-Getting started with the {sdk}
+= Getting started with the {sdk}
 
 The {sdk} Scheme Adapter is provided via the following GitHub repository: https://github.com/modusintegration/mojaloop-connector. It is also available as a pre-built Docker image via the Docker Hub repository: https://hub.docker.com/r/mojaloop/sdk-scheme-adapter. *Question: Is the Docker info correct?*
 

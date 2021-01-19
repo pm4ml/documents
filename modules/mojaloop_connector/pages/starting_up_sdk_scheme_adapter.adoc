@@ -1,0 +1,52 @@
+= Starting up the {sdk} Scheme Adapter
+
+To start up the {sdk} Scheme Adapter, complete the following steps.
+
+*Prerequisites:*
+
+* Ensure you have Docker installed in your local environment.
+* Familiarity with Docker is advised.
+
+*Steps:*
+
+. Clone the {sdk} Scheme Adapter repository locally:
+.. Change directory into your workspace, then to clone using HTTPS:
++
+[source,syntaxhighlighter-pre]
+----
+$ git clone https://github.com/modusintegration/mojaloop-connector
+----
++
+Or clone using SSH:
++
+[source,syntaxhighlighter-pre]
+----
+$ git clone git@github.com:modusintegration/mojaloop-connector.git
+----
+.. Now change directory into the cloned repository directory:
++
+[source,syntaxhighlighter-pre]
+----
+$ cd mojaloop-connector
+----
+. Make a copy of the file `.env.example` (to be found in the `src` folder) and rename your copy to `.env`. Make your changes as necessary. For details on Sheme Adapter configuration options, see xref:???.adoc[Configuring the {sdk} (Scheme Adapter)].
+. Start up the container using `docker run`, specifying `.env` as the environment file:
++
+[source,syntaxhighlighter-pre]
+----
+$ docker run --env-file src/.env modusintegration/mojaloop-connector
+----
++
+This starts up the {sdk} Scheme Adapter without the Redis cache.
+
+Note that it is possible to run the Scheme Adapter without Docker, which can be useful during development. To run the Scheme Adapter without Docker, issue the following commands in succession:
+
+[source,syntaxhighlighter-pre]
+----
+$ cd mojaloop-connector/src
+$ npm install
+$ cp .env.example .env # modify .env accordingly
+$ node index.js
+----
+
+When using this method, the Scheme Adapter picks up the `.env` file automatically.
