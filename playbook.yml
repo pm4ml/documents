@@ -15,6 +15,7 @@ asciidoc:
     hub: Mojaloop
     connection-wizard: Connection Wizard
     transfers: Transfers Overview
+    tech-dashboard: Technical Dashboard
     mojaloop-connector: Mojaloop Connector
     core-connector: Core Connector
     sdk: Mojaloop Connector SDK
