@@ -60,6 +60,8 @@ image::transfer_error.png[]
 
 The *Technical Details* tab also displays information about the Payer and Payee party of the transfer. On clicking the *Payer Information* or **Payee Information** button, a window pops up that displays the following details: 
 
+//NOTE: If any of the party information fields is not populated, it means that the information was not provided in the underlying API calls.
+
 * **Id Type**: The type of payer/payee identifier used (for example, MSISDN).
 * **Id Value**: The value of the payer/payee identifier (for example, digits of a mobile number).
 * **Display Name**: The display name of a payer/payee, which may not be the full name of the party.
@@ -154,8 +156,12 @@ The *Transfers Errors Overview* pie chart shows a breakdown of the types of erro
 .Transfers Errors Overview
 image::transfers_errors_overview.png[]
 
-The table below the pie chart lists failed transfers and allows you to drill down into errors. For a detailed view:
+The table below the pie chart lists failed transfers. If there are four or more errors, then a *View All Errors* button is displayed, which allows you to check the full list of errors. To get the complete list of errors, click the *View All Errors* button. The *Transfers Errors* window pops up. 
 
+.Transfers Errors pop-up window
+image::transfers_errors_popup_3.png[]
+
+////
 . Click the *View All Errors* button. The *Transfers Errors* window pops up. +
 image:transfers_errors_popup_2.png[]
 . Optionally, search for transfers with a particular type of status by selecting a status value from the *Filter Status* drop-down list.
@@ -163,3 +169,4 @@ image:transfers_errors_popup_2.png[]
 . To return to the main *Transfers Overview* page, click the *Close* button.
 
 //Check MP-2374, MP-2366.
+////
