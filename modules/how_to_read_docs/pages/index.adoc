@@ -1,0 +1,8 @@
+In a Mojaloop Real-Time Payments (RTP) ecosystem, the Mojaloop Switch connects Digital Financial Service Providers (DFSPs) – such as banks or mobile wallet providers – in order to enable financial transactions between DFSPs' end users in an interoperable way. Designing, building, and validating a service that connects a DFSP’s Core Backend through to a Real-Time Payments System, such as Mojaloop, requires a detailed understanding of the business, technical, security, and operational requirements of that system. To facilitate integration, onboarding, and the day-to-day running of the service, {company-name} developed {product-name}.
+
+{product-name} acts as:
+
+* the integration layer between Mojaloop and the DFSP, enabling a simple, seamless, and secure way of connecting to a Mojaloop Switch
+* a toolkit that helps manage multiple connections as well as services and transaction monitoring
+
+This document aims to provide help with the information sources available on the various aspects of {product-name}.

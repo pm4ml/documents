@@ -2,6 +2,8 @@ name: payment_manager
 version: '1.0'
 title: Payment Manager for Mojaloop
 nav:
+- modules/how_to_read_docs/nav.adoc
+- modules/api_integration/nav.adoc
 - modules/connection_wizard/nav.adoc
 - modules/transfers_overview/nav.adoc
 - modules/technical_dashboard/nav.adoc

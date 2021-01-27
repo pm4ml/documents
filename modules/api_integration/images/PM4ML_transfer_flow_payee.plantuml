@@ -1,0 +1,32 @@
+@startuml
+autonumber
+skinparam activityFontSize 4
+skinparam activityDiamondFontSize 30
+skinparam activityArrowFontSize 24
+skinparam defaultFontSize 24
+skinparam noteFontSize 24
+skinparam monochrome true
+
+participant "Mojaloop Switch" as sw
+
+participant "Payment Manager" as sib
+  
+participant "DFSP Core Backend" as backend
+
+
+== receive money ==
+
+    sw -> sib: GET /parties/{type}/{id}
+    sib -> backend: GET /parties/{idType}/{idValue} (sync)
+    backend -> sib: HTTP 200 result (sync)
+    sib -> sw: PUT /parties/{type}/{id}
+    sw -> sib: POST /quotes
+    sib -> backend: POST /quoterequests (sync)
+    backend -> sib: HTTP 200 quote (sync)
+    sib -> sw: PUT /quotes/{id}
+    sw -> sib: POST /transfers
+    sib -> backend: POST /transfers (sync)
+    backend -> sib: HTTP 200 result (sync)
+    sib -> sw: PUT /transfers/{id}
+
+@enduml

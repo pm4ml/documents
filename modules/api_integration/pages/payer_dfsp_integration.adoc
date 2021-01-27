@@ -1,0 +1,659 @@
+= Integration as a Payer DFSP
+
+The following diagrams illustrate how a Payer DFSP interacts with {product-name} and the Mojaloop Switch at the level of API calls.
+
+NOTE: The simplified API between {product-name} and the DFSP backend is a synchronous HTTP API, while the interface between {product-name} and the Mojaloop Switch is the https://docs.mojaloop.io/mojaloop-specification/#api-definition[asynchronous Mojaloop FSPIOP API]. +
+ +
+Specification of the simplified outbound API (Payer DFSP → {product-name} → Mojaloop Switch) is provided in the form of a Swagger `.yaml` file (`payment_manager_outbound_API.yaml`).
+
+== Single-stage transfer
+
+When a peer-to-peer (P2P) transfer (`POST /transfers`) happens in a single stage, the party lookup, quotes, and transfers requests all happen in a single step as illustrated in the sequence flow below:
+
+.Payer DFSP transfer flow: single-stage transfer
+image::PM4ML_transfer_flow_payer.svg[width=70%, height=70%]
+
+To simplify the transfer flow and perform the transfer in a single combined step as shown in the diagram, configure the following environment variables:
+
+* Set `AUTO_ACCEPT_PARTY=true`.
+* Set `AUTO_ACCEPT_QUOTES=true`.
+
+=== Example `POST /transfers` request [[example-transfer-request]]
+
+The following example shows a `POST /transfers` request:
+
+[source,json]
+----
+POST /transfers
+Content-Type: application/json
+Accept: application/json
+ 
+{
+  "homeTransactionId": "53979be2-3bfe-45aa-ade7-92ea4ce4e74e",
+  "from": {
+    "type": "CONSUMER",
+    "idType": "MSISDN",
+    "idValue": "123456789",
+    "displayName": "Antoine Dujardin",
+    "firstName": "Antoine",
+    "middleName": "Paul",
+    "lastName": "Dujardin",
+    "dateOfBirth": "1977-07-17",
+    "fspId": "payerdfsp"
+  },
+  "to": {
+    "type": "CONSUMER",
+    "idType": "MSISDN",
+    "idValue": "987654321",
+    "displayName": "Aamir Fakhir",
+    "firstName": "Aamir",
+    "middleName": "Abdel",
+    "lastName": "Fakhir",
+    "dateOfBirth": "1966-06-16",
+    "fspId": "payeedfsp"
+  },
+  "amountType": "SEND",
+  "currency": "EUR",
+  "amount": "50",
+  "transactionType": "TRANSFER",
+  "note": "from Antoine"
+}
+----
+
+=== Example success response to `POST /transfers`
+
+The following example shows a response to a `POST /transfers` request when the request is successful.
+
+[source,json]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json
+ 
+{
+  "transferId": "85feac2f-39b2-491b-817e-4a03203d4f14",
+  "homeTransactionId": "53979be2-3bfe-45aa-ade7-92ea4ce4e74e",
+  "from": {
+    "type": "CONSUMER",
+    "idType": "MSISDN",
+    "idValue": "123456789",
+    "displayName": "Antoine Dujardin",
+    "firstName": "Antoine",
+    "middleName": "Paul",
+    "lastName": "Dujardin",
+    "dateOfBirth": "1977-07-17"
+  },
+  "to": {
+    "type": "CONSUMER",
+    "idType": "MSISDN",
+    "idValue": "987654321",
+    "displayName": "Aamir Fakhir",
+    "firstName": "Aamir",
+    "middleName": "Abdel",
+    "lastName": "Fakhir",
+    "dateOfBirth": "1966-06-16"
+  },
+  "amountType": "SEND",
+  "currency": "EUR",
+  "amount": "50",
+  "transactionType": "TRANSFER",
+  "note": "from Antoine",
+  "currentState": "COMPLETED",
+  "quoteId": "7c23e80c-d078-4077-8263-2c047876fcf6",
+  "quoteResponse": {
+    "transferAmount": {
+      "currency": "EUR",
+      "amount": "50"
+    },
+    "payeeReceiveAmount": {
+      "currency": "EUR",
+      "amount": "50"
+    },
+    "payeeFspFee": {
+        "amount": "0",
+        "currency": "EUR"
+    },
+    "payeeFspCommission": {
+        "amount": "0",
+        "currency": "EUR"
+    },
+    "expiration": "2019-11-15T22:17:28.985-01:00",
+    "geoCode": {
+      "latitude": "43.6047",
+      "longitude": "1.4442"
+    },
+    "ilpPacket": "AQAAAAAAACICAic...GF5Z",
+    "condition": "fH9pAYDQbmoZLPbvv3CSW2RfjU4jvM4ApG_fqGnR7Xs"
+  },
+  "quoteResponseSource": "payeedfsp",
+  "fulfil": {
+    "fulfilment": "mhPUT9ZAwd-BXLfeSd7-YPh46rBWRNBiTCSWjpku90s",
+    "completedTimestamp": "2019-11-15T04:15:35.513+01:00",
+    "transferState": "COMMITTED"
+  }
+}
+----
+
+=== Example error response to `POST /transfers`
+
+The following example shows a response to a `POST /transfers` request when the request fails.
+
+////
+*statusCode + message???*
+
+*Would transferState be ABORTED???*
+////
+
+[source,json]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json
+ 
+{
+  "statusCode": "500",
+  "message": "self signed certificate in certificate chain",
+  "transferId": "85feac2f-39b2-491b-817e-4a03203d4f14",
+  "homeTransactionId": "53979be2-3bfe-45aa-ade7-92ea4ce4e74e",
+  "from": {
+    "type": "CONSUMER",
+    "idType": "MSISDN",
+    "idValue": "123456789",
+    "displayName": "Antoine Dujardin",
+    "firstName": "Antoine",
+    "middleName": "Paul",
+    "lastName": "Dujardin",
+    "dateOfBirth": "1977-07-17"
+  },
+  "to": {
+    "type": "CONSUMER",
+    "idType": "MSISDN",
+    "idValue": "987654321",
+    "displayName": "Aamir Fakhir",
+    "firstName": "Aamir",
+    "middleName": "Abdel",
+    "lastName": "Fakhir",
+    "dateOfBirth": "1966-06-16"
+  },
+  "amountType": "SEND",
+  "currency": "EUR",
+  "amount": "50",
+  "transactionType": "TRANSFER",
+  "note": "from Antoine",
+  "currentState": "ERROR_OCCURRED",
+  "quoteId": "7c23e80c-d078-4077-8263-2c047876fcf6",
+  "quoteResponse": {
+    "transferAmount": {
+      "currency": "EUR",
+      "amount": "50"
+    },
+    "payeeReceiveAmount": {
+      "currency": "EUR",
+      "amount": "50"
+    },
+    "payeeFspFee": {
+        "amount": "0",
+        "currency": "EUR"
+    },
+    "payeeFspCommission": {
+        "amount": "0",
+        "currency": "EUR"
+    },
+    "expiration": "2019-11-15T22:17:28.985-01:00",
+    "geoCode": {
+      "latitude": "43.6047",
+      "longitude": "1.4442"
+    },
+    "ilpPacket": "AQAAAAAAACICAic...GF5Z",
+    "condition": "fH9pAYDQbmoZLPbvv3CSW2RfjU4jvM4ApG_fqGnR7Xs"
+  },
+  "quoteResponseSource": "payeedfsp",
+  "fulfil": {
+    "fulfilment": "mhPUT9ZAwd-BXLfeSd7-YPh46rBWRNBiTCSWjpku90s",
+    "completedTimestamp": "2019-11-15T04:15:35.513+01:00",
+    "transferState": "ABORTED"
+  },
+  "lastError": {
+    "code": "SELF_SIGNED_CERT_IN_CHAIN"
+  }
+}
+----
+
+== Multi-stage transfer
+
+You have the option to not automatically accept the returned party lookup and/or quote response and halt the transfer flow to examine party/quote information. For this, configure the following environment variables:
+
+* If you want to examine the returned party information, set `AUTO_ACCEPT_PARTY=false`.
+* If you want to examine the returned quote, set `AUTO_ACCEPT_QUOTES=false`.
+
+After examining the party/quote, a further confirmation call is required to progress the transfer to the next stage:
+
+* To resume after party lookup, send `PUT /transfers/{transferId}` with `acceptParty` set to `true` in the request body.
+* To resume after a quote response is received, send `PUT /transfers/{transferId}` with `acceptQuote` set to `true` in the request body.
+
+You can combine `AUTO_ACCEPT_PARTY` and `AUTO_ACCEPT_QUOTES` settings any way you want. You can choose to stop the transfer flow only after receiving party information, or only after receiving quote information, or after both.
+
+In the example sequence flow shown below, the peer-to-peer (P2P) transfer flow (`POST /transfers`) happens in three stages:
+
+.Payer DFSP transfer flow: multi-stage transfer
+image::PM4ML_transfer_flow_payer_multistage.svg[width=70%, height=70%]
+
+=== Example `POST /transfers` request
+
+See <<example-transfer-request,the example above>> shown for single-stage transfers.
+
+=== Example success response to `POST /transfers`
+
+The following example shows a response to a `POST /transfers` request when:
+
+* the request is successful, and
+* the transfer flow is set to halt after the party lookup stage (`AUTO_ACCEPT_PARTY=false`)
+
+[source,json]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json
+ 
+{
+  "transferId": "85feac2f-39b2-491b-817e-4a03203d4f14",
+  "homeTransactionId": "53979be2-3bfe-45aa-ade7-92ea4ce4e74e",
+  "from": {
+    "type": "CONSUMER",
+    "idType": "MSISDN",
+    "idValue": "123456789",
+    "displayName": "Antoine Dujardin",
+    "firstName": "Antoine",
+    "middleName": "Paul",
+    "lastName": "Dujardin",
+    "dateOfBirth": "1977-07-17"
+  },
+  "to": {
+    "type": "CONSUMER",
+    "idType": "MSISDN",
+    "idValue": "987654321",
+    "displayName": "Aamir Fakhir",
+    "firstName": "Aamir",
+    "middleName": "Abdel",
+    "lastName": "Fakhir",
+    "dateOfBirth": "1966-06-16"
+  },
+  "amountType": "SEND",
+  "currency": "EUR",
+  "amount": "50",
+  "transactionType": "TRANSFER",
+  "note": "from Antoine",
+  "currentState": "WAITING_FOR_PARTY_ACCEPTANCE"
+}
+----
+
+The following example shows a response to a `POST /transfers` request when:
+
+* the request is successful, and 
+* the transfer flow is set to halt at the quote stage only (`AUTO_ACCEPT_PARTY=true` and `AUTO_ACCEPT_QUOTES=false`)
+
+[source,json]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json
+ 
+{
+  "transferId": "85feac2f-39b2-491b-817e-4a03203d4f14",
+  "homeTransactionId": "53979be2-3bfe-45aa-ade7-92ea4ce4e74e",
+  "from": {
+    "type": "CONSUMER",
+    "idType": "MSISDN",
+    "idValue": "123456789",
+    "displayName": "Antoine Dujardin",
+    "firstName": "Antoine",
+    "middleName": "Paul",
+    "lastName": "Dujardin",
+    "dateOfBirth": "1977-07-17"
+  },
+  "to": {
+    "type": "CONSUMER",
+    "idType": "MSISDN",
+    "idValue": "987654321",
+    "displayName": "Aamir Fakhir",
+    "firstName": "Aamir",
+    "middleName": "Abdel",
+    "lastName": "Fakhir",
+    "dateOfBirth": "1966-06-16"
+  },
+  "amountType": "SEND",
+  "currency": "EUR",
+  "amount": "50",
+  "transactionType": "TRANSFER",
+  "note": "from Antoine",
+  "currentState": "WAITING_FOR_QUOTE_ACCEPTANCE",
+  "quoteId": "7c23e80c-d078-4077-8263-2c047876fcf6",
+  "quoteResponse": {
+    "transferAmount": {
+      "currency": "EUR",
+      "amount": "50"
+    },
+    "payeeReceiveAmount": {
+      "currency": "EUR",
+      "amount": "50"
+    },
+    "payeeFspFee": {
+        "amount": "0",
+        "currency": "EUR"
+    },
+    "payeeFspCommission": {
+        "amount": "0",
+        "currency": "EUR"
+    },
+    "expiration": "2019-11-15T22:17:28.985-01:00",
+    "geoCode": {
+      "latitude": "43.6047",
+      "longitude": "1.4442"
+    },
+    "ilpPacket": "AQAAAAAAACICAic...GF5Z",
+    "condition": "fH9pAYDQbmoZLPbvv3CSW2RfjU4jvM4ApG_fqGnR7Xs"
+  },
+  "quoteResponseSource": "payeedfsp",
+  "fulfil": {
+    "fulfilment": "mhPUT9ZAwd-BXLfeSd7-YPh46rBWRNBiTCSWjpku90s",
+    "completedTimestamp": "2019-11-15T04:15:35.513+01:00",
+    "transferState": "RESERVED"
+  }
+}
+----
+
+=== Example error response to `POST /transfers` [[error-post-transfers]]
+
+In the following example:
+
+* the transfer flow is set to halt after the party lookup stage (`AUTO_ACCEPT_PARTY=false`), and
+* the request fails due to the Payee party not being found
+
+////
+*statusCode + message???*
+////
+
+[source,json]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json
+ 
+{
+  "statusCode": "string",
+  "message": "string",
+  "transferId": "85feac2f-39b2-491b-817e-4a03203d4f14",
+  "homeTransactionId": "53979be2-3bfe-45aa-ade7-92ea4ce4e74e",
+  "from": {
+    "type": "CONSUMER",
+    "idType": "MSISDN",
+    "idValue": "123456789",
+    "displayName": "Antoine Dujardin",
+    "firstName": "Antoine",
+    "middleName": "Paul",
+    "lastName": "Dujardin",
+    "dateOfBirth": "1977-07-17"
+  },
+  "to": {
+    "type": "CONSUMER",
+    "idType": "MSISDN",
+    "idValue": "987654321",
+    "displayName": "Aamir Fakhir",
+    "firstName": "Aamir",
+    "middleName": "Abdel",
+    "lastName": "Fakhir",
+    "dateOfBirth": "1966-06-16"
+  },
+  "amountType": "SEND",
+  "currency": "EUR",
+  "amount": "50",
+  "transactionType": "TRANSFER",
+  "note": "from Antoine",
+  "currentState": "ERROR_OCCURRED",
+  "lastError": {
+    "httpStatusCode": 0,
+    "mojaloopError": {
+      "errorInformation": {
+        "errorCode": "3204",
+        "errorDescription": "Party not found"
+      }
+    }
+  }
+}
+----
+
+In this next example:
+
+* the transfer flow is set to halt at the quote stage only (`AUTO_ACCEPT_PARTY=true` and `AUTO_ACCEPT_QUOTES=false`)
+* the request fails due to the Payer not having sufficient funds
+
+////
+*statusCode + message???*
+
+*Would transferState be ABORTED???*
+////
+
+[source,json]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json
+ 
+{
+  "statusCode": "string",
+  "message": "string",
+  "transferId": "85feac2f-39b2-491b-817e-4a03203d4f14",
+  "homeTransactionId": "53979be2-3bfe-45aa-ade7-92ea4ce4e74e",
+  "from": {
+    "type": "CONSUMER",
+    "idType": "MSISDN",
+    "idValue": "123456789",
+    "displayName": "Antoine Dujardin",
+    "firstName": "Antoine",
+    "middleName": "Paul",
+    "lastName": "Dujardin",
+    "dateOfBirth": "1977-07-17"
+  },
+  "to": {
+    "type": "CONSUMER",
+    "idType": "MSISDN",
+    "idValue": "987654321",
+    "displayName": "Aamir Fakhir",
+    "firstName": "Aamir",
+    "middleName": "Abdel",
+    "lastName": "Fakhir",
+    "dateOfBirth": "1966-06-16"
+  },
+  "amountType": "SEND",
+  "currency": "EUR",
+  "amount": "50",
+  "transactionType": "TRANSFER",
+  "note": "from Antoine",
+  "currentState": "ERROR_OCCURRED",
+  "quoteId": "7c23e80c-d078-4077-8263-2c047876fcf6",
+  "quoteResponse": {
+    "transferAmount": {
+      "currency": "EUR",
+      "amount": "50"
+    },
+    "payeeReceiveAmount": {
+      "currency": "EUR",
+      "amount": "50"
+    },
+    "payeeFspFee": {
+        "amount": "0",
+        "currency": "EUR"
+    },
+    "payeeFspCommission": {
+        "amount": "0",
+        "currency": "EUR"
+    },
+    "expiration": "2019-11-15T22:17:28.985-01:00",
+    "geoCode": {
+      "latitude": "43.6047",
+      "longitude": "1.4442"
+    },
+    "ilpPacket": "AQAAAAAAACICAic...GF5Z",
+    "condition": "fH9pAYDQbmoZLPbvv3CSW2RfjU4jvM4ApG_fqGnR7Xs"
+  },
+  "quoteResponseSource": "payeedfsp",
+  "fulfil": {
+    "fulfilment": "mhPUT9ZAwd-BXLfeSd7-YPh46rBWRNBiTCSWjpku90s",
+    "completedTimestamp": "2019-11-15T04:15:35.513+01:00",
+    "transferState": "ABORTED"
+  },
+  "lastError": {
+    "httpStatusCode": 0,
+    "mojaloopError": {
+      "errorInformation": {
+        "errorCode": "4001",
+        "errorDescription": "Payer FSP insufficient liquidity"
+      }
+    }
+  }
+}
+----
+
+=== Example `PUT /transfers/{transferId}` request
+
+The following example shows a `PUT /transfers/{transferId}` request sent to resume the transfer flow after the party lookup stage:
+
+[source,json]
+----
+PUT /transfers/85feac2f-39b2-491b-817e-4a03203d4f14 HTTP/1.1
+Content-Type: application/json
+
+{
+  "acceptParty": true
+}
+----
+
+The following example shows a `PUT /transfers/{transferId}` request sent to resume the transfer flow after the quote stage:
+
+[source,json]
+----
+PUT /transfers/85feac2f-39b2-491b-817e-4a03203d4f14 HTTP/1.1
+Content-Type: application/json
+
+{
+  "acceptQuote": true
+}
+----
+
+=== Example success response to `PUT /transfers/{transferId}`
+
+The following example shows a response to a `PUT /transfers/{transferId}` request when:
+
+* the request is successful, and 
+* it is a response to an `"acceptParty": true` request and quote acceptance still needs to happen
+
+[source,json]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json
+ 
+{
+  "transferId": "85feac2f-39b2-491b-817e-4a03203d4f14",
+  "homeTransactionId": "53979be2-3bfe-45aa-ade7-92ea4ce4e74e",
+  "from": {
+    "type": "CONSUMER",
+    "idType": "MSISDN",
+    "idValue": "123456789",
+    "displayName": "Antoine Dujardin",
+    "firstName": "Antoine",
+    "middleName": "Paul",
+    "lastName": "Dujardin",
+    "dateOfBirth": "1977-07-17"
+  },
+  "to": {
+    "type": "CONSUMER",
+    "idType": "MSISDN",
+    "idValue": "987654321",
+    "displayName": "Aamir Fakhir",
+    "firstName": "Aamir",
+    "middleName": "Abdel",
+    "lastName": "Fakhir",
+    "dateOfBirth": "1966-06-16"
+  },
+  "amountType": "SEND",
+  "currency": "EUR",
+  "amount": "50",
+  "transactionType": "TRANSFER",
+  "note": "from Antoine",
+  "currentState": "WAITING_FOR_QUOTE_ACCEPTANCE"
+}
+----
+
+The following example shows a response to a `PUT /transfers/{transferId}` request when:
+
+* the request is successful, and 
+* the response is:
+** either a response to an `"acceptQuote": true` request
+** or a response to an `"acceptParty": true` request where `AUTO_ACCEPT_QUOTES=true`, that is, quote acceptance has happened automatically
+
+[source,json]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json
+ 
+{
+  "transferId": "85feac2f-39b2-491b-817e-4a03203d4f14",
+  "homeTransactionId": "53979be2-3bfe-45aa-ade7-92ea4ce4e74e",
+  "from": {
+    "type": "CONSUMER",
+    "idType": "MSISDN",
+    "idValue": "123456789",
+    "displayName": "Antoine Dujardin",
+    "firstName": "Antoine",
+    "middleName": "Paul",
+    "lastName": "Dujardin",
+    "dateOfBirth": "1977-07-17"
+  },
+  "to": {
+    "type": "CONSUMER",
+    "idType": "MSISDN",
+    "idValue": "987654321",
+    "displayName": "Aamir Fakhir",
+    "firstName": "Aamir",
+    "middleName": "Abdel",
+    "lastName": "Fakhir",
+    "dateOfBirth": "1966-06-16"
+  },
+  "amountType": "SEND",
+  "currency": "EUR",
+  "amount": "50",
+  "transactionType": "TRANSFER",
+  "note": "from Antoine",
+  "currentState": "COMPLETED",
+  "quoteId": "7c23e80c-d078-4077-8263-2c047876fcf6",
+  "quoteResponse": {
+    "transferAmount": {
+      "currency": "EUR",
+      "amount": "50"
+    },
+    "payeeReceiveAmount": {
+      "currency": "EUR",
+      "amount": "50"
+    },
+    "payeeFspFee": {
+        "amount": "0",
+        "currency": "EUR"
+    },
+    "payeeFspCommission": {
+        "amount": "0",
+        "currency": "EUR"
+    },
+    "expiration": "2019-11-15T22:17:28.985-01:00",
+    "geoCode": {
+      "latitude": "43.6047",
+      "longitude": "1.4442"
+    },
+    "ilpPacket": "AQAAAAAAACICAic...GF5Z",
+    "condition": "fH9pAYDQbmoZLPbvv3CSW2RfjU4jvM4ApG_fqGnR7Xs"
+  },
+  "quoteResponseSource": "payeedfsp",
+  "fulfil": {
+    "fulfilment": "mhPUT9ZAwd-BXLfeSd7-YPh46rBWRNBiTCSWjpku90s",
+    "completedTimestamp": "2019-11-15T04:15:35.513+01:00",
+    "transferState": "COMMITTED"
+  }
+}
+----
+
+=== Example error response to `PUT /transfers/{transferId}`
+
+See <<error-post-transfers,the examples above>> shown as the error responses to a multi-stage `POST /transfers` request.
