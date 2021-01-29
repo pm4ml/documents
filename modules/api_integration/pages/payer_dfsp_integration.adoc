@@ -149,8 +149,8 @@ HTTP/1.1 200 OK
 Content-Type: application/json
  
 {
-  "statusCode": "500",
-  "message": "self signed certificate in certificate chain",
+  "statusCode": "string",
+  "message": "string",
   "transferId": "85feac2f-39b2-491b-817e-4a03203d4f14",
   "homeTransactionId": "53979be2-3bfe-45aa-ade7-92ea4ce4e74e",
   "from": {
@@ -212,7 +212,13 @@ Content-Type: application/json
     "transferState": "ABORTED"
   },
   "lastError": {
-    "code": "SELF_SIGNED_CERT_IN_CHAIN"
+    "httpStatusCode": 0,
+    "mojaloopError": {
+      "errorInformation": {
+        "errorCode": "4001",
+        "errorDescription": "Payer FSP insufficient liquidity"
+      }
+    }
   }
 }
 ----
