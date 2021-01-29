@@ -13,7 +13,7 @@ If you wish to generate a doc site and PDFs out of these documents locally, on y
 
 #### Directory
 
-We highly recommend that you install this software and its prerequisites directly in the directory where your site’s Antora playbook file (e.g., antora-playbook.yml) is located.
+We highly recommend that you install this software and its prerequisites directly in the directory where your site’s Antora playbook file (e.g., playbook.yml) is located.
 If you install them globally on your system, conflicts between other instances of the dependencies, Asciidoctor PDF, and core Antora components will likely occur.
 The documentation for this site generator assumes that you are executing the commands from your playbook directory; in other words, from the directory where your Antora playbook is located.
 
