@@ -17,7 +17,7 @@ participant "Mojaloop Switch" as sw
 
 == send money ==
 
-    backend -> sob: POST /transfers (sync)
+    backend -> sob: POST /sendmoney (sync)
     
     sob -> sw: GET /parties/{type}/{id}
     sw -> sob: PUT /parties/{type}/{id}

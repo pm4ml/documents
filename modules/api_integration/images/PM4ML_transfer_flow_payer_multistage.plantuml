@@ -17,20 +17,20 @@ participant "Mojaloop Switch" as sw
 
 == send money ==
 
-    backend -> sob: POST /transfers (sync)
+    backend -> sob: POST /sendmoney (sync)
     
     sob -> sw: GET /parties/{type}/{id}
     sw -> sob: PUT /parties/{type}/{id}
 
     sob -> backend: HTTP 200 party (sync)
-    backend -> sob: PUT /transfers/{transferId} (sync) \n ("acceptParty": true)
+    backend -> sob: PUT /sendmoney/{transferId} (sync) \n ("acceptParty": true)
 
     sob -> sw: POST /quotes
     sw -> sob: PUT /quotes/{id}
     sob -> sob: check quote rules
 
     sob -> backend: HTTP 200 quote (sync)
-    backend -> sob: PUT /transfers/{transferId} (sync) \n ("acceptQuote": true)
+    backend -> sob: PUT /sendmoney/{transferId} (sync) \n ("acceptQuote": true)
 
     sob -> sw: POST /transfers
     sw -> sob: PUT /transfers/{id}

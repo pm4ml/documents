@@ -5,8 +5,7 @@
 To learn more about how to integrate your Core Backend with the Mojaloop Switch on the API level, see the following documentation:
 
 * *_API Integration Guide for DFSPs_*
-* `payment_manager_outbound_API.yaml` Swagger file: specification of the simplified Mojaloop outbound API (Payer DFSP → {product-name} → Mojaloop Switch)
-* `payment_manager_inbound_API.yaml` Swagger file: specification of the simplified Mojaloop inbound API (Mojaloop Switch → {product-name} → Payee DFSP)
+* `mojaloop_payment_manager_API.yaml` Swagger file
 ////
 The document is available at the following url: ???
 ////
