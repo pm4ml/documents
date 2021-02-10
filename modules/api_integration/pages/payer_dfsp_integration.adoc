@@ -179,44 +179,12 @@ Content-Type: application/json
   "transactionType": "TRANSFER",
   "note": "from Antoine",
   "currentState": "ERROR_OCCURRED",
-  "quoteId": "7c23e80c-d078-4077-8263-2c047876fcf6",
-  "quoteResponse": {
-    "transferAmount": {
-      "currency": "EUR",
-      "amount": "50"
-    },
-    "payeeReceiveAmount": {
-      "currency": "EUR",
-      "amount": "50"
-    },
-    "payeeFspFee": {
-        "amount": "0",
-        "currency": "EUR"
-    },
-    "payeeFspCommission": {
-        "amount": "0",
-        "currency": "EUR"
-    },
-    "expiration": "2019-11-15T22:17:28.985-01:00",
-    "geoCode": {
-      "latitude": "43.6047",
-      "longitude": "1.4442"
-    },
-    "ilpPacket": "AQAAAAAAACICAic...GF5Z",
-    "condition": "fH9pAYDQbmoZLPbvv3CSW2RfjU4jvM4ApG_fqGnR7Xs"
-  },
-  "quoteResponseSource": "payeedfsp",
-  "fulfil": {
-    "fulfilment": "mhPUT9ZAwd-BXLfeSd7-YPh46rBWRNBiTCSWjpku90s",
-    "completedTimestamp": "2019-11-15T04:15:35.513+01:00",
-    "transferState": "ABORTED"
-  },
   "lastError": {
     "httpStatusCode": 0,
     "mojaloopError": {
       "errorInformation": {
-        "errorCode": "4001",
-        "errorDescription": "Payer FSP insufficient liquidity"
+        "errorCode": "3204",
+        "errorDescription": "Party not found"
       }
     }
   }
