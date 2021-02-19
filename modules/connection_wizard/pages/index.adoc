@@ -1,5 +1,5 @@
 ifndef::backend-pdf[]
-= {company-name} Guide to {product-name} {connection-wizard}
+= Guide to {product-name} {connection-wizard}
 
 The {connection-wizard} is a portal for Digital Financial Service Providers (DFSPs), which acts as the user interface to the {hub} Connector. The {connection-wizard} allows DFSPs and the Hub Operator to manage endpoint mapping and certificate-related processes in a guided way. 
 

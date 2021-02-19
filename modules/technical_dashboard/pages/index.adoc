@@ -1,5 +1,5 @@
 ifndef::backend-pdf[]
-= {company-name} Guide to {product-name} {tech-dashboard}
+= Guide to {product-name} {tech-dashboard}
 
 The *{tech-dashboard}* page of {product-name} provides metrics on all the health indicators of the system, such as:
 

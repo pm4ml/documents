@@ -10,24 +10,15 @@ At a high level, onboarding to a Mojaloop-based scheme requires a Digital Financ
 The following diagram provides a high-level view of the integration between a Mojaloop Real-Time Payment System and a DFSP's Core Backend.
 
 .{product-name} – system architecture
-image::pm4ml_system_architecture_2.png[]
-
-////
-.{product-name} – system architecture
-image::pm4ml_system_architecture.png[width=435, height=248]
-////
+image::PM4ML_system_architecture_3.png[]
 
 {product-name} provides the following components:
 
-* *{core-connector}*: Integrates a DFSP’s Core Backend to {product-name} as a "translator" for both parts so communication is possible between them. {core-connector} is also responsible for orchestrating the transfer flow and for the persistence of transfer data. 
+* *{core-connector}*: Integrates a DFSP’s Core Backend to {product-name} as a "translator" for both parts so communication is possible between them. It is built in Apache Camel, a declarative language for integration engineers that does not require writing code from scratch. There is a ready-made {core-connector} template available for DFSPs to simplify their development effort.
 * *{mojaloop-connector}*: Comes with the following key components:
-** A _Mojaloop-SDK_ that provides a simplified synchronous version of the Mojaloop FSPIOP API, as well as a uniform way of connecting DFSP systems to a Mojaloop Switch. It represents the way the Mojaloop security requirements are to be interpreted, and implements the following Mojaloop-compliant security functionality:
-*** Two-way Transport Layer Security (TLS) with mutual X.509 authentication
-*** JSON Web Signature (JWS) signing of messages and validation of incoming message signatures
-*** Generation of the Interledger Protocol (ILP) packet with signing and validation
-** A _{mcm-client}_, which simplifies and automates certificate creation, signing and exchange, as well as the configuration of the connections required to different environments. +
-+ 
-The DFSP-facing component of connection management is a DFSP portal called {connection-wizard}. It allows DFSPs and the Mojaloop Switch Operator to manage endpoint mapping and certificate-related processes in a guided way. This tool keeps all security-related information in one place, keeps tabs on the status of connections, automates certificate generation, and enforces compliance with certificate and signing request specifications.
-* *Business and Technical Portals for daily operations*: Provide dashboards for monitoring liquidity, managing settlement and reconciliation, tracking transfers, as well as metrics on health indicators -- enabling quick responses in situations that require attention.
-
-This document focuses on {mojaloop-connector}.
+** A _Mojaloop-SDK_, which provides:
+*** Mojaloop-compliant security components
+*** HTTP header processing capabilities
+*** A simplified use-case-oriented version of the Mojaloop FSPIOP API. This API is called Payment Manager API. DFSPs will be talking to this API.
+** A _{mcm-client}_, which simplifies and automates certificate creation, signing and exchange, as well as the configuration of the connections required to different environments.
+* *Portals*: Provide dashboards for monitoring transactions and service status. They also allow DFSPs to manage their security keys, certificates and endpoint configuration required for connecting to a Mojaloop-based scheme in a guided way.

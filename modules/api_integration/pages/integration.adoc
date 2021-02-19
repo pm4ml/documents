@@ -1,15 +1,19 @@
 = API integration
 
-A key role of {product-name} is to "translate" for the DFSP Core Backend the
-simplified synchronous Mojaloop FSPIOP API that the {mojaloop-connector} speaks.
+To communicate with {product-name}, DFSPs are required to implement {core-connector} in alignment with their backend technology so that it can call the {product-name} API. To help API implementation efforts, DFSPs are provided with:
 
-The API at the back of the {mojaloop-connector} is a Mojaloop-centric API focused on resource types. The key resources of Mojaloop FSPIOP API are the party lookup, quotes, and transfers services:
+* the specification of the {product-name} API
+* a {core-connector} template
+
+What is a {core-connector} template? DFSP Core Backends have their own custom API or enterprise integration solutions so {company-name} built multiple variants of {core-connector} to align with common Core Banking Solution (CBS) products. These {core-connector} variants are all built using a standard template. The template provides a placeholder codebase for the API endpoints that need to be developed.
+
+This document focuses on {product-name} API, the API at the back of {mojaloop-connector}. {product-name} API is a Mojaloop-centric API built around the resource types of the Mojaloop FSPIOP API but applying a use-case-oriented approach. The key resources of the Mojaloop FSPIOP API are the party lookup, quotes, and transfers services:
 
 * **Party lookup service**: Identifying the DFSP serving the Payee and the Payee itself (= the recipient of funds in a transaction) based on a Payee identifier (typically a MSISDN, that is, a mobile number).
 * **Quotes service**: Requesting a quote and exchanging cryptographic proof to prepare and secure the transfer. A quote is a contract between a Payer DFSP and Payee DFSP for a particular financial transaction before the transaction is performed. It guarantees the agreement set by the Payer and Payee DFSPs about the Payer, the Payee, and transfer amount, and is valid during the lifetime of a quote and transfer of a specified financial transaction.
 * **Transfers service**: Executing the transaction as per the agreed details and cryptographic proof.
 
-Within the context of the Mojaloop FSPIOP API, the transfer happens in three main steps corresponding to the these three services: 1) identifying the Payee (party lookup service), 2) agreeing the transfer (quotes service), and 3) executing the transfer (transfers service). Using {product-name} and the simplified API, the DFSP has the choice to perform the transfer process in one combined step, in two steps, or three steps.
+Within the context of the Mojaloop FSPIOP API, the transfer happens in three main steps corresponding to the these three services: 1) identifying the Payee (party lookup service), 2) agreeing the transfer (quotes service), and 3) executing the transfer (transfers service). Using {product-name} and the {product-name} API, the DFSP has the choice to perform the transfer process in one combined step, in two steps, or three steps.
 
 The next sections look at details of the simplified API that DFSPs are required to implement, whether in a xref:payer_dfsp_integration.adoc[Payer DFSP] or a xref:payee_dfsp_integration.adoc[Payee DFSP] role.
 
