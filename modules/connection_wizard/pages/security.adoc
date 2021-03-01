@@ -28,9 +28,14 @@ The following high-level steps describe how connection is established and data i
 . The client requests a protected resource over the HTTPS protocol and the SSL/TLS handshake process begins.
 . The server returns its public certificate to the client along with a server hello. 
 . The client validates/verifies the received certificate. The client verifies the certificate through the Certificate Authority (CA) for CA-signed certificates.
-. If the server certificate was validated successfully, the server requests the client certificate, and the client will provide its public certificate to the server.
+. If the server certificate was validated successfully, the server requests the client certificate.
+. The client provides its public certificate to the server.
 . The server validates/verifies the received certificate. The server verifies the certificate through the Certificate Authority for CA-signed certificates.
-. After completion of the handshake process, the client and server communicate and transfer data with each other encrypted with the secret keys shared between the two during the handshake. 
+
+After completion of the handshake process, the client and server communicate and transfer data with each other encrypted with the secret keys shared between the two during the handshake. 
+
+.TLS connection
+image::TLS_connection.svg[width=407,height=278]
 
 The above process requires that before connecting to any environment (pre-production or production), the DFSP and the Hub each complete the following steps.
 
