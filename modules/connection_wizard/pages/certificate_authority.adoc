@@ -3,7 +3,7 @@
 The *Certificate Authority* page allows you to:
 
 * record details of the Certificate Authority (CA) that you use to sign the Hub's TLS client certificate
-* retrieve the root certificate of the Hub' CA for importing into your trust store
+* retrieve the root certificate of the Hub' CA for installing in your outbound gateway
 
 .Certificate Authority
 image::certificate_authority.png[]
@@ -50,7 +50,7 @@ include::partial$remove_replace_certificate.adoc[]
 
 == Hub CA certificate
 
-The *Hub Root's Certificate* field gives you access to the root certificate of the Hub's CA for importing into your trust store.
+The *Hub Root's Certificate* field gives you access to the root certificate of the Hub's CA for installing in your outbound gateway.
 
 .Hub CA certificate
 image::hub_certificate_authority.png[]

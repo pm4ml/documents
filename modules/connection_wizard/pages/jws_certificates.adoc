@@ -43,7 +43,7 @@ include::partial$remove_replace_certificate.adoc[]
 
 == Other DFSPs' JWS certificates
 
-The *Other DFSPs' JWS Certificates* tab allows you to retrieve the JWS certificate of another DFSP or the Hub itself for installing on your internal gateway.
+The *Other DFSPs' JWS Certificates* tab allows you to retrieve the JWS certificate of another DFSP or the Hub itself for installing on your inbound gateway.
 
 .Other DFSPs' JWS Certificates
 image::other_dfsps_jws_certificates.png[]
@@ -59,6 +59,11 @@ Information about the validity of a certificate is also displayed. Click *View D
 
 To download the certificate, click **Download**.
 
-NOTE: After downloading another DFSP's or the Hub's JWS certificate, remember to extract the public key. You can extract a public key from a JWS certificate using the following openssl command: +
-`openssl x509 -pubkey -noout -in <jwscert>.pem > <jwspubkey>.pem` +
+[NOTE]
+====
+After downloading another DFSP's or the Hub's JWS certificate, remember to extract the public key. You can extract a public key from a JWS certificate using the following openssl command:
+
+`openssl x509 -pubkey -noout -in <jwscert>.pem > <jwspubkey>.pem`
+
 Alternatively, you can use the KeyStore Explorer tool. For details, see xref:appendix_extract_public_key_from_JWS_cert.adoc[Appendix B: Extract a public key from a JWS certificate].
+====

@@ -47,7 +47,7 @@ The above process requires that before connecting to any environment (pre-produc
 |Step  |Details  |Instructions for DFSPs 
 |1  |Create a server certificate signed by your CA.  |For detailed instructions, see xref:appendix_create_tls_cert.adoc[Appendix A: Create TLS certificates]. Alternatively, use your own method for creating your certificate. 
 |2  |Share your server certificate and CA chain with the other party. | For detailed instructions, see section xref:server_certificates_exchange.adoc[Server Certificates Exchange].
-|3  |Install the other party's server certificate and CA chain in your firewall (validation/verification will happen against these installed certificates).  |Controlled by the DFSP's Security team.  
+|3  |Install the other party's server certificate and CA chain in your outbound firewall (validation/verification will happen against these installed certificates).  |Controlled by the DFSP's Security team.  
 |====================
 
 *TLS client certificates:*
@@ -61,8 +61,8 @@ The above process requires that before connecting to any environment (pre-produc
 For detailed instructions on how to share your CSR, see section xref:csr_exchange.adoc[CSR Exchange]. 
 |2  |Sign the other party's CSR using your CA. |Controlled by the DFSP's Security team.
 |3  |Share the signed client certificate as well as your CA's root certificate with the other party. |For detailed instructions on how to share your CA's root certificate, see section xref:certificate_authority.adoc[Certificate Authority].
-|4  |Install your own client certificate signed by the other party's CA in your API gateway. |For detailed instructions on how to retrieve your signed client certificate, see section xref:csr_exchange.adoc[CSR Exchange].
-|5  |Install the root certificate of the other party's CA in your firewall.  |For detailed instructions on how to retrieve the root certificate of the Hub's CA, see section xref:certificate_authority.adoc[Certificate Authority].  
+|4  |Install your own client certificate signed by the other party's CA in your outbound API gateway. |For detailed instructions on how to retrieve your signed client certificate, see section xref:csr_exchange.adoc[CSR Exchange].
+|5  |Install the root certificate of the other party's CA in your outbound API gateway.  |For detailed instructions on how to retrieve the root certificate of the Hub's CA, see section xref:certificate_authority.adoc[Certificate Authority].  
 |====================
 
 === JWS certificates
@@ -77,9 +77,10 @@ The above process requires that all DFSPs and the Hub itself have a JWS certific
 |Step  |Details  |Instructions for DFSPs 
 |1  |Create a keystore (to hold your certificate and private key), an asymmetric key pair (a public key and a private key), and an associated certificate that identifies you.  |For detailed instructions on how to generate JWS certificates, see xref:appendix_create_jws_cert.adoc[Appendix B: Create a JWS certificate]. Alternatively, use your own method for creating your certificates.
 |2  |Share your JWS public key. |For detailed instructions, see section xref:jws_certificates.adoc[JWS Certificates].
-|3  |Install the other parties' (the Hub and all other DFSPs) JWS public key in your JWS keystore. |For detailed instructions on how to retrieve the other parties' JWS certificate chain, see section xref:jws_certificates.adoc[JWS Certificates]. +
+|3  |Install the other parties' (the Hub and all other DFSPs) JWS public key in your inbound gateway. |For detailed instructions on how to retrieve the other parties' JWS certificate chain, see section xref:jws_certificates.adoc[JWS Certificates]. +
  +
 For details on how extract a JWS public key from a certificate chain, see xref:appendix_extract_public_key_from_JWS_cert.adoc[Appendix C: Extract a public key from a JWS certificate].
+|4 | Install your JWS private key in your outbound gateway. |Controlled by the DFSP’s Security team.
 |====================
 
 == Endpoint information
