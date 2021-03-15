@@ -11,7 +11,7 @@ image::PM4ML_transfer_flow_payee.svg[width=80%, height=80%]
 
 == Example `GET /parties/{idType}/{idValue}` request
 
-The following example shows a `GET /parties/{idType}/{idValue}` request:
+The following example shows a `GET /parties/{idType}/{idValue}` request (Step 2 in the diagram above).
 
 [source,json]
 ----
@@ -21,7 +21,7 @@ Content-Type: application/json
 
 == Example success response to `GET /parties/{idType}/{idValue}`
 
-The following example shows a response to a `GET /parties/{idType}/{idValue}` request when the request is successful.
+The following example shows a response to a `GET /parties/{idType}/{idValue}` request when the request is successful (Step 5 in the diagram above).
 
 [source,json]
 ----
@@ -42,7 +42,7 @@ Content-Type: application/json
 
 == Example error response to `GET /parties/{idType}/{idValue}`
 
-The following example shows a response to a `GET /parties/{idType}/{idValue}` request when the request fails.
+The following example shows a response to a `GET /parties/{idType}/{idValue}` request when the Payee is not found (Step 3 in the diagram above).
 
 ////
  due to the Payee party not being found
@@ -65,7 +65,7 @@ Content-Type: application/json
 
 == Example `POST /quoterequests` request
 
-The following example shows a `POST /quoterequests` request:
+The following example shows a `POST /quoterequests` request (Step 8 in the diagram above).
 
 [source,json]
 ----
@@ -115,7 +115,7 @@ Accept: application/json
 
 == Example success response to `POST /quoterequests`
 
-The following example shows a response to a `POST /quoterequests` request when the request is successful.
+The following example shows a response to a `POST /quoterequests` request when the request is successful (Step 11 in the diagram above).
 
 [source,json]
 ----
@@ -143,14 +143,10 @@ Content-Type: application/json
 
 == Example error response to `POST /quoterequests`
 
-The following example shows a response to a `POST /quoterequests` request when the request fails.
+The following example shows a response to a `POST /quoterequests` request when the request returns an error (Step 9 in the diagram above).
 
 ////
- due to the `quoteId` not being found
-////
-
-////
-*statusCode + message???* *3205: Quote ID not found???*
+*statusCode + message???*
 ////
 
 [source,json]
@@ -166,7 +162,7 @@ Content-Type: application/json
 
 == Example `POST /transfers` request
 
-The following example shows a `POST /transfers` request:
+The following example shows a `POST /transfers` request (Step 16 in the diagram above).
 
 [source,json]
 ----
@@ -223,7 +219,9 @@ Accept: application/json
 
 == Example success response to `POST /transfers`
 
-The following example shows a response to a `POST /transfers` request when the request is successful.
+The following example shows a response to a `POST /transfers` request when the request is successful (Step 22 or 30 in the diagram above).
+
+When the Payee DFSP is informed about the incoming transfer request, it performs internal checks (for example, a check to ensure that the customer does not receive money above a certain amount per transfer). If all checks pass, it reserves funds and confirms that they are OK to go ahead with the transfer.
 
 [source,json]
 ----
@@ -237,7 +235,7 @@ Content-Type: application/json
 
 == Example error response to `POST /transfers`
 
-The following example shows a response to a `POST /transfers` request when the request fails.
+The following example shows a response to a `POST /transfers` request when the request fails in the Payee DFSP (Step 19 in the diagram above).
 
 ////
  due to the `transferId` not being found
@@ -256,4 +254,60 @@ Content-Type: application/json
   "statusCode": "string",
   "message": "string"
 }
+----
+
+
+== Example `PUT /transfers/{transferId}` notification
+
+The following example shows a `PUT /transfers/{transferId}` notification (Step 27 in the diagram above) when:
+
+* the Payee DFSP has confirmed that they are OK to go ahead with the transfer, and
+* the transfer fails validation of the fulfilment and expiry timestamp in the Switch
+
+The notification acts as a failure notice, indicating to the Payee DFSP that they should not release funds to their customer's account as the transfer did not happen.
+
+[source,json]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "completedTimestamp": "2019-11-15T22:15:28.985-01:00",
+  "transferState": "ABORTED"
+}
+----
+
+The following example shows a `PUT /transfers/{transferId}` notification (Step 35 in the diagram above) when:
+
+* the Payee DFSP has confirmed that they are OK to go ahead with the transfer, and
+* the transfer passes validation of the fulfilment and expiry timestamp in the Switch
+
+The notification acts as a success confirmation, indicating to the Payee DFSP that they can go ahead and release funds to their customer's account.
+
+[source,json]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "completedTimestamp": "2019-11-15T22:15:28.985-01:00",
+  "transferState": "COMMITTED"
+}
+----
+
+To ensure that the Switch does send a notification, the following environment variables must be configured:
+
+* `RESERVE_NOTIFICATION` must be set to `true`
+* `RESOURCE_VERSIONS` must contain the string `transfers=1.1` 
+
+`RESOURCE_VERSIONS` is used to assign API versions to `Content-Type` and `Accept` headers dynamically. Given that the Switch notification is a feature that was introduced in Mojaloop FSPIOP API version 1.1, and that it is a feature of the `/transfers` resource, {product-name} must be set so that it uses version 1.1. of the `/transfers` resource. Here is how to set resource versions:
+
+----
+RESOURCE_VERSIONS="resouceOneName=1.0,resourceTwoName=1.1"
+----
+
+For example:
+
+----
+RESOURCE_VERSIONS="parties=1.0,transfers=1.1"
 ----

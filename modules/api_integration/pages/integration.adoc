@@ -13,7 +13,8 @@ This document focuses on {product-name} API, the API at the back of {mojaloop-co
 * **Quotes service**: Requesting a quote and exchanging cryptographic proof to prepare and secure the transfer. A quote is a contract between a Payer DFSP and Payee DFSP for a particular financial transaction before the transaction is performed. It guarantees the agreement set by the Payer and Payee DFSPs about the Payer, the Payee, and transfer amount, and is valid during the lifetime of a quote and transfer of a specified financial transaction.
 * **Transfers service**: Executing the transaction as per the agreed details and cryptographic proof.
 
-Within the context of the Mojaloop FSPIOP API, the transfer happens in three main steps corresponding to the these three services: 1) identifying the Payee (party lookup service), 2) agreeing the transfer (quotes service), and 3) executing the transfer (transfers service). Using {product-name} and the {product-name} API, the DFSP has the choice to perform the transfer process in one combined step, in two steps, or three steps.
+Within the context of the Mojaloop FSPIOP API, the transfer happens in three main steps corresponding to the these three phases: 1) identifying the Payee (party lookup or discovery phase), 2) agreeing the transfer (quote or agreement phase), and 3) executing the transfer (transfer phase). Using {product-name} and the {product-name} API, the DFSP has the choice to perform the transfer process in one combined step, in two steps, or three steps.
+
+For more information on the three phases of a transfer in Mojaloop, see *Module 2: Mojaloop in greater detail* of https://learn.mojaloop.io[Mojaloop training course] **DFSP-101**.
 
 The next sections look at details of the simplified API that DFSPs are required to implement, whether in a xref:payer_dfsp_integration.adoc[Payer DFSP] or a xref:payee_dfsp_integration.adoc[Payee DFSP] role.
-

@@ -18,15 +18,39 @@ participant "Mojaloop Switch" as sw
 == send money ==
 
     backend -> sob: POST /sendmoney (sync)
-    
     sob -> sw: GET /parties/{type}/{id}
+    alt Payee not found
+    sw -> sob: PUT /parties/{type}/{id}/error
+    sob -> backend: Return error \n HTTP 200 result (sync)
+    else Payee DFSP and Payee found
     sw -> sob: PUT /parties/{type}/{id}
     sob -> sw: POST /quotes
+    alt Quote request fails
+    sw -> sob: PUT /quotes/{id}/error
+    sob -> backend: Return error \n HTTP 200 result (sync)
+    else Quote request is successful
     sw -> sob: PUT /quotes/{id}
     sob -> sob: check quote rules
+    end
     sob -> sw: POST /transfers
-    sw -> sob: PUT /transfers/{id}
-    
-    sob -> backend: HTTP 200 result (sync)
+    sw -> sw: Perform liquidity check
+    alt Transfer execution would exceed NDC
+    sw -> sob: PUT /transfers/{id}/error
+    sob -> backend: Return error \n HTTP 200 result (sync)
+    else Transfer execution will not exceed NDC
+    sw -> sw: Reserve funds
+    sw -> sw: Perform validation
+    end
+    alt Validation successful
+    sw -> sw: Commit funds
+    sw -> sob: PUT /transfers/{id} \n transferState=COMMITTED
+    sob -> backend: Transfer successful \n HTTP 200 result (sync)
+    else Validation fails
+    sw -> sw: Cancel reserved funds
+    sw -> sob: PUT /transfers/{id} \n transferState=ABORTED
+    sob -> backend: Transfer failed \n HTTP 200 result (sync)
+    end
+
+    end
 
 @enduml
