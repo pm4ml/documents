@@ -33,7 +33,7 @@ participant "Mojaloop Switch" as sw
     sob -> sob: check quote rules
     end
     sob -> sw: POST /transfers
-    sw -> sw: Perform liquidity check
+    sw -> sw: Perform (NDC) liquidity check
     alt Transfer execution would exceed NDC
     sw -> sob: PUT /transfers/{id}/error
     sob -> backend: Return error \n HTTP 200 result (sync)

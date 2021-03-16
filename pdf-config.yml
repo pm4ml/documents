@@ -17,5 +17,5 @@ asciidoc:
     #sectnums: ''
     source-highighter: rouge
     toc: ''
-    toclevels: 3
+    toclevels: 4
     xrefstyle: short

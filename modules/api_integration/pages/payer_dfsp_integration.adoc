@@ -332,7 +332,7 @@ Content-Type: application/json
 }
 ----
 
-The following example shows a response to a `POST /sendmoney` request (Step 21 in the diagram above) when the transfer fails expiry validation by the Switch (in Step 16, the Switch validates the fulfilment returned by the Payee DFSP and checks the expiry timestamp on the transfer).
+The following example shows a response to a `POST /sendmoney` request (Step 22 in the diagram above) when the transfer fails expiry validation by the Switch (in Step 16, the Switch validates the fulfilment returned by the Payee DFSP and checks the expiry timestamp on the transfer).
 
 ////
 *statusCode + message???*

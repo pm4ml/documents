@@ -34,7 +34,7 @@ participant "DFSP Core Backend" as backend
     backend -> sib: Return quote \n HTTP 200 result (sync)
     sib -> sw: PUT /quotes/{id}
     end
-    sw -> sw: Perform liquidity check
+    sw -> sw: Perform (NDC) liquidity check
     sw -> sw: Reserve funds
     sw -> sib: POST /transfers
     sib -> backend: Process transfer \n POST /transfers (sync)
