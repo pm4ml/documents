@@ -18,7 +18,7 @@ image::find_a_transfer.png[]
 
 Use the *Basic Find a Transfer* tab to find a transfer based on its Transfer ID:
 
-. Enter the transfer's identifier in the *Transfer ID* field. +
+. Enter the transfer's identifier in the *Transfer ID* field. Entering only a snippet of the full transfer ID string will also return a result. +
 image:basic_find_a_transfer.png[]
 . Click the *Find Transfers* button. +
 The list of results is displayed. +
@@ -70,14 +70,15 @@ The *Technical Details* tab also displays information about the Payer and Payee 
 * **Last Name**: The last name of a payer/payee.
 * **Date Of Birth**: The date of birth of a payer/payee.
 * **Merchant Classification Code**: The unique identifier of a merchant (relevant in the case of person-to-business transfers).
-* **FSP Id**: The unique identifier of the DFSP serving the payer/payee. 
+* **FSP Id**: The unique identifier of the DFSP serving the payer/payee.
+* **View Extension List**: This option is only active when an extension list is present in the party object in the quote request body.
 
 .**Payee Party** pop-up window
-image::payee_party.png[] 
+image::payee_party_2.png[] 
 
 In addition to party information, details about the transfer message sequence are also available by clicking these buttons: 
 
-* **Party Lookup Response**: Displays a *Party Lookup Response* pop-up window, which provides the API response message that is returned to a party lookup request.
+* **Party Lookup Response**: Displays a *Party Lookup Response* pop-up window, which provides the API response message that is returned to a party lookup request. This option is only active when a `GET /parties` response can be found for the transfer (that is, for sending DFSPs).
 * **Quote Request**: Displays a *Quote Request* pop-up window, which provides the API request message that is sent to request a quote.
 * **Quote Response**: Displays a *Quote Response* pop-up window, which provides the API response message that is returned to a quote request.
 * **Transfer Prepare**: Displays a *Transfer Request* pop-up window, which provides the API request message that is sent to request a transfer.
@@ -159,7 +160,7 @@ image::transfers_errors_overview.png[]
 The table below the pie chart lists failed transfers. If there are more than four errors, then a *View All Errors* button is displayed, which allows you to check the full list of errors. To get the complete list of errors, click the *View All Errors* button. The *Transfers Errors* window pops up. 
 
 .Transfers Errors pop-up window
-image::transfers_errors_popup_3.png[]
+image::transfers_errors_popup_4.png[]
 
 ////
 . Click the *View All Errors* button. The *Transfers Errors* window pops up. +
