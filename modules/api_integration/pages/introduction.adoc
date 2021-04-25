@@ -19,6 +19,6 @@ image::PM4ML_system_architecture_3.png[]
 ** A _Mojaloop-SDK_, which provides:
 *** Mojaloop-compliant security components
 *** HTTP header processing capabilities
-*** A simplified use-case-oriented version of the Mojaloop FSPIOP API. This API is called Payment Manager API. DFSPs will be talking to this API.
+*** A simplified use-case-oriented version of the Mojaloop FSPIOP API. This API is called Payment Manager API. DFSPs will be talking to this API, leveraging {core-connector}.
 ** A _{mcm-client}_, which simplifies and automates certificate creation, signing and exchange, as well as the configuration of the connections required to different environments.
 * *Portals*: Provide dashboards for monitoring transactions and service status. They also allow DFSPs to manage their security keys, certificates and endpoint configuration required for connecting to a Mojaloop-based scheme in a guided way.

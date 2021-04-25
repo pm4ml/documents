@@ -1,1 +1,1 @@
-This guide is aimed at DFSPs wishing to connect to a Mojaloop Real-Time Payments System and deliver digital financial services to their customers. The document provides details of the simplified Mojaloop API that DFSPs integrating via {product-name} are required to implement.
+This guide is aimed at DFSPs wishing to connect to a Mojaloop Real-Time Payments System and deliver digital financial services to their customers. The document provides details of the simplified Mojaloop API that {product-name} uses to handle message exchanges between DFSPs and the Switch.

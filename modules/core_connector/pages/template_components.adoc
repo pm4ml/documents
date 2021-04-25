@@ -1,0 +1,81 @@
+= Components of a {core-connector} template
+
+The generic {core-connector} template has the following components.
+
+The CBS-vendor-specific templates have a similar setup of components.
+
+== `client-adapter-db` folder
+
+*Question: What is the role of this?*
+
+== `client-adapter-interface` folder
+
+Inside `src/main/resources/`, there is a file called `api.yaml`. This file contains the definition of the {product-name} API.
+
+*Question: The Swagger does not seem to be up-to-date in `modusintegration/mojaloop-cbs-adapter-template`*
+
+*Question: Anything else in `src/main/resources/` that we need to talk about?*
+
+The `client-adapter-interface` folder also contains a `pom.xml` configuration file to specify the dependencies and plugins that the `client-adapter-interface` component relies on. For more information on the role and structure of `pom.xml` in Maven projects, see https://maven.apache.org/guides/introduction/introduction-to-the-pom.html[Maven documentation].
+
+*Question: Any entries that deserve special attention?*
+
+== `client-adapter-it` folder
+
+Contains integration tests. *Question: Anything that deserves special attention?*
+
+It comes with:
+
+* An `src/test` folder, which contains the integration tests and the configuration of the Log4j logging utility.
+* A `pom.xml` configuration file to specify the dependencies and plugins that the `client-adapter-it` component relies on. For more information on the role and structure of `pom.xml` in Maven projects, see https://maven.apache.org/guides/introduction/introduction-to-the-pom.html[Maven documentation].
+
+== `client-adapter-rest-mock` folder
+
+*Question: Do we need this? It seems to be Finflux specific?*
+
+== `client-adapter-soap-mock` folder
+
+*Question: Do we need this? It seems to be T24 specific?*
+
+== `client-adapter` folder
+
+Contains the implementations of the {product-name} API endpoints, as well as the routers, processors, and beans required to translate and route messages from one endpoint to another (in our case, from DFSP backend endpoints to {product-name} API endpoints, and the other way around).
+
+It comes with:
+
+* A `lib` folder that contains a Camel DataSonnet `.jar` file. *Question: What is the role of this file?*
+* A `src/main` folder with all of the source material for building the {core-connector} project:
+** `java/com/modus/client/exception/`: Exception handling resources. *Question: Anything that deserves special attention?*
+** `java/com/modus/client/jaxrs/`: The classes that implement the {product-name} API endpoint interfaces.
+** `java/com/modus/client/router/`: The router that defines the rules for moving messages between endpoints.
+** `java/com/modus/client/Application.java`: *Question: What is the role of this file?*
+** `resources/mappings/`: The DataSonnet mappings between the {product-name} API and the DFSP backend API (referenced by the router). 
+** `resources/spring/application.xml`: *Question: What is the role of this file?*
+** `resources/spring/cxf.xml`: *Question: What is the role of this file?*
+** `resources/spring/mappings.xml`: *Question: What is the role of this file?*
+** `resources/application.xml`: A properties file with values that can be used during testing (the testing environment details must come from the DFSP).
+** `resources/log4j.xml`: A configuration file for the Log4j logging utility.
+* A `src/test/java/com/modus/client/` folder with tests for the DataSonnet mappings.
+* A `Dockerfile` file: *Question: Why is this needed?*
+* A `pom.xml` configuration file to specify the dependencies and plugins that the `client-adapter` component relies on. For more information on the role and structure of `pom.xml` in Maven projects, see https://maven.apache.org/guides/introduction/introduction-to-the-pom.html[Maven documentation].
+
+
+== `.gitlab-ci.yml` file
+
+Contains the CI/CD configuration for **???**
+
+== `Dockerfile` file
+
+The Dockerfile for building the {core-connector} image.
+
+== `dependency_tree.txt` file
+
+*Question: What is the role of this file?*
+
+== `pom.xml` configuration file
+
+Contains the Project Object Model (POM) for the project. The POM is the basic unit of work in Maven. It is an XML file that contains information about the project and configuration details (such as modules, dependencies, plugins) used by Maven to build the project. For more information on how `pom.xml` is structured, see https://maven.apache.org/guides/introduction/introduction-to-the-pom.html[Maven documentation].
+
+== `run.sh` file
+
+*Question: What is the role of this file?*

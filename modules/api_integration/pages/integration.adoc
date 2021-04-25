@@ -7,14 +7,26 @@ To communicate with {product-name}, DFSPs are required to implement {core-connec
 
 What is a {core-connector} template? DFSP Core Backends have their own custom API or enterprise integration solutions so {company-name} built multiple variants of {core-connector} to align with common Core Banking Solution (CBS) products. These {core-connector} variants are all built using a standard template. The template provides a placeholder codebase for the API endpoints that need to be developed.
 
+The effort to customise a {core-connector} template will differ depending on the transfer use case and on whether the DFSP will be transacting in a Payer DFSP (send funds) role or a Payee DFSP (receive funds) role. {product-name} currently provides support for the peer-to-peer (P2P) transfer use case only. For the P2P use case: 
+
+* As a Payer DFSP, there is no need for any customisation, the template comes with the fully-fledged implementation of the functionality to send funds.
+* As a Payee DFSP, the DFSP must add the implementation logic for calling the Core Backend using the appropriate CBS technology.
+
+For any other use case (for example, payee-initiated merchant transfers), both the Payer DFSP and the Payee DFSP are required to customise the {core-connector} template.
+
+In addition to the DFSP role, the chosen deployment option will also influence the required integration effort on the DFSP’s part. When deploying {company-name}, two options are available:
+
+* **Hosted by {company-name}**: {company-name} integration experts deploy {product-name}, sync up the {core-connector} template with the DFSP's core backend implementation, and set any required configuration options.
+* **Self-hosted by DFSP**: The DFSP deploys {product-name}, aligns the {core-connector} template with the specifics of their backend technology, and configures any additional settings.
+
 This document focuses on {product-name} API, the API at the back of {mojaloop-connector}. {product-name} API is a Mojaloop-centric API built around the resource types of the Mojaloop FSPIOP API but applying a use-case-oriented approach. The key resources of the Mojaloop FSPIOP API are the party lookup, quotes, and transfers services:
 
 * **Party lookup service**: Identifying the DFSP serving the Payee and the Payee itself (= the recipient of funds in a transaction) based on a Payee identifier (typically a MSISDN, that is, a mobile number).
 * **Quotes service**: Requesting a quote and exchanging cryptographic proof to prepare and secure the transfer. A quote is a contract between a Payer DFSP and Payee DFSP for a particular financial transaction before the transaction is performed. It guarantees the agreement set by the Payer and Payee DFSPs about the Payer, the Payee, and transfer amount, and is valid during the lifetime of a quote and transfer of a specified financial transaction.
 * **Transfers service**: Executing the transaction as per the agreed details and cryptographic proof.
 
-Within the context of the Mojaloop FSPIOP API, the transfer happens in three main steps corresponding to the these three phases: 1) identifying the Payee (party lookup or discovery phase), 2) agreeing the transfer (quote or agreement phase), and 3) executing the transfer (transfer phase). Using {product-name} and the {product-name} API, the DFSP has the choice to perform the transfer process in one combined step, in two steps, or three steps.
+Within the context of the Mojaloop FSPIOP API, the transfer happens in three main steps corresponding to these three phases: 1) identifying the Payee (party lookup or discovery phase), 2) agreeing the transfer (quote or agreement phase), and 3) executing the transfer (transfer phase). Using {product-name} and the {product-name} API, the DFSP has the choice to perform the transfer process in one combined step, in two steps, or three steps.
 
 For more information on the three phases of a transfer in Mojaloop, see *Module 2: Mojaloop in greater detail* of https://learn.mojaloop.io[Mojaloop training course] **DFSP-101**.
 
-The next sections look at details of the simplified API that DFSPs are required to implement, whether in a xref:payer_dfsp_integration.adoc[Payer DFSP] or a xref:payee_dfsp_integration.adoc[Payee DFSP] role.
+The next sections look at details of the {product-name} API that DFSPs are required to interact with via the {core-connector}, whether in a xref:payer_dfsp_integration.adoc[Payer DFSP] or a xref:payee_dfsp_integration.adoc[Payee DFSP] role.

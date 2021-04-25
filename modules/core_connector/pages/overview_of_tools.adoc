@@ -1,0 +1,25 @@
+= Overview of technologies and resources
+
+== Technologies
+
+{core-connector} templates are built in Java in https://www.tutorialspoint.com/apache_camel/apache_camel_tutorial.pdf[Apache Camel]. Apache Camel provides a rule-based routing and mediation engine, which allows for message translation and message routing between the DFSP Core Backend and the Mojaloop Switch.
+
+https://spring.io/projects/spring-boot[Spring Boot] is used as the runtime container.
+
+https://maven.apache.org/[Maven] is used to build and manage Camel projects.
+
+https://datasonnet.s3-us-west-2.amazonaws.com/docs-ci/primary/master/datasonnet/1.0-SNAPSHOT/index.html[DataSonnet], an open source data transformation language, takes care of the JSON-to-JSON mappings between the {product-name} API and the DFSP Core Backend API.
+
+Familiarity with the above technologies is a prerequisite to handling templates.
+
+== Resources
+
+To help implementation efforts, DFSPs are provided with:
+
+* https://github.com/modusintegration/mojaloop-payment-manager-specification/blob/main/mojaloop_payment_manager_API.yaml[The Swagger specification of the {product-name} API]. The {product-name} API is the API that the DFSP Core Backend talks to, leveraging {core-connector}.
+* A generic {core-connector} template https://github.com/modusintegration/mojaloop-cbs-adapter-template[in the *modusintegration* GitHub repository].
+* A {core-connector} template per CBS provider  https://github.com/modusintegration[in the *modusintegration* GitHub repository]. Templates use the following naming convention: `<CBS vendor name>-mojaloop-adapter` or `<CBS vendor name>-client-adapter` +
+ +
+Note that in the future, the word `adapter` will no longer be used. Existing repositories will not be renamed but moving forward, new repositories will be using the term `core-connector`.
+* https://github.com/modusintegration/cbs-core-connectors-helm-repo[The Helm chart (per template) that deploys {core-connector}].
+* https://github.com/modusintegration/mojaloop-simulator-core-connector[Mojaloop Simulator Core Connector] and https://github.com/modusintegration/mojaloop-payment-manager-helm/tree/master/mojaloop-simulator-core-connector[its Helm chart]. The Mojaloop Simulator {core-connector} is part of the simulator DFSP setup, employed when testing with newly onboarded DFSPs.

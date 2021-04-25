@@ -1,0 +1,64 @@
+= Customising a template
+
+== Core Connector for a Payer DFSP
+
+For a Payer DFSP, the existing template can be used without any changes.
+
+*Question: It appears that https://github.com/modusintegration/mojaloop-cbs-adapter-template does not have Sendmoney.*
+
+////
+Leveraging `SendmoneyRouter.java` router class (at `client-adapter/src/main/java/com.modus.client/router`), Core Connector routes messages in the following way in the case of an outgoing transfer request:
+////
+Leveraging the `ClientAdapterAPI.java` router class (`client-adapter/src/main/java/com/modus/client/router`), {core-connector} routes messages in the following way in the case of an outgoing transfer request:
+
+. Route and translate the backend-specific transfer request into a request that the Mojaloop Connector understands (for example, removing and adding headers as necessary). (Mojaloop Connector then translates that into a Mojaloop-compliant request that the Mojaloop Switch understands.)
+. Route and translate the transfer response that comes back from the Mojaloop Connector into a backend-specific message that the DFSP Core Backend understands.
+
+`ClientAdapterAPI.java` defines rules for moving a message:
+
+* from a *postSendmoney* `.from` endpoint to a *postTransfers* `.to` endpoint
+* from a *putSendmoneyById* `.from` endpoint to a *putTransfersById* `.to` endpoint
+
+In between the `.from` and `.to` endpoints, processing logic is implemented.
+
+To help put routes into context, the following diagrams show the happy path of a transfer request.
+
+.Outgoing transfer (single-stage transfer)
+image::PM4ML_CC_transfer_flow_payer_happy_path.svg[]
+
+.Outgoing transfer (multi-stage transfer)
+image::PM4ML_transfer_flow_payer_multistage_happy_path.svg[]
+
+== Core Connector for a Payee DFSP
+
+For a Payee DFSP, the existing template must be modified in the following places:
+
+* `ClientAdapterAPI.java` (`client-adapter/src/main/java/com/modus/client/router`)
+* DataSonnet mappings (`client-adapter/src/main/resources/mappings`)
+
+Leveraging DataSonnet mappings and the `ClientAdapterAPI.java` router, Core Connector manages the following transformations and routing in the case of an incoming transfer request:
+
+. Route and transform the party lookup request for the DFSP Core Backend. +
++
+Note that when obtaining Payee party information -- depending on the DFSP's backend implementation -- the relevant details may need to be obtained using several API calls.
+. Route and transform the backend's response into a Mojaloop-compliant response.
+. Route and transform the quote request for the DFSP Core Backend. The quote request has a request body, which needs to be translated for the DFSP backend.
+. Route and transform the backend's response into a Mojaloop-compliant response.
+. Route and transform the transfer request for the DFSP Core Backend. The transfer request has a request body, which needs to be translated for the DFSP backend.
+. Route and transform the backend's response into a Mojaloop-compliant response.
+
+In between endpoints, you can remove and set headers as necessary, and implement processing logic (by defining and using custom processors).
+
+.Incoming transfer
+image::PM4ML_transfer_flow_payee_happy_path.svg[]
+
+== Building and running the updated {core-connector}
+
+Once you have made the necessary changes, build the {core-connector} Maven project, following these steps:
+
+. Change directory to `client-adapter-interface`.
+. Issue the `mvn clean install` command. +
+Running `mvn clean install` builds all the Java objects that the client adapter interface references, and installs them in the `client-adapter-interface/target` folder.
+. Run `java -jar client-adapter/target/client-adapter-1.0.0.jar`.
+
+To test your changes, you can do local testing or end-to-end testing as described in xref:testing.adoc[Testing {core-connector}].

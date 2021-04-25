@@ -4,7 +4,7 @@ The following diagram illustrates how a Payee DFSP interacts with {product-name}
 
 NOTE: The simplified API between {product-name} and the DFSP backend is a synchronous HTTP API, while the interface between {product-name} and the Mojaloop Switch is the https://docs.mojaloop.io/mojaloop-specification/#api-definition[asynchronous Mojaloop FSPIOP API]. +
  +
-Specification of the simplified API is provided in the form of a Swagger `.yaml` file (`mojaloop_payment_manager_API.yaml`).
+Specification of the simplified API ({product-name} API) is provided in the form of a Swagger `.yaml` file (`mojaloop_payment_manager_API.yaml`).
 
 .Payee DFSP transfer flow
 image::PM4ML_transfer_flow_payee.svg[width=80%, height=80%]

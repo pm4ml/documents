@@ -74,7 +74,7 @@ The *Technical Details* tab also displays information about the Payer and Payee 
 * **View Extension List**: This option is only active when an extension list is present in the party object in the quote request body.
 
 .**Payee Party** pop-up window
-image::payee_party_2.png[] 
+image::payee_party_3.png[] 
 
 In addition to party information, details about the transfer message sequence are also available by clicking these buttons: 
 
