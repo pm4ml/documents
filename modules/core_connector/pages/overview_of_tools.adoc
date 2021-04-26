@@ -22,4 +22,4 @@ To help implementation efforts, DFSPs are provided with:
  +
 Note that in the future, the word `adapter` will no longer be used. Existing repositories will not be renamed but moving forward, new repositories will be using the term `core-connector`.
 * https://github.com/modusintegration/cbs-core-connectors-helm-repo[The Helm chart (per template) that deploys {core-connector}].
-* https://github.com/modusintegration/mojaloop-simulator-core-connector[Mojaloop Simulator Core Connector] and https://github.com/modusintegration/mojaloop-payment-manager-helm/tree/master/mojaloop-simulator-core-connector[its Helm chart]. The Mojaloop Simulator {core-connector} is part of the simulator DFSP setup, employed when testing with newly onboarded DFSPs.
+* https://github.com/modusintegration/mojaloop-simulator-core-connector[Mojaloop Simulator Core Connector] and https://github.com/modusintegration/mojaloop-payment-manager-helm/tree/master/mojaloop-simulator-core-connector[its Helm chart]. The Mojaloop Simulator {core-connector} is part of the simulator DFSP setup, employed when conducting initial tests with newly onboarded DFSPs.

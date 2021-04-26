@@ -25,7 +25,7 @@ For further background information on how charts are organised, see https://helm
 
 === `templates` folder
 
-A Helm chart is defined in templates, written in the https://golang.org/pkg/text/template/[Go template language]. Each resource that is necessary to run an oracle has a template. Templates generate manifest files, that is, resource descriptions in `.yaml` format that Kubernetes can understand. All template files are stored in the chart's `templates/` folder. When Helm renders a chart, it will pass every file in that directory through the template engine.
+A Helm chart is defined in templates, written in the https://golang.org/pkg/text/template/[Go template language]. Each resource that is necessary to run {core-connector} has a template. Templates generate manifest files, that is, resource descriptions in `.yaml` format that Kubernetes can understand. All template files are stored in the chart's `templates/` folder. When Helm renders a chart, it will pass every file in that directory through the template engine.
 
 If you look at the `templates/` directory of the `mambu-core-connector` Helm chart, you will see the following files:
 

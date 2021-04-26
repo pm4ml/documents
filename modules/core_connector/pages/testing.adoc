@@ -4,7 +4,7 @@
 
 === Testing the sending side
 
-When testing the sending side, you can use Postman to make a call directly to the {core-connector} of the sending side, and check if the {core-connector} is making a call to the {mojaloop-connector} SDK using the right message format. 
+When testing the sending side, you can use Postman (or some other testing tool, or curl) to make a call directly to the {core-connector} of the sending side, and check if the {core-connector} is making a call to the {mojaloop-connector} SDK using the right message format. 
 
 .Testing the sending side
 image::test_sending_side.png[]
@@ -12,19 +12,19 @@ image::test_sending_side.png[]
 To test the sending side, follow these steps:
 
 . Build the {core-connector} Maven project:
-.. Change directory to `client-adapter-interface`.
+.. Change directory to the root folder of the {core-connector} project -- taking the generic template as an example, to `mojaloop-cbs-adapter-template`.
 .. Issue the `mvn clean install` command.
 . Run `java -jar client-adapter/target/client-adapter-1.0.0.jar`.
-. To test `POST /sendmoney`, in Postman, issue a `POST /sendmoney` request to where {core-connector} is running locally. +
+. To test `POST /sendmoney`, issue a `POST /sendmoney` request to where {core-connector} is running locally. +
  +
 Remove/set headers as indicated in the `from("direct:postSendmoney")` route in the Apache Camel router.
-. To test `PUT /sendmoney/{transferId}`, in Postman, issue a `PUT /sendmoney/{transferId}` request to where {core-connector} is running locally. +
+. To test `PUT /sendmoney/{transferId}`, issue a `PUT /sendmoney/{transferId}` request to where {core-connector} is running locally. +
  +
 Remove/set headers as indicated in the `from("direct:putSendmoneyById")` route in the Apache Camel router.
 
 === Testing the receiving side
 
-When testing the receiving side, you can use Postman to make a call directly to the {core-connector} of the receiving side. 
+When testing the receiving side, you can use Postman (or some other testing tool, or curl) to make a call directly to the {core-connector} of the receiving side. 
 
 .Testing the receiving side
 image::test_receiving_side.png[]
@@ -33,10 +33,10 @@ The DFSP Core Backend will either be a sandbox environment of the DFSP backend, 
 
 ==== Testing against a sandbox DFSP backend 
 
-To test the receiving side, follow these steps:
+To test the receiving side when you have access to the DFSP backend in the vendor's sandbox environment, follow these steps:
 
 . Build the {core-connector} Maven project:
-.. Change directory to `client-adapter-interface`.
+.. Change directory to the root folder of the {core-connector} project -- taking the generic template as an example, to `mojaloop-cbs-adapter-template`.
 .. Issue the `mvn clean install` command.
 . Run `java -jar client-adapter/target/client-adapter-1.0.0.jar`.
 . In Postman, issue the relevant request (`GET /parties/{idType}/{idValue}`, `POST /quoterequests`, `POST /transfers`) to the DFSP backend running in the sandbox environment:
@@ -50,7 +50,7 @@ To test the receiving side, follow these steps:
 
 ==== Testing against a mock DFSP backend
 
-To test the receiving side, follow these steps:
+To test the receiving side when the DFSP backend is a mock version, follow these steps:
 
 . Make sure you have provided the following value in the `client-adapter/src/main/resources/application.yaml` file: +
 ----
@@ -58,7 +58,7 @@ outbound
 	endpoint: http://localhost:<port-where-mock-DFSP-backend-is-running>
 ----
 . Build the {core-connector} Maven project:
-.. Change directory to `client-adapter-interface`.
+.. Change directory to the root folder of the {core-connector} project -- taking the generic template as an example, to `mojaloop-cbs-adapter-template`.
 .. Issue the `mvn clean install` command.
 . Run `java -jar client-adapter/target/client-adapter-1.0.0.jar`.
 . In Postman, issue the relevant request (`GET /parties/{idType}/{idValue}`, `POST /quoterequests`, `POST /transfers`) to the mock DFSP backend:

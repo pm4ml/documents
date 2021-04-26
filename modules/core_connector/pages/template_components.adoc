@@ -1,8 +1,6 @@
 = Components of a {core-connector} template
 
-The generic {core-connector} template has the following components.
-
-The CBS-vendor-specific templates have a similar setup of components.
+This section gives an overview of the components of https://github.com/modusintegration/mojaloop-cbs-adapter-template[the generic {core-connector} template]. The CBS-vendor-specific templates are not discussed here but they have a similar setup of components so the below information can act as guidance to those too.
 
 == `client-adapter-db` folder
 
@@ -16,7 +14,7 @@ Inside `src/main/resources/`, there is a file called `api.yaml`. This file conta
 
 *Question: Anything else in `src/main/resources/` that we need to talk about?*
 
-The `client-adapter-interface` folder also contains a `pom.xml` configuration file to specify the dependencies and plugins that the `client-adapter-interface` component relies on. For more information on the role and structure of `pom.xml` in Maven projects, see https://maven.apache.org/guides/introduction/introduction-to-the-pom.html[Maven documentation].
+The `client-adapter-interface` folder also contains a `pom.xml` configuration file to specify the dependencies and plugins that the `client-adapter-interface` component relies on.
 
 *Question: Any entries that deserve special attention?*
 
@@ -27,15 +25,17 @@ Contains integration tests. *Question: Anything that deserves special attention?
 It comes with:
 
 * An `src/test` folder, which contains the integration tests and the configuration of the Log4j logging utility.
-* A `pom.xml` configuration file to specify the dependencies and plugins that the `client-adapter-it` component relies on. For more information on the role and structure of `pom.xml` in Maven projects, see https://maven.apache.org/guides/introduction/introduction-to-the-pom.html[Maven documentation].
+* A `pom.xml` configuration file to specify the dependencies and plugins that the `client-adapter-it` component relies on. 
 
 == `client-adapter-rest-mock` folder
 
-*Question: Do we need this? It seems to be Finflux specific?*
+Contains the implementation of a mock CBS backend and REST API, which can be used for testing purposes.
+*Question: Is this OK?*
 
 == `client-adapter-soap-mock` folder
 
-*Question: Do we need this? It seems to be T24 specific?*
+Contains the implementation of a mock CBS backend and SOAP API, which can be used for testing purposes.
+*Question: Is this OK?*
 
 == `client-adapter` folder
 
@@ -53,16 +53,16 @@ It comes with:
 ** `resources/spring/application.xml`: *Question: What is the role of this file?*
 ** `resources/spring/cxf.xml`: *Question: What is the role of this file?*
 ** `resources/spring/mappings.xml`: *Question: What is the role of this file?*
-** `resources/application.xml`: A properties file with values that can be used during testing (the testing environment details must come from the DFSP).
+** `resources/application.xml`: A properties file with values that can be used during testing.
 ** `resources/log4j.xml`: A configuration file for the Log4j logging utility.
 * A `src/test/java/com/modus/client/` folder with tests for the DataSonnet mappings.
-* A `Dockerfile` file: *Question: Why is this needed?*
-* A `pom.xml` configuration file to specify the dependencies and plugins that the `client-adapter` component relies on. For more information on the role and structure of `pom.xml` in Maven projects, see https://maven.apache.org/guides/introduction/introduction-to-the-pom.html[Maven documentation].
-
+* A `Dockerfile` file: *Question: Is this needed? What is it for?*
+* A `pom.xml` configuration file to specify the dependencies and plugins that the `client-adapter` component relies on.
 
 == `.gitlab-ci.yml` file
 
-Contains the CI/CD configuration for **???**
+Contains the CI/CD configuration for building and testing {core-connector}.
+*Question: Is this OK?*
 
 == `Dockerfile` file
 
@@ -78,4 +78,5 @@ Contains the Project Object Model (POM) for the project. The POM is the basic un
 
 == `run.sh` file
 
-*Question: What is the role of this file?*
+A script to run {core-connector}.
+*Question: Is this OK?*

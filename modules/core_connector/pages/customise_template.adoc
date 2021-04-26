@@ -1,17 +1,19 @@
 = Customising a template
 
+NOTE: This section assumes that the reader is using https://github.com/modusintegration/mojaloop-cbs-adapter-template[the generic {core-connector} template]. 
+
 == Core Connector for a Payer DFSP
 
 For a Payer DFSP, the existing template can be used without any changes.
 
-*Question: It appears that https://github.com/modusintegration/mojaloop-cbs-adapter-template does not have Sendmoney.*
+*Question: It appears that https://github.com/modusintegration/mojaloop-cbs-adapter-template does not have Sendmoney. Will it be updated at some point?*
 
 ////
 Leveraging `SendmoneyRouter.java` router class (at `client-adapter/src/main/java/com.modus.client/router`), Core Connector routes messages in the following way in the case of an outgoing transfer request:
 ////
 Leveraging the `ClientAdapterAPI.java` router class (`client-adapter/src/main/java/com/modus/client/router`), {core-connector} routes messages in the following way in the case of an outgoing transfer request:
 
-. Route and translate the backend-specific transfer request into a request that the Mojaloop Connector understands (for example, removing and adding headers as necessary). (Mojaloop Connector then translates that into a Mojaloop-compliant request that the Mojaloop Switch understands.)
+. Route and translate the backend-specific transfer request into a request that the Mojaloop Connector understands (removing and adding headers as necessary). (Mojaloop Connector then translates that into a Mojaloop-compliant request that the Mojaloop Switch understands.)
 . Route and translate the transfer response that comes back from the Mojaloop Connector into a backend-specific message that the DFSP Core Backend understands.
 
 `ClientAdapterAPI.java` defines rules for moving a message:
@@ -21,7 +23,7 @@ Leveraging the `ClientAdapterAPI.java` router class (`client-adapter/src/main/ja
 
 In between the `.from` and `.to` endpoints, processing logic is implemented.
 
-To help put routes into context, the following diagrams show the happy path of a transfer request.
+To help put routes into context, the following diagrams show the happy path of an outgoing transfer request.
 
 .Outgoing transfer (single-stage transfer)
 image::PM4ML_CC_transfer_flow_payer_happy_path.svg[]
@@ -49,6 +51,8 @@ Note that when obtaining Payee party information -- depending on the DFSP's back
 
 In between endpoints, you can remove and set headers as necessary, and implement processing logic (by defining and using custom processors).
 
+To help put routes into context, the following diagrams show the happy path of an incoming transfer request.
+
 .Incoming transfer
 image::PM4ML_transfer_flow_payee_happy_path.svg[]
 
@@ -56,9 +60,9 @@ image::PM4ML_transfer_flow_payee_happy_path.svg[]
 
 Once you have made the necessary changes, build the {core-connector} Maven project, following these steps:
 
-. Change directory to `client-adapter-interface`.
+. Change directory to the root folder of the {core-connector} project -- taking the generic template as an example, to `mojaloop-cbs-adapter-template`.
 . Issue the `mvn clean install` command. +
-Running `mvn clean install` builds all the Java objects that the client adapter interface references, and installs them in the `client-adapter-interface/target` folder.
+Running `mvn clean install` builds all the required Java objects, and installs them in the `client-adapter/target` folder.
 . Run `java -jar client-adapter/target/client-adapter-1.0.0.jar`.
 
 To test your changes, you can do local testing or end-to-end testing as described in xref:testing.adoc[Testing {core-connector}].
