@@ -44,22 +44,14 @@ Content-Type: application/json
 
 The following example shows a response to a `GET /parties/{idType}/{idValue}` request when the Payee is not found (Step 3 in the diagram above).
 
-////
- due to the Payee party not being found
-//// 
-
-////
-*statusCode + message??? 3204: Party not found???*
-////
-
 [source,json]
 ----
 HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "statusCode": "string",
-  "message": "string"
+  "statusCode": "3204",
+  "message": "Party not found"
 }
 ----
 
@@ -143,11 +135,7 @@ Content-Type: application/json
 
 == Example error response to `POST /quoterequests`
 
-The following example shows a response to a `POST /quoterequests` request when the request returns an error (Step 9 in the diagram above).
-
-////
-*statusCode + message???*
-////
+The following example shows a response to a `POST /quoterequests` request when the request returns an error due to a temporary failure (Step 9 in the diagram above).
 
 [source,json]
 ----
@@ -155,8 +143,8 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "statusCode": "string",
-  "message": "string"
+  "statusCode": "2003",
+  "message": "Service currently unavailable"
 }
 ----
 
@@ -235,15 +223,7 @@ Content-Type: application/json
 
 == Example error response to `POST /transfers`
 
-The following example shows a response to a `POST /transfers` request when the request fails in the Payee DFSP (Step 19 in the diagram above).
-
-////
- due to the `transferId` not being found
-//// 
-
-////
-*statusCode + message??? 3208: Transfer ID not found*
-////
+The following example shows a response to a `POST /transfers` request when the request fails in the Payee DFSP (for example, a check to ensure that the customer does not receive money above a certain amount per transfer fails) (Step 19 in the diagram above).
 
 [source,json]
 ----
@@ -251,8 +231,8 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "statusCode": "string",
-  "message": "string"
+  "statusCode": "5200",
+  "message": "Payee limit error"
 }
 ----
 

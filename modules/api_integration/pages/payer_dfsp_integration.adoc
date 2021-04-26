@@ -135,11 +135,7 @@ Content-Type: application/json
 
 === Example error responses to `POST /sendmoney`
 
-The following example shows a response to a `POST /sendmoney` request when the request fails due to the Payee party not being found (Step 4 in the diagram above).
-
-////
-*statusCode + message???*
-////
+The following example shows a response to a `POST /sendmoney` request when the request fails due to the Payee not being found (Step 4 in the diagram above).
 
 [source,json]
 ----
@@ -147,8 +143,10 @@ HTTP/1.1 200 OK
 Content-Type: application/json
  
 {
-  "statusCode": "string",
-  "message": "string",
+  "statusCode": "3204",
+  "message": "Got an error response resolving party: {
+    errorInformation: { errorCode: '3204', errorDescription: 'Party not found' }
+    }",
   "transferState": {
     "transferId": "85feac2f-39b2-491b-817e-4a03203d4f14",
     "homeTransactionId": "53979be2-3bfe-45aa-ade7-92ea4ce4e74e",
@@ -179,7 +177,7 @@ Content-Type: application/json
     "note": "from Antoine",
     "currentState": "ERROR_OCCURRED",
     "lastError": {
-      "httpStatusCode": 0,
+      "httpStatusCode": 500,
       "mojaloopError": {
         "errorInformation": {
           "errorCode": "3204",
@@ -193,18 +191,19 @@ Content-Type: application/json
 
 The following example shows a response to a `POST /sendmoney` request when the request fails due to an internal server error when the quote is being created (Step 8 in the diagram above).
 
-////
-*statusCode + message???*
-////
-
 [source,json]
 ----
 HTTP/1.1 200 OK
 Content-Type: application/json
  
 {
-  "statusCode": "string",
-  "message": "string",
+  "statusCode": "2001",
+  "message": "Got an error response: {
+  errorInformation: {
+  errorCode: '2001',
+  errorDescription: 'Internal server error'
+  }
+  }",
   "transferState": {
     "transferId": "85feac2f-39b2-491b-817e-4a03203d4f14",
     "homeTransactionId": "53979be2-3bfe-45aa-ade7-92ea4ce4e74e",
@@ -235,7 +234,7 @@ Content-Type: application/json
     "note": "from Antoine",
     "currentState": "ERROR_OCCURRED",
     "lastError": {
-      "httpStatusCode": 0,
+      "httpStatusCode": 500,
       "mojaloopError": {
         "errorInformation": {
           "errorCode": "2001",
@@ -251,18 +250,19 @@ The following example shows a response to a `POST /sendmoney` request when the r
 
 include::ROOT:partial$ndc.adoc[]
 
-////
-*statusCode + message???*
-////
-
 [source,json]
 ----
 HTTP/1.1 200 OK
 Content-Type: application/json
  
 {
-  "statusCode": "string",
-  "message": "string",
+  "statusCode": "4001",
+  "message": "Got an error response preparing transfer: {
+  errorInformation: {
+  errorCode: '4001',
+  errorDescription: 'Payer FSP insufficient liquidity'
+  }
+  }",
   "transferState": {
     "transferId": "85feac2f-39b2-491b-817e-4a03203d4f14",
     "homeTransactionId": "53979be2-3bfe-45aa-ade7-92ea4ce4e74e",
@@ -320,7 +320,7 @@ Content-Type: application/json
     },
     "quoteResponseSource": "payeedfsp",
     "lastError": {
-      "httpStatusCode": 0,
+      "httpStatusCode": 500,
       "mojaloopError": {
         "errorInformation": {
           "errorCode": "4001",
@@ -334,18 +334,19 @@ Content-Type: application/json
 
 The following example shows a response to a `POST /sendmoney` request (Step 22 in the diagram above) when the transfer fails expiry validation by the Switch (in Step 16, the Switch validates the fulfilment returned by the Payee DFSP and checks the expiry timestamp on the transfer).
 
-////
-*statusCode + message???*
-////
-
 [source,json]
 ----
 HTTP/1.1 200 OK
 Content-Type: application/json
  
 {
-  "statusCode": "string",
-  "message": "string",
+  "statusCode": "3302",
+  "message": "Got an error response fulfilling transfer: {
+  errorInformation: {
+  errorCode: '3302',
+  errorDescription: 'Quote expired'
+  }
+  }",
   "transferState": {
     "transferId": "85feac2f-39b2-491b-817e-4a03203d4f14",
     "homeTransactionId": "53979be2-3bfe-45aa-ade7-92ea4ce4e74e",
@@ -403,7 +404,7 @@ Content-Type: application/json
     },
     "quoteResponseSource": "payeedfsp",
     "lastError": {
-      "httpStatusCode": 0,
+      "httpStatusCode": 500,
       "mojaloopError": {
         "errorInformation": {
           "errorCode": "3302",
@@ -491,18 +492,16 @@ In the following example (Step 4 in the diagram above):
 * the transfer flow is set to halt after the party lookup stage (`AUTO_ACCEPT_PARTY=false`), and
 * the request fails due to the Payee party not being found
 
-////
-*statusCode + message???*
-////
-
 [source,json]
 ----
 HTTP/1.1 200 OK
 Content-Type: application/json
  
 {
-  "statusCode": "string",
-  "message": "string",
+  "statusCode": "3204",
+  "message": "Got an error response resolving party: {
+    errorInformation: { errorCode: '3204', errorDescription: 'Party not found' }
+    }",
   "transferState": {
     "transferId": "85feac2f-39b2-491b-817e-4a03203d4f14",
     "homeTransactionId": "53979be2-3bfe-45aa-ade7-92ea4ce4e74e",
@@ -533,7 +532,7 @@ Content-Type: application/json
     "note": "from Antoine",
     "currentState": "ERROR_OCCURRED",
     "lastError": {
-      "httpStatusCode": 0,
+      "httpStatusCode": 500,
       "mojaloopError": {
         "errorInformation": {
           "errorCode": "3204",
@@ -544,7 +543,6 @@ Content-Type: application/json
   }
 }
 ----
-
 
 
 === Example `PUT /sendmoney/{transferId}` request
@@ -734,8 +732,13 @@ HTTP/1.1 200 OK
 Content-Type: application/json
  
 {
-  "statusCode": "string",
-  "message": "string",
+  "statusCode": "2001",
+  "message": "Got an error response: {
+  errorInformation: {
+  errorCode: '2001',
+  errorDescription: 'Internal server error'
+  }
+  }",
   "transferState": {
     "transferId": "85feac2f-39b2-491b-817e-4a03203d4f14",
     "homeTransactionId": "53979be2-3bfe-45aa-ade7-92ea4ce4e74e",
@@ -766,7 +769,7 @@ Content-Type: application/json
     "note": "from Antoine",
     "currentState": "ERROR_OCCURRED",
     "lastError": {
-      "httpStatusCode": 0,
+      "httpStatusCode": 500,
       "mojaloopError": {
         "errorInformation": {
           "errorCode": "2001",
@@ -792,8 +795,13 @@ HTTP/1.1 200 OK
 Content-Type: application/json
  
 {
-  "statusCode": "string",
-  "message": "string",
+  "statusCode": "4001",
+  "message": "Got an error response preparing transfer: {
+  errorInformation: {
+  errorCode: '4001',
+  errorDescription: 'Payer FSP insufficient liquidity'
+  }
+  }",
   "transferState": {
     "transferId": "85feac2f-39b2-491b-817e-4a03203d4f14",
     "homeTransactionId": "53979be2-3bfe-45aa-ade7-92ea4ce4e74e",
@@ -851,7 +859,7 @@ Content-Type: application/json
     },
     "quoteResponseSource": "payeedfsp",
     "lastError": {
-      "httpStatusCode": 0,
+      "httpStatusCode": 500,
       "mojaloopError": {
         "errorInformation": {
           "errorCode": "4001",
@@ -865,18 +873,19 @@ Content-Type: application/json
 
 The following example shows a response to a `POST /sendmoney` request (Step 27 in the diagram above) when the transfer fails expiry validation by the Switch (in Step 21, the Switch validates the fulfilment returned by the Payee DFSP and checks the expiry timestamp on the transfer). 
 
-////
-*statusCode + message???*
-////
-
 [source,json]
 ----
 HTTP/1.1 200 OK
 Content-Type: application/json
  
 {
-  "statusCode": "string",
-  "message": "string",
+  "statusCode": "3302",
+  "message": "Got an error response fulfilling transfer: {
+  errorInformation: {
+  errorCode: '3302',
+  errorDescription: 'Quote expired'
+  }
+  }",
   "transferState": {
     "transferId": "85feac2f-39b2-491b-817e-4a03203d4f14",
     "homeTransactionId": "53979be2-3bfe-45aa-ade7-92ea4ce4e74e",
@@ -934,7 +943,7 @@ Content-Type: application/json
     },
     "quoteResponseSource": "payeedfsp",
     "lastError": {
-      "httpStatusCode": 0,
+      "httpStatusCode": 500,
       "mojaloopError": {
         "errorInformation": {
           "errorCode": "3302",
