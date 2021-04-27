@@ -18,7 +18,7 @@ To help implementation efforts, DFSPs are provided with:
 
 * https://github.com/modusintegration/mojaloop-payment-manager-specification/blob/main/mojaloop_payment_manager_API.yaml[The Swagger specification of the {product-name} API]. The {product-name} API is the API that the DFSP Core Backend talks to, leveraging {core-connector}.
 * A generic {core-connector} template https://github.com/modusintegration/mojaloop-cbs-adapter-template[in the *modusintegration* GitHub repository].
-* A {core-connector} template per CBS provider  https://github.com/modusintegration[in the *modusintegration* GitHub repository]. Templates use the following naming convention: `<CBS vendor name>-mojaloop-adapter` or `<CBS vendor name>-client-adapter` +
+* A {core-connector} template per CBS provider https://github.com/modusintegration[in the *modusintegration* GitHub repository]. You can search for a template based on its name. Templates use the following naming convention: `<CBS vendor name>-mojaloop-adapter` or `<CBS vendor name>-client-adapter` +
  +
 Note that in the future, the word `adapter` will no longer be used. Existing repositories will not be renamed but moving forward, new repositories will be using the term `core-connector`.
 * https://github.com/modusintegration/cbs-core-connectors-helm-repo[The Helm chart (per template) that deploys {core-connector}].

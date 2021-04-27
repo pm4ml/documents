@@ -2,7 +2,7 @@
 
 NOTE: This section assumes that the reader is using https://github.com/modusintegration/mojaloop-cbs-adapter-template[the generic {core-connector} template]. 
 
-Inside `client-adapter-interface/src/main/resources/`, there is a file called `api.yaml`. This is the definition of the {product-name} API. Every time the API changes, the change must be made in this `.yaml` file too.
+Inside `client-adapter-interface/src/main/resources/`, there is a file called `api.yaml`. This is the definition of the {product-name} API. Every time https://github.com/modusintegration/mojaloop-payment-manager-specification/blob/main/mojaloop_payment_manager_API.yaml[the original {product-name} API definition] changes, the change must be made in this `.yaml` file too.
 
 == Adding a new endpoint
 

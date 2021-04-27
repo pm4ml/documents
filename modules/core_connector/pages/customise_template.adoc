@@ -1,4 +1,20 @@
-= Customising a template
+= Creating/customising a template
+
+When creating or customising a template, at a high level, you are required to complete these steps:
+
+. Find out if you need to use the generic {core-connector} template or a CBS-vendor-specific one. For guidance, see <<which-template,Which template to use?>>.
+. Find out if the {product-name} API specification is up-to-date (client-adapter-interface/src/main/resources/api.yaml). If it is not up-to-date, perform the steps described in xref:update_template_api_changes.adoc[Updating a template when the {product-name} API changes]. If it is up-to-date, you can move onto the next step.
+. Add a new router or edit an existing router to specify how to move messages between DFSP backend and {core-connector} endpoints (`client-adapter/src/main/java/com/modus/client/router/`).
+. Add a new DataSonnet mapping or edit an existing mapping (`client-adapter/src/main/resources/mappings/`) to specify how to translate/transform messages between the DFSP backend and {core-connector}. If DataSonnet cannot be leveraged to support transformations, use Java classes to add business logic.
+. As a best practice recommendation, create tests for Java code and the DataSonnet transformation business logic. (The specifics of the testing solution and testing strategy are at the discretion of the organisation that develops the template.)
+
+== Which template to use? [[which-template]]
+
+When you start developing a template, check if the CBS vendor already has a template in place. 
+
+When creating a template for a CBS vendor for whom no vendor-specific template exists yet, create a copy of https://github.com/modusintegration/mojaloop-cbs-adapter-template[the generic {core-connector} template] and make changes to that. Name the new template as `<CBS vendor name>-core-connector.`
+
+When working with a CBS vendor who already has an existing template in place in https://github.com/modusintegration[the *modusintegration* GitHub repository], clone the existing template and continue working in that. Note, however, that it is good practice to maintain separate templates for the individual combinations of a vendor and a DFSP. For example, the Mambu template of DFSP A might have to differ from the Mambu template of DFSP B.
 
 NOTE: This section assumes that the reader is using https://github.com/modusintegration/mojaloop-cbs-adapter-template[the generic {core-connector} template]. 
 
@@ -6,7 +22,7 @@ NOTE: This section assumes that the reader is using https://github.com/modusinte
 
 For a Payer DFSP, the existing template can be used without any changes.
 
-*Question: It appears that https://github.com/modusintegration/mojaloop-cbs-adapter-template does not have Sendmoney. Will it be updated at some point?*
+NOTE: At the time of writing, https://github.com/modusintegration/mojaloop-cbs-adapter-template[the generic {core-connector} template] does not have details around the `/sendmoney` endpoint added yet.
 
 ////
 Leveraging `SendmoneyRouter.java` router class (at `client-adapter/src/main/java/com.modus.client/router`), Core Connector routes messages in the following way in the case of an outgoing transfer request:

@@ -8,7 +8,9 @@ NOTE: Readers of this section are advised to have basic familiarity with Kuberne
 
 To deploy {core-connector}, a Helm chart is used. Helm acts as a package manager for Kubernetes, with the Helm chart containing all of the pre-configured resource definitions necessary to run {core-connector} inside a Kubernetes cluster.
 
-All {core-connector} templates have a Helm chart, here: https://github.com/modusintegration/cbs-core-connectors-helm-repo
+All {core-connector} templates have a Helm chart, here: https://github.com/modusintegration/cbs-core-connectors-helm-repo. Note that at the time of writing, this repository is not up-to-date.
+
+{product-name} Helm charts are maintained here: https://github.com/modusintegration/mojaloop-payment-manager-helm
 
 Helm charts are created as files organised into a particular directory tree. The directory name is the name of the chart (without versioning information), for example: `mambu-core-connector`.
 
@@ -86,3 +88,5 @@ When testing against a CBS vendor sandbox environment, `env` > `coreApplicationE
 Installing the {core-connector} Helm chart will deploy {core-connector}. 
 
 Helm charts get installed when running the Infrastructure-as-Code (IaC) deployment process that builds the service components making up the {product-name} infrastructure. 
+
+NOTE: At the time of writing, the IaC code is not up-to-date yet.

@@ -2,40 +2,19 @@
 
 This section gives an overview of the components of https://github.com/modusintegration/mojaloop-cbs-adapter-template[the generic {core-connector} template]. The CBS-vendor-specific templates are not discussed here but they have a similar setup of components so the below information can act as guidance to those too.
 
-== `client-adapter-db` folder
-
-*Question: What is the role of this?*
+When you start developing a template, check if the CBS vendor already has a template in https://github.com/modusintegration[the *modusintegration* GitHub repository] (search on the name of the vendor). When no vendor-specific template exists yet, use the generic {core-connector} template. When working with a CBS vendor who already has an existing template in place, use the existing template as the basis.
 
 == `client-adapter-interface` folder
 
 Inside `src/main/resources/`, there is a file called `api.yaml`. This file contains the definition of the {product-name} API.
 
-*Question: The Swagger does not seem to be up-to-date in `modusintegration/mojaloop-cbs-adapter-template`*
+NOTE: At the time of writing, the `api.yaml` Swagger file of https://github.com/modusintegration/mojaloop-cbs-adapter-template[the generic {core-connector} template] is not up-to-date.
 
 *Question: Anything else in `src/main/resources/` that we need to talk about?*
 
 The `client-adapter-interface` folder also contains a `pom.xml` configuration file to specify the dependencies and plugins that the `client-adapter-interface` component relies on.
 
-*Question: Any entries that deserve special attention?*
-
-== `client-adapter-it` folder
-
-Contains integration tests. *Question: Anything that deserves special attention?*
-
-It comes with:
-
-* An `src/test` folder, which contains the integration tests and the configuration of the Log4j logging utility.
-* A `pom.xml` configuration file to specify the dependencies and plugins that the `client-adapter-it` component relies on. 
-
-== `client-adapter-rest-mock` folder
-
-Contains the implementation of a mock CBS backend and REST API, which can be used for testing purposes.
-*Question: Is this OK?*
-
-== `client-adapter-soap-mock` folder
-
-Contains the implementation of a mock CBS backend and SOAP API, which can be used for testing purposes.
-*Question: Is this OK?*
+*Question: Any entries in `pom.xml` that deserve special attention?*
 
 == `client-adapter` folder
 
@@ -58,6 +37,29 @@ It comes with:
 * A `src/test/java/com/modus/client/` folder with tests for the DataSonnet mappings.
 * A `Dockerfile` file: *Question: Is this needed? What is it for?*
 * A `pom.xml` configuration file to specify the dependencies and plugins that the `client-adapter` component relies on.
+
+== `client-adapter-db` folder
+
+Contains the routers, processors, and beans required to translate and route messages from the DFSP backend to {core-connector} (and the other way around) when the DFSP's backend uses database-based procedural calls (as opposed to API calls) for integrating with external systems.
+
+== `client-adapter-it` folder
+
+Contains integration tests. *Question: Anything that deserves special attention?*
+
+It comes with:
+
+* An `src/test` folder, which contains the integration tests and the configuration of the Log4j logging utility.
+* A `pom.xml` configuration file to specify the dependencies and plugins that the `client-adapter-it` component relies on. 
+
+== `client-adapter-rest-mock` folder
+
+Contains the implementation of a mock CBS backend and REST API, which can be used for testing purposes.
+*Question: Is this OK?*
+
+== `client-adapter-soap-mock` folder
+
+Contains the implementation of a mock CBS backend and SOAP API, which can be used for testing purposes.
+*Question: Is this OK?*
 
 == `.gitlab-ci.yml` file
 
