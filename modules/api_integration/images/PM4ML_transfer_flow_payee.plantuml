@@ -19,7 +19,7 @@ participant "DFSP Core Backend" as backend
     sw -> sib: GET /parties/{type}/{id}
     sib -> backend: GET /parties/{idType}/{idValue} (sync)
     alt Payee not found
-    backend -> sib: Return error \n HTTP 200 result (sync)
+    backend -> sib: Return error (sync)
     sib -> sw: PUT /parties/{type}/{id}/error
     else Payee found
     backend -> sib: Return Payee info \n HTTP 200 result (sync)
@@ -28,7 +28,7 @@ participant "DFSP Core Backend" as backend
     sw -> sib: POST /quotes
     sib -> backend: POST /quoterequests (sync)
     alt Quote request fails
-    backend -> sib: Return error \n HTTP 200 result (sync)
+    backend -> sib: Return error (sync)
     sib -> sw: PUT /quotes/{id}/error
     else Quote request is successful
     backend -> sib: Return quote \n HTTP 200 result (sync)
@@ -41,7 +41,7 @@ participant "DFSP Core Backend" as backend
     backend -> backend: Perform internal checks
     alt Transfer fails Payee DFSP internal check
     backend -> backend: Cancel reserved funds
-    backend -> sib: Return error \n HTTP 200 result (sync)
+    backend -> sib: Return error (sync)
     sib -> sw: PUT /transfers/{id}/error
     else Transfer fails validation by Switch
     backend -> backend: Reserve funds

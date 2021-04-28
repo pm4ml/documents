@@ -44,9 +44,13 @@ Content-Type: application/json
 
 The following example shows a response to a `GET /parties/{idType}/{idValue}` request when the Payee is not found (Step 3 in the diagram above).
 
+include::ROOT:partial$note_http_error_code.adoc[]
+
+include::ROOT:partial$note_mojaloop_errors.adoc[]
+
 [source,json]
 ----
-HTTP/1.1 200 OK
+HTTP/1.1 500 Internal Server Error
 Content-Type: application/json
 
 {
@@ -137,9 +141,13 @@ Content-Type: application/json
 
 The following example shows a response to a `POST /quoterequests` request when the request returns an error due to a temporary failure (Step 9 in the diagram above).
 
+include::ROOT:partial$note_http_error_code.adoc[]
+
+include::ROOT:partial$note_mojaloop_errors.adoc[]
+
 [source,json]
 ----
-HTTP/1.1 200 OK
+HTTP/1.1 500 Internal Server Error
 Content-Type: application/json
 
 {
@@ -225,9 +233,13 @@ Content-Type: application/json
 
 The following example shows a response to a `POST /transfers` request when the request fails in the Payee DFSP (for example, a check to ensure that the customer does not receive money above a certain amount per transfer fails) (Step 19 in the diagram above).
 
+include::ROOT:partial$note_http_error_code.adoc[]
+
+include::ROOT:partial$note_mojaloop_errors.adoc[]
+
 [source,json]
 ----
-HTTP/1.1 200 OK
+HTTP/1.1 500 Internal Server Error
 Content-Type: application/json
 
 {

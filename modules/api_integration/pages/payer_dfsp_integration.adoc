@@ -137,9 +137,11 @@ Content-Type: application/json
 
 The following example shows a response to a `POST /sendmoney` request when the request fails due to the Payee not being found (Step 4 in the diagram above).
 
+include::ROOT:partial$note_mojaloop_errors.adoc[]
+
 [source,json]
 ----
-HTTP/1.1 200 OK
+HTTP/1.1 500 Internal Server Error
 Content-Type: application/json
  
 {
@@ -193,7 +195,7 @@ The following example shows a response to a `POST /sendmoney` request when the r
 
 [source,json]
 ----
-HTTP/1.1 200 OK
+HTTP/1.1 500 Internal Server Error
 Content-Type: application/json
  
 {
@@ -252,7 +254,7 @@ include::ROOT:partial$ndc.adoc[]
 
 [source,json]
 ----
-HTTP/1.1 200 OK
+HTTP/1.1 500 Internal Server Error
 Content-Type: application/json
  
 {
@@ -336,7 +338,7 @@ The following example shows a response to a `POST /sendmoney` request (Step 22 i
 
 [source,json]
 ----
-HTTP/1.1 200 OK
+HTTP/1.1 500 Internal Server Error
 Content-Type: application/json
  
 {
@@ -492,9 +494,11 @@ In the following example (Step 4 in the diagram above):
 * the transfer flow is set to halt after the party lookup stage (`AUTO_ACCEPT_PARTY=false`), and
 * the request fails due to the Payee party not being found
 
+include::ROOT:partial$note_mojaloop_errors.adoc[]
+
 [source,json]
 ----
-HTTP/1.1 200 OK
+HTTP/1.1 500 Internal Server Error
 Content-Type: application/json
  
 {
@@ -722,13 +726,15 @@ Content-Type: application/json
 
 The following example shows a response to a `PUT /sendmoney/{transferId}` (`"acceptParty": true`) request when the request fails due to the quote request failing (Step 11 in the diagram above).
 
+include::ROOT:partial$note_mojaloop_errors.adoc[]
+
 ////
 *statusCode + message???*
 ////
 
 [source,json]
 ----
-HTTP/1.1 200 OK
+HTTP/1.1 500 Internal Server Error
 Content-Type: application/json
  
 {
@@ -791,7 +797,7 @@ include::ROOT:partial$ndc.adoc[]
 
 [source,json]
 ----
-HTTP/1.1 200 OK
+HTTP/1.1 500 Internal Server Error
 Content-Type: application/json
  
 {
@@ -875,7 +881,7 @@ The following example shows a response to a `POST /sendmoney` request (Step 27 i
 
 [source,json]
 ----
-HTTP/1.1 200 OK
+HTTP/1.1 500 Internal Server Error
 Content-Type: application/json
  
 {
