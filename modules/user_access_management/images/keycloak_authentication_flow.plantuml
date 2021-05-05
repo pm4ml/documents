@@ -1,0 +1,31 @@
+@startuml
+
+autonumber
+skinparam activityFontSize 4
+skinparam activityDiamondFontSize 30
+skinparam activityArrowFontSize 24
+skinparam defaultFontSize 24
+skinparam noteFontSize 24
+skinparam monochrome true
+
+actor "DFSP User" as user
+participant "Payment Manager \n accessed via browser" as browser
+participant "Experience API" as api
+participant "KeyCloak" as keycloak
+
+user -> browser: Access Payment Manager
+browser -> api: Make authentication request
+api -> api: Check if user already has a session \n with authentication tokens \n >> User is not logged in yet
+api -> browser: Redirect user's request to KeyCloak sign-in page
+user -> keycloak: Sign in to Payment Manager on KeyCloak sign-in page
+keycloak -> keycloak: Verify user's credentials
+keycloak -> api: Redirect browser to Experience API \n pass Authorization Code
+api -> keycloak: Present Authorization Code to request tokens
+keycloak -> api: Provide ID Token and Access Token
+api -> keycloak: Request user information (using ID Token)
+keycloak -> api: Return user information
+user -> browser: Interact with Payment Manager
+browser -> api: 
+api -> api: Look up user's roles and allow/deny user action
+
+@enduml

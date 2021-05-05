@@ -1,0 +1,19 @@
+= User authentication
+
+The following sequence flow describes the user authentication process.
+
+. When the user accesses {product-name} and the browser loads, it makes an authentication request to the Experience API.
+. The Experience API notices that the user is not logged in (because the user does not have a session with any authentication tokens) and redirects the request to a Keycloak sign-in page. 
+//The Experience API is passing some data to Keycloak in the request. It (Experience API or Keycloak?) keeps a record of a little secret token.
+. On the Keycloak sign-in page, the user enters their credentials and logs in to {product-name}.
+. Keycloak verifies the user's credentials. When it succeeds, Keycloak redirects the browser back to the Experience API service and passes an Authorization Code in its response.
+. The Experience API presents the Authorization Code to Keycloak to verify if Keycloak has indeed just authenticated that user and to request tokens.
+. If the Authorization Code matches the code that Keycloak gave to the browser, then Keycloak gives the Experience API back an ID Token and an Access Token. +
+ +
+All access tokens are stored and cached by the Experience API. Access tokens have an expiry time and on every request, Experience API checks to see if the access token has expired. If the token has expired, the Experience API does a handshake with Keycloak to refresh the token. +
+ +
+In *Keycloak > Realm Settings* (left-hand side navigation pane) *> Token tab* (right-hand side pane), you can set up how you want the refresh to happen, how long the session can live or be idle.
+. The Experience API can use the ID Token to send a request for user information to Keycloak, and Keycloak will return a set of what is called Claims (data about the user such as username).
+. The Experience API looks up from the session the roles that the user has and it will decide based on that whether or not to allow any further action.
+
+For in-depth details on the OpenID Connect authentication flow, see https://openid.net/specs/openid-connect-core-1_0.html[OpenID Connect Core documentation]. *Question: Is this the right doc to reference?*

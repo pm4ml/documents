@@ -8,4 +8,5 @@ nav:
 - modules/connection_wizard/nav.adoc
 - modules/transfers_overview/nav.adoc
 - modules/technical_dashboard/nav.adoc
+- modules/user_access_management/nav.adoc
 #- modules/mojaloop_connector/nav.adoc
