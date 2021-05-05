@@ -80,9 +80,9 @@ Roles identify a type or category of user. The {product-name} realm comes with t
 The logic of the roles is created in {product-name}, through https://github.com/modusintegration/mojaloop-payment-manager-experience-api[the Experience API]:
 
 * In `src`, there is a file called `rolePermissionMap.json`. The configuration defined in this file maps Keycloak roles to internal {product-name} permissions.
-* In `src`, there is a file called `handler.js`, where you can define what action can or cannot be performed if a user has or does not have a particular permission.
+* In `src`, there is a file called `handler.js`, where you can define what action can or cannot be performed if a user has or does not have a particular {product-name} permission.
 
-You can define roles and the permissions within them and how those relate to the functions that you can perform via the Experience API, allowing for flexible roles and permissions handling.
+You can define roles and the permissions within them and how those relate to the functions that a user can perform via the Experience API, allowing for flexible roles and permissions handling.
 
 In addition to allowing or denying access to a particular function, you can also do filtering based on roles. Take the following example. Let's suppose that a DFSP wants one of their Support staff to only be able to search for transfers that are errors. It is possible to make a new role just for that DFSP in their Keycloak, and map that role to the respective permissions.
 
@@ -176,11 +176,27 @@ The https://www.keycloak.org/docs/latest/server_admin/index.html#authentication[
 
 By default, {product-name} comes with two-factor authentication set. This setting is configured via the *Flows* tab > *Browser - Conditional OTP* option, which must be set to *REQUIRED* for two-factor authentication to take place on user login.
 
-To ensure Google Authenticator based two-factor authentication is supported, on the *OTP Policy* tab, leave *OTP Hash Algorithm* as **SHA1**.
+NOTE: To ensure Google Authenticator based two-factor authentication is supported, on the *OTP Policy* tab, leave *OTP Hash Algorithm* as **SHA1**.
+
+=== Required actions
+
+You can choose to require the user to perform certain actions before they are allowed to log in. These actions are called required actions. Once a required action is completed, the user will not have to perform the action again. 
+
+For detailed information on required actions, see section https://www.keycloak.org/docs/latest/server_admin/index.html#required-actions[Required Actions] in the *_Keycloak Server Administration Guide_*.
 
 === Password policy
 
+To set a password policy, go to the *Password Policy* tab and click *Add policy...* on the right-hand side. The drop-down menu has all the aspects of a password policcy that you can control (for example, expiry, minimum length, use of special characters, and so on). Click any of the options to start configuring details.
 
+For detailed information on password policies, see section https://www.keycloak.org/docs/latest/server_admin/index.html#_password-policies[Password Policies] in the *_Keycloak Server Administration Guide_*.
+
+=== OTP policy
+
+To configure details of the policy for how OTPs are validated, go to the *OTP Policy* tab.
+
+NOTE: To ensure Google Authenticator based two-factor authentication is supported, on the *OTP Policy* tab, leave *OTP Hash Algorithm* as **SHA1**.
+
+For detailed information on OTP policies, see section https://www.keycloak.org/docs/latest/server_admin/index.html#otp-policies[OTP Policies] in the *_Keycloak Server Administration Guide_*.
 
 == Sessions
 
@@ -191,3 +207,16 @@ The *Sessions* menu allows you to view all active {product-name} sessions:
 
 *<screenshot>*
 
+== User Federation
+
+When {product-name} is deployed on-premise, the DFSP might have a Microsoft network that uses Active Directory (AD) for user management. Choosing the *kerberos* option from the *Add provider...* drop-down list on the *User Federation* page, the DFSP can tell Keycloak to use the DFSP's Active Directory database, and Keycloak will treat users in the AD database as if they belonged to the Keycloak database as well. Every time there is a login request, Keycloak forwards the request to the AD database. 
+
+Similarly, if the DFSP has an LDAP user database, it is possible to link up Keycloak with that database, using the *ldap* option.
+
+For further information, see section https://www.keycloak.org/docs/latest/server_admin/index.html#_user-storage-federation[User Storage Federation] in the *_Keycloak Server Administration Guide_*.
+
+== Identity Providers
+
+It is possible to set up {product-name} in such a way that users can authenticate with external OpenID Connect or SAML Identity Providers. For example, {product-name} users could log in to {product-name} using their Google account. You can configure that via the *Identity Providers* menu on the left-hand side.
+
+For detailed information, see section https://www.keycloak.org/docs/latest/server_admin/index.html#_identity_broker[Identity Brokering] in the *_Keycloak Server Administration Guide_*.
