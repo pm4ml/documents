@@ -1,0 +1,113 @@
+= Getting started with Keycloak
+
+== Admin Console
+
+The Admin Console is the Keycloak user interface that enables administrators to manage user accounts and access to {product-name}. 
+
+As an administrator of {product-name} user accounts, you need the following:
+
+* An admin account to the Admin Console. +
+This is created by the Infrastructure team deploying {product-name}. The admin account must be set up so that it has permissions to manage only the relevant realm. 
+* The URL to the Admin Console. +
+This is also provided by the Infrastructure team.
+* VPN access to the Admin Console.
+
+NOTE: In the case of a cloud deployment, VPN access can be requested through the https://support.modusbox.com[{company-name} Enterprise Support portal].
+
+For further information on the Admin Console, see section https://www.keycloak.org/docs/latest/server_admin/index.html#admin-console[Admin Console] in the *Keycloak Server Administration Guide*.
+
+== Prerequisites
+
+To be able to add user accounts to manage access to {product-name}, the {product-name} application itself must be set up in Keycloak first:
+
+. A realm or realms must be configured.
+. The {product-name} user interface must be registered as a client of Keycloak.
+
+This section provides details about these two prerequisites.
+
+=== Realms
+
+In the case of an on-premise deployment, {product-name} comes with an out-of-the-box *Pm4ml* realm (**Pm4ml** stands for {product-name} for Mojaloop). A realm can be thought of as an isolated domain, in this case, that domain is the {product-name} application. Anything within the *Pm4ml* realm relates to the {product-name} instance.
+
+In the case of a SaaS cloud deployment, there can be a single Keycloak instance with one realm created for each DFSP. Alternatively, there can be one realm for all DFSPs, with access to the various {product-name} instances within that realm being tightly controlled. It is up to the Hub Operator to decide on the most suitable strategy.
+*Question: Does this paragraph sound OK?*
+
+The *Pm4ml* realm has some pre-configured settings. You can find these settings under the *Realm Settings* menu item, displayed in the left-hand navigation pane. On clicking *Realm Settings*, various tabs are displayed in the right-hand pane. 
+
+.Realms
+image::keycloak_realm.png[]
+
+Some of the key settings on the *General* and *Login* tabs are highlighted in the table below.
+
+TIP: Click the links in the table to find out further details about the individual settings.
+
+.Realm Settings
+[width="100%",options="header", cols="2,5"]
+|====================
+| Tab |  Setting
+| *General* |  *Name:* This is the name of the *Pm4ml* realm.
+|  |  *Enabled: ON* +
+ +
+This is required because a realm can only be accessed if it is enabled.
+|  | *Display name:* Payment Manager for Mojaloop +
+ +
+The name specified here is the name that is displayed on the Keycloak sign-in page when the user logs in to {product-name}.
+|  |  *User-Managed Access: OFF*
+|  |  *Endpoints:* *OpenID Endpoint Configuration* and *SAML 2.0 Identity Provider Metadata*
+| **Login** | *User registration: OFF* +
+ +
+This is required so that {product-name} users are not able to create an account for themselves, and user accounts are always created by an admin person.
+|  | *Edit username: OFF*
+|  | https://www.keycloak.org/docs/latest/server_admin/index.html#forgot-password[*Forgot password: ON*] +
+ +
+When enabled, users are able to reset their credentials if they forget their password or lose their OTP generator. 
+|  | https://www.keycloak.org/docs/latest/server_admin/index.html#remember-me[*Remember Me: OFF*] +
+ +
+When disabled, if a logged-in user closes their browser, their session is destroyed and they will have to log in again.
+|  | *Verify email: OFF* +
+ +
+When disabled, the user will not get a verification email on registering the user.
+|  | *Login with email: ON* +
+ +
+When enabled, the user can log in using their email address.
+|  | https://www.keycloak.org/docs/latest/server_admin/index.html#_ssl_modes[**Require SSL: external requests**] +
+ +
+Keycloak requires a secure connection when accessing {product-name} from a non-private IP address.
+|====================
+
+////
+.Keycloak's {product-name} login page with display name
+image::keycloak_pm4ml_login_page.png[]
+////
+
+For further information on realm settings, see https://www.keycloak.org/docs/latest/server_admin/index.html#_ssl_modes[Keycloak documentation].
+
+=== Clients
+
+Clients in Keycloak are entities that can request the authentication of a user. The {product-name} application is one such entity, which has to be registered to the {product-name} realm.
+
+The {product-name} user interface (**pm4ml-customer-ui**) is registered as a client to the {product-name} realm by default. 
+
+*Question: How about clients other than the ui?*
+
+.Clients
+image::keycloak_clients.png[]
+
+On clicking **pm4ml-customer-ui**, the settings associated with it are displayed. Some key settings are highlighted below.
+
+.Clients
+[width="100%",options="header", cols="2,5"]
+|====================
+| Tab |  Setting
+| *Settings* | *Root URL:* Specifies the URL where the {product-name} user interface is accessible to users of {product-name}.
+| *Credentials* | *Client Athenticator: Client id and Secret* +
+ +
+This setting is required so that the {product-name} Experience API can identify itself securely to Keycloak. The secret is automatically generated, and the *Regenerate Secret* button allows you to recreate this secret if you want to or need to. +
+ +
+*NOTE:* You get a new client secret every time you restart Keycloak (Keycloak refreshes all its keys if the database that holds the keys loses its state).
+|====================
+
+.Client settings
+image::keycloak_pm4ml_ui_client_settings.png[]
+
+For further information on client settings, see section https://www.keycloak.org/docs/latest/server_admin/index.html#_clients[Clients] in the *Keycloak Server Administration Guide*.
