@@ -11,21 +11,35 @@ skinparam monochrome true
 actor "DFSP User" as user
 participant "Payment Manager \n accessed via browser" as browser
 participant "Experience API" as api
-participant "KeyCloak" as keycloak
+participant "Keycloak" as keycloak
 
 user -> browser: Access Payment Manager
-browser -> api: Make authentication request
-api -> api: Check if user already has a session \n with authentication tokens \n >> User is not logged in yet
-api -> browser: Redirect user's request to KeyCloak sign-in page
-user -> keycloak: Sign in to Payment Manager on KeyCloak sign-in page
-keycloak -> keycloak: Verify user's credentials
-keycloak -> api: Redirect browser to Experience API \n pass Authorization Code
-api -> keycloak: Present Authorization Code to request tokens
-keycloak -> api: Provide ID Token and Access Token
-api -> keycloak: Request user information (using ID Token)
+browser -> api: Request user information
+api -> api: Check if user already has a session \n with a valid access token
+alt Access token is valid
+api -> keycloak: Request user information (using ID token)
 keycloak -> api: Return user information
+api -> browser: Return user information
+browser -> user: Display Payment Manager homepage
+else No access token or access token is not valid
+api -> browser: Redirect request to sign-in page
+browser -> user: Display sign-in page
+user -> browser: Sign in to Payment Manager
+browser -> api: Send authentication request
+api -> keycloak: Send authentication request
+keycloak -> keycloak: Verify user's credentials
+keycloak -> api: Pass authorization code
+api -> keycloak: Present authorization code to request tokens
+keycloak -> api: Provide ID token and access token
+api -> keycloak: Request user information (using ID token)
+keycloak -> api: Return user information
+api -> browser: Return user information
+browser -> user: Display Payment Manager homepage
+end
 user -> browser: Interact with Payment Manager
-browser -> api: 
-api -> api: Look up user's roles and allow/deny user action
+browser -> api: Send user's action request 
+api -> api: Look up user's roles and permissions \n and allow/deny user action
+api -> browser: Allow/deny user action
+browser -> user: Display requested page or \n message about missing permission
 
 @enduml
