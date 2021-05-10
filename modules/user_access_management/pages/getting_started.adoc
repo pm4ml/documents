@@ -73,6 +73,7 @@ When enabled, the user can log in using their email address.
 |  | https://www.keycloak.org/docs/latest/server_admin/index.html#_ssl_modes[**Require SSL: external requests**] +
  +
 Keycloak requires a secure connection when accessing {product-name} from a non-private IP address.
+| *Token* | The settings on this tab enable you to configure how you want the refresh of xref:user_authentication.adoc[access tokens] to happen, how long a session can be live or idle, and so on.
 |====================
 
 ////

@@ -17,9 +17,7 @@ image::keycloak_authentication_flow.svg[]
 | 15 | The Experience API presents the authorization code to Keycloak to verify if Keycloak has indeed just authenticated that user and to request tokens. 
 | 16 |  If the authorization code matches the code that Keycloak gave to the browser, then Keycloak gives the Experience API back an ID token and an access token. +
  +
-Access tokens are stored and cached by the Experience API. Access tokens have an expiry time and on every request, the Experience API checks to see if the access token has expired. If the token has expired, the Experience API does a handshake with Keycloak to refresh the token. +
- +
-(In *Keycloak > Realm Settings* (left-hand side navigation pane) *> Token tab* (right-hand side pane), you can set up how you want the refresh to happen, how long the session can be live or idle, and so on.)
+Access tokens are stored and cached by the Experience API. Access tokens have an expiry time and on every request, the Experience API checks to see if the access token has expired. If the token has expired, the Experience API does a handshake with Keycloak to refresh the token.
 | 17-19 |  The Experience API can use the ID token to send a request for user information to Keycloak, and Keycloak will return a set of what is called "claims" (data about the user such as username).
 | 20-22 | The browser displays the homepage of {product-name} and the user starts interacting with {product-name}.
 | 23-25 |  The Experience API looks up from the session the roles that the user has and it will decide based on that what action to allow to the user.

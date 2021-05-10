@@ -6,7 +6,7 @@
 * assigning roles to users or mapping roles from an existing user database to roles created in {product-name}
 * group membership definition
 * setting up an authentication method for users
-* password policy management and password storage *Question: Is "storage" true?*
+* policy management for passwords and one-time passcodes
 * account recovery and user credentials management
 
 {product-name} leverages the https://www.keycloak.org/[Keycloak] identity provider and implements the https://openid.net/connect/[OpenID Connect] authentication protocol. OpenID Connect is an identity layer on top of the OAuth 2.0 protocol, which enables applications to authenticate end users and obtain information about them. 
