@@ -24,15 +24,15 @@ participant "Mojaloop Switch" as sw
     cc -> sob: POST /transfers (sync)
     sob -> sw: GET /parties/{type}/{id}
     sw -> sob: PUT /parties/{type}/{id}
-    sob -> cc: Return party info \n HTTP 200 result (sync)
-    cc -> backend: Return party info \n HTTP 200 result (sync) 
+    sob -> cc: Response to POST /transfers \n (contains party info + transferId) \n HTTP 200 result (sync)
+    cc -> backend: Response to POST /sendmoney \n (contains party info + transferId) \n HTTP 200 result (sync) 
     backend -> cc: PUT /sendmoney/{transferId} (sync) \n ("acceptParty": true)
     cc -> sob: PUT /transfers/{transferId} (sync) \n ("acceptParty": true)
     sob -> sw: POST /quotes
     sw -> sob: PUT /quotes/{id}
     sob -> sob: Check quote rules
-    sob -> cc: Return quote \n HTTP 200 result (sync)
-    cc -> backend: Return quote \n HTTP 200 result (sync)
+    sob -> cc: Response to PUT /transfers/{transferId} \n (contains quote) \n HTTP 200 result (sync)
+    cc -> backend: Response PUT /sendmoney/{transferId} \n (contains quote) \n HTTP 200 result (sync)
     backend -> cc: PUT /sendmoney/{transferId} (sync) \n ("acceptQuote": true)
     cc -> sob: PUT /transfers/{transferId} (sync) \n ("acceptQuote": true)
     sob -> sw: POST /transfers
@@ -41,7 +41,7 @@ participant "Mojaloop Switch" as sw
     sw -> sw: Perform validation
     sw -> sw: Commit funds
     sw -> sob: PUT /transfers/{id} \n transferState=COMMITTED
-    sob -> cc: Transfer successful \n HTTP 200 result (sync)
-    cc -> backend: Transfer successful \n HTTP 200 result (sync)
+    sob -> cc: Response to PUT /transfers/{transferId} \n Transfer successful \n HTTP 200 result (sync)
+    cc -> backend: Response PUT /sendmoney/{transferId} \n Transfer successful \n HTTP 200 result (sync)
 
 @enduml

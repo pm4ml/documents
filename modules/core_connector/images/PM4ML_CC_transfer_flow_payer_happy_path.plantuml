@@ -33,7 +33,7 @@ participant "Mojaloop Switch" as sw
     sw -> sw: Perform validation
     sw -> sw: Commit funds
     sw -> sob: PUT /transfers/{id} \n transferState=COMMITTED
-    sob -> cc: Transfer successful \n HTTP 200 result (sync)
-    cc -> backend: Transfer successful \n HTTP 200 result (sync)
+    sob -> cc: Response to POST /transfers \n Transfer successful \n HTTP 200 result (sync)
+    cc -> backend: Response to POST /sendmoney \n Transfer successful \n HTTP 200 result (sync)
 
 @enduml

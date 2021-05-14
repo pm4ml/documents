@@ -21,25 +21,25 @@ participant "DFSP Core Backend" as backend
 
     sw -> sib: GET /parties/{type}/{id}
     sib -> cc: GET /parties/{idType}/{idValue} (sync)
-    cc -> backend: GET /parties/{idType}/{idValue} (sync)
+    cc -> backend: Look up Payee (sync)
     backend -> cc: Return Payee info \n HTTP 200 result (sync)
-    cc -> sib: Return Payee info \n HTTP 200 result (sync)
+    cc -> sib: Response to GET /parties/{idType}/{idValue} \n (contains Payee info) \n HTTP 200 result (sync)
     sib -> sw: PUT /parties/{type}/{id}
     sw -> sib: POST /quotes
     sib -> cc: POST /quoterequests (sync)
-    cc -> backend: POST /quoterequests (sync)
+    cc -> backend: Prompt for quote (sync)
     backend -> cc: Return quote \n HTTP 200 result (sync)
-    cc -> sib: Return quote \n HTTP 200 result (sync)
+    cc -> sib: Response to POST /quoterequests \n (contains quote) \n HTTP 200 result (sync)
     sib -> sw: PUT /quotes/{id}
     sw -> sw: Perform (NDC) liquidity check
     sw -> sw: Reserve funds
     sw -> sib: POST /transfers
     sib -> cc: POST /transfers (sync)
-    cc -> backend: Process transfer \n POST /transfers (sync)
+    cc -> backend: Process transfer
     backend -> backend: Perform internal checks
     backend -> backend: Reserve funds
     backend -> cc: Transfer successful \n HTTP 200 result (sync)
-    cc -> sib: Transfer successful \n HTTP 200 result (sync)
+    cc -> sib: Response to POST /transfers \n Transfer successful \n HTTP 200 result (sync)
     sib -> sw: PUT /transfers/{id} \n transferState=RESERVED
     sw -> sw: Perform validation
     sw -> sw: Commit funds
