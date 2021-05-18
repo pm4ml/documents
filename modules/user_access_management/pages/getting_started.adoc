@@ -30,7 +30,6 @@ This section provides details about these two prerequisites.
 In the case of an on-premise deployment, {product-name} comes with an out-of-the-box *Pm4ml* realm (**Pm4ml** stands for {product-name} for Mojaloop). A realm can be thought of as an isolated domain, in this case, that domain is the {product-name} application. Anything within the *Pm4ml* realm relates to the {product-name} instance.
 
 In the case of a SaaS cloud deployment, there can be a single Keycloak instance with one realm created for each DFSP. Alternatively, there can be one realm for all DFSPs, with access to the various {product-name} instances within that realm being tightly controlled. It is up to the Hub Operator to decide on the most suitable strategy.
-*Question: Does this paragraph sound OK?*
 
 The *Pm4ml* realm has some pre-configured settings. You can find these settings under the *Realm Settings* menu item, displayed in the left-hand navigation pane. On clicking *Realm Settings*, various tabs are displayed in the right-hand pane. 
 
@@ -52,12 +51,16 @@ This is required because a realm can only be accessed if it is enabled.
 |  | *Display name:* Payment Manager for Mojaloop +
  +
 The name specified here is the name that is displayed on the Keycloak sign-in page when the user logs in to {product-name}.
-|  |  *User-Managed Access: OFF*
+|  |  *User-Managed Access: OFF* +
+ +
+If this is set to **ON**, users can manage access to protected resources. For further details, see section https://www.keycloak.org/docs/latest/authorization_services/#_service_user_managed_access[User-Managed Access] in the **Keycloak Authorization Services Guide**.
 |  |  *Endpoints:* *OpenID Endpoint Configuration* and *SAML 2.0 Identity Provider Metadata*
 | **Login** | *User registration: OFF* +
  +
 This is required so that {product-name} users are not able to create an account for themselves, and user accounts are always created by an admin person.
-|  | *Edit username: OFF*
+|  | *Edit username: OFF* +
+ +
+If this is set to **OFF**, the user's username is not allowed to be updated.
 |  | https://www.keycloak.org/docs/latest/server_admin/index.html#forgot-password[*Forgot password: ON*] +
  +
 When enabled, users are able to reset their credentials if they forget their password or lose their OTP generator. 

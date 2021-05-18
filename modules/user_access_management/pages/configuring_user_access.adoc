@@ -22,6 +22,8 @@ The *Add user* page comes up. +
 image:keycloak_add_users.png[]
 . Fill in the following fields:
 
+NOTE: The *ID* field is disabled and will get populated on clicking **Save**.
+
 * *Username*
 * *Email*
 * *First Name*
@@ -82,12 +84,12 @@ image::keycloak_roles.png[]
 
 It is possible to define additional roles through the *Add Role* button.
 
-The permissions within roles and how those relate to the functions that a user can perform via the Experience API are created in {product-name}, in the Experience API:
+The permissions within roles and how those relate to the functions that a user can perform via the Experience API are not created automatically. They must be configured manually in {product-name}, in the Experience API:
 
 * `src/rolePermissionMap.json` maps Keycloak roles to internal {product-name} permissions.
 * `src/handler.js` allows you to define what action can or cannot be performed if a user has or does not have a particular {product-name} permission.
 
-In addition to allowing or denying access to a particular function, you can also do filtering based on roles. Take the following example. Let's suppose that a DFSP wants one of their Support staff to only be able to search for transfers that are errors. It is possible to make a new role just for that DFSP in their Keycloak, and map that role to the respective permissions.
+In addition to allowing or denying access to a particular function, you can also do filtering based on roles. Take the following example. Let's suppose that a DFSP wants one of their Support staff to only be able to search for transfers that are errors. It is possible to make a new role just for that DFSP in their Keycloak, and map that role to the respective permissions in the Experience API.
 
 == Configuring authentication
 

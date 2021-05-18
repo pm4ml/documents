@@ -18,6 +18,4 @@ image::payment_manager_architecture_keycloak.png[]
 
 When there is an existing OAuth 2.0 or OpenID Connect compliant identity service that the Digital Financial Services Provider (DFSP) already has, then that is used in place of Keycloak. Otherwise, the identity provider is Keycloak.
 
-In the case of an on-premise deployment, there can be one Keycloak instance per {product-name} instance. Whereas for a cloud-hosted SaaS deployment, the Keycloak instance can be shared across various {product-name} instances.
-
-*Question: Do we need the last paragraph?*
+A single Keycloak instance can support multiple {product-name} instances if required by the specifics of the deployment.
