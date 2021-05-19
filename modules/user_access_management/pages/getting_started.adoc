@@ -29,7 +29,7 @@ This section provides details about these two prerequisites.
 
 In the case of an on-premise deployment, {product-name} comes with an out-of-the-box *Pm4ml* realm (**Pm4ml** stands for {product-name} for Mojaloop). A realm can be thought of as an isolated domain, in this case, that domain is the {product-name} application. Anything within the *Pm4ml* realm relates to the {product-name} instance.
 
-In the case of a SaaS cloud deployment, there can be a single Keycloak instance with one realm created for each DFSP. Alternatively, there can be one realm for all DFSPs, with access to the various {product-name} instances within that realm being tightly controlled. It is up to the Hub Operator to decide on the most suitable strategy.
+In the case of a SaaS cloud deployment, there will always be one realm per DFSP.
 
 The *Pm4ml* realm has some pre-configured settings. You can find these settings under the *Realm Settings* menu item, displayed in the left-hand navigation pane. On clicking *Realm Settings*, various tabs are displayed in the right-hand pane. 
 
@@ -92,7 +92,7 @@ Clients in Keycloak are entities that can request the authentication of a user. 
 
 The {product-name} user interface (**pm4ml-customer-ui**) is registered as a client to the {product-name} realm by default. 
 
-*Question: How about clients other than the ui?*
+NOTE: Clients other than **pm4ml-customer-ui** are Keycloak's own clients necessary for the correct operation of Keycloak. Do not modify client settings unless you have a particular requirement and the consequences of your actions (reduced security) are fully understood.
 
 .Clients
 image::keycloak_clients.png[]

@@ -16,6 +16,6 @@ The following diagram illustrates where the identity provider is situated within
 .Keycloak in {product-name}
 image::payment_manager_architecture_keycloak.png[]
 
-When there is an existing OAuth 2.0 or OpenID Connect compliant identity service that the Digital Financial Services Provider (DFSP) already has, then that is used in place of Keycloak. Otherwise, the identity provider is Keycloak.
+When there is an existing OAuth 2.0 or OpenID Connect compliant identity service that the Digital Financial Services Provider (DFSP) already has, then that may be used in place of Keycloak. Otherwise, the identity provider is Keycloak.
 
-A single Keycloak instance can support multiple {product-name} instances if required by the specifics of the deployment.
+In the case of an on-premise deployment, there will be one Keycloak per {product-name} instance. For a cloud-hosted SaaS deployment, the Keycloak instance may be shared across multiple {product-name} instances.

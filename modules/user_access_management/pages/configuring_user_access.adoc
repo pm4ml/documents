@@ -108,8 +108,6 @@ image::keycloak_authentication.png[]
 
 NOTE: To ensure Google Authenticator based two-factor authentication is supported, on the *OTP Policy* tab, leave *OTP Hash Algorithm* as **SHA1**.
 
-*Question: Is this note correct?*
-
 === Required actions
 
 You can choose to require the user to perform certain actions before they are allowed to log in. These actions are called required actions. Once a required action is completed, the user will not have to perform the action again. 
