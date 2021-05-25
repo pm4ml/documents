@@ -4,7 +4,9 @@
 
 {core-connector} templates are built in Java in https://www.tutorialspoint.com/apache_camel/apache_camel_tutorial.pdf[Apache Camel]. Apache Camel provides a rule-based routing and mediation engine, which allows for message translation and message routing between the DFSP Core Backend and the Mojaloop Switch.
 
-https://spring.io/projects/spring-boot[Spring Boot] is used as the runtime container.
+Templates are Spring-based applications built with Spring Boot. https://spring.io/projects/spring-boot[Spring Boot] is a module of the Spring Framework, which makes it easier to configure Java Spring applications or RESTful services.
+
+Another framework, https://cxf.apache.org/[Apache CXF], is used for SOAP web services support and other configurations.
 
 https://maven.apache.org/[Maven] is used to build and manage Camel projects.
 
