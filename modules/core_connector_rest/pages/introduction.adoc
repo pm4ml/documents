@@ -1,0 +1,45 @@
+= Introduction
+
+At a high level, onboarding to a Mojaloop-based scheme requires a Digital Financial Service Provider (DFSP) to focus their efforts around the following major milestones:
+
+* Integration of their Core Backend with the Mojaloop Switch on the API level (this involves both coding and testing).
+* Connecting to Mojaloop pre-production and production environments following rigorous Mojaloop security requirements.
+
+{product-name} for Mojaloop provides functionality to simplify both of these steps. This document provides details about API-level integration.
+
+The following diagram provides a high-level view of the integration between a Mojaloop Real-Time Payment System and a DFSP's Core Backend.
+
+.{product-name} – system architecture
+image::PM4ML_system_architecture_3.png[]
+
+{product-name} provides the following components:
+
+* *{core-connector}*: Integrates a DFSP’s Core Backend to {product-name} as a "translator" for both parts so communication is possible between them. It is built in Apache Camel, a declarative language for integration engineers that does not require writing code from scratch. There is a ready-made {core-connector} template available for DFSPs to simplify their development effort.
+* *{mojaloop-connector}*: Comes with the following key components:
+** A _Mojaloop-SDK_, which provides:
+*** Mojaloop-compliant security components
+*** HTTP header processing capabilities
+*** A simplified version of the Mojaloop FSPIOP API. {core-connector} will be talking to this API.
+** A _{mcm-client}_, which simplifies and automates certificate creation, signing and exchange, as well as the configuration of the connections required to different environments.
+* *Portals*: Provide dashboards for monitoring transactions and service status. They also allow DFSPs to manage their security keys, certificates and endpoint configuration required for connecting to a Mojaloop-based scheme in a guided way.
+
+== {core-connector}
+
+To communicate with {product-name}, DFSPs are required to implement {core-connector} in alignment with their backend technology so that it can call the {product-name} API (a simplified use-case-oriented version of the Mojaloop FSPIOP API). To help implementation efforts, DFSPs are provided with:
+
+* the specification of the Payment Manager API
+* a {core-connector} template
+
+What is a {core-connector} template? DFSP Core Backends have their own custom API or enterprise integration solutions so {company-name} built multiple variants of {core-connector} to align with common Core Banking Solution (CBS) products. These {core-connector} variants are all built using a standard template. The template provides a placeholder codebase for the API endpoints that need to be developed.
+
+This document aims to provide guidance regarding a template that has been developed for REST-based implementations.
+
+The chosen deployment option will influence the required integration effort on the DFSP's part. When deploying {payment-manager}, two options are available:
+
+* **Hosted by {company-name}**: Integration experts of {company-name} or a third-party System Integrator deploy {payment-manager} in the cloud, and sync up the Core Connector template with the DFSP's core backend implementation.
+* **Self-hosted by DFSP**: The DFSP deploys {payment-manager} on premise, and the customisation of the Core Connector template can be done by a number of actors (depending on the outcome of an initial assessment of DFSP capabilities):
+** by the System Integrator
+** by the System Integrator and the vendor of the DFSP's core backend solution (in close collaboration)
+** by the DFSP and the vendor of the DFSP's core backend solution (in close collaboration)
+
+*Question: Does the above text about deployment options sound OK?*

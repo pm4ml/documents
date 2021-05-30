@@ -1,0 +1,82 @@
+= Creating/customising a template
+
+When creating or customising a template, at a high level, you are required to complete these steps:
+
+. Find out if you need to use the generic {core-connector} template or a CBS-vendor-specific one. For guidance, see <<which-template,Which template to use?>>.
+. Find out if the {product-name} API specification is up-to-date (`client-adapter-interface/src/main/resources/api.yaml`). If it is not up-to-date, perform the steps described in xref:update_template_api_changes.adoc[Updating a template when the {product-name} API changes]. If it is up-to-date, you can move on to the next step.
+. Add a new router or edit an existing router to specify how to move messages between DFSP backend and {core-connector} endpoints (`client-adapter/src/main/java/com/modusbox/client/router/`).
+. Add a new DataSonnet mapping or edit an existing mapping (`client-adapter/src/main/resources/mappings/`) to specify how to translate/transform messages between the DFSP backend and {core-connector}. If DataSonnet cannot be leveraged to support transformations, use Java classes to add business logic.
+. As a best practice recommendation, create tests for Java code and the DataSonnet transformation business logic. (The specifics of the testing solution and testing strategy are at the discretion of the organisation that develops the template.)
+
+== Which template to use? [[which-template]]
+
+When you start developing a template, check if the CBS vendor already has a template in place. 
+
+When creating a template for a CBS vendor who provides a REST-based solution and for whom no vendor-specific template exists yet, create a copy of https://github.com/modusintegration/pm4ml-core-connector-rest-template[the generic {core-connector} REST template] and make changes to that. Name the new template as `<CBS vendor name>-core-connector.`
+
+When working with a CBS vendor who already has an existing template in place in https://github.com/modusintegration[the *modusintegration* GitHub repository], clone the existing template and continue working in that. Note, however, that it is good practice to maintain separate templates for the individual combinations of a vendor and a DFSP. For example, the Mambu template of DFSP A might have to differ from the Mambu template of DFSP B.
+
+NOTE: This section assumes that the reader is using https://github.com/modusintegration/pm4ml-core-connector-rest-template[the generic {core-connector} REST template]. 
+
+== Core Connector for a Payer DFSP
+
+For a Payer DFSP, the existing template can be used without any changes. *Question: Is this statement correct?*
+
+Leveraging the `SendmoneyRouter.java` router class (at `client-adapter/src/main/java/com/modusbox/client/router`), {core-connector} routes messages in the following way in the case of an outgoing transfer request:
+
+. Route and translate the backend-specific transfer request into a request that the Mojaloop Connector understands (removing and adding headers as necessary). (Mojaloop Connector then translates that into a Mojaloop-compliant request that the Mojaloop Switch understands.)
+. Route and translate the transfer response that comes back from the Mojaloop Connector into a backend-specific message that the DFSP Core Backend understands.
+
+`SendmoneyRouter.java` defines rules for moving a message:
+
+* from a *postSendmoney* `.from` endpoint to a *postTransfers* `.to` endpoint
+* from a *putSendmoneyById* `.from` endpoint to a *putTransfersById* `.to` endpoint
+
+In between the `.from` and `.to` endpoints, processing logic is implemented.
+
+To help put routes into context, the following diagrams show the happy path of an outgoing transfer request.
+
+.Outgoing transfer (single-stage transfer)
+image::PM4ML_CC_transfer_flow_payer_happy_path.svg[]
+
+.Outgoing transfer (multi-stage transfer)
+image::PM4ML_transfer_flow_payer_multistage_happy_path.svg[]
+
+== Core Connector for a Payee DFSP
+
+For a Payee DFSP, the existing template must be modified in the following places:
+
+* `client-adapter/src/main/java/com/modusbox/client/router/ClientAdapterAPI.java` *Question: Does this have to be updated?*
+* `client-adapter/src/main/java/com/modusbox/client/router/PartiesRouter.java`
+* `client-adapter/src/main/java/com/modusbox/client/router/QuotesRouter.java`
+* `client-adapter/src/main/java/com/modusbox/client/router/TransfersRouter.java`
+* DataSonnet mappings (`client-adapter/src/main/resources/mappings`)
+
+Leveraging DataSonnet mappings and the above-mentioned routers, Core Connector manages the following transformations and routing in the case of an incoming transfer request:
+
+. Route and transform the party lookup request for the DFSP Core Backend. +
++
+Note that when obtaining Payee party information -- depending on the DFSP's backend implementation -- the relevant details may need to be obtained using several API calls.
+. Route and transform the backend's response into a Mojaloop-compliant response.
+. Route and transform the quote request for the DFSP Core Backend. The quote request has a request body, which needs to be translated for the DFSP backend.
+. Route and transform the backend's response into a Mojaloop-compliant response.
+. Route and transform the transfer request for the DFSP Core Backend. The transfer request has a request body, which needs to be translated for the DFSP backend.
+. Route and transform the backend's response into a Mojaloop-compliant response.
+
+In between endpoints, you can remove and set headers as necessary, and implement processing logic (by defining and using custom processors).
+
+To help put routes into context, the following diagrams show the happy path of an incoming transfer request.
+
+.Incoming transfer
+image::PM4ML_transfer_flow_payee_happy_path.svg[]
+
+== Building and running the updated {core-connector}
+
+Once you have made the necessary changes, build the {core-connector} Maven project, following these steps:
+
+. Change directory to the root folder of the {core-connector} project -- taking the generic REST template as an example, to `pm4ml-core-connector-rest-template`.
+. Issue the `mvn clean install` command. +
+Running `mvn clean install` builds all the required Java objects, and installs them in the `client-adapter/target` folder.
+. Run `java -jar client-adapter/target/client-adapter-1.1.0-SNAPSHOT.jar`.
+
+To test your changes, you can do local testing or end-to-end testing as described in xref:testing.adoc[Testing {core-connector}].

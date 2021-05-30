@@ -1,0 +1,25 @@
+= Using Apache Camel
+
+Apache Camel is an open source, Java-based integration framework. It is message-oriented middleware that provides a rule-based routing and mediation engine. Camel receives a message from one endpoint and sends it to another one. In some cases, it might be necessary to translate the message to a format that the receiver expects. Using Camel, you are able to implement such translation rules and route messages between endpoints.
+
+To move messages from a *from* location to a *to* location, you define routers. You create a route by extending the built-in `RouteBuilder` class. The route begins with a *from* endpoint and finishes at one or more *to* endpoints. *To* endpoints are specified with the help of the *bean:* protocol. The bean component allows you to write business logic in a Java method and encapsulate that in a class so it can be re-used in various places. In between endpoints, you can implement the processing logic (by defining and using custom processors). You may configure any number of routes within a single `configure()` method.
+
+Example:
+----
+public class TransfersRouter extends RouteBuilder {
+    public void configure() {
+    
+        from("direct:postTransfers")
+            .process(myProcessor);
+            .to("bean:myOutboundEndpoint/transfers'")
+            
+            ...
+            
+    }
+};
+----
+
+
+
+
+
