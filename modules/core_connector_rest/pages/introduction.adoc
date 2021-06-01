@@ -34,12 +34,6 @@ What is a {core-connector} template? DFSP Core Backends have their own custom AP
 
 This document aims to provide guidance regarding a template that has been developed for REST-based implementations.
 
-The chosen deployment option will influence the required integration effort on the DFSP's part. When deploying {payment-manager}, two options are available:
+The chosen deployment option will influence the required integration effort on the DFSP's part. When deploying {product-name}, two options are available:
 
-* **Hosted by {company-name}**: Integration experts of {company-name} or a third-party System Integrator deploy {payment-manager} in the cloud, and sync up the Core Connector template with the DFSP's core backend implementation.
-* **Self-hosted by DFSP**: The DFSP deploys {payment-manager} on premise, and the customisation of the Core Connector template can be done by a number of actors (depending on the outcome of an initial assessment of DFSP capabilities):
-** by the System Integrator
-** by the System Integrator and the vendor of the DFSP's core backend solution (in close collaboration)
-** by the DFSP and the vendor of the DFSP's core backend solution (in close collaboration)
-
-*Question: Does the above text about deployment options sound OK?*
+include::ROOT:partial$deployment_options.adoc[]

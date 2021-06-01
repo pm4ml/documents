@@ -18,7 +18,7 @@ Familiarity with the above technologies is a prerequisite to handling templates.
 
 To help implementation efforts, DFSPs are provided with:
 
-*Question: Should the Swagger + REST template be placed in the available in pm4ml repo?*
+*Question: Should the Swagger + REST template be placed in the available pm4ml repo?*
 
 * https://github.com/modusintegration/mojaloop-payment-manager-specification/blob/main/mojaloop_payment_manager_API.yaml[The Swagger specification of the {product-name} API]. The {product-name} API is the API that the DFSP Core Backend talks to, leveraging {core-connector}.
 * https://github.com/modusintegration/pm4ml-core-connector-rest-template[A generic {core-connector} template for REST-based DFSP Core Backend implementations].

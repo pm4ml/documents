@@ -41,8 +41,4 @@ For any other use case (for example, payee-initiated merchant transfers), both t
 
 In addition to the DFSP role, the chosen deployment option will also influence the required integration effort on the DFSP’s part. When deploying {product-name}, two options are available:
 
-* **Hosted by {company-name}**: Integration experts of {company-name} or a third-party System Integrator deploy {payment-manager} in the cloud, and sync up the Core Connector template with the DFSP's core backend implementation.
-* **Self-hosted by DFSP**: The DFSP deploys {payment-manager} on premise, and the customisation of the Core Connector template can be done by a number of actors (depending on the outcome of an initial assessment of DFSP capabilities):
-** by the System Integrator
-** by the System Integrator and the vendor of the DFSP's core backend solution (in close collaboration)
-** by the DFSP and the vendor of the DFSP's core backend solution (in close collaboration)
+include::ROOT:partial$deployment_options.adoc[]
