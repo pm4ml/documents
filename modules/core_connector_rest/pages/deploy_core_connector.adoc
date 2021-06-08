@@ -8,7 +8,7 @@ NOTE: Readers of this section are advised to have basic familiarity with Kuberne
 
 To deploy {core-connector}, a Helm chart is used. Helm acts as a package manager for Kubernetes, with the Helm chart containing all of the pre-configured resource definitions necessary to run {core-connector} inside a Kubernetes cluster.
 
-*Question: Should there be a template Helm chart for pm4ml-core-connector-rest-template based on the Mambu Helm chart?* 
+//*Question: Should there be a template Helm chart for pm4ml-core-connector-rest-template based on the Mambu Helm chart?* 
 
 ////
 All {core-connector} templates have a Helm chart, here: https://github.com/modusintegration/cbs-core-connectors-helm-repo. Note that at the time of writing, this repository is not up-to-date.
@@ -16,7 +16,7 @@ All {core-connector} templates have a Helm chart, here: https://github.com/modus
 {product-name} Helm charts are maintained here: https://github.com/modusintegration/mojaloop-payment-manager-helm
 ////
 
-Helm charts are created as files organised into a particular directory tree. The directory name is the name of the chart (without versioning information), for example: `mambu-core-connector`.
+Helm charts are created as files organised into a particular directory tree. The directory name is the name of the chart (without versioning information), for example: https://github.com/modusintegration/cbs-core-connectors-helm-repo/tree/master/mambu-core-connector[`mambu-core-connector`].
 
 Inside this directory, Helm expects this structure:
 
@@ -42,7 +42,7 @@ If you look at the `templates/` directory of the `mambu-core-connector` Helm cha
 * `ingress.yaml`: Enables communication initiated outside the cluster to reach inside the cluster, specifically to reach the `mambu-core-connector` application.
 * `service.yaml`: A manifest for creating a https://kubernetes.io/docs/concepts/services-networking/service/[service endpoint] for the `mambu-core-connector` deployment. This enables communication between applications inside the cluster, and is required (but not sufficient) for communication from outside the cluster to access applications inside the cluster.
 
-In addition, there is also a folder called `tests`. The `test-connection.yaml` is used to ??? *Question: What is the role of this file?*
+//In addition, there is also a folder called `tests`. The `test-connection.yaml` is used to ??? *Question: What is the role of this file?*
 
 For further details on templates, see the following Helm documentation:
 

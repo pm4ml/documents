@@ -1,3 +1,5 @@
 This guide aims to help DFSPs connect to a Mojaloop Real-Time Payments System using {product-name}. It provides details of the {core-connector} that DFSPs integrating via {product-name} are required to customise or implement.
 
-//In its current format, this document is intended for Hub Operators and System Integrators assisting DFSPs in their onboarding efforts.
+In its current format, this document is intended for Hub Operators and System Integrators assisting DFSPs in their onboarding efforts. 
+
+NOTE: As the generic template described in this guide evolves, updates will be added to the document to reflect the most recent functionality. Note that this copy is intended for a preliminary review and is not to be shared with the general public. 

@@ -20,7 +20,7 @@ NOTE: This section assumes that the reader is using https://github.com/modusinte
 
 == Core Connector for a Payer DFSP
 
-For a Payer DFSP, the existing template can be used without any changes. *Question: Is this statement correct?*
+//For a Payer DFSP, the existing template can be used without any changes. *Question: Is this statement correct?*
 
 Leveraging the `SendmoneyRouter.java` router class (at `client-adapter/src/main/java/com/modusbox/client/router`), {core-connector} routes messages in the following way in the case of an outgoing transfer request:
 
@@ -46,7 +46,7 @@ image::PM4ML_transfer_flow_payer_multistage_happy_path.svg[]
 
 For a Payee DFSP, the existing template must be modified in the following places:
 
-* `client-adapter/src/main/java/com/modusbox/client/router/ClientAdapterAPI.java` *Question: Does this have to be updated?*
+//* `client-adapter/src/main/java/com/modusbox/client/router/ClientAdapterAPI.java` *Question: Does this have to be updated?*
 * `client-adapter/src/main/java/com/modusbox/client/router/PartiesRouter.java`
 * `client-adapter/src/main/java/com/modusbox/client/router/QuotesRouter.java`
 * `client-adapter/src/main/java/com/modusbox/client/router/TransfersRouter.java`
