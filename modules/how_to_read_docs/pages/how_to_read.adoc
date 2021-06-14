@@ -1,0 +1,26 @@
+= Overview of {product-name} documents 
+
+== API integration
+
+To learn more about how to integrate your Core Backend with the Mojaloop Switch on the API level, see the following documentation:
+
+* *_API Integration Guide for DFSPs_*
+* `mojaloop_payment_manager_API.yaml` Swagger file
+////
+The document is available at the following url: ???
+////
+== Connectivity
+
+For information about Mojaloop security requirements and detailed onboarding steps regarding the management of security keys and certificates, as well as the sharing of endpoint information, see the document titled *_Guide to {connection-wizard}_*. 
+////
+The document is available at the following url: ???
+////
+== Dashboards
+
+Once a DFSP has successfully integrated with the Mojaloop Switch, {product-name} provides a set of dashboards that help with the monitoring of transactions and service status, as well as the debugging of errors. The dashboards provide a visualisation of important metrics and are accessible via an easy-to-use DFSP portal. For details on how to use the dashboards, see *_Guide to {transfers}_* and *_Guide to {tech-dashboard}_*. 
+////
+These documents are available at the following urls:
+
+* ???
+* ???
+////

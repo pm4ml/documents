@@ -1,0 +1,13 @@
+ifndef::backend-pdf[]
+= Guide to {product-name} {connection-wizard}
+
+The {connection-wizard} is a portal for Digital Financial Service Providers (DFSPs), which acts as the user interface to the {hub} Connector. The {connection-wizard} allows DFSPs and the Hub Operator to manage endpoint mapping and certificate-related processes in a guided way. 
+
+In a {hub} ecosystem, communication to and from the Hub and DFSPs is achieved via secure communication channels. In addition, all transactions are signed to ensure that any disputes can be readily addressed. These requirements lead to the establishment of Public Key Infrastructure (PKI). 
+
+DFSPs and the Hub communicate over TLSv1.2 with mutually authenticated X.509 certificates, which are signed by a trusted Certificate Authority (CA). The use of digital certificates is necessary to verify the identity of the parties exchanging data with each other and ensure secure communications. In addition to TLS client and server certificates, all DFSPs and the Hub itself must have a JSON Web Signature (JWS) certificate, which they then share among themselves.
+
+Using the {connection-wizard}, DFSPs are able to share certificates and endpoint information via an easy-to-use portal.
+
+//image::PM4ML_Mojaloop_Connector.png[]
+endif::[]

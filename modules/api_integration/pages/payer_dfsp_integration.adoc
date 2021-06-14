@@ -1,0 +1,962 @@
+= Integration as a Payer DFSP
+
+The following diagrams illustrate how a Payer DFSP interacts with {product-name} and the Mojaloop Switch at the level of API calls.
+
+NOTE: The simplified API between {product-name} and the DFSP backend is a synchronous HTTP API, while the interface between {product-name} and the Mojaloop Switch is the https://docs.mojaloop.io/mojaloop-specification/#api-definition[asynchronous Mojaloop FSPIOP API]. +
+ +
+Specification of the simplified API ({product-name} API) is provided in the form of a Swagger `.yaml` file (`mojaloop_payment_manager_API.yaml`).
+
+== Single-stage transfer
+
+When a peer-to-peer (P2P) transfer (`POST /sendmoney`) happens in a single stage, the party lookup, quotes, and transfers requests all happen in a single step as illustrated in the sequence flow below:
+
+.Payer DFSP transfer flow: single-stage transfer
+image::PM4ML_transfer_flow_payer.svg[width=70%, height=70%]
+
+To simplify the transfer flow and perform the transfer in a single combined step as shown in the diagram, configure the following environment variables:
+
+* Set `AUTO_ACCEPT_PARTY=true`.
+* Set `AUTO_ACCEPT_QUOTES=true`.
+
+=== Example `POST /sendmoney` request [[example-transfer-request]]
+
+The following example shows a `POST /sendmoney` request (Step 1 in the diagram above).
+
+[source,json]
+----
+POST /sendmoney
+Content-Type: application/json
+Accept: application/json
+ 
+{
+  "homeTransactionId": "53979be2-3bfe-45aa-ade7-92ea4ce4e74e",
+  "from": {
+    "type": "CONSUMER",
+    "idType": "MSISDN",
+    "idValue": "123456789",
+    "displayName": "Antoine Dujardin",
+    "firstName": "Antoine",
+    "middleName": "Paul",
+    "lastName": "Dujardin",
+    "dateOfBirth": "1977-07-17",
+    "fspId": "payerdfsp"
+  },
+  "to": {
+    "type": "CONSUMER",
+    "idType": "MSISDN",
+    "idValue": "987654321",
+    "displayName": "Aamir Fakhir",
+    "firstName": "Aamir",
+    "middleName": "Abdel",
+    "lastName": "Fakhir",
+    "dateOfBirth": "1966-06-16",
+    "fspId": "payeedfsp"
+  },
+  "amountType": "SEND",
+  "currency": "EUR",
+  "amount": "50",
+  "transactionType": "TRANSFER",
+  "note": "from Antoine"
+}
+----
+
+=== Example success response to `POST /sendmoney`
+
+The following example shows a response to a `POST /sendmoney` request when the request is successful (Step 19 in the diagram above).
+
+[source,json]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json
+ 
+{
+  "transferId": "85feac2f-39b2-491b-817e-4a03203d4f14",
+  "homeTransactionId": "53979be2-3bfe-45aa-ade7-92ea4ce4e74e",
+  "from": {
+    "type": "CONSUMER",
+    "idType": "MSISDN",
+    "idValue": "123456789",
+    "displayName": "Antoine Dujardin",
+    "firstName": "Antoine",
+    "middleName": "Paul",
+    "lastName": "Dujardin",
+    "dateOfBirth": "1977-07-17"
+  },
+  "to": {
+    "type": "CONSUMER",
+    "idType": "MSISDN",
+    "idValue": "987654321",
+    "displayName": "Aamir Fakhir",
+    "firstName": "Aamir",
+    "middleName": "Abdel",
+    "lastName": "Fakhir",
+    "dateOfBirth": "1966-06-16"
+  },
+  "amountType": "SEND",
+  "currency": "EUR",
+  "amount": "50",
+  "transactionType": "TRANSFER",
+  "note": "from Antoine",
+  "currentState": "COMPLETED",
+  "quoteId": "7c23e80c-d078-4077-8263-2c047876fcf6",
+  "quoteResponse": {
+    "transferAmount": {
+      "currency": "EUR",
+      "amount": "50"
+    },
+    "payeeReceiveAmount": {
+      "currency": "EUR",
+      "amount": "50"
+    },
+    "payeeFspFee": {
+        "amount": "0",
+        "currency": "EUR"
+    },
+    "payeeFspCommission": {
+        "amount": "0",
+        "currency": "EUR"
+    },
+    "expiration": "2019-11-15T22:17:28.985-01:00",
+    "geoCode": {
+      "latitude": "43.6047",
+      "longitude": "1.4442"
+    },
+    "ilpPacket": "AQAAAAAAACICAic...GF5Z",
+    "condition": "fH9pAYDQbmoZLPbvv3CSW2RfjU4jvM4ApG_fqGnR7Xs"
+  },
+  "quoteResponseSource": "payeedfsp",
+  "fulfil": {
+    "fulfilment": "mhPUT9ZAwd-BXLfeSd7-YPh46rBWRNBiTCSWjpku90s",
+    "completedTimestamp": "2019-11-15T04:15:35.513+01:00",
+    "transferState": "COMMITTED"
+  }
+}
+----
+
+=== Example error responses to `POST /sendmoney`
+
+The following example shows a response to a `POST /sendmoney` request when the request fails due to the Payee not being found (Step 4 in the diagram above).
+
+include::ROOT:partial$note_mojaloop_errors.adoc[]
+
+[source,json]
+----
+HTTP/1.1 500 Internal Server Error
+Content-Type: application/json
+ 
+{
+  "statusCode": "3204",
+  "message": "Got an error response resolving party: {
+    errorInformation: { errorCode: '3204', errorDescription: 'Party not found' }
+    }",
+  "transferState": {
+    "transferId": "85feac2f-39b2-491b-817e-4a03203d4f14",
+    "homeTransactionId": "53979be2-3bfe-45aa-ade7-92ea4ce4e74e",
+    "from": {
+      "type": "CONSUMER",
+      "idType": "MSISDN",
+      "idValue": "123456789",
+      "displayName": "Antoine Dujardin",
+      "firstName": "Antoine",
+      "middleName": "Paul",
+      "lastName": "Dujardin",
+      "dateOfBirth": "1977-07-17"
+    },
+    "to": {
+      "type": "CONSUMER",
+      "idType": "MSISDN",
+      "idValue": "987654321",
+      "displayName": "Aamir Fakhir",
+      "firstName": "Aamir",
+      "middleName": "Abdel",
+      "lastName": "Fakhir",
+      "dateOfBirth": "1966-06-16"
+    },
+    "amountType": "SEND",
+    "currency": "EUR",
+    "amount": "50",
+    "transactionType": "TRANSFER",
+    "note": "from Antoine",
+    "currentState": "ERROR_OCCURRED",
+    "lastError": {
+      "httpStatusCode": 500,
+      "mojaloopError": {
+        "errorInformation": {
+          "errorCode": "3204",
+          "errorDescription": "Party not found"
+        }
+      }
+    }
+  }
+}
+----
+
+The following example shows a response to a `POST /sendmoney` request when the request fails due to an internal server error when the quote is being created (Step 8 in the diagram above).
+
+[source,json]
+----
+HTTP/1.1 500 Internal Server Error
+Content-Type: application/json
+ 
+{
+  "statusCode": "2001",
+  "message": "Got an error response: {
+  errorInformation: {
+  errorCode: '2001',
+  errorDescription: 'Internal server error'
+  }
+  }",
+  "transferState": {
+    "transferId": "85feac2f-39b2-491b-817e-4a03203d4f14",
+    "homeTransactionId": "53979be2-3bfe-45aa-ade7-92ea4ce4e74e",
+    "from": {
+      "type": "CONSUMER",
+      "idType": "MSISDN",
+      "idValue": "123456789",
+      "displayName": "Antoine Dujardin",
+      "firstName": "Antoine",
+      "middleName": "Paul",
+      "lastName": "Dujardin",
+      "dateOfBirth": "1977-07-17"
+    },
+    "to": {
+      "type": "CONSUMER",
+      "idType": "MSISDN",
+      "idValue": "987654321",
+      "displayName": "Aamir Fakhir",
+      "firstName": "Aamir",
+      "middleName": "Abdel",
+      "lastName": "Fakhir",
+      "dateOfBirth": "1966-06-16"
+    },
+    "amountType": "SEND",
+    "currency": "EUR",
+    "amount": "50",
+    "transactionType": "TRANSFER",
+    "note": "from Antoine",
+    "currentState": "ERROR_OCCURRED",
+    "lastError": {
+      "httpStatusCode": 500,
+      "mojaloopError": {
+        "errorInformation": {
+          "errorCode": "2001",
+          "errorDescription": "Internal server error"
+        }
+      }
+    }
+  }
+}
+----
+
+The following example shows a response to a `POST /sendmoney` request when the request fails due to the Payer not having sufficient funds (Step 14 in the diagram above).
+
+include::ROOT:partial$ndc.adoc[]
+
+[source,json]
+----
+HTTP/1.1 500 Internal Server Error
+Content-Type: application/json
+ 
+{
+  "statusCode": "4001",
+  "message": "Got an error response preparing transfer: {
+  errorInformation: {
+  errorCode: '4001',
+  errorDescription: 'Payer FSP insufficient liquidity'
+  }
+  }",
+  "transferState": {
+    "transferId": "85feac2f-39b2-491b-817e-4a03203d4f14",
+    "homeTransactionId": "53979be2-3bfe-45aa-ade7-92ea4ce4e74e",
+    "from": {
+      "type": "CONSUMER",
+      "idType": "MSISDN",
+      "idValue": "123456789",
+      "displayName": "Antoine Dujardin",
+      "firstName": "Antoine",
+      "middleName": "Paul",
+      "lastName": "Dujardin",
+      "dateOfBirth": "1977-07-17"
+    },
+    "to": {
+      "type": "CONSUMER",
+      "idType": "MSISDN",
+      "idValue": "987654321",
+      "displayName": "Aamir Fakhir",
+      "firstName": "Aamir",
+      "middleName": "Abdel",
+      "lastName": "Fakhir",
+      "dateOfBirth": "1966-06-16"
+    },
+    "amountType": "SEND",
+    "currency": "EUR",
+    "amount": "50",
+    "transactionType": "TRANSFER",
+    "note": "from Antoine",
+    "currentState": "ERROR_OCCURRED",
+    "quoteId": "7c23e80c-d078-4077-8263-2c047876fcf6",
+    "quoteResponse": {
+      "transferAmount": {
+        "currency": "EUR",
+        "amount": "50"
+      },
+      "payeeReceiveAmount": {
+        "currency": "EUR",
+        "amount": "50"
+      },
+      "payeeFspFee": {
+        "amount": "0",
+        "currency": "EUR"
+      },
+      "payeeFspCommission": {
+        "amount": "0",
+        "currency": "EUR"
+      },
+      "expiration": "2019-11-15T22:17:28.985-01:00",
+      "geoCode": {
+        "latitude": "43.6047",
+        "longitude": "1.4442"
+      },
+      "ilpPacket": "AQAAAAAAACICAic...GF5Z",
+      "condition": "fH9pAYDQbmoZLPbvv3CSW2RfjU4jvM4ApG_fqGnR7Xs"
+    },
+    "quoteResponseSource": "payeedfsp",
+    "lastError": {
+      "httpStatusCode": 500,
+      "mojaloopError": {
+        "errorInformation": {
+          "errorCode": "4001",
+          "errorDescription": "Payer FSP insufficient liquidity"
+        }
+      }
+    }
+  }
+}
+----
+
+The following example shows a response to a `POST /sendmoney` request (Step 22 in the diagram above) when the transfer fails expiry validation by the Switch (in Step 16, the Switch validates the fulfilment returned by the Payee DFSP and checks the expiry timestamp on the transfer).
+
+[source,json]
+----
+HTTP/1.1 500 Internal Server Error
+Content-Type: application/json
+ 
+{
+  "statusCode": "3302",
+  "message": "Got an error response fulfilling transfer: {
+  errorInformation: {
+  errorCode: '3302',
+  errorDescription: 'Quote expired'
+  }
+  }",
+  "transferState": {
+    "transferId": "85feac2f-39b2-491b-817e-4a03203d4f14",
+    "homeTransactionId": "53979be2-3bfe-45aa-ade7-92ea4ce4e74e",
+    "from": {
+      "type": "CONSUMER",
+      "idType": "MSISDN",
+      "idValue": "123456789",
+      "displayName": "Antoine Dujardin",
+      "firstName": "Antoine",
+      "middleName": "Paul",
+      "lastName": "Dujardin",
+      "dateOfBirth": "1977-07-17"
+    },
+    "to": {
+      "type": "CONSUMER",
+      "idType": "MSISDN",
+      "idValue": "987654321",
+      "displayName": "Aamir Fakhir",
+      "firstName": "Aamir",
+      "middleName": "Abdel",
+      "lastName": "Fakhir",
+      "dateOfBirth": "1966-06-16"
+    },
+    "amountType": "SEND",
+    "currency": "EUR",
+    "amount": "50",
+    "transactionType": "TRANSFER",
+    "note": "from Antoine",
+    "currentState": "ERROR_OCCURRED",
+    "quoteId": "7c23e80c-d078-4077-8263-2c047876fcf6",
+    "quoteResponse": {
+      "transferAmount": {
+        "currency": "EUR",
+        "amount": "50"
+      },
+      "payeeReceiveAmount": {
+        "currency": "EUR",
+        "amount": "50"
+      },
+      "payeeFspFee": {
+        "amount": "0",
+        "currency": "EUR"
+      },
+      "payeeFspCommission": {
+        "amount": "0",
+        "currency": "EUR"
+      },
+      "expiration": "2019-11-15T22:17:28.985-01:00",
+      "geoCode": {
+        "latitude": "43.6047",
+        "longitude": "1.4442"
+      },
+      "ilpPacket": "AQAAAAAAACICAic...GF5Z",
+      "condition": "fH9pAYDQbmoZLPbvv3CSW2RfjU4jvM4ApG_fqGnR7Xs"
+    },
+    "quoteResponseSource": "payeedfsp",
+    "lastError": {
+      "httpStatusCode": 500,
+      "mojaloopError": {
+        "errorInformation": {
+          "errorCode": "3302",
+          "errorDescription": "Quote expired"
+        }
+      }
+    }
+  }
+}
+----
+
+== Multi-stage transfer
+
+You have the option to not automatically accept the returned party lookup and/or quote response and halt the transfer flow to examine party/quote information. For this, configure the following environment variables:
+
+* If you want to examine the returned party information, set `AUTO_ACCEPT_PARTY=false`.
+* If you want to examine the returned quote, set `AUTO_ACCEPT_QUOTES=false`.
+
+After examining the party/quote, a further confirmation call is required to progress the transfer to the next stage:
+
+* To resume after party lookup, send `PUT /sendmoney/{transferId}` with `"acceptParty"` set to `true` in the request body.
+* To resume after a quote response is received, send `PUT /sendmoney/{transferId}` with `"acceptQuote"` set to `true` in the request body.
+
+You can combine `AUTO_ACCEPT_PARTY` and `AUTO_ACCEPT_QUOTES` settings any way you want. You can choose to stop the transfer flow only after receiving party information, or only after receiving quote information, or after both.
+
+In the example sequence flow shown below, the peer-to-peer (P2P) transfer flow (`POST /sendmoney`) happens in three stages (that is, the transfer flow stops after both party lookup and quoting):
+
+.Payer DFSP transfer flow: multi-stage transfer
+image::PM4ML_transfer_flow_payer_multistage.svg[width=70%, height=70%]
+
+=== Example `POST /sendmoney` request
+
+See <<example-transfer-request,the example above>> shown for single-stage transfers (Step 1 in the diagram above).
+
+=== Example success response to `POST /sendmoney`
+
+The following example shows a response to a `POST /sendmoney` request (Step 7 in the diagram above) when:
+
+* the request is successful, and
+* the transfer flow is set to halt after the party lookup stage (`AUTO_ACCEPT_PARTY=false`)
+
+When {product-name} is set to stop the transfer flow only after the quote stage, then a success response would look like the first example (Step 14) in <<put-sendmoney-success,Example success response to PUT /sendmoney/{transferId}>>. 
+
+[source,json]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json
+ 
+{
+  "transferId": "85feac2f-39b2-491b-817e-4a03203d4f14",
+  "homeTransactionId": "53979be2-3bfe-45aa-ade7-92ea4ce4e74e",
+  "from": {
+    "type": "CONSUMER",
+    "idType": "MSISDN",
+    "idValue": "123456789",
+    "displayName": "Antoine Dujardin",
+    "firstName": "Antoine",
+    "middleName": "Paul",
+    "lastName": "Dujardin",
+    "dateOfBirth": "1977-07-17"
+  },
+  "to": {
+    "type": "CONSUMER",
+    "idType": "MSISDN",
+    "idValue": "987654321",
+    "displayName": "Aamir Fakhir",
+    "firstName": "Aamir",
+    "middleName": "Abdel",
+    "lastName": "Fakhir",
+    "dateOfBirth": "1966-06-16"
+  },
+  "amountType": "SEND",
+  "currency": "EUR",
+  "amount": "50",
+  "transactionType": "TRANSFER",
+  "note": "from Antoine",
+  "currentState": "WAITING_FOR_PARTY_ACCEPTANCE"
+}
+----
+
+=== Example error response to `POST /sendmoney` [[error-post-transfers]]
+
+In the following example (Step 4 in the diagram above):
+
+* the transfer flow is set to halt after the party lookup stage (`AUTO_ACCEPT_PARTY=false`), and
+* the request fails due to the Payee party not being found
+
+include::ROOT:partial$note_mojaloop_errors.adoc[]
+
+[source,json]
+----
+HTTP/1.1 500 Internal Server Error
+Content-Type: application/json
+ 
+{
+  "statusCode": "3204",
+  "message": "Got an error response resolving party: {
+    errorInformation: { errorCode: '3204', errorDescription: 'Party not found' }
+    }",
+  "transferState": {
+    "transferId": "85feac2f-39b2-491b-817e-4a03203d4f14",
+    "homeTransactionId": "53979be2-3bfe-45aa-ade7-92ea4ce4e74e",
+    "from": {
+      "type": "CONSUMER",
+      "idType": "MSISDN",
+      "idValue": "123456789",
+      "displayName": "Antoine Dujardin",
+      "firstName": "Antoine",
+      "middleName": "Paul",
+      "lastName": "Dujardin",
+      "dateOfBirth": "1977-07-17"
+    },
+    "to": {
+      "type": "CONSUMER",
+      "idType": "MSISDN",
+      "idValue": "987654321",
+      "displayName": "Aamir Fakhir",
+      "firstName": "Aamir",
+      "middleName": "Abdel",
+      "lastName": "Fakhir",
+      "dateOfBirth": "1966-06-16"
+    },
+    "amountType": "SEND",
+    "currency": "EUR",
+    "amount": "50",
+    "transactionType": "TRANSFER",
+    "note": "from Antoine",
+    "currentState": "ERROR_OCCURRED",
+    "lastError": {
+      "httpStatusCode": 500,
+      "mojaloopError": {
+        "errorInformation": {
+          "errorCode": "3204",
+          "errorDescription": "Party not found"
+        }
+      }
+    }
+  }
+}
+----
+
+
+=== Example `PUT /sendmoney/{transferId}` request
+
+The following example shows a `PUT /sendmoney/{transferId}` request sent to resume the transfer flow after the party lookup stage (Step 8 in the diagram above).
+
+[source,json]
+----
+PUT /sendmoney/85feac2f-39b2-491b-817e-4a03203d4f14 HTTP/1.1
+Content-Type: application/json
+
+{
+  "acceptParty": true
+}
+----
+
+The following example shows a `PUT /sendmoney/{transferId}` request sent to resume the transfer flow after the quote stage (Step 15 in the diagram above).
+
+[source,json]
+----
+PUT /sendmoney/85feac2f-39b2-491b-817e-4a03203d4f14 HTTP/1.1
+Content-Type: application/json
+
+{
+  "acceptQuote": true
+}
+----
+
+=== Example success response to `PUT /sendmoney/{transferId}` [[put-sendmoney-success]]
+
+The following example shows a response to a `PUT /sendmoney/{transferId}` request (Step 14 in the diagram above) when:
+
+* the request is successful, and 
+* it is a response to an `"acceptParty": true` request and quote acceptance still needs to happen
+
+[source,json]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json
+ 
+{
+  "transferId": "85feac2f-39b2-491b-817e-4a03203d4f14",
+  "homeTransactionId": "53979be2-3bfe-45aa-ade7-92ea4ce4e74e",
+  "from": {
+    "type": "CONSUMER",
+    "idType": "MSISDN",
+    "idValue": "123456789",
+    "displayName": "Antoine Dujardin",
+    "firstName": "Antoine",
+    "middleName": "Paul",
+    "lastName": "Dujardin",
+    "dateOfBirth": "1977-07-17"
+  },
+  "to": {
+    "type": "CONSUMER",
+    "idType": "MSISDN",
+    "idValue": "987654321",
+    "displayName": "Aamir Fakhir",
+    "firstName": "Aamir",
+    "middleName": "Abdel",
+    "lastName": "Fakhir",
+    "dateOfBirth": "1966-06-16"
+  },
+  "amountType": "SEND",
+  "currency": "EUR",
+  "amount": "50",
+  "transactionType": "TRANSFER",
+  "note": "from Antoine",
+  "currentState": "WAITING_FOR_QUOTE_ACCEPTANCE",
+  "quoteId": "7c23e80c-d078-4077-8263-2c047876fcf6",
+    "quoteResponse": {
+      "transferAmount": {
+        "currency": "EUR",
+        "amount": "50"
+      },
+      "payeeReceiveAmount": {
+        "currency": "EUR",
+        "amount": "50"
+      },
+      "payeeFspFee": {
+        "amount": "0",
+        "currency": "EUR"
+      },
+      "payeeFspCommission": {
+        "amount": "0",
+        "currency": "EUR"
+      },
+      "expiration": "2019-11-15T22:17:28.985-01:00",
+      "geoCode": {
+        "latitude": "43.6047",
+        "longitude": "1.4442"
+      },
+      "ilpPacket": "AQAAAAAAACICAic...GF5Z",
+      "condition": "fH9pAYDQbmoZLPbvv3CSW2RfjU4jvM4ApG_fqGnR7Xs"
+    },
+    "quoteResponseSource": "payeedfsp"
+}
+----
+
+The following example shows a response to a `PUT /sendmoney/{transferId}` request (Step 24 in the diagram above) when:
+
+* the request is successful (all checks and validations have been successful), and 
+* the response is:
+** either a response to an `"acceptQuote": true` request
+** or a response to an `"acceptParty": true` request where `AUTO_ACCEPT_QUOTES=true` has been set, that is, quote acceptance has happened automatically
+
+[source,json]
+----
+HTTP/1.1 200 OK
+Content-Type: application/json
+ 
+{
+  "transferId": "85feac2f-39b2-491b-817e-4a03203d4f14",
+  "homeTransactionId": "53979be2-3bfe-45aa-ade7-92ea4ce4e74e",
+  "from": {
+    "type": "CONSUMER",
+    "idType": "MSISDN",
+    "idValue": "123456789",
+    "displayName": "Antoine Dujardin",
+    "firstName": "Antoine",
+    "middleName": "Paul",
+    "lastName": "Dujardin",
+    "dateOfBirth": "1977-07-17"
+  },
+  "to": {
+    "type": "CONSUMER",
+    "idType": "MSISDN",
+    "idValue": "987654321",
+    "displayName": "Aamir Fakhir",
+    "firstName": "Aamir",
+    "middleName": "Abdel",
+    "lastName": "Fakhir",
+    "dateOfBirth": "1966-06-16"
+  },
+  "amountType": "SEND",
+  "currency": "EUR",
+  "amount": "50",
+  "transactionType": "TRANSFER",
+  "note": "from Antoine",
+  "currentState": "COMPLETED",
+  "quoteId": "7c23e80c-d078-4077-8263-2c047876fcf6",
+  "quoteResponse": {
+    "transferAmount": {
+      "currency": "EUR",
+      "amount": "50"
+    },
+    "payeeReceiveAmount": {
+      "currency": "EUR",
+      "amount": "50"
+    },
+    "payeeFspFee": {
+        "amount": "0",
+        "currency": "EUR"
+    },
+    "payeeFspCommission": {
+        "amount": "0",
+        "currency": "EUR"
+    },
+    "expiration": "2019-11-15T22:17:28.985-01:00",
+    "geoCode": {
+      "latitude": "43.6047",
+      "longitude": "1.4442"
+    },
+    "ilpPacket": "AQAAAAAAACICAic...GF5Z",
+    "condition": "fH9pAYDQbmoZLPbvv3CSW2RfjU4jvM4ApG_fqGnR7Xs"
+  },
+  "quoteResponseSource": "payeedfsp",
+  "fulfil": {
+    "fulfilment": "mhPUT9ZAwd-BXLfeSd7-YPh46rBWRNBiTCSWjpku90s",
+    "completedTimestamp": "2019-11-15T04:15:35.513+01:00",
+    "transferState": "COMMITTED"
+  }
+}
+----
+
+=== Example error response to `PUT /sendmoney/{transferId}`
+
+The following example shows a response to a `PUT /sendmoney/{transferId}` (`"acceptParty": true`) request when the request fails due to the quote request failing (Step 11 in the diagram above).
+
+include::ROOT:partial$note_mojaloop_errors.adoc[]
+
+////
+*statusCode + message???*
+////
+
+[source,json]
+----
+HTTP/1.1 500 Internal Server Error
+Content-Type: application/json
+ 
+{
+  "statusCode": "2001",
+  "message": "Got an error response: {
+  errorInformation: {
+  errorCode: '2001',
+  errorDescription: 'Internal server error'
+  }
+  }",
+  "transferState": {
+    "transferId": "85feac2f-39b2-491b-817e-4a03203d4f14",
+    "homeTransactionId": "53979be2-3bfe-45aa-ade7-92ea4ce4e74e",
+    "from": {
+      "type": "CONSUMER",
+      "idType": "MSISDN",
+      "idValue": "123456789",
+      "displayName": "Antoine Dujardin",
+      "firstName": "Antoine",
+      "middleName": "Paul",
+      "lastName": "Dujardin",
+      "dateOfBirth": "1977-07-17"
+    },
+    "to": {
+      "type": "CONSUMER",
+      "idType": "MSISDN",
+      "idValue": "987654321",
+      "displayName": "Aamir Fakhir",
+      "firstName": "Aamir",
+      "middleName": "Abdel",
+      "lastName": "Fakhir",
+      "dateOfBirth": "1966-06-16"
+    },
+    "amountType": "SEND",
+    "currency": "EUR",
+    "amount": "50",
+    "transactionType": "TRANSFER",
+    "note": "from Antoine",
+    "currentState": "ERROR_OCCURRED",
+    "lastError": {
+      "httpStatusCode": 500,
+      "mojaloopError": {
+        "errorInformation": {
+          "errorCode": "2001",
+          "errorDescription": "Internal server error"
+        }
+      }
+    }
+  }
+}
+----
+
+The following example shows a response to a `PUT /sendmoney/{transferId}` (`"acceptQuote": true`) request when the request fails due to the Payer not having sufficient funds (Step 19 in the diagram above).
+
+include::ROOT:partial$ndc.adoc[]
+
+////
+*statusCode + message???*
+////
+
+[source,json]
+----
+HTTP/1.1 500 Internal Server Error
+Content-Type: application/json
+ 
+{
+  "statusCode": "4001",
+  "message": "Got an error response preparing transfer: {
+  errorInformation: {
+  errorCode: '4001',
+  errorDescription: 'Payer FSP insufficient liquidity'
+  }
+  }",
+  "transferState": {
+    "transferId": "85feac2f-39b2-491b-817e-4a03203d4f14",
+    "homeTransactionId": "53979be2-3bfe-45aa-ade7-92ea4ce4e74e",
+    "from": {
+      "type": "CONSUMER",
+      "idType": "MSISDN",
+      "idValue": "123456789",
+      "displayName": "Antoine Dujardin",
+      "firstName": "Antoine",
+      "middleName": "Paul",
+      "lastName": "Dujardin",
+      "dateOfBirth": "1977-07-17"
+    },
+    "to": {
+      "type": "CONSUMER",
+      "idType": "MSISDN",
+      "idValue": "987654321",
+      "displayName": "Aamir Fakhir",
+      "firstName": "Aamir",
+      "middleName": "Abdel",
+      "lastName": "Fakhir",
+      "dateOfBirth": "1966-06-16"
+    },
+    "amountType": "SEND",
+    "currency": "EUR",
+    "amount": "50",
+    "transactionType": "TRANSFER",
+    "note": "from Antoine",
+    "currentState": "ERROR_OCCURRED",
+    "quoteId": "7c23e80c-d078-4077-8263-2c047876fcf6",
+    "quoteResponse": {
+      "transferAmount": {
+        "currency": "EUR",
+        "amount": "50"
+      },
+      "payeeReceiveAmount": {
+        "currency": "EUR",
+        "amount": "50"
+      },
+      "payeeFspFee": {
+        "amount": "0",
+        "currency": "EUR"
+      },
+      "payeeFspCommission": {
+        "amount": "0",
+        "currency": "EUR"
+      },
+      "expiration": "2019-11-15T22:17:28.985-01:00",
+      "geoCode": {
+        "latitude": "43.6047",
+        "longitude": "1.4442"
+      },
+      "ilpPacket": "AQAAAAAAACICAic...GF5Z",
+      "condition": "fH9pAYDQbmoZLPbvv3CSW2RfjU4jvM4ApG_fqGnR7Xs"
+    },
+    "quoteResponseSource": "payeedfsp",
+    "lastError": {
+      "httpStatusCode": 500,
+      "mojaloopError": {
+        "errorInformation": {
+          "errorCode": "4001",
+          "errorDescription": "Payer FSP insufficient liquidity"
+        }
+      }
+    }
+  }
+}
+----
+
+The following example shows a response to a `POST /sendmoney` request (Step 27 in the diagram above) when the transfer fails expiry validation by the Switch (in Step 21, the Switch validates the fulfilment returned by the Payee DFSP and checks the expiry timestamp on the transfer). 
+
+[source,json]
+----
+HTTP/1.1 500 Internal Server Error
+Content-Type: application/json
+ 
+{
+  "statusCode": "3302",
+  "message": "Got an error response fulfilling transfer: {
+  errorInformation: {
+  errorCode: '3302',
+  errorDescription: 'Quote expired'
+  }
+  }",
+  "transferState": {
+    "transferId": "85feac2f-39b2-491b-817e-4a03203d4f14",
+    "homeTransactionId": "53979be2-3bfe-45aa-ade7-92ea4ce4e74e",
+    "from": {
+      "type": "CONSUMER",
+      "idType": "MSISDN",
+      "idValue": "123456789",
+      "displayName": "Antoine Dujardin",
+      "firstName": "Antoine",
+      "middleName": "Paul",
+      "lastName": "Dujardin",
+      "dateOfBirth": "1977-07-17"
+    },
+    "to": {
+      "type": "CONSUMER",
+      "idType": "MSISDN",
+      "idValue": "987654321",
+      "displayName": "Aamir Fakhir",
+      "firstName": "Aamir",
+      "middleName": "Abdel",
+      "lastName": "Fakhir",
+      "dateOfBirth": "1966-06-16"
+    },
+    "amountType": "SEND",
+    "currency": "EUR",
+    "amount": "50",
+    "transactionType": "TRANSFER",
+    "note": "from Antoine",
+    "currentState": "ERROR_OCCURRED",
+    "quoteId": "7c23e80c-d078-4077-8263-2c047876fcf6",
+    "quoteResponse": {
+      "transferAmount": {
+        "currency": "EUR",
+        "amount": "50"
+      },
+      "payeeReceiveAmount": {
+        "currency": "EUR",
+        "amount": "50"
+      },
+      "payeeFspFee": {
+        "amount": "0",
+        "currency": "EUR"
+      },
+      "payeeFspCommission": {
+        "amount": "0",
+        "currency": "EUR"
+      },
+      "expiration": "2019-11-15T22:17:28.985-01:00",
+      "geoCode": {
+        "latitude": "43.6047",
+        "longitude": "1.4442"
+      },
+      "ilpPacket": "AQAAAAAAACICAic...GF5Z",
+      "condition": "fH9pAYDQbmoZLPbvv3CSW2RfjU4jvM4ApG_fqGnR7Xs"
+    },
+    "quoteResponseSource": "payeedfsp",
+    "lastError": {
+      "httpStatusCode": 500,
+      "mojaloopError": {
+        "errorInformation": {
+          "errorCode": "3302",
+          "errorDescription": "Quote expired"
+        }
+      }
+    }
+  }
+}
+----

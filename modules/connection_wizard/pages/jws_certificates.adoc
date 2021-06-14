@@ -1,0 +1,69 @@
+= JWS Certificates
+
+Each DFSP must have a JSON Web Signature (JWS) certificate from the other DFSPs and from the Hub.
+
+The *JWS Certificates* page allows you to:
+
+* upload your own JWS certificate
+* retrieve the JWS certificate of other DFSPs or the Hub
+
+.JWS Certificates
+image::jws_certificates.png[]
+
+== DFSP JWS certificates
+
+The *DFSP JWS Certificates* tab allows you to share your JWS certificates with other DFSPs and the Hub Operator.
+
+.DFSP JWS Certificates
+image::dfsp_jws_certificates.png[]
+
+=== Upload certificates
+
+To upload your JWS certificate chain, complete the following steps.
+
+*Prerequisites:*
+
+You have created a "wrapped" public key for uploading. For details on how this is done, see xref:appendix_create_jws_cert.adoc[Appendix A: Create a JWS certificate].
+
+*Steps:*
+
+. In the *JWS Certificate* field, click **Choose File**, and select your JWS certificate saved on your computer. 
+. Uploading an intermediate chain is optional. To upload an intermediate chain, in the *Intermediate Chain* field, click **Choose File**, and select the JWS certificate chain saved on your computer.
+. Click **Submit**. On submitting certificates, they are validated. To see validation rules or issues found during validation, click **View Details**. The following details are validated:
+* The certificate must be valid at the present time according to the certificate validity period.
+* The certificate key length must be 2048 bits.
+
+include::partial$certificate_file_name_change.adoc[]
+
+include::partial$intermediate_chain_as_single_file.adoc[]
+
+Click *View* to view details of the certificate. Click *Download* to download a certificate for manually handing over to the Hub (if required).
+
+include::partial$remove_replace_certificate.adoc[]
+
+== Other DFSPs' JWS certificates
+
+The *Other DFSPs' JWS Certificates* tab allows you to retrieve the JWS certificate of another DFSP or the Hub itself for installing on your inbound gateway.
+
+.Other DFSPs' JWS Certificates
+image::other_dfsps_jws_certificates.png[]
+
+You can search for a certificate by typing a keyword in the *Search DFSP JWS Certificates* search box and pressing *Enter*. In addition, if you select the *Show only in the same monetary zone* checkbox, then only the JWS certificates of those DFSPs will be displayed that are in the same monetary zone as you. 
+
+NOTE: DFSPs can only download the JWS certificates of other DFSPs within the same monetary zone. For other DFSPs in a different monetary zone, the *Download* button is disabled.
+
+Information about the validity of a certificate is also displayed. Click *View Details* for validation rules or issues found during validation. The following details are validated:
+
+* The certificate must be valid at the present time according to the certificate validity period.
+* The certificate key length must be 2048 bits.
+
+To download the certificate, click **Download**.
+
+[NOTE]
+====
+After downloading another DFSP's or the Hub's JWS certificate, remember to extract the public key. You can extract a public key from a JWS certificate using the following openssl command:
+
+`openssl x509 -pubkey -noout -in <jwscert>.pem > <jwspubkey>.pem`
+
+Alternatively, you can use the KeyStore Explorer tool. For details, see xref:appendix_extract_public_key_from_JWS_cert.adoc[Appendix B: Extract a public key from a JWS certificate].
+====

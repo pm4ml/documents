@@ -1,0 +1,209 @@
+= Managing user access in Keycloak
+
+== Creating users
+
+A new deployment of {product-name} comes with no users at all. To add users, you can:
+
+* <<user-accounts-from-scratch,create user accounts from scratch>>
+* <<user-accounts-by-federation,tie into an existing Active Directory/LDAP user database by federation>>
+
+=== Creating user accounts from scratch [[user-accounts-from-scratch]]
+
+This section looks at how to add users from scratch and configure user accounts using the *Users* menu in Keycloak.
+
+For detailed guidance on the options available in the *Users* menu, see section https://www.keycloak.org/docs/latest/server_admin/index.html#user-management[User management] in the *Keycloak Server Administration Guide*.
+
+To add a user, complete the following steps:
+
+. Click *Users* in the left-hand navigation pane.
+. Click the *Add user* button on the right. +
+image:keycloak_users.png[] +
+The *Add user* page comes up. +
+image:keycloak_add_users.png[]
+. Fill in the following fields:
+
+NOTE: The *ID* field is disabled and will get populated on clicking **Save**.
+
+* *Username*
+* *Email*
+* *First Name*
+* *Last Name*
+* *User Enabled: ON*
+* *Email Verified: ON*
+
+. Click **Save**. On clicking **Save**, the user is created. You will see the *ID* field getting populated. +
+image:keycloak_new_user_added.png[]
+. Create a password for the user:
+.. Click the **Credentials** tab. +
+image:keycloak_users_credentials.png[]
+.. Enter a password in the *Password* field.
+.. Re-enter the password in the *Password Confirmation* field.
+.. If it is not a temporary password, set *Temporary* to **OFF**. 
+.. Click **Set Password**. +
+image:keycloak_users_credentials_2.png[]
+. Set roles for the user:
+.. Click the *Role Mappings* tab. +
+image:keycloak_role_mappings.png[] +
+By default, users in the realm get the following roles: **read_all**, **offline_access**, and **uma_authorization**. Decide whether you want to add the *write-all* role too. +
+If you wish to add a role other than any of the default ones, see section <<adding-roles,Adding roles>>.
+.. If you want to add the *write-all* role, click the role in the *Available Roles* box and click *Add selected*.
+. Optionally, you can add a user to an existing group. You can do this on the *Group* tab. +
+image:keycloak_users_groups.png[]
+For detailed information on creating groups and subsequent group assignment, see section https://www.keycloak.org/docs/latest/server_admin/index.html#groups[Groups] in the *Keycloak Server Administration Guide*. 
+
+=== Creating user accounts from an existing Active Directory/LDAP user database by user federation [[user-accounts-by-federation]]
+
+If a DFSP has an existing Active Directory (AD) or LDAP user database in place for user management, it is possible to configure Keycloak so that Keycloak treats users in the DFSP's AD/LDAP database as if they belonged to the Keycloak database as well. Every time there is a login request, Keycloak forwards the request to the AD/LDAP database. 
+
+To tie an Active Directory user database to Keycloak:
+
+. Click *User Federation* in the left-hand navigation pane. The *User Federation* page displays.
+. Select the *kerberos* option from the *Add provider...* drop-down list. +
+image:keycloak_user_federation.png[]
+. Configure details as per section https://www.keycloak.org/docs/latest/server_admin/index.html#_user-storage-federation[User Storage Federation] in the *Keycloak Server Administration Guide*. +
+image:keycloak_user_federation_kerberos.png[]
+
+Similarly, to link up Keycloak with an LDAP database:
+
+. Click *User Federation* in the left-hand navigation pane. The *User Federation* page displays.
+. Select the *ldap* option from the *Add provider...* drop-down list.
+. Configure details as per section https://www.keycloak.org/docs/latest/server_admin/index.html#_user-storage-federation[User Storage Federation] in the *Keycloak Server Administration Guide*. +
+image:keycloak_user_federation_ldap.png[]
+
+== Adding roles [[adding-roles]]
+
+A role identifies a type or category of users with set permissions. The {product-name} realm comes with the following default roles:
+
+* *offline_access* (comes with Keycloak out-of-the-box, enables the usage of https://www.keycloak.org/docs/latest/server_admin/index.html#_offline-access[offline tokens])
+* *uma_authorization* (comes with Keycloak out-of-the-box, UMA stands for https://www.keycloak.org/docs/latest/authorization_services/#_service_user_managed_access[User-Managed Access])
+* *read-all*
+* *write-all*
+
+.Roles
+image::keycloak_roles.png[]
+
+It is possible to define additional roles through the *Add Role* button.
+
+The permissions within roles and how those relate to the functions that a user can perform via the Experience API are not created automatically. They must be configured manually in {product-name}, in the Experience API:
+
+* `src/rolePermissionMap.json` maps Keycloak roles to internal {product-name} permissions.
+* `src/handler.js` allows you to define what action can or cannot be performed if a user has or does not have a particular {product-name} permission.
+
+In addition to allowing or denying access to a particular function, you can also do filtering based on roles. Take the following example. Let's suppose that a DFSP wants one of their Support staff to only be able to search for transfers that are errors. It is possible to make a new role just for that DFSP in their Keycloak, and map that role to the respective permissions in the Experience API.
+
+== Configuring authentication
+
+The *Authentication* menu allows you to configure authentication details for a user account, such as two-factor authentication, password and one-time passcode (OTP) policies, actions that the user must do or cannot do when they first log in, and so on.
+
+For detailed guidance on the options available in the *Authentication* menu, see section https://www.keycloak.org/docs/latest/server_admin/index.html#authentication[Authentication] in the **Keycloak Server Administration Guide**.
+
+=== Two-factor authentication
+
+By default, {product-name} comes with two-factor authentication configured. On their first login, users are prompted to scan a QR code with their Google Authenticator. On each login, users must use a combination of their password and a one-time passcode to access {product-name}. 
+
+This setting is configured via the *Flows* tab > *Browser - Conditional OTP* option, which must be set to *REQUIRED* for two-factor authentication to take place on user login.
+
+.Two-factor authentication
+image::keycloak_authentication.png[]
+
+NOTE: To ensure Google Authenticator based two-factor authentication is supported, on the *OTP Policy* tab, leave *OTP Hash Algorithm* as **SHA1**.
+
+=== Required actions
+
+You can choose to require the user to perform certain actions before they are allowed to log in. These actions are called required actions. Once a required action is completed, the user will not have to perform the action again. 
+
+.Required actions
+image::keycloak_required_actions.png[]
+
+For detailed information on required actions, see section https://www.keycloak.org/docs/latest/server_admin/index.html#required-actions[Required Actions] in the *Keycloak Server Administration Guide*.
+
+=== Password policy
+
+To set a password policy, go to the *Password Policy* tab and click *Add policy...* on the right-hand side. The drop-down menu has all the aspects of a password policy that you can control (for example, expiry, minimum length, use of special characters, and so on). Click any of the options to start configuring details.
+
+.Password policy
+image::keycloak_password_policy.png[]
+
+For detailed information on password policy options in Keycloak, see section https://www.keycloak.org/docs/latest/server_admin/index.html#_password-policies[Password Policies] in the *Keycloak Server Administration Guide*.
+
+=== OTP policy
+
+To configure details of the policy for how OTPs are validated, go to the *OTP Policy* tab.
+
+.OTP policy
+image::keycloak_authentication_otp_policy.png[]
+
+NOTE: To ensure Google Authenticator based two-factor authentication is supported, on the *OTP Policy* tab, leave *OTP Hash Algorithm* as **SHA1**.
+
+For detailed information on OTP policy options in Keycloak, see section https://www.keycloak.org/docs/latest/server_admin/index.html#otp-policies[OTP Policies] in the *Keycloak Server Administration Guide*.
+
+=== Resetting a user's password
+
+When a user forgets their password, you can reset their password following these steps:
+
+. Click *Users* in the left-hand navigation pane.
+. Click the *Credentials* tab. 
+. Go to *Reset Password* and set a new password:
+.. Enter a password in the *Password* field.
+.. Re-enter the password in the *Password Confirmation* field.
+.. Set the password as a temporary password that the user will be prompted to change on first use. Set *Temporary* to **ON**.
+.. Click **Reset Password**. +
+image:keycloak_reset_password.png[]
+
+=== Resetting a user's one-time passcode (OTP)
+
+By default, a new user account has two-factor authentication configured. This means that the first time the user logs in, they are prompted to scan a QR code with Google Authenticator, and then sign in to {product-name} with a one-time passcode.
+
+If the user ever loses their record in their Google Authenticator (for example, the user's phone is lost), then the user's OTP must be reset following these steps:
+
+. Click *Users* in the left-hand navigation pane.
+. Click the *Credentials* tab. 
+. Go to *Manage Credentials*, and click the *Delete* button to delete the otp record. +
+image:keycloak_delete_otp_record.png[]
+
+The next time the user tries to sign in, they have to scan the QR code again.
+
+=== Authentication through third-party identity providers
+
+It is possible to set up {product-name} in such a way that users can authenticate with external OpenID Connect or SAML Identity Providers. For example, {product-name} users could log in to {product-name} using their Google account. You can configure that via the *Identity Providers* menu in the left-hand navigation pane.
+
+.Identity providers
+image::keycloak_identity_providers.png[]
+
+For detailed information, see section https://www.keycloak.org/docs/latest/server_admin/index.html#_identity_broker[Identity Brokering] in the *Keycloak Server Administration Guide*.
+
+== Viewing sessions
+
+The *Sessions* menu allows you to view all active {product-name} sessions:
+
+. Click *Sessions* in the left-hand navigation pane. The *Sessions* page displays on the right-hand side. The *Realm Sessions* tab shows the clients configured in Keycloak. In our case, this will be the *pm4ml-customer-ui* client, that is, the {product-name} application. +
+image:keycloak_sessions.png[]
+. Click the client. You are taken to the *Clients* menu > *Sessions* tab.
+. Click *Show Sessions* to view a list of all users with active sessions. Information is displayed about the IP addresses where users logged in from and how long they have been logged in for. +
+image:keycloak_active_sessions.png[] +
+You can click a user's name to view further details about them.
+
+Alternatively, to view what sessions a particular user has open:
+
+. Click *Users* in the left-hand navigation pane. The *Lookup* page is displayed. 
+. Enter a keyword in the *Search* field and click the magnifier button, or click **View all users**. The list of search results/users is displayed.
+. Click the *ID* of the user that your are interested in.
+. Click the *Sessions* tab. +
+image:keycloak_user_sessions.png[] +
+The tab displays the following information:
+
+* *IP Address*
+* **Started**: when the session started
+* **Last Access**: when {product-name} was last accessed by the user
+* **Clients**: which client (application) the user is logged in to
+
+You can also choose to log out the user of the session using the *Logout* button.
+
+== Viewing user details 
+
+To view details of a particular user:
+
+. Click *Users* in the left-hand navigation pane. The *Lookup* page is displayed. 
+. Enter a keyword in the *Search* field and click the magnifier icon, or click **View all users**. The list of search results/users is displayed. +
+image:keycloak_view_users.png[]
+. To view details of a particular user, click the *ID* of the user that you are interested in.

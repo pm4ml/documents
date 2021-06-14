@@ -1,0 +1,5 @@
+The *Status* indicator tells you whether or not you have sent your data for processing to the Hub, and whether or not your data has been processed:
+
+* *Not yet sent for processing* (grey dot): You have not yet clicked *Submit for Confirmation* and not yet sent your endpoint data to the Hub.
+* *Awaiting Processing* (yellow dot): You have clicked *Submit for Confirmation* and sent your endpoint data to the Hub. The Hub has not yet processed your data.
+* *Processed and Confirmed* (green dot): You have clicked *Submit for Confirmation* and the Hub has processed your endpoint data.

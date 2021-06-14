@@ -1,0 +1,26 @@
+= User authentication with OpenID Connect
+
+{product-name} and Keycloak implement the OpenID Connect protocol. The following sequence flow illustrates the OpenID Connect user authentication process utilised by {product-name}.
+
+image::keycloak_authentication_flow.svg[]
+
+.User authentication
+[width="100%",options="header", cols="1,6"]
+|====================
+| Step |  Details
+| 1-2  | When the user accesses {product-name} and the browser loads, the browser makes a request to the Experience API to obtain user information. 
+| 3 |  The Experience API checks if the user has a session cookie with a valid access token.
+| 4-7 |  If there is a valid token, the Experience API calls Keycloak to get the user information, and the browser page renders normally, presenting {product-name} to the user.
+| 8-9 |  If there is no token or the token has expired, then the Experience API sends a redirect to a Keycloak sign-in page in its response to the browser.
+| 10-12  |  On the Keycloak sign-in page, the user enters their credentials to log in to {product-name}.
+| 13-14 |  Keycloak verifies the user's credentials. When it succeeds, Keycloak redirects the browser back to the Experience API service and passes an authorization code in its response.
+| 15 | The Experience API presents the authorization code to Keycloak to verify if Keycloak has indeed just authenticated that user and to request tokens. 
+| 16 |  If the authorization code matches the code that Keycloak gave to the browser, then Keycloak gives the Experience API back an ID token and an access token. +
+ +
+Access tokens are stored and cached by the Experience API. Access tokens have an expiry time and on every request, the Experience API checks to see if the access token has expired. If the token has expired, the Experience API does a handshake with Keycloak to refresh the token.
+| 17-19 |  The Experience API can use the ID token to send a request for user information to Keycloak, and Keycloak will return a set of what is called "claims" (data about the user such as username).
+| 20-22 | The browser displays the homepage of {product-name} and the user starts interacting with {product-name}.
+| 23-25 |  The Experience API looks up from the session the roles that the user has and it will decide based on that what action to allow to the user.
+|====================
+
+For further details on the OpenID Connect authentication flow (Authorization Code flow), see https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth[OpenID Connect Core documentation]. Note that in OpenID Connect terminology, "Client" is the application that requests the authentication of a user, which in the above flow is the {product-name} Experience API.

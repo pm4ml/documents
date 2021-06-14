@@ -1,0 +1,32 @@
+= Updating a template when the {product-name} API changes
+
+NOTE: This section assumes that the reader is using https://github.com/modusintegration/pm4ml-core-connector-rest-template[the generic {core-connector} REST template]. 
+
+Inside `client-adapter-interface/src/main/resources/`, there is a file called `api.yaml`. This is the definition of the {product-name} API. Every time the {product-name} API definition changes, the change must be made in this `.yaml` file too.
+
+//Provide link to original API definition: https://github.com/modusintegration/mojaloop-payment-manager-specification/blob/main/mojaloop_payment_manager_API.yaml
+
+== Adding a new endpoint
+
+If the change is about adding a new endpoint:
+
+. Add the new endpoint to `client-adapter-interface/src/main/resources/api.yaml` just like you would add a new endpoint to any other Swagger `.yaml` file.
+. Add the class that implements the interface for the new endpoint. Add the class (`<Endpoint>ApiImpl.java`) here: `client-adapter/src/main/java/com/modusbox/client/jaxrs`.
+. Add a new route definition (`from()`) in the relevant router here: `client-adapter/src/main/java/com/modus/client/router/`.
+. Add a `<camelcxf:serviceBeans />` for the new implementation class in `client-adapter/src/main/resources/spring/cxf.xml`.
+. Add a `<bean />` and `<camel:routeBuilder />` for the new router.
+. Add new DataSonnet mappings (`client-adapter/src/main/resources/mappings/`).
+. After the changes have been made, change directory to the root folder of the {core-connector} project (`pm4ml-core-connector-rest-template`) and run `mvn clean install`. +
+ +
+You should see the interface for the new endpoint (`<Endpoint>Api.java`) automatically added here: `client-adapter-interface/target/generated-sources/src/gen/java/com/modusbox/client/api/`.
+
+== Updating an existing endpoint
+
+If the change is about updating an existing endpoint:
+
+. Make the change in `client-adapter-interface/src/main/resources/api.yaml` just like you would add an update to any other Swagger `.yaml` file.
+. After the changes have been made, change directory to the `client-adapter-interface` and run `mvn clean install`. +
+ +
+The change will be automatically reflected in the affected endpoint's interface (`<Endpoint>Api.java` in `client-adapter-interface/target/generated-sources/src/gen/java/com/modusbox/client/api`). +
+ +
+However, the change must be made manually in the affected implementation class (`<Endpoint>ApiImpl.java` in the `client-adapter/src/main/java/com/modusbox/client/jaxrs/` folder).

@@ -1,0 +1,127 @@
+= Components of a {core-connector} template
+
+This section gives an overview of the components of https://github.com/modusintegration/mojaloop-cbs-adapter-template[the generic {core-connector} template]. The CBS-vendor-specific templates are not discussed here but they have a similar setup of components so the below information can act as guidance to those too.
+
+When you start developing a template, check if the CBS vendor already has a template in https://github.com/modusintegration[the *modusintegration* GitHub repository] (search on the name of the vendor). When no vendor-specific template exists yet, use the generic {core-connector} template. When working with a CBS vendor who already has an existing template in place, use the existing template as the basis.
+
+== `client-adapter-interface` folder
+
+Inside `src/main/resources/`, there is a file called `api.yaml`. This file contains the definition of the {product-name} API.
+
+NOTE: At the time of writing, the `api.yaml` Swagger file of https://github.com/modusintegration/mojaloop-cbs-adapter-template[the generic {core-connector} template] is not up-to-date.
+
+The `client-adapter-interface` folder also contains a `pom.xml` configuration file (this is required by Maven practices) to specify the dependencies and plugins that the `client-adapter-interface` component relies on.
+
+Some details to point out in `pom.xml` are as follows.
+
+Make sure that the version number of the template indicated between `<version>` tags (see below) matches the version number specified in the `pom.xml` file located in the root folder of the project.
+
+[source,xml]
+----
+<parent>
+    <artifactId>client-adapter-template</artifactId>
+    <groupId>com.modus</groupId>
+    <version>1.0.0</version>
+</parent>
+----
+
+The version number of the module itself (`client-adapter-interface`) may also be defined separately:
+
+[source,xml]
+----
+<artifactId>client-adapter-interface</artifactId>
+<version>1.1.0</version>
+----
+
+The plugin called `openapi-generator-maven-plugin` has special significance, it is used to generate client stub files from an OpenAPI specification. In other words, this is the resource that translates the `api.yml` file into Java classes.
+
+Within the configuration of `openapi-generator-maven-plugin`, the following line defines the application Java server type, in this case, Apache CXF:
+
+[source,xml]
+----
+<generatorName>jaxrs-cxf</generatorName>
+----
+
+Also, the next line defines the path pointing to the `.yaml` file that originates the Java class definitions. If the location of the `.yaml` file changes, remember to update this line:
+
+[source,xml]
+----
+<inputSpec>${project.basedir}/src/main/resources/api.yaml</inputSpec>
+----
+
+Finally, the following lines define the names of the packages that the generated classes will have (they can be changed if required):
+
+[source,xml]
+----
+<apiPackage>com.modus.client.api</apiPackage>
+<modelPackage>com.modus.client.model</modelPackage>
+----
+
+Part of the configuration of `openapi-generator-maven-plugin` is also incorporated into the `pom.xml` file that is in the root folder of the project.
+
+== `client-adapter` folder
+
+Contains the implementations of the {product-name} API endpoints, as well as the routers, processors, and beans required to translate and route messages from one endpoint to another (in our case, from DFSP backend endpoints to {product-name} API endpoints, and the other way around).
+
+It comes with:
+
+* A `lib` folder. This folder stores those libraries that are not hosted in a public repository. The folder currently contains a Camel DataSonnet `.jar` file.
+* A `src/main` folder with all of the source material for building the {core-connector} project:
+** `java/com/modus/client/exception/`: Exception handling resources. These can be modified as per individual requirements.
+** `java/com/modus/client/jaxrs/`: The classes that implement the {product-name} API endpoint interfaces.
+** `java/com/modus/client/router/`: The router that defines the rules for moving messages between endpoints.
+** `java/com/modus/client/Application.java`: This is the main class of the application, and this what will run the project as a Spring Boot application.
+** `resources/mappings/`: The DataSonnet mappings between the {product-name} API and the DFSP backend API (referenced by the router). 
+** `resources/spring/application.xml`: This is one of the Spring beans configuration files which loads resources necessary to run the application. This file acts as the main configuration file and contains mappings to the other configuration files (`spring/cxf.xml` and `spring/mappings.xml`).
+** `resources/spring/cxf.xml`: This file handles the Apache CXF configuration. It has a Camel context declaration and also a Camel CXF rest server declaration.
+** `resources/spring/mappings.xml`: This file contains the DataSonnet file mappings and their configuration. It maps each DataSonnet file as a Spring bean and makes it available for other application resources.
+** `resources/application.xml`: This is another format for the `application.xml` file. It acts as a properties file with values that can be used in testing or in other environments. The `resources/spring/application.xml` file is pointing to this file.
+** `resources/log4j.xml`: A configuration file for the Log4j logging utility.
+* A `src/test/java/com/modus/client/` folder with tests for the DataSonnet mappings.
+* A `Dockerfile` file: This file is used to dockerize the application (that is, build the Docker image of the application). 
+* A `pom.xml` configuration file (required by Maven practices) to specify the dependencies and plugins that the `client-adapter` component relies on.
+
+== `client-adapter-db` folder
+
+Contains the routers, processors, and beans required to translate and route messages from the DFSP backend to {core-connector} (and the other way around) when the DFSP's backend uses database-based procedural calls (as opposed to API calls) for integrating with external systems.
+
+== `client-adapter-it` folder
+
+Contains integration tests. The integration tests have been generated using Cucumber:
+
+* The `client-adapter-it/src/test/resources/com/modus/client/it/client-adapter-tests.feature` file has the test scenarios declared.
+* The `client-adapter-it/src/test/java/com/modus/client/it/ApplicationCucumberSteps.java` file has the implementation for the declared test scenarios.
+
+
+It comes with:
+
+* An `src/test` folder, which contains the integration tests and the configuration of the Log4j logging utility.
+* A `pom.xml` configuration file to specify the dependencies and plugins that the `client-adapter-it` component relies on. 
+
+== `client-adapter-rest-mock` folder
+
+Contains the implementation of a mock CBS backend and REST API, which can be used for testing purposes.
+
+== `client-adapter-soap-mock` folder
+
+Contains the implementation of a mock CBS backend and SOAP API, which can be used for testing purposes.
+
+== `.gitlab-ci.yml` file
+
+Contains the CI/CD configuration for building and testing {core-connector}.
+
+== `Dockerfile` file
+
+The Dockerfile for building the {core-connector} image.
+
+== `dependency_tree.txt` file
+
+*Question: What is the role of this file?*
+
+== `pom.xml` configuration file
+
+Contains the Project Object Model (POM) for the project. The POM is the basic unit of work in Maven. It is an XML file that contains information about the project and configuration details (such as modules, dependencies, plugins) used by Maven to build the project. For more information on how `pom.xml` is structured, see https://maven.apache.org/guides/introduction/introduction-to-the-pom.html[Maven documentation].
+
+== `run.sh` file
+
+A script to run {core-connector}.
