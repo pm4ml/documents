@@ -101,7 +101,7 @@ For detailed guidance on the options available in the *Authentication* menu, see
 
 By default, {product-name} comes with two-factor authentication configured. On their first login, users are prompted to scan a QR code with their Google Authenticator. On each login, users must use a combination of their password and a one-time passcode to access {product-name}. 
 
-This setting is configured via the *Flows* tab > *Browser - Conditional OTP* option, which must be set to *REQUIRED* for two-factor authentication to take place on user login.
+This setting is configured via the *Flows* tab > *Browser* drop-down menu item > *Browser - Conditional OTP* option, which must be set to *REQUIRED* for two-factor authentication to take place on user login.
 
 .Two-factor authentication
 image::keycloak_authentication.png[]
