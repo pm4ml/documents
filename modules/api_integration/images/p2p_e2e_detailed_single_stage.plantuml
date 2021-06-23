@@ -1,0 +1,149 @@
+@startuml
+
+skinparam activityFontSize 4
+skinparam activityDiamondFontSize 30
+skinparam activityArrowFontSize 24
+skinparam defaultFontSize 24
+skinparam noteFontSize 24
+skinparam monochrome true
+
+autonumber
+
+actor "Payer" as Payer
+participant "Payer DFSP" as PayerFSP
+box Payment Manager
+participant "Core Connector" as cc1
+participant "Mojaloop Connector" as sob
+end box
+participant "Mojaloop Switch" as sw
+participant "Oracle" as Oracle
+box Payment Manager
+participant "Mojaloop Connector" as sib
+participant "Core Connector" as cc2
+end box
+participant "Payee DFSP" as PayeeFSP
+actor "Payee" as Payee
+
+
+Payer -> PayerFSP: I want to send 50 EUR \n to MSISDN 987654321
+PayerFSP -> cc1: Send 50 EUR to MSISDN 987654321 \n POST /sendmoney (sync)
+cc1 -> sob: POST /transfers (sync)
+== Identify payee ==
+sob -> sw: GET /parties/{type}/{id}
+sw -> Oracle: Look up DFSP that serves MSISDN 987654321
+Oracle -> Oracle: Look up DFSP that serves MSISDN 987654321
+alt Payee DFSP not found
+Oracle -> sw: No DFSP found
+sw -> sob: PUT /parties/{type}/{id}/error
+sob -> cc1: Error response to POST /transfers (sync)
+cc1 -> PayerFSP: Error response to POST /sendmoney (sync)
+PayerFSP -> Payer: Transfer failed
+else Payee DFSP found
+Oracle -> sw: Return DFSP ID
+sw -> sib: GET /parties/{type}/{id}
+sib -> cc2: GET /parties/{idType}/{idValue} (sync)
+cc2 -> PayeeFSP: Look up Payee details (sync)
+PayeeFSP -> PayeeFSP: Retrieve Payee details
+end
+alt Payee not found
+PayeeFSP -> cc2: Return error (sync)
+cc2 -> sib: Error response to GET /parties/{idType}/{idValue} (sync)
+sib -> sw: PUT /parties/{type}/{id}/error
+sw -> sob: PUT /parties/{type}/{id}/error
+sob -> cc1: Error response to POST /transfers (sync)
+cc1 -> PayerFSP: Error response to POST /sendmoney (sync)
+PayerFSP -> Payer: Transfer failed
+else Payee found
+PayeeFSP -> cc2: Return Payee details \n HTTP 200 result (sync)
+cc2 -> sib: Response to GET /parties/{idType}/{idValue} (sync) \n (contains Payee details)
+sib -> sw: PUT /parties/{type}/{id}
+sw -> sob: PUT /parties/{type}/{id}
+sob -> cc1: Response to POST /transfers \n (contains Payee details + transferId) \n HTTP 200 result (sync)
+end
+== Agree transfer ==
+cc1 -> sob: PUT /transfers/{transferId} {"acceptParty": true} (sync)
+sob -> sw: POST /quotes
+sw -> sib: POST /quotes
+sib -> cc2: POST /quoterequests (sync)
+cc2 -> PayeeFSP: Prompt for quote (sync)
+alt Quote request fails
+PayeeFSP -> cc2: Return error (sync)
+cc2 -> sib: Error response to POST /quoterequests (sync)
+sib -> sw: PUT /quotes/{id}/error
+sw ->  sob: PUT /quotes/{id}/error
+sob -> cc1: Error response to PUT /transfers/{transferId} (sync)
+cc1 -> PayerFSP: Error response to POST /sendmoney (sync)
+PayerFSP -> Payer: Transfer failed
+else Quote request is successful
+PayeeFSP -> PayeeFSP: Retrieve quote
+PayeeFSP -> cc2: Return quote \n HTTP 200 result (sync)
+cc2 -> sib: Response to POST /quoterequests (sync) \n (contains quote) \n HTTP 200 result (sync)
+sib -> sw: PUT /quotes/{id}
+sw -> sob: PUT /quotes/{id}
+sob -> cc1: Response to PUT /transfers/{transferId} \n (contains quote) \n HTTP 200 result (sync)
+end
+== Execute transfer ==
+cc1 -> sob: PUT /transfers/{transferId} (sync) \n {"acceptQuote": true}
+sob -> sw: POST /transfers
+sw -> sw: Perform liquidity (NDC) check
+alt Transfer execution would exceed NDC
+sw -> sob: PUT /transfers/{id}/error
+sob -> cc1: Error response to PUT /transfers/{transferId} (sync)
+cc1 -> PayerFSP: Error response to POST /sendmoney (sync)
+PayerFSP -> Payer: Transfer failed
+else Transfer execution will not exceed NDC
+sw -> sw: Reserve funds
+sw -> sib: POST /transfers
+sib -> cc2: POST /transfers (sync)
+cc2 -> PayeeFSP: Prepare transfer (sync)
+end
+PayeeFSP -> PayeeFSP: Perform internal checks
+alt Payee DFSP internal checks fail
+PayeeFSP -> cc2: Return error (sync)
+cc2 -> sib: Error response to POST /transfers (sync)
+sib -> sw: PUT /transfers/{id}/error
+sw -> sw: Cancel reserved funds
+sw -> sob: PUT /transfers/{id}/error
+sob -> cc1: Error response to PUT /transfers/{transferId} (sync)
+sob -> PayerFSP: Error response to POST /sendmoney (sync)
+PayerFSP -> Payer: Transfer failed
+else Payee DFSP internal checks pass
+PayeeFSP -> cc2: HTTP 200 result (sync)
+cc2 -> PayeeFSP: Prompt to create funds \n in technical account
+PayeeFSP -> PayeeFSP: Create funds \n in technical account
+PayeeFSP -> cc2: Transfer successful \n HTTP 200 result (sync)
+cc2 -> sib: Response to POST /transfers \n Transfer successful \n HTTP 200 result (sync)
+sib -> sw: PUT /transfers/{id} \n transferState=RESERVED
+sw -> sw: Perform validation
+end
+alt Validation by Switch fails
+sw -> sw: Cancel reserved funds
+sw -> sob: PUT /transfers/{id}/error
+sob -> cc1: Error response to PUT /transfers/{transferId} \n Transfer failed (sync)
+cc1 -> PayerFSP: Error response to POST /sendmoney \n Transfer failed (sync)
+PayerFSP -> Payer: Transfer failed
+sw -> sib: PATCH /transfers/{id} \n transferState=ABORTED
+sib -> cc2: PUT /transfers/{transferId} \n transferState=ABORTED
+cc2 -> PayeeFSP: Transfer failed
+PayeeFSP -> PayeeFSP: Cancel created funds
+else Validation by Switch successful
+sw -> sw: Commit funds
+sw -> sob: PUT /transfers/{id} \n transferState=COMMITTED
+sob -> cc1: Response to PUT /transfers/{transferId} \n Transfer successful \n HTTP 200 result (sync)
+cc1 -> PayerFSP: Response to POST /sendmoney \n Transfer successful \n HTTP 200 result (sync)
+PayerFSP -> Payer: Transfer successful
+sw -> sib: PATCH /transfers/{id} \n transferState=COMMITTED
+sib -> cc2: PUT /transfers/{transferId} \n transferState=COMMITTED
+cc2 -> PayeeFSP: Transfer successful
+PayeeFSP -> PayeeFSP: Move 50 EUR to Payee account \n managed internally in Payee DFSP
+note right
+If this step fails,
+Payee DFSP should mark 
+transaction for reconciliation, 
+and initiate reconciliation 
+process with Hub
+end note
+PayeeFSP -> Payee: You have received 50 EUR from Payer
+end
+
+@enduml

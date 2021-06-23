@@ -1,23 +1,19 @@
 = API integration
 
-To communicate with {product-name}, DFSPs are required to implement {core-connector} in alignment with their backend technology so that it can call the {product-name} API. To help API implementation efforts, DFSPs are provided with:
+To communicate with {product-name}, DFSPs are required to implement {core-connector} in alignment with their backend technology so that their backend can talk to the {product-name} API. To help API implementation efforts, DFSPs are provided with:
 
 * the specification of the {product-name} API
 * a {core-connector} template
 
 What is a {core-connector} template? DFSP Core Backends have their own custom API or enterprise integration solutions so {company-name} built multiple variants of {core-connector} to align with common Core Banking Solution (CBS) products. These {core-connector} variants are all built using a standard template. The template provides a placeholder codebase for the API endpoints that need to be developed.
 
-The effort to customise a {core-connector} template will differ depending on the transfer use case and on whether the DFSP will be transacting in a Payer DFSP (send funds) role or a Payee DFSP (receive funds) role. {product-name} currently provides support for the peer-to-peer (P2P) transfer use case only. For the P2P use case: 
+The effort for a DFSP to customise a {core-connector} template will differ depending on the chosen deployment option. When deploying {company-name}, two options are available:
 
-* As a Payer DFSP, there is no need for any customisation, the template comes with the fully-fledged implementation of the functionality to send funds.
-* As a Payee DFSP, the DFSP must add the implementation logic for calling the Core Backend using the appropriate CBS technology.
-
-For any other use case (for example, payee-initiated merchant transfers), both the Payer DFSP and the Payee DFSP are required to customise the {core-connector} template.
-
-In addition to the DFSP role, the chosen deployment option will also influence the required integration effort on the DFSP’s part. When deploying {company-name}, two options are available:
-
-* **Hosted by {company-name}**: {company-name} integration experts deploy {product-name}, sync up the {core-connector} template with the DFSP's core backend implementation, and set any required configuration options.
-* **Self-hosted by DFSP**: The DFSP deploys {product-name}, aligns the {core-connector} template with the specifics of their backend technology, and configures any additional settings.
+* **Hosted by System Integrator**: The System Integrator deploys {product-name} in the cloud, and syncs up the Core Connector template with the DFSP's core backend implementation.
+* **Self-hosted by DFSP**: The DFSP deploys {product-name} on premise or in the cloud, and the customisation of the Core Connector template can be done by a number of actors (depending on the outcome of an initial assessment of DFSP capabilities):
+** by the System Integrator
+** by the System Integrator and the vendor of the DFSP's core backend solution (in close collaboration)
+** by the DFSP and the vendor of the DFSP's core backend solution (in close collaboration)
 
 This document focuses on {product-name} API, the API at the back of {core-connector}. {product-name} API is a Mojaloop-centric API built around the resource types of the Mojaloop FSPIOP API but applying a use-case-oriented approach. The key resources of the Mojaloop FSPIOP API are the party lookup, quotes, and transfers services:
 
