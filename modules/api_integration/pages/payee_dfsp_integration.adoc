@@ -2,9 +2,14 @@
 
 The following diagram illustrates how a Payee DFSP interacts with {product-name} and the Mojaloop Switch at the level of API calls.
 
-NOTE: The simplified API between the {mojaloop-connector} and the {core-connector} is a synchronous HTTP API, while the interface between the {mojaloop-connector} and the Mojaloop Switch is the https://docs.mojaloop.io/mojaloop-specification/#api-definition[asynchronous Mojaloop FSPIOP API]. +
- +
-Specification of the simplified API ({product-name} API) is provided in the form of a Swagger `.yaml` file (`mojaloop_payment_manager_API.yaml`).
+[NOTE]
+====
+image::api_interfaces_payee_side.png[width=481,height=85]
+
+The interface between the Mojaloop Switch and the {mojaloop-connector} is the https://docs.mojaloop.io/mojaloop-specification/#api-definition[asynchronous Mojaloop FSPIOP API].
+
+The simplified API between the {mojaloop-connector} and the {core-connector} is a synchronous HTTP API (({product-name} API: `mojaloop_payment_manager_API.yaml`)).
+====
 
 .Peer-to-peer transfer
 image::p2p_e2e_detailed_multi_stage.svg[]
