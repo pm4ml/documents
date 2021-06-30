@@ -1,5 +1,5 @@
 site:
-  title: PortX Payment Manager Documentation
+  title: Payment Manager for Mojaloop Documentation
   start_page: payment_manager::index.adoc
 content:
   sources:
