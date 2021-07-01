@@ -12,11 +12,11 @@ When creating or customising a template, at a high level, you are required to co
 
 When you start developing a template, check if the CBS vendor already has a template in place. 
 
-When creating a template for a CBS vendor who provides a REST-based solution and for whom no vendor-specific template exists yet, create a copy of https://github.com/modusintegration/pm4ml-core-connector-rest-template[the generic {core-connector} REST template] and make changes to that. Name the new template as `<CBS vendor name>-core-connector.`
+When creating a template for a CBS vendor who provides a REST-based solution and for whom no vendor-specific template exists yet, create a copy of https://github.com/pm4ml/pm4ml-core-connector-rest-template[the generic {core-connector} REST template] and make changes to that. Name the new template as `<CBS vendor name>-core-connector.`
 
-When working with a CBS vendor who already has an existing template in place in https://github.com/modusintegration[the *modusintegration* GitHub repository], clone the existing template and continue working in that. Note, however, that it is good practice to maintain separate templates for the individual combinations of a vendor and a DFSP. For example, the Mambu template of DFSP A might have to differ from the Mambu template of DFSP B.
+When working with a CBS vendor who already has an existing template in place in https://github.com/pm4ml/[the *pm4ml* GitHub repository], clone the existing template and continue working in that. Note, however, that it is good practice to maintain separate templates for the individual combinations of a vendor and a DFSP. For example, the Mambu template of DFSP A might have to differ from the Mambu template of DFSP B.
 
-NOTE: This section assumes that the reader is using https://github.com/modusintegration/pm4ml-core-connector-rest-template[the generic {core-connector} REST template]. 
+NOTE: This section assumes that the reader is using https://github.com/pm4ml/pm4ml-core-connector-rest-template[the generic {core-connector} REST template]. 
 
 == Core Connector for a Payer DFSP
 

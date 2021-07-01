@@ -1,6 +1,6 @@
 = Components of a {core-connector} template
 
-This section gives an overview of the components of https://github.com/modusintegration/pm4ml-core-connector-rest-template[the generic {core-connector} REST template].
+This section gives an overview of the components of https://github.com/pm4ml/pm4ml-core-connector-rest-template[the generic {core-connector} REST template].
 
 == `.circleci` folder
 

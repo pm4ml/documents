@@ -283,19 +283,19 @@ Content-Type: application/json
 }
 ----
 
-To ensure that the Switch does send a notification, the following environment variables must be configured:
+To ensure that the Switch does send a notification, the following environment variables must be configured in {mojaloop-connector}:
 
 * `RESERVE_NOTIFICATION` must be set to `true`
-* `RESOURCE_VERSIONS` must contain the string `transfers=1.1` 
+* `RESOURCE_VERSIONS` must contain the string `transfers=1.1,` 
 
 `RESOURCE_VERSIONS` is used to assign API versions to `Content-Type` and `Accept` headers dynamically. Given that the Switch notification is a feature that was introduced in Mojaloop FSPIOP API version 1.1, and that it is a feature of the `/transfers` resource, {product-name} must be set so that it uses version 1.1. of the `/transfers` resource. Here is how to set resource versions:
 
 ----
-RESOURCE_VERSIONS="resouceOneName=1.0,resourceTwoName=1.1"
+RESOURCE_VERSIONS="resouceOneName=1.0,resourceTwoName=1.1,"
 ----
 
 For example:
 
 ----
-RESOURCE_VERSIONS="parties=1.0,transfers=1.1"
+RESOURCE_VERSIONS="parties=1.0,transfers=1.1,"
 ----

@@ -20,7 +20,7 @@ When a peer-to-peer (P2P) transfer (`POST /sendmoney`) happens in a single stage
 .Peer-to-peer transfer (single-stage transfer)
 image::p2p_e2e_detailed_single_stage.svg[]
 
-To simplify the transfer flow and perform the transfer in a single combined step as shown in the diagram, configure the following environment variables:
+To simplify the transfer flow and perform the transfer in a single combined step as shown in the diagram, configure the following environment variables in {mojaloop-connector}:
 
 * Set `AUTO_ACCEPT_PARTY=true`.
 * Set `AUTO_ACCEPT_QUOTES=true`.
@@ -404,7 +404,7 @@ Content-Type: application/json
 
 == Multi-stage transfer
 
-You have the option to not automatically accept the returned party lookup and/or quote response and halt the transfer flow to examine party/quote information. For this, configure the following environment variables:
+You have the option to not automatically accept the returned party lookup and/or quote response and halt the transfer flow to examine party/quote information. For this, configure the following environment variables in {mojaloop-connector}:
 
 * If you want to examine the returned party information, set `AUTO_ACCEPT_PARTY=false`.
 * If you want to examine the returned quote, set `AUTO_ACCEPT_QUOTES=false`.

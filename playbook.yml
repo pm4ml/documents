@@ -1,5 +1,5 @@
 site:
-  title: Payment Manager for Mojaloop Documentation
+  title: Payment Manager OSS Documentation
   start_page: payment_manager::index.adoc
 content:
   sources:

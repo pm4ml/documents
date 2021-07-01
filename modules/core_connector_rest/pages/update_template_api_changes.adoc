@@ -1,6 +1,6 @@
 = Updating a template when the {product-name} API changes
 
-NOTE: This section assumes that the reader is using https://github.com/modusintegration/pm4ml-core-connector-rest-template[the generic {core-connector} REST template]. 
+NOTE: This section assumes that the reader is using https://github.com/pm4ml/pm4ml-core-connector-rest-template[the generic {core-connector} REST template]. 
 
 Inside `client-adapter-interface/src/main/resources/`, there is a file called `api.yaml`. This is the definition of the {product-name} API. Every time the {product-name} API definition changes, the change must be made in this `.yaml` file too.
 

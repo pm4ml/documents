@@ -1,24 +1,24 @@
-= {product-name} for {hub}
+= {product-name} OSS
 
-Building, validating, and operating a service that connects a Digital Financial Service Provider's (DFSP's) core systems to a {hub} real-time payments network requires a detailed understanding of the business, technical, and operational requirements of that network. {company-name} makes the integration path to {hub} easier with {product-name}. 
+Building, validating, and operating a service that connects a Digital Financial Service Provider's (DFSP's) core systems to a {hub} real-time payments network requires a detailed understanding of the business, technical, and operational requirements of that network. {product-name} makes the integration path to {hub} easier. 
 
 {product-name} provides tools to manage connections, services, and transaction monitoring, and it also provides a single point to configure the DFSP environment to go from a test to a real-time one.
 
 {product-name} is made up of the following major components:
 
-* **{core-connector}**: Integrates a DFSP's Core Backend to Payment Manager as a "translator" for both parts so communication is possible between them. It uses standard templates written in Apache Camel, a declarative language for integration engineers that does not require writing code from scratch.
+* **{core-connector}**: Integrates a DFSP's Core Backend to Payment Manager as an "adapter" for both parts so communication is possible between them. It uses standard templates, the majority of them written in Apache Camel, a declarative language for integration engineers that does not require writing code from scratch.
 * **{mojaloop-connector}**: Comes with the following key components:
 ** A {hub}-SDK, which provides {hub}-compliant security components and HTTP header processing capabilities, as well as a simplified version of the {hub} API.
 ** A Connection Manager Client, which simplifies and automates certificate creation, signing and exchange, as well as the configuration of the connections required to different environments.
 * **Business and Technical Portals**: Provide dashboards for monitoring transactions and service status. They also allow DFSPs to manage their security keys, certificates and endpoint configuration required for connecting to {hub}-based schemes. 
 
-image::PM4ML_system_architecture_3.png[]
+image::PM4ML_system_architecture_4.png[]
 
 //image::integration_via_pm4ml.png[]
 
 {product-name} abstracts away the complexity of the {hub} API and helps the DFSP understand their relationship with the scheme, focusing on the key business and technical areas.
 
-{product-name} can reduce technical risk, as well as ongoing operational capability needs, thereby reducing costs for development and integration with a {hub} Hub. Enterprise Support is also offered by {company-name} to provide business confidence that there is continued investment in the solution and maintenance is available.
+{product-name} can reduce technical risk, as well as ongoing operational capability needs, thereby reducing costs for development and integration with a {hub} Hub.
 
 A few words about {product-name} technology:
 

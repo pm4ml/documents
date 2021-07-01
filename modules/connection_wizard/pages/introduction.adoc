@@ -6,7 +6,7 @@ The {connection-wizard} is built around the major stages of the DFSP onboarding 
 
 NOTE: The names of the environments may differ from the ones provided below. The environments displayed in {connection-wizard} will reflect what has been configured by the Hub Operator in the backend.
 
-* *ModusBox & Mojaloop Labs*: The Labs provide a controlled online environment, where DFSPs interact with a mock implementation in a self-service manner, getting familiar with basic concepts and processes, and learning how API services work. The Labs is also available as a locally hosted environment, allowing DFSPs to test their implementation against mock services locally.
+* *Mojaloop Labs*: The Labs provide a controlled online environment, where DFSPs interact with a mock implementation in a self-service manner, getting familiar with basic concepts and processes, and learning how API services work. The Labs is also available as a locally hosted environment, allowing DFSPs to test their implementation against mock services locally.
 * *Pre-qualification Sandbox*: After a DFSP has completed development work to implement the API services required to integrate with the {hub} Hub, they gain access to a sandbox environment. In the sandbox, DFSPs can run further test API calls, validating their code against a real implementation of the Hub, interacting with an environment as if it was real, but still controlled.
 * *Production Connection*: Once the DFSP has demonstrated compliance with all prerequisites required for entry to the Production environment, they are granted access to the live operational environment.
 

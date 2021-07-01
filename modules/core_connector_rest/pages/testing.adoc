@@ -87,4 +87,4 @@ Route-level and bean-level changes have to be tested individually, this is done 
 
 //NOTE: At the time of writing, route-level tests have not been finalised yet.
 
-In addition, individual DataSonnet mappings must be tested too. An example of such tests is provided in the https://github.com/modusintegration/pm4ml-core-connector-rest-template[pm4ml-core-connector-rest-template repository], in `client-adapter/src/test/java/com/modus/client/`.
+In addition, individual DataSonnet mappings must be tested too. An example of such tests is provided in the https://github.com/pm4ml/pm4ml-core-connector-rest-template[pm4ml-core-connector-rest-template repository], in `client-adapter/src/test/java/com/modus/client/`.
