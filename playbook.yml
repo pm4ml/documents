@@ -36,6 +36,6 @@ ui:
   bundle:
     url: ui-bundle/ui-bundle.zip
     snapshot: true
-
+  supplemental_files: ./supplemental_ui
 
 
