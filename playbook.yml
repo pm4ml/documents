@@ -1,10 +1,11 @@
 site:
   title: Payment Manager OSS Documentation
+  url: https://pm4ml.github.io/documents
   start_page: payment_manager::index.adoc
 content:
   sources:
   - url: .
-    branches: HEAD
+    branches: master
     #start_path: docs
 asciidoc:
   attributes:
@@ -36,6 +37,7 @@ ui:
   bundle:
     url: ui-bundle/ui-bundle.zip
     snapshot: true
+  #supplemental_files: ./supplemental_ui
   supplemental_files: ./supplemental_ui
   - path: ui.yml
     contents: |
