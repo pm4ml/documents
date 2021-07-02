@@ -1,0 +1,16 @@
+name: payment_manager
+version: 'latest'
+#for PDF generation this must be 1.0
+title: Payment Manager OSS
+nav:
+- how_to_read_docs/nav.adoc
+- api_integration/nav.adoc
+#- core_connector/nav.adoc
+- core_connector_rest/nav.adoc
+#- iso8583_connector_api_guide/nav.adoc
+#- iso8583_connector_deployment_guide/nav.adoc
+- connection_wizard/nav.adoc
+- transfers_overview/nav.adoc
+- technical_dashboard/nav.adoc
+- user_access_management/nav.adoc
+#- mojaloop_connector/nav.adoc
