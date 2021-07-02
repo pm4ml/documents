@@ -1,0 +1,73 @@
+@startuml
+
+autonumber
+skinparam activityFontSize 4
+skinparam activityDiamondFontSize 30
+skinparam activityArrowFontSize 24
+skinparam defaultFontSize 24
+skinparam noteFontSize 24
+skinparam monochrome true
+
+participant "DFSP Core Backend" as backend
+
+box Payment Manager
+participant "Core Connector" as cc
+participant "Mojaloop Connector" as sob
+end box
+
+participant "Mojaloop Switch" as sw
+
+
+== send money ==
+
+    backend -> cc: POST /sendmoney (sync)
+    cc -> sob: POST /transfers (sync)
+    alt Payee not found
+    sob -> sw: GET /parties/{type}/{id}
+    sw -> sob: PUT /parties/{type}/{id}/error
+    sob -> cc: Return error \n HTTP 200 result (sync)
+    cc -> backend: Return error \n HTTP 200 result (sync)    
+    else Payee DFSP and Payee found
+    sob -> sw: GET /parties/{type}/{id}
+    sw -> sob: PUT /parties/{type}/{id}
+    sob -> cc: Return party info \n HTTP 200 result (sync)
+    cc -> backend: Return party info \n HTTP 200 result (sync) 
+    end   
+    backend -> cc: PUT /sendmoney/{transferId} (sync) \n ("acceptParty": true)
+    cc -> sob: PUT /transfers/{transferId} (sync) \n ("acceptParty": true)
+    sob -> sw: POST /quotes
+    alt Quote request fails
+    sw -> sob: PUT /quotes/{id}/error
+    sob -> cc: Return error \n HTTP 200 result (sync)
+    cc -> backend: Return error \n HTTP 200 result (sync)
+    else Quote request is successful
+    sw -> sob: PUT /quotes/{id}
+    sob -> sob: Check quote rules
+    sob -> cc: Return quote \n HTTP 200 result (sync)
+    cc -> backend: Return quote \n HTTP 200 result (sync)
+    end
+    backend -> cc: PUT /sendmoney/{transferId} (sync) \n ("acceptQuote": true)
+    cc -> sob: PUT /transfers/{transferId} (sync) \n ("acceptQuote": true)
+    sob -> sw: POST /transfers
+    sw -> sw: Perform (NDC) liquidity check
+    alt Transfer execution would exceed NDC
+    sw -> sob: PUT /transfers/{id}/error
+    sob -> cc: Return error \n HTTP 200 result (sync)
+    cc -> backend: Return error \n HTTP 200 result (sync)
+    else Transfer execution will not exceed NDC
+    sw -> sw: Reserve funds
+    sw -> sw: Perform validation
+    end
+    alt Validation successful
+    sw -> sw: Commit funds
+    sw -> sob: PUT /transfers/{id} \n transferState=COMMITTED
+    sob -> cc: Transfer successful \n HTTP 200 result (sync)
+    cc -> backend: Transfer successful \n HTTP 200 result (sync)
+    else Validation fails
+    sw -> sw: Cancel reserved funds
+    sw -> sob: PUT /transfers/{id} \n transferState=ABORTED
+    sob -> cc: Transfer failed \n HTTP 200 result (sync)
+    cc -> backend: Transfer failed \n HTTP 200 result (sync)
+    end
+
+@enduml

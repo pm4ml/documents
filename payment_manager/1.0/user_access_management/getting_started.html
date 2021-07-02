@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Getting started with Keycloak :: Payment Manager OSS Documentation</title>
+    <meta name="generator" content="Antora 2.3.3">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../..">Payment Manager OSS Documentation</a>
+
+    </div>
+
+    <div id="topbar-nav" class="navbar-menu">
+    <div class="navbar-end">
+
+        <!--
+        <div class="navbar-item has-dropdown is-hoverable">
+      <a class="navbar-link" href="#">Products</a>
+      <div class="navbar-dropdown ">
+        <a class="navbar-item" href="http://staging.docs.portx.io/portx/latest/index.html">Payment Manager</a>
+        <a class="navbar-item" href="http://staging.docs.portx.io/camel/portx/latest/index.html">Forex</a>
+      </div>
+      !--> 
+      
+    </div>
+ 
+
+
+        <!--
+
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Resources</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Resource A</a>
+            <a class="navbar-item" href="#">Resource B</a>
+            <a class="navbar-item" href="#">Resource C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+      !-->
+    </div>
+</div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="payment_manager" data-version="1.0">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Payment Manager for Mojaloop</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../how_to_read_docs/index.html">How to read Payment Manager documents</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../how_to_read_docs/how_to_read.html">Overview of Payment Manager documents</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../api_integration/index.html">API Integration Guide for DFSPs</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../api_integration/introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../api_integration/integration.html">API integration</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../api_integration/payer_dfsp_integration.html">Integration as a Payer DFSP</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../api_integration/payee_dfsp_integration.html">Integration as a Payee DFSP</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../core_connector_rest/index.html">Core Connector Guide for REST-Based Implementations</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/overview_of_technologies.html">Overview of technologies and resources</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/template_components.html">Components of a Core Connector template</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/customise_template.html">Customising a template</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/update_template_api_changes.html">Updating a template when the Payment Manager API changes</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/testing.html">Testing Core Connector</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/deploy_core_connector.html">Deploying Core Connector</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../iso8583_connector_api_guide/index.html">ISO 8583 Connector: API Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../iso8583_connector_api_guide/introduction.html">Introduction</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../iso8583_connector_deployment_guide/index.html">ISO 8583 Connector: Deployment Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../iso8583_connector_deployment_guide/introduction.html">Introduction</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../connection_wizard/index.html">Guide to Connection Wizard</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/security.html">Mojaloop security</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/introduction.html">Introduction to Connection Wizard</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/overview_page.html">Connection Wizard overview page</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/phase_1_business_setup.html">Phase 1: Business Setup</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../connection_wizard/phase_2_technical_setup.html">Phase 2: Technical Setup</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/endpoints.html">Endpoints</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/csr_exchange.html">CSR Exchange</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/certificate_authority.html">Certificate Authority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/server_certificates_exchange.html">Server Certificates Exchange</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/jws_certificates.html">JWS Certificates</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/appendix_create_tls_cert.html">Appendix A: Create TLS certificates</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/appendix_create_jws_cert.html">Appendix B: Create a JWS certificate</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/appendix_extract_public_key_from_JWS_cert.html">Appendix C: Extract a public key from a JWS certificate</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../transfers_overview/index.html">Guide to Transfers Overview</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../transfers_overview/introduction.html">Introduction to Transfers Overview</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../transfers_overview/transfers_overview.html">Transfers Overview page</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../technical_dashboard/index.html">Guide to Technical Dashboard</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../technical_dashboard/introduction.html">Introduction to the Technical Dashboard</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../technical_dashboard/technical_dashboard.html">Technical Dashboard page</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">User Access Management Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="user_authentication.html">User authentication with OpenID Connect</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="getting_started.html">Getting started with Keycloak</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="configuring_user_access.html">Managing user access in Keycloak</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Payment Manager for Mojaloop</span>
+    <span class="version">1.0</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Payment Manager for Mojaloop</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">1.0</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+  <!--
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Payment Manager for Mojaloop</a></li>
+    <li><a href="index.html">User Access Management Guide</a></li>
+    <li><a href="getting_started.html">Getting started with Keycloak</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/pm4ml/documents/edit/master/modules/user_access_management/pages/getting_started.adoc">Edit this Page</a></div>
+    !-->
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Getting started with Keycloak</h1>
+<div class="sect1">
+<h2 id="admin-console"><a class="anchor" href="#admin-console"></a>Admin Console</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Admin Console is the Keycloak user interface that enables administrators to manage user accounts and access to Payment Manager.</p>
+</div>
+<div class="paragraph">
+<p>As an administrator of Payment Manager user accounts, you need the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>An admin account to the Admin Console.<br>
+This is created by the Infrastructure team deploying Payment Manager. The admin account must be set up so that it has permissions to manage only the relevant realm.</p>
+</li>
+<li>
+<p>The URL to the Admin Console.<br>
+This is also provided by the Infrastructure team.</p>
+</li>
+<li>
+<p>VPN access to the Admin Console.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+In the case of a cloud deployment, VPN access can be requested through the <a href="https://support.modusbox.com">ModusBox Enterprise Support portal</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For further information on the Admin Console, see section <a href="https://www.keycloak.org/docs/latest/server_admin/index.html#admin-console">Admin Console</a> in the <strong>Keycloak Server Administration Guide</strong>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="prerequisites"><a class="anchor" href="#prerequisites"></a>Prerequisites</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To be able to add user accounts to manage access to Payment Manager, the Payment Manager application itself must be set up in Keycloak first:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>A realm or realms must be configured.</p>
+</li>
+<li>
+<p>The Payment Manager user interface must be registered as a client of Keycloak.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>This section provides details about these two prerequisites.</p>
+</div>
+<div class="sect2">
+<h3 id="realms"><a class="anchor" href="#realms"></a>Realms</h3>
+<div class="paragraph">
+<p>In the case of an on-premise deployment, Payment Manager comes with an out-of-the-box <strong>Pm4ml</strong> realm (<strong>Pm4ml</strong> stands for Payment Manager for Mojaloop). A realm can be thought of as an isolated domain, in this case, that domain is the Payment Manager application. Anything within the <strong>Pm4ml</strong> realm relates to the Payment Manager instance.</p>
+</div>
+<div class="paragraph">
+<p>In the case of a SaaS cloud deployment, there will always be one realm per DFSP.</p>
+</div>
+<div class="paragraph">
+<p>The <strong>Pm4ml</strong> realm has some pre-configured settings. You can find these settings under the <strong>Realm Settings</strong> menu item, displayed in the left-hand navigation pane. On clicking <strong>Realm Settings</strong>, various tabs are displayed in the right-hand pane.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/keycloak_realm.png" alt="keycloak realm">
+</div>
+<div class="title">Figure 1. Realms</div>
+</div>
+<div class="paragraph">
+<p>Some of the key settings on the <strong>General</strong> and <strong>Login</strong> tabs are highlighted in the table below.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Click the links in the table to find out further details about the individual settings.
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Realm Settings</caption>
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 71.4286%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Tab</th>
+<th class="tableblock halign-left valign-top">Setting</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>General</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Name:</strong> This is the name of the <strong>Pm4ml</strong> realm.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Enabled: ON</strong><br>
+<br>
+This is required because a realm can only be accessed if it is enabled.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Display name:</strong> Payment Manager for Mojaloop<br>
+<br>
+The name specified here is the name that is displayed on the Keycloak sign-in page when the user logs in to Payment Manager.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>User-Managed Access: OFF</strong><br>
+<br>
+If this is set to <strong>ON</strong>, users can manage access to protected resources. For further details, see section <a href="https://www.keycloak.org/docs/latest/authorization_services/#_service_user_managed_access">User-Managed Access</a> in the <strong>Keycloak Authorization Services Guide</strong>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Endpoints:</strong> <strong>OpenID Endpoint Configuration</strong> and <strong>SAML 2.0 Identity Provider Metadata</strong></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Login</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>User registration: OFF</strong><br>
+<br>
+This is required so that Payment Manager users are not able to create an account for themselves, and user accounts are always created by an admin person.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Edit username: OFF</strong><br>
+<br>
+If this is set to <strong>OFF</strong>, the user&#8217;s username is not allowed to be updated.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.keycloak.org/docs/latest/server_admin/index.html#forgot-password"><strong>Forgot password: ON</strong></a><br>
+<br>
+When enabled, users are able to reset their credentials if they forget their password or lose their OTP generator.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.keycloak.org/docs/latest/server_admin/index.html#remember-me"><strong>Remember Me: OFF</strong></a><br>
+<br>
+When disabled, if a logged-in user closes their browser, their session is destroyed and they will have to log in again.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Verify email: OFF</strong><br>
+<br>
+When disabled, the user will not get a verification email on registering the user.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Login with email: ON</strong><br>
+<br>
+When enabled, the user can log in using their email address.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.keycloak.org/docs/latest/server_admin/index.html#_ssl_modes"><strong>Require SSL: external requests</strong></a><br>
+<br>
+Keycloak requires a secure connection when accessing Payment Manager from a non-private IP address.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Token</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The settings on this tab enable you to configure how you want the refresh of <a href="user_authentication.html" class="page">access tokens</a> to happen, how long a session can be live or idle, and so on.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>For further information on realm settings, see <a href="https://www.keycloak.org/docs/latest/server_admin/index.html#_ssl_modes">Keycloak documentation</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="clients"><a class="anchor" href="#clients"></a>Clients</h3>
+<div class="paragraph">
+<p>Clients in Keycloak are entities that can request the authentication of a user. The Payment Manager application is one such entity, which has to be registered to the Payment Manager realm.</p>
+</div>
+<div class="paragraph">
+<p>The Payment Manager user interface (<strong>pm4ml-customer-ui</strong>) is registered as a client to the Payment Manager realm by default.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Clients other than <strong>pm4ml-customer-ui</strong> are Keycloak&#8217;s own clients necessary for the correct operation of Keycloak. Do not modify client settings unless you have a particular requirement and the consequences of your actions (reduced security) are fully understood.
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/keycloak_clients.png" alt="keycloak clients">
+</div>
+<div class="title">Figure 2. Clients</div>
+</div>
+<div class="paragraph">
+<p>On clicking <strong>pm4ml-customer-ui</strong>, the settings associated with it are displayed. Some key settings are highlighted below.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 2. Clients</caption>
+<colgroup>
+<col style="width: 28.5714%;">
+<col style="width: 71.4286%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Tab</th>
+<th class="tableblock halign-left valign-top">Setting</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Settings</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Root URL:</strong> Specifies the URL where the Payment Manager user interface is accessible to users of Payment Manager.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Credentials</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Client Athenticator: Client id and Secret</strong><br>
+<br>
+This setting is required so that the Payment Manager Experience API can identify itself securely to Keycloak. The secret is automatically generated, and the <strong>Regenerate Secret</strong> button allows you to recreate this secret if you want to or need to.<br>
+<br>
+<strong>NOTE:</strong> You get a new client secret every time you restart Keycloak (Keycloak refreshes all its keys if the database that holds the keys loses its state).</p></td>
+</tr>
+</tbody>
+</table>
+<div class="imageblock">
+<div class="content">
+<img src="_images/keycloak_pm4ml_ui_client_settings.png" alt="keycloak pm4ml ui client settings">
+</div>
+<div class="title">Figure 3. Client settings</div>
+</div>
+<div class="paragraph">
+<p>For further information on client settings, see section <a href="https://www.keycloak.org/docs/latest/server_admin/index.html#_clients">Clients</a> in the <strong>Keycloak Server Administration Guide</strong>.</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
