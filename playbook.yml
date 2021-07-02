@@ -6,7 +6,7 @@ content:
   sources:
   - url: .
     branches: master
-    #start_path: docs
+    start_path: modules
 asciidoc:
   attributes:
     idprefix: ''
