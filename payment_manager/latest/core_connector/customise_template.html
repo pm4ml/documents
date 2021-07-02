@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Creating/customising a template :: Payment Manager OSS Documentation</title>
+    <meta name="generator" content="Antora 2.3.3">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../..">Payment Manager OSS Documentation</a>
+
+    </div>
+
+    <div id="topbar-nav" class="navbar-menu">
+    <div class="navbar-end">
+
+        <!--
+        <div class="navbar-item has-dropdown is-hoverable">
+      <a class="navbar-link" href="#">Products</a>
+      <div class="navbar-dropdown ">
+        <a class="navbar-item" href="http://staging.docs.portx.io/portx/latest/index.html">Payment Manager</a>
+        <a class="navbar-item" href="http://staging.docs.portx.io/camel/portx/latest/index.html">Forex</a>
+      </div>
+      !--> 
+      
+    </div>
+ 
+
+
+        <!--
+
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Resources</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Resource A</a>
+            <a class="navbar-item" href="#">Resource B</a>
+            <a class="navbar-item" href="#">Resource C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+      !-->
+    </div>
+</div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="payment_manager" data-version="latest">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Payment Manager OSS</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../how_to_read_docs/index.html">How to read Payment Manager documents</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../how_to_read_docs/how_to_read.html">Overview of Payment Manager documents</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../api_integration/index.html">API Integration Guide for DFSPs</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../api_integration/introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../api_integration/integration.html">API integration</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../api_integration/payer_dfsp_integration.html">Integration as a Payer DFSP</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../api_integration/payee_dfsp_integration.html">Integration as a Payee DFSP</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../core_connector_rest/index.html">Core Connector Guide for REST-Based Implementations</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/overview_of_technologies.html">Overview of technologies and resources</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/template_components.html">Components of a Core Connector template</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/customise_template.html">Customising a template</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/update_template_api_changes.html">Updating a template when the Payment Manager API changes</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/testing.html">Testing Core Connector</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/deploy_core_connector.html">Deploying Core Connector</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../connection_wizard/index.html">Guide to Connection Wizard</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/security.html">Mojaloop security</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/introduction.html">Introduction to Connection Wizard</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/overview_page.html">Connection Wizard overview page</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/phase_1_business_setup.html">Phase 1: Business Setup</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../connection_wizard/phase_2_technical_setup.html">Phase 2: Technical Setup</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/endpoints.html">Endpoints</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/csr_exchange.html">CSR Exchange</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/certificate_authority.html">Certificate Authority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/server_certificates_exchange.html">Server Certificates Exchange</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/jws_certificates.html">JWS Certificates</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/appendix_create_tls_cert.html">Appendix A: Create TLS certificates</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/appendix_create_jws_cert.html">Appendix B: Create a JWS certificate</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/appendix_extract_public_key_from_JWS_cert.html">Appendix C: Extract a public key from a JWS certificate</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../transfers_overview/index.html">Guide to Transfers Overview</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../transfers_overview/introduction.html">Introduction to Transfers Overview</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../transfers_overview/transfers_overview.html">Transfers Overview page</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../technical_dashboard/index.html">Guide to Technical Dashboard</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../technical_dashboard/introduction.html">Introduction to the Technical Dashboard</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../technical_dashboard/technical_dashboard.html">Technical Dashboard page</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../user_access_management/index.html">User Access Management Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../user_access_management/introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../user_access_management/user_authentication.html">User authentication with OpenID Connect</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../user_access_management/getting_started.html">Getting started with Keycloak</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../user_access_management/configuring_user_access.html">Managing user access in Keycloak</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Payment Manager OSS</span>
+    <span class="version">latest</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Payment Manager OSS</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+  <!--
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Payment Manager OSS</a></li>
+    <li><a href="customise_template.html">Creating/customising a template</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/pm4ml/documents/edit/master/modules/core_connector/pages/customise_template.adoc">Edit this Page</a></div>
+    !-->
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Creating/customising a template</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>When creating or customising a template, at a high level, you are required to complete these steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Find out if you need to use the generic Core Connector template or a CBS-vendor-specific one. For guidance, see <a href="#which-template">Which template to use?</a>.</p>
+</li>
+<li>
+<p>Find out if the Payment Manager API specification is up-to-date (client-adapter-interface/src/main/resources/api.yaml). If it is not up-to-date, perform the steps described in <a href="update_template_api_changes.html" class="page">Updating a template when the Payment Manager API changes</a>. If it is up-to-date, you can move onto the next step.</p>
+</li>
+<li>
+<p>Add a new router or edit an existing router to specify how to move messages between DFSP backend and Core Connector endpoints (<code>client-adapter/src/main/java/com/modus/client/router/</code>).</p>
+</li>
+<li>
+<p>Add a new DataSonnet mapping or edit an existing mapping (<code>client-adapter/src/main/resources/mappings/</code>) to specify how to translate/transform messages between the DFSP backend and Core Connector. If DataSonnet cannot be leveraged to support transformations, use Java classes to add business logic.</p>
+</li>
+<li>
+<p>As a best practice recommendation, create tests for Java code and the DataSonnet transformation business logic. (The specifics of the testing solution and testing strategy are at the discretion of the organisation that develops the template.)</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="which-template"><a class="anchor" href="#which-template"></a>Which template to use?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When you start developing a template, check if the CBS vendor already has a template in place.</p>
+</div>
+<div class="paragraph">
+<p>When creating a template for a CBS vendor for whom no vendor-specific template exists yet, create a copy of <a href="https://github.com/modusintegration/mojaloop-cbs-adapter-template">the generic Core Connector template</a> and make changes to that. Name the new template as <code>&lt;CBS vendor name&gt;-core-connector.</code></p>
+</div>
+<div class="paragraph">
+<p>When working with a CBS vendor who already has an existing template in place in <a href="https://github.com/modusintegration">the <strong>modusintegration</strong> GitHub repository</a>, clone the existing template and continue working in that. Note, however, that it is good practice to maintain separate templates for the individual combinations of a vendor and a DFSP. For example, the Mambu template of DFSP A might have to differ from the Mambu template of DFSP B.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This section assumes that the reader is using <a href="https://github.com/modusintegration/mojaloop-cbs-adapter-template">the generic Core Connector template</a>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="core-connector-for-a-payer-dfsp"><a class="anchor" href="#core-connector-for-a-payer-dfsp"></a>Core Connector for a Payer DFSP</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For a Payer DFSP, the existing template can be used without any changes.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+At the time of writing, <a href="https://github.com/modusintegration/mojaloop-cbs-adapter-template">the generic Core Connector template</a> does not have details around the <code>/sendmoney</code> endpoint added yet.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Leveraging the <code>ClientAdapterAPI.java</code> router class (<code>client-adapter/src/main/java/com/modus/client/router</code>), Core Connector routes messages in the following way in the case of an outgoing transfer request:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Route and translate the backend-specific transfer request into a request that the Mojaloop Connector understands (removing and adding headers as necessary). (Mojaloop Connector then translates that into a Mojaloop-compliant request that the Mojaloop Switch understands.)</p>
+</li>
+<li>
+<p>Route and translate the transfer response that comes back from the Mojaloop Connector into a backend-specific message that the DFSP Core Backend understands.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><code>ClientAdapterAPI.java</code> defines rules for moving a message:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>from a <strong>postSendmoney</strong> <code>.from</code> endpoint to a <strong>postTransfers</strong> <code>.to</code> endpoint</p>
+</li>
+<li>
+<p>from a <strong>putSendmoneyById</strong> <code>.from</code> endpoint to a <strong>putTransfersById</strong> <code>.to</code> endpoint</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In between the <code>.from</code> and <code>.to</code> endpoints, processing logic is implemented.</p>
+</div>
+<div class="paragraph">
+<p>To help put routes into context, the following diagrams show the happy path of an outgoing transfer request.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/PM4ML_CC_transfer_flow_payer_happy_path.svg" alt="PM4ML CC transfer flow payer happy path">
+</div>
+<div class="title">Figure 1. Outgoing transfer (single-stage transfer)</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/PM4ML_transfer_flow_payer_multistage_happy_path.svg" alt="PM4ML transfer flow payer multistage happy path">
+</div>
+<div class="title">Figure 2. Outgoing transfer (multi-stage transfer)</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="core-connector-for-a-payee-dfsp"><a class="anchor" href="#core-connector-for-a-payee-dfsp"></a>Core Connector for a Payee DFSP</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For a Payee DFSP, the existing template must be modified in the following places:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ClientAdapterAPI.java</code> (<code>client-adapter/src/main/java/com/modus/client/router</code>)</p>
+</li>
+<li>
+<p>DataSonnet mappings (<code>client-adapter/src/main/resources/mappings</code>)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Leveraging DataSonnet mappings and the <code>ClientAdapterAPI.java</code> router, Core Connector manages the following transformations and routing in the case of an incoming transfer request:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Route and transform the party lookup request for the DFSP Core Backend.<br></p>
+<div class="paragraph">
+<p>Note that when obtaining Payee party information&#8201;&#8212;&#8201;depending on the DFSP&#8217;s backend implementation&#8201;&#8212;&#8201;the relevant details may need to be obtained using several API calls.</p>
+</div>
+</li>
+<li>
+<p>Route and transform the backend&#8217;s response into a Mojaloop-compliant response.</p>
+</li>
+<li>
+<p>Route and transform the quote request for the DFSP Core Backend. The quote request has a request body, which needs to be translated for the DFSP backend.</p>
+</li>
+<li>
+<p>Route and transform the backend&#8217;s response into a Mojaloop-compliant response.</p>
+</li>
+<li>
+<p>Route and transform the transfer request for the DFSP Core Backend. The transfer request has a request body, which needs to be translated for the DFSP backend.</p>
+</li>
+<li>
+<p>Route and transform the backend&#8217;s response into a Mojaloop-compliant response.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>In between endpoints, you can remove and set headers as necessary, and implement processing logic (by defining and using custom processors).</p>
+</div>
+<div class="paragraph">
+<p>To help put routes into context, the following diagrams show the happy path of an incoming transfer request.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/PM4ML_transfer_flow_payee_happy_path.svg" alt="PM4ML transfer flow payee happy path">
+</div>
+<div class="title">Figure 3. Incoming transfer</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="building-and-running-the-updated-core-connector"><a class="anchor" href="#building-and-running-the-updated-core-connector"></a>Building and running the updated Core Connector</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once you have made the necessary changes, build the Core Connector Maven project, following these steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Change directory to the root folder of the Core Connector project&#8201;&#8212;&#8201;taking the generic template as an example, to <code>mojaloop-cbs-adapter-template</code>.</p>
+</li>
+<li>
+<p>Issue the <code>mvn clean install</code> command.<br>
+Running <code>mvn clean install</code> builds all the required Java objects, and installs them in the <code>client-adapter/target</code> folder.</p>
+</li>
+<li>
+<p>Run <code>java -jar client-adapter/target/client-adapter-1.0.0.jar</code>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>To test your changes, you can do local testing or end-to-end testing as described in <a href="testing.html" class="page">Testing Core Connector</a>.</p>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

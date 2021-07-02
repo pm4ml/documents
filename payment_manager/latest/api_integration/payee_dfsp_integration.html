@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Integration as a Payee DFSP :: Payment Manager OSS Documentation</title>
+    <meta name="generator" content="Antora 2.3.3">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../..">Payment Manager OSS Documentation</a>
+
+    </div>
+
+    <div id="topbar-nav" class="navbar-menu">
+    <div class="navbar-end">
+
+        <!--
+        <div class="navbar-item has-dropdown is-hoverable">
+      <a class="navbar-link" href="#">Products</a>
+      <div class="navbar-dropdown ">
+        <a class="navbar-item" href="http://staging.docs.portx.io/portx/latest/index.html">Payment Manager</a>
+        <a class="navbar-item" href="http://staging.docs.portx.io/camel/portx/latest/index.html">Forex</a>
+      </div>
+      !--> 
+      
+    </div>
+ 
+
+
+        <!--
+
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Resources</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Resource A</a>
+            <a class="navbar-item" href="#">Resource B</a>
+            <a class="navbar-item" href="#">Resource C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+      !-->
+    </div>
+</div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="payment_manager" data-version="latest">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Payment Manager OSS</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../how_to_read_docs/index.html">How to read Payment Manager documents</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../how_to_read_docs/how_to_read.html">Overview of Payment Manager documents</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">API Integration Guide for DFSPs</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="integration.html">API integration</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="payer_dfsp_integration.html">Integration as a Payer DFSP</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="payee_dfsp_integration.html">Integration as a Payee DFSP</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../core_connector_rest/index.html">Core Connector Guide for REST-Based Implementations</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/overview_of_technologies.html">Overview of technologies and resources</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/template_components.html">Components of a Core Connector template</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/customise_template.html">Customising a template</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/update_template_api_changes.html">Updating a template when the Payment Manager API changes</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/testing.html">Testing Core Connector</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/deploy_core_connector.html">Deploying Core Connector</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../connection_wizard/index.html">Guide to Connection Wizard</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/security.html">Mojaloop security</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/introduction.html">Introduction to Connection Wizard</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/overview_page.html">Connection Wizard overview page</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/phase_1_business_setup.html">Phase 1: Business Setup</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../connection_wizard/phase_2_technical_setup.html">Phase 2: Technical Setup</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/endpoints.html">Endpoints</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/csr_exchange.html">CSR Exchange</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/certificate_authority.html">Certificate Authority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/server_certificates_exchange.html">Server Certificates Exchange</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/jws_certificates.html">JWS Certificates</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/appendix_create_tls_cert.html">Appendix A: Create TLS certificates</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/appendix_create_jws_cert.html">Appendix B: Create a JWS certificate</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/appendix_extract_public_key_from_JWS_cert.html">Appendix C: Extract a public key from a JWS certificate</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../transfers_overview/index.html">Guide to Transfers Overview</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../transfers_overview/introduction.html">Introduction to Transfers Overview</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../transfers_overview/transfers_overview.html">Transfers Overview page</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../technical_dashboard/index.html">Guide to Technical Dashboard</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../technical_dashboard/introduction.html">Introduction to the Technical Dashboard</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../technical_dashboard/technical_dashboard.html">Technical Dashboard page</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../user_access_management/index.html">User Access Management Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../user_access_management/introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../user_access_management/user_authentication.html">User authentication with OpenID Connect</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../user_access_management/getting_started.html">Getting started with Keycloak</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../user_access_management/configuring_user_access.html">Managing user access in Keycloak</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Payment Manager OSS</span>
+    <span class="version">latest</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Payment Manager OSS</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+  <!--
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Payment Manager OSS</a></li>
+    <li><a href="index.html">API Integration Guide for DFSPs</a></li>
+    <li><a href="integration.html">API integration</a></li>
+    <li><a href="payee_dfsp_integration.html">Integration as a Payee DFSP</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/pm4ml/documents/edit/master/modules/api_integration/pages/payee_dfsp_integration.adoc">Edit this Page</a></div>
+    !-->
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Integration as a Payee DFSP</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following diagram illustrates how a Payee DFSP interacts with Payment Manager and the Mojaloop Switch at the level of API calls.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="imageblock">
+<div class="content">
+<img src="_images/api_interfaces_payee_side.png" alt="api interfaces payee side" width="481" height="85">
+</div>
+</div>
+<div class="paragraph">
+<p>The interface between the Mojaloop Switch and the Mojaloop Connector is the <a href="https://docs.mojaloop.io/mojaloop-specification/#api-definition">asynchronous Mojaloop FSPIOP API</a>.</p>
+</div>
+<div class="paragraph">
+<p>The simplified API between the Mojaloop Connector and the Core Connector is a synchronous HTTP API (Payment Manager API: <code>mojaloop_payment_manager_API.yaml</code>).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/p2p_e2e_detailed_multi_stage.svg" alt="p2p e2e detailed multi stage">
+</div>
+<div class="title">Figure 1. Peer-to-peer transfer</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="example-get-partiesidtypeidvalue-request"><a class="anchor" href="#example-get-partiesidtypeidvalue-request"></a>Example <code>GET /parties/{idType}/{idValue}</code> request</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following example shows a <code>GET /parties/{idType}/{idValue}</code> request (Step 14 in the diagram above).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">GET /parties/MSISDN/987654321 HTTP/1.1
+Content-Type: application/json</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="example-error-response-to-get-partiesidtypeidvalue"><a class="anchor" href="#example-error-response-to-get-partiesidtypeidvalue"></a>Example error response to <code>GET /parties/{idType}/{idValue}</code></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following example shows a response to a <code>GET /parties/{idType}/{idValue}</code> request when the Payee is not found (Step 18 in the diagram above).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The DFSP backend must set an HTTP error status code in the response.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+For a detailed list of Mojaloop error codes and their description, see  <a href="https://github.com/mojaloop/mojaloop-specification/blob/master/fspiop-api/documents/v1.1-document-set/API%20Definition_v1.1.pdf">API Definition v1.1 (Open API for FSP Interoperability Specification)</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">HTTP/1.1 500 Internal Server Error
+Content-Type: application/json
+
+{
+  "statusCode": "3204",
+  "message": "Party not found"
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="example-success-response-to-get-partiesidtypeidvalue"><a class="anchor" href="#example-success-response-to-get-partiesidtypeidvalue"></a>Example success response to <code>GET /parties/{idType}/{idValue}</code></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following example shows a response to a <code>GET /parties/{idType}/{idValue}</code> request when the request is successful (Step 25 in the diagram above).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "type": "CONSUMER",
+  "idType": "MSISDN",
+  "idValue": "987654321",
+  "displayName": "Aamir Fakhir",
+  "firstName": "Aamir",
+  "middleName": "Abdel",
+  "lastName": "Fakhir"
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="example-post-quoterequests-request"><a class="anchor" href="#example-post-quoterequests-request"></a>Example <code>POST /quoterequests</code> request</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following example shows a <code>POST /quoterequests</code> request (Step 38 in the diagram above).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">POST /quoterequests
+Content-Type: application/json
+Accept: application/json
+
+{
+  "quoteId": "7c23e80c-d078-4077-8263-2c047876fcf6",
+  "transactionId": "85feac2f-39b2-491b-817e-4a03203d4f14",
+  "to": {
+    "type": "CONSUMER",
+    "idType": "MSISDN",
+    "idValue": "987654321",
+    "displayName": "Aamir Fakhir",
+    "firstName": "Aamir",
+    "middleName": "Abdel",
+    "lastName": "Fakhir"
+  },
+  "from": {
+    "type": "CONSUMER",
+    "idType": "MSISDN",
+    "idValue": "123456789",
+    "displayName": "Antoine Dujardin",
+    "firstName": "Antoine",
+    "middleName": "Paul",
+    "lastName": "Dujardin"
+  },
+  "amountType": "SEND",
+  "amount": "50",
+  "currency": "EUR",
+  "feesAmount": "0",
+  "feesCurrency": "EUR",
+  "transactionType": "TRANSFER",
+  "initiator": "PAYER",
+  "initiatorType": "CONSUMER",
+  "geoCode": {
+    "latitude": "43.6047",
+    "longitude": "1.4442"
+  },
+  "note": "from Antoine",
+  "expiration": "2021-06-15T13:31:11.500Z"
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="example-error-response-to-post-quoterequests"><a class="anchor" href="#example-error-response-to-post-quoterequests"></a>Example error response to <code>POST /quoterequests</code></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following example shows a response to a <code>POST /quoterequests</code> request when the request returns an error due to a temporary failure (Step 41 in the diagram above).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The DFSP backend must set an HTTP error status code in the response.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+For a detailed list of Mojaloop error codes and their description, see  <a href="https://github.com/mojaloop/mojaloop-specification/blob/master/fspiop-api/documents/v1.1-document-set/API%20Definition_v1.1.pdf">API Definition v1.1 (Open API for FSP Interoperability Specification)</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">HTTP/1.1 500 Internal Server Error
+Content-Type: application/json
+
+{
+  "statusCode": "2003",
+  "message": "Service currently unavailable"
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="example-success-response-to-post-quoterequests"><a class="anchor" href="#example-success-response-to-post-quoterequests"></a>Example success response to <code>POST /quoterequests</code></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following example shows a response to a <code>POST /quoterequests</code> request when the request is successful (Step 49 in the diagram above).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "quoteId": "7c23e80c-d078-4077-8263-2c047876fcf6",
+  "transactionId": "85feac2f-39b2-491b-817e-4a03203d4f14",
+  "transferAmount": "50",
+  "transferAmountCurrency": "EUR",
+  "payeeFspFeeAmount": "0",
+  "payeeFspFeeAmountCurrency": "EUR",
+  "payeeFspCommissionAmount": "0",
+  "payeeFspCommissionAmountCurrency": "EUR",
+  "expiration": "2021-06-15T13:31:11.500Z",
+  "geoCode": {
+    "latitude": "43.6047",
+    "longitude": "1.4442"
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="example-post-transfers-request"><a class="anchor" href="#example-post-transfers-request"></a>Example <code>POST /transfers</code> request</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following example shows a <code>POST /transfers</code> request (Step 69 in the diagram above).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">POST /transfers
+Content-Type: application/json
+Accept: application/json
+
+{
+  "transferId": "85feac2f-39b2-491b-817e-4a03203d4f14",
+  "quote": {
+    "quoteId": "7c23e80c-d078-4077-8263-2c047876fcf6",
+    "transactionId": "85feac2f-39b2-491b-817e-4a03203d4f14",
+    "transferAmount": "50",
+    "transferAmountCurrency": "EUR",
+    "payeeFspFeeAmount": "0",
+    "payeeFspFeeAmountCurrency": "EUR",
+    "payeeFspCommissionAmount": "0",
+    "payeeFspCommissionAmountCurrency": "EUR",
+    "expiration": "2021-06-15T13:31:11.500Z",
+    "geoCode": {
+      "latitude": "43.6047",
+      "longitude": "1.4442"
+    }
+  },
+  "from": {
+    "type": "CONSUMER",
+    "idType": "MSISDN",
+    "idValue": "123456789",
+    "displayName": "Antoine Dujardin",
+    "firstName": "Antoine",
+    "middleName": "Paul",
+    "lastName": "Dujardin"
+  },
+  "to": {
+    "type": "CONSUMER",
+    "idType": "MSISDN",
+    "idValue": "987654321",
+    "displayName": "Aamir Fakhir",
+    "firstName": "Aamir",
+    "middleName": "Abdel",
+    "lastName": "Fakhir"
+  },
+  "amountType": "SEND",
+  "currency": "EUR",
+  "amount": "50",
+  "transactionType": "TRANSFER",
+  "note": "from Antoine"
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="example-error-response-to-post-transfers"><a class="anchor" href="#example-error-response-to-post-transfers"></a>Example error response to <code>POST /transfers</code></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following example shows a response to a <code>POST /transfers</code> request when the request fails in the Payee DFSP (for example, a check to ensure that the customer does not receive money above a certain amount per transfer fails) (Step 73 in the diagram above).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The DFSP backend must set an HTTP error status code in the response.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+For a detailed list of Mojaloop error codes and their description, see  <a href="https://github.com/mojaloop/mojaloop-specification/blob/master/fspiop-api/documents/v1.1-document-set/API%20Definition_v1.1.pdf">API Definition v1.1 (Open API for FSP Interoperability Specification)</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">HTTP/1.1 500 Internal Server Error
+Content-Type: application/json
+
+{
+  "statusCode": "5200",
+  "message": "Payee limit error"
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="example-success-response-to-post-transfers"><a class="anchor" href="#example-success-response-to-post-transfers"></a>Example success response to <code>POST /transfers</code></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following example shows a response to a <code>POST /transfers</code> request when the request is successful (Step 84 in the diagram above).</p>
+</div>
+<div class="paragraph">
+<p>When the Payee DFSP is informed about the incoming transfer request, it performs internal checks (for example, a check to ensure that the customer does not receive money above a certain amount per transfer). If all checks pass, it reserves funds and confirms that they are OK to go ahead with the transfer.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "homeTransactionId": "53979be2-3bfe-45aa-ade7-92ea4ce4e74e"
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="example-put-transferstransferid-notification"><a class="anchor" href="#example-put-transferstransferid-notification"></a>Example <code>PUT /transfers/{transferId}</code> notification</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following example shows a <code>PUT /transfers/{transferId}</code> notification (Step 93 in the diagram above) when:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the Payee DFSP has confirmed that they are OK to go ahead with the transfer, and</p>
+</li>
+<li>
+<p>the transfer fails validation of the fulfilment and expiry timestamp in the Switch</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The notification acts as a failure notice, indicating to the Payee DFSP that they should not release funds to their customer&#8217;s account as the transfer did not happen.</p>
+</div>
+<div class="listingblock json">
+<div class="content">
+<pre class="highlightjs highlight"><code>HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+   "transferId":"85feac2f-39b2-491b-817e-4a03203d4f14",
+   "direction":"INBOUND",
+   "quoteRequest":{
+      "headers":{
+         "content-type":"application/vnd.interoperability.quotes+json;version=1.0",
+         "date":"Tue, 15 Jun 2021 13:30:11 GMT",
+         "fspiop-source":"walletABC",
+         "fspiop-destination":"walletXYZ",
+         "authorization":"Bearer 74b241a2-4200-3938-8dfc-0e26ba21dc22",
+         "accept":"application/vnd.interoperability.quotes+json;version=1",
+         "content-length":685,
+         "host":"walletXYZ-mojaloop-connector:4000",
+         "connection":"close"
+      },
+      "body":{
+         "quoteId":"7c23e80c-d078-4077-8263-2c047876fcf6",
+         "transactionId":"85feac2f-39b2-491b-817e-4a03203d4f14",
+         "amountType":"SEND",
+         "amount":{
+            "currency":"EUR",
+            "amount":"50"
+         },
+         "expiration":"2021-06-15T13:31:11.456Z",
+         "payer":{
+            "partyIdInfo":{
+               "partyIdType":"MSISDN",
+               "partyIdentifier":"123456789",
+               "fspId":"walletABC"
+            },
+            "name":"Antoine Dujardin"
+         },
+         "payee":{
+            "partyIdInfo":{
+               "partyIdType":"MSISDN",
+               "partyIdentifier":"987654321",
+               "fspId":"walletXYZ"
+            },
+            "personalInfo":{
+               "complexName":{
+                  "firstName":"Aamir",
+                  "middleName":"Abdel",
+                  "lastName":"Fakhir"
+               }
+            }
+         },
+         "transactionType":{
+            "scenario":"TRANSFER",
+            "initiator":"PAYER",
+            "initiatorType":"CONSUMER"
+         }
+      }
+   },
+   "currentState":"COMPLETED",
+   "initiatedTimestamp":"2021-06-15T13:30:11.470Z",
+   "quote":{
+      "request":{
+         "quoteId":"7c23e80c-d078-4077-8263-2c047876fcf6",
+         "transactionId":"85feac2f-39b2-491b-817e-4a03203d4f14",
+         "amountType":"SEND",
+         "amount":{
+            "currency":"EUR",
+            "amount":"50"
+         },
+         "expiration":"2021-06-15T13:31:11.456Z",
+         "payer":{
+            "partyIdInfo":{
+               "partyIdType":"MSISDN",
+               "partyIdentifier":"123456789",
+               "fspId":"walletABC"
+            },
+            "name":"Antoine Dujardin"
+         },
+         "payee":{
+            "partyIdInfo":{
+               "partyIdType":"MSISDN",
+               "partyIdentifier":"987654321",
+               "fspId":"walletXYZ"
+            },
+            "personalInfo":{
+               "complexName":{
+                  "firstName":"Aamir",
+                  "middleName":"Abdel",
+                  "lastName":"Fakhir"
+               }
+            }
+         },
+         "transactionType":{
+            "scenario":"TRANSFER",
+            "initiator":"PAYER",
+            "initiatorType":"CONSUMER"
+         }
+      },
+      "internalRequest":{
+         "quoteId":"7c23e80c-d078-4077-8263-2c047876fcf6",
+         "transactionId":"85feac2f-39b2-491b-817e-4a03203d4f14",
+         "to":{
+            "idType":"MSISDN",
+            "idValue":"987654321",
+            "fspId":"walletXYZ",
+            "firstName":"Aamir",
+            "middleName":"Abdel",
+            "lastName":"Fakhir"
+         },
+         "from":{
+            "idType":"MSISDN",
+            "idValue":"123456789",
+            "fspId":"walletABC"
+         },
+         "amountType":"SEND",
+         "amount":"50",
+         "currency":"EUR",
+         "transactionType":"TRANSFER",
+         "initiator":"PAYER",
+         "initiatorType":"CONSUMER",
+         "expiration":"2021-06-15T13:31:11.456Z"
+      },
+      "response":{
+         "quoteId":"7c23e80c-d078-4077-8263-2c047876fcf6",
+         "transactionId":"85feac2f-39b2-491b-817e-4a03203d4f14",
+         "transferAmount":"50",
+         "transferAmountCurrency":"EUR",
+         "payeeFspFeeAmount":"0",
+         "payeeFspFeeAmountCurrency":"EUR",
+         "payeeFspCommissionAmount":"0",
+         "payeeFspCommissionAmountCurrency":"EUR",
+         "expiration":"2021-06-15T13:31:11.500Z"
+      },
+      "mojaloopResponse":{
+         "transferAmount":{
+            "amount":"50",
+            "currency":"EUR"
+         },
+         "expiration":"2021-06-15T13:31:11.500Z",
+         "ilpPacket":"AYIDUgAAAAAAAAPoIWcucGF5ZWVmc3Au
+YWNjb3VudF9pZC4xNzAzOTgxMTkwN4IDJGV5SjBjbUZ1YzJGamRHbHZia2xrSWpvaU4ySTRNbUZoT0RrdE0yTTNOeTAwWmpFNUxXSTFPRFl0TlRFNU5USXlaVEJtT0RNNUlpd2ljWFZ2ZEdWSlpDSTZJamxpTWpWbFlqYzRMV05rWVRrdE5HUXhaaTFoWkRVM0xXRmlOV1pqWVdObU
+1EaGtaU0lzSW5CaGVXVmxJanA3SW5CaGNuUjVTV1JKYm1adklqcDdJbkJoY25SNVNXUlVlWEJsSWpvaVFVTkRUMVZPVkY5SlJDSXNJbkJoY25SNVNXUmxiblJwWm1sbGNpSTZJakUzTURNNU9ERXhPVEEzSWl3aVpuTndTV1FpT2lKd1lYbGxaV1p6Y0NKOUxDSndaWEp6YjI1aGJF
+bHVabThpT25zaVkyOXRjR3hsZUU1aGJXVWlPbnNpWm1seWMzUk9ZVzFsSWpvaVUybHRSbWx5YzNRaUxDSnRhV1JrYkdWT1lXMWxJam9pVTJsdFRXbGtaR3hsSWl3aWJHRnpkRTVoYldVaU9pSlRhVzFNWVhOMEluMHNJbVJoZEdWUFprSnBjblJvSWpvaU1qQXhNQzB4TUMweE1DSj
+lmU3dpY0dGNVpYSWlPbnNpY0dGeWRIbEpaRWx1Wm04aU9uc2ljR0Z5ZEhsSlpGUjVjR1VpT2lKQlEwTlBWVTVVWDBsRUlpd2ljR0Z5ZEhsSlpHVnVkR2xtYVdWeUlqb2lNVGM0TlRVMU1ERTVNVFFpTENKbWMzQkpaQ0k2SW5CaGVXVnlabk53SW4wc0ltNWhiV1VpT2lKUVlYbGxj
+a1pwY25OMElGQmhlV1Z5VEdGemRDSjlMQ0poYlc5MWJuUWlPbnNpWVcxdmRXNTBJam9pTVRBaUxDSmpkWEp5Wlc1amVTSTZJbFZUUkNKOUxDSjBjbUZ1YzJGamRHbHZibFI1Y0dVaU9uc2ljMk5sYm1GeWFXOGlPaUpVVWtGT1UwWkZVaUlzSW1sdWFYUnBZWFJ2Y2lJNklsQkJXVV
+ZTSWl3aWFXNXBkR2xoZEc5eVZIbHdaU0k2SWtOUFRsTlZUVVZTSW4xOQA",
+         "condition":"FravH43bz3pO3AOwuaC5wo26Gv3p_rQiASsREK_ueoQ",
+         "payeeFspFee":{
+            "amount":"0",
+            "currency":"EUR"
+         },
+         "payeeFspCommission":{
+            "amount":"0",
+            "currency":"EUR"
+         }
+      },
+      "fulfilment":"ZhrKmchS4bCpaGIcu5fuLOsIFDZqTpJeYf4Q9HOYF0c"
+   },
+   "quoteResponse":{
+      "headers":{
+         "content-type":"application/vnd.interoperability.quotes+json;version=1.0",
+         "date":"Tue, 15 Jun 2021 13:30:11 GMT",
+         "fspiop-source":"walletABC",
+         "fspiop-destination":"walletXYZ",
+         "Authorization":"Bearer 74b241a2-4200-3938-8dfc-0e26ba21dc22",
+         "content-length":1402
+      },
+      "body":{
+         "transferAmount":{
+           "amount":"50",
+           "currency":"EUR"
+         },
+        "expiration":"2021-06-15T13:31:11.500Z",
+        "ilpPacket":"AYIDUgAAAAAAAAPoIWcucGF5ZWVmc3AuYWNjb3VudF9pZC4xNzAzOTgxM
+TkwN4IDJGV5SjBjbUZ1YzJGamRHbHZia2xrSWpvaU4ySTRNbUZoT0RrdE0yTTNOeTAwWmpFNUxXSTFPRFl0TlRFNU5USXlaVEJtT0RNNUlpd2ljWFZ2ZEdWSlpDSTZJamxpTWpWbFlqYzRMV05rWVRrdE5HUXhaaTFoWkRVM0xXRmlOV1pqWVdObU1EaGtaU0lzSW5CaGVXVmxJanA
+3SW5CaGNuUjVTV1JKYm1adklqcDdJbkJoY25SNVNXUlVlWEJsSWpvaVFVTkRUMVZPVkY5SlJDSXNJbkJoY25SNVNXUmxiblJwWm1sbGNpSTZJakUzTURNNU9ERXhPVEEzSWl3aVpuTndTV1FpT2lKd1lYbGxaV1p6Y0NKOUxDSndaWEp6YjI1aGJFbHVabThpT25zaVkyOXRjR3hsZ
+UU1aGJXVWlPbnNpWm1seWMzUk9ZVzFsSWpvaVUybHRSbWx5YzNRaUxDSnRhV1JrYkdWT1lXMWxJam9pVTJsdFRXbGtaR3hsSWl3aWJHRnpkRTVoYldVaU9pSlRhVzFNWVhOMEluMHNJbVJoZEdWUFprSnBjblJvSWpvaU1qQXhNQzB4TUMweE1DSjlmU3dpY0dGNVpYSWlPbnNpY0d
+GeWRIbEpaRWx1Wm04aU9uc2ljR0Z5ZEhsSlpGUjVjR1VpT2lKQlEwTlBWVTVVWDBsRUlpd2ljR0Z5ZEhsSlpHVnVkR2xtYVdWeUlqb2lNVGM0TlRVMU1ERTVNVFFpTENKbWMzQkpaQ0k2SW5CaGVXVnlabk53SW4wc0ltNWhiV1VpT2lKUVlYbGxja1pwY25OMElGQmhlV1Z5VEdGe
+mRDSjlMQ0poYlc5MWJuUWlPbnNpWVcxdmRXNTBJam9pTVRBaUxDSmpkWEp5Wlc1amVTSTZJbFZUUkNKOUxDSjBjbUZ1YzJGamRHbHZibFI1Y0dVaU9uc2ljMk5sYm1GeWFXOGlPaUpVVWtGT1UwWkZVaUlzSW1sdWFYUnBZWFJ2Y2lJNklsQkJXVVZTSWl3aWFXNXBkR2xoZEc5eVZ
+IbHdaU0k2SWtOUFRsTlZUVVZTSW4xOQA",
+        "condition": "FravH43bz3pO3AOwuaC5wo26Gv3p_rQiASsREK_ueoQ",
+        "payeeFspFee":{
+           "amount":"0",
+           "currency":"EUR"
+        },
+        "payeeFspCommission ":
+           "amount":"0",
+           "currency":"EUR"
+        },
+   "prepare":{
+      "body":{
+         "transferId":"85feac2f-39b2-491b-817e-4a03203d4f14",
+         "payeeFsp":"walletXYZ",
+         "payerFsp":"walletABC",
+         "amount":{
+            "currency":"EUR",
+            "amount":"50"
+         },
+         "ilpPacket":"AYIDUgAAAAAAAAPoIWcucGF5ZWVmc3AuYWNjb3VudF9pZC4xNzAzOTgxMTkwN4IDJGV5SjBjbUZ1YzJGamRHbHZia2xrSWpvaU4ySTRNbUZoT0RrdE0yTTNOeTAwWmpFNUxXSTFPRFl0TlRFNU5USXlaVEJtT0RNN
+Ulpd2ljWFZ2ZEdWSlpDSTZJamxpTWpWbFlqYzRMV05rWVRrdE5HUXhaaTFoWkRVM0xXRmlOV1pqWVdObU1EaGtaU0lzSW5CaGVXVmxJanA3SW5CaGNuUjVTV1JKYm1adklqcDdJbkJoY25SNVNXUlVlWEJsSWpvaVFVTkRUMVZPVkY5SlJDSXNJbkJoY25SNVNXUmxiblJwWm1sbGN
+pSTZJakUzTURNNU9ERXhPVEEzSWl3aVpuTndTV1FpT2lKd1lYbGxaV1p6Y0NKOUxDSndaWEp6YjI1aGJFbHVabThpT25zaVkyOXRjR3hsZUU1aGJXVWlPbnNpWm1seWMzUk9ZVzFsSWpvaVUybHRSbWx5YzNRaUxDSnRhV1JrYkdWT1lXMWxJam9pVTJsdFRXbGtaR3hsSWl3aWJHR
+npkRTVoYldVaU9pSlRhVzFNWVhOMEluMHNJbVJoZEdWUFprSnBjblJvSWpvaU1qQXhNQzB4TUMweE1DSjlmU3dpY0dGNVpYSWlPbnNpY0dGeWRIbEpaRWx1Wm04aU9uc2ljR0Z5ZEhsSlpGUjVjR1VpT2lKQlEwTlBWVTVVWDBsRUlpd2ljR0Z5ZEhsSlpHVnVkR2xtYVdWeUlqb2l
+NVGM0TlRVMU1ERTVNVFFpTENKbWMzQkpaQ0k2SW5CaGVXVnlabk53SW4wc0ltNWhiV1VpT2lKUVlYbGxja1pwY25OMElGQmhlV1Z5VEdGemRDSjlMQ0poYlc5MWJuUWlPbnNpWVcxdmRXNTBJam9pTVRBaUxDSmpkWEp5Wlc1amVTSTZJbFZUUkNKOUxDSjBjbUZ1YzJGamRHbHZib
+FI1Y0dVaU9uc2ljMk5sYm1GeWFXOGlPaUpVVWtGT1UwWkZVaUlzSW1sdWFYUnBZWFJ2Y2lJNklsQkJXVVZTSWl3aWFXNXBkR2xoZEc5eVZIbHdaU0k2SWtOUFRsTlZUVVZTSW4xOQA",
+         "condition":"FravH43bz3pO3AOwuaC5wo26Gv3p_rQiASsREK_ueoQ",
+         "expiration":"2021-06-15T13:31:19.879Z"
+      },
+      "headers":{
+         "content-type":"application/vnd.interoperability.transfers+json;version=1.0",
+         "date":"Tue, 15 Jun 2021 13:30:19 GMT",
+         "fspiop-source":"walletABC",
+         "fspiop-destination":"walletXYZ",
+         "authorization":"Bearer 74b241a2-4200-3938-8dfc-0e26ba21dc22",
+         "accept":"application/vnd.interoperability.transfers+json;version=1",
+         "content-length":1391,
+         "host":"walletXYZ-mojaloop-connector:4000",
+         "connection":"close"
+      }
+   },
+   "fulfil":{
+      "headers":{
+         "content-type":"application/vnd.interoperability.transfers+json;version=1.0",
+         "date":"Tue, 15 Jun 2021 13:30:19 GMT",
+         "fspiop-source":"walletABC",
+         "fspiop-destination":"walletXYZ",
+         "Authorization":"Bearer 74b241a2-4200-3938-8dfc-0e26ba21dc22",
+         "content-length":135
+      },
+      "body":{
+         "completedTimestamp":"2021-06-15T13:30:19.912Z",
+         "transferState":"RESERVED",
+         "fulfilment":"ZhrKmchS4bCpaGIcu5fuLOsIFDZqTpJeYf4Q9HOYF0c"
+      }
+   },
+   "finalNotification":{
+      "completedTimestamp":"2021-06-15T13:30:19.920Z",
+      "transferState":"ABORTED"
+   }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following example shows a <code>PUT /transfers/{transferId}</code> notification (Step 102 in the diagram above) when:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the Payee DFSP has confirmed that they are OK to go ahead with the transfer, and</p>
+</li>
+<li>
+<p>the transfer passes validation of the fulfilment and expiry timestamp in the Switch</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The notification acts as a success confirmation, indicating to the Payee DFSP that they can go ahead and release funds to their customer&#8217;s account.</p>
+</div>
+<div class="listingblock json">
+<div class="content">
+<pre class="highlightjs highlight"><code>HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+   "transferId":"85feac2f-39b2-491b-817e-4a03203d4f14",
+   "direction":"INBOUND",
+   "quoteRequest":{
+      "headers":{
+         "content-type":"application/vnd.interoperability.quotes+json;version=1.0",
+         "date":"Tue, 15 Jun 2021 13:30:11 GMT",
+         "fspiop-source":"walletABC",
+         "fspiop-destination":"walletXYZ",
+         "authorization":"Bearer 74b241a2-4200-3938-8dfc-0e26ba21dc22",
+         "accept":"application/vnd.interoperability.quotes+json;version=1",
+         "content-length":685,
+         "host":"walletXYZ-mojaloop-connector:4000",
+         "connection":"close"
+      },
+      "body":{
+         "quoteId":"7c23e80c-d078-4077-8263-2c047876fcf6",
+         "transactionId":"85feac2f-39b2-491b-817e-4a03203d4f14",
+         "amountType":"SEND",
+         "amount":{
+            "currency":"EUR",
+            "amount":"50"
+         },
+         "expiration":"2021-06-15T13:31:11.456Z",
+         "payer":{
+            "partyIdInfo":{
+               "partyIdType":"MSISDN",
+               "partyIdentifier":"123456789",
+               "fspId":"walletABC"
+            },
+            "name":"Antoine Dujardin"
+         },
+         "payee":{
+            "partyIdInfo":{
+               "partyIdType":"MSISDN",
+               "partyIdentifier":"987654321",
+               "fspId":"walletXYZ"
+            },
+            "personalInfo":{
+               "complexName":{
+                  "firstName":"Aamir",
+                  "middleName":"Abdel",
+                  "lastName":"Fakhir"
+               }
+            }
+         },
+         "transactionType":{
+            "scenario":"TRANSFER",
+            "initiator":"PAYER",
+            "initiatorType":"CONSUMER"
+         }
+      }
+   },
+   "currentState":"COMPLETED",
+   "initiatedTimestamp":"2021-06-15T13:30:11.470Z",
+   "quote":{
+      "request":{
+         "quoteId":"7c23e80c-d078-4077-8263-2c047876fcf6",
+         "transactionId":"85feac2f-39b2-491b-817e-4a03203d4f14",
+         "amountType":"SEND",
+         "amount":{
+            "currency":"EUR",
+            "amount":"50"
+         },
+         "expiration":"2021-06-15T13:31:11.456Z",
+         "payer":{
+            "partyIdInfo":{
+               "partyIdType":"MSISDN",
+               "partyIdentifier":"123456789",
+               "fspId":"walletABC"
+            },
+            "name":"Antoine Dujardin"
+         },
+         "payee":{
+            "partyIdInfo":{
+               "partyIdType":"MSISDN",
+               "partyIdentifier":"987654321",
+               "fspId":"walletXYZ"
+            },
+            "personalInfo":{
+               "complexName":{
+                  "firstName":"Aamir",
+                  "middleName":"Abdel",
+                  "lastName":"Fakhir"
+               }
+            }
+         },
+         "transactionType":{
+            "scenario":"TRANSFER",
+            "initiator":"PAYER",
+            "initiatorType":"CONSUMER"
+         }
+      },
+      "internalRequest":{
+         "quoteId":"7c23e80c-d078-4077-8263-2c047876fcf6",
+         "transactionId":"85feac2f-39b2-491b-817e-4a03203d4f14",
+         "to":{
+            "idType":"MSISDN",
+            "idValue":"987654321",
+            "fspId":"walletXYZ",
+            "firstName":"Aamir",
+            "middleName":"Abdel",
+            "lastName":"Fakhir"
+         },
+         "from":{
+            "idType":"MSISDN",
+            "idValue":"123456789",
+            "fspId":"walletABC"
+         },
+         "amountType":"SEND",
+         "amount":"50",
+         "currency":"EUR",
+         "transactionType":"TRANSFER",
+         "initiator":"PAYER",
+         "initiatorType":"CONSUMER",
+         "expiration":"2021-06-15T13:31:11.456Z"
+      },
+      "response":{
+         "quoteId":"7c23e80c-d078-4077-8263-2c047876fcf6",
+         "transactionId":"85feac2f-39b2-491b-817e-4a03203d4f14",
+         "transferAmount":"50",
+         "transferAmountCurrency":"EUR",
+         "payeeFspFeeAmount":"0",
+         "payeeFspFeeAmountCurrency":"EUR",
+         "payeeFspCommissionAmount":"0",
+         "payeeFspCommissionAmountCurrency":"EUR",
+         "expiration":"2021-06-15T13:31:11.500Z"
+      },
+      "mojaloopResponse":{
+         "transferAmount":{
+            "amount":"50",
+            "currency":"EUR"
+         },
+         "expiration":"2021-06-15T13:31:11.500Z",
+         "ilpPacket":"AYIDUgAAAAAAAAPoIWcucGF5ZWVmc3Au
+YWNjb3VudF9pZC4xNzAzOTgxMTkwN4IDJGV5SjBjbUZ1YzJGamRHbHZia2xrSWpvaU4ySTRNbUZoT0RrdE0yTTNOeTAwWmpFNUxXSTFPRFl0TlRFNU5USXlaVEJtT0RNNUlpd2ljWFZ2ZEdWSlpDSTZJamxpTWpWbFlqYzRMV05rWVRrdE5HUXhaaTFoWkRVM0xXRmlOV1pqWVdObU
+1EaGtaU0lzSW5CaGVXVmxJanA3SW5CaGNuUjVTV1JKYm1adklqcDdJbkJoY25SNVNXUlVlWEJsSWpvaVFVTkRUMVZPVkY5SlJDSXNJbkJoY25SNVNXUmxiblJwWm1sbGNpSTZJakUzTURNNU9ERXhPVEEzSWl3aVpuTndTV1FpT2lKd1lYbGxaV1p6Y0NKOUxDSndaWEp6YjI1aGJF
+bHVabThpT25zaVkyOXRjR3hsZUU1aGJXVWlPbnNpWm1seWMzUk9ZVzFsSWpvaVUybHRSbWx5YzNRaUxDSnRhV1JrYkdWT1lXMWxJam9pVTJsdFRXbGtaR3hsSWl3aWJHRnpkRTVoYldVaU9pSlRhVzFNWVhOMEluMHNJbVJoZEdWUFprSnBjblJvSWpvaU1qQXhNQzB4TUMweE1DSj
+lmU3dpY0dGNVpYSWlPbnNpY0dGeWRIbEpaRWx1Wm04aU9uc2ljR0Z5ZEhsSlpGUjVjR1VpT2lKQlEwTlBWVTVVWDBsRUlpd2ljR0Z5ZEhsSlpHVnVkR2xtYVdWeUlqb2lNVGM0TlRVMU1ERTVNVFFpTENKbWMzQkpaQ0k2SW5CaGVXVnlabk53SW4wc0ltNWhiV1VpT2lKUVlYbGxj
+a1pwY25OMElGQmhlV1Z5VEdGemRDSjlMQ0poYlc5MWJuUWlPbnNpWVcxdmRXNTBJam9pTVRBaUxDSmpkWEp5Wlc1amVTSTZJbFZUUkNKOUxDSjBjbUZ1YzJGamRHbHZibFI1Y0dVaU9uc2ljMk5sYm1GeWFXOGlPaUpVVWtGT1UwWkZVaUlzSW1sdWFYUnBZWFJ2Y2lJNklsQkJXVV
+ZTSWl3aWFXNXBkR2xoZEc5eVZIbHdaU0k2SWtOUFRsTlZUVVZTSW4xOQA",
+         "condition":"FravH43bz3pO3AOwuaC5wo26Gv3p_rQiASsREK_ueoQ",
+         "payeeFspFee":{
+            "amount":"0",
+            "currency":"EUR"
+         },
+         "payeeFspCommission":{
+            "amount":"0",
+            "currency":"EUR"
+         }
+      },
+      "fulfilment":"ZhrKmchS4bCpaGIcu5fuLOsIFDZqTpJeYf4Q9HOYF0c"
+   },
+   "quoteResponse":{
+      "headers":{
+         "content-type":"application/vnd.interoperability.quotes+json;version=1.0",
+         "date":"Tue, 15 Jun 2021 13:30:11 GMT",
+         "fspiop-source":"walletABC",
+         "fspiop-destination":"walletXYZ",
+         "Authorization":"Bearer 74b241a2-4200-3938-8dfc-0e26ba21dc22",
+         "content-length":1402
+      },
+      "body":{
+         "transferAmount":{
+           "amount":"50",
+           "currency":"EUR"
+         },
+        "expiration":"2021-06-15T13:31:11.500Z",
+        "ilpPacket":"AYIDUgAAAAAAAAPoIWcucGF5ZWVmc3AuYWNjb3VudF9pZC4xNzAzOTgxM
+TkwN4IDJGV5SjBjbUZ1YzJGamRHbHZia2xrSWpvaU4ySTRNbUZoT0RrdE0yTTNOeTAwWmpFNUxXSTFPRFl0TlRFNU5USXlaVEJtT0RNNUlpd2ljWFZ2ZEdWSlpDSTZJamxpTWpWbFlqYzRMV05rWVRrdE5HUXhaaTFoWkRVM0xXRmlOV1pqWVdObU1EaGtaU0lzSW5CaGVXVmxJanA
+3SW5CaGNuUjVTV1JKYm1adklqcDdJbkJoY25SNVNXUlVlWEJsSWpvaVFVTkRUMVZPVkY5SlJDSXNJbkJoY25SNVNXUmxiblJwWm1sbGNpSTZJakUzTURNNU9ERXhPVEEzSWl3aVpuTndTV1FpT2lKd1lYbGxaV1p6Y0NKOUxDSndaWEp6YjI1aGJFbHVabThpT25zaVkyOXRjR3hsZ
+UU1aGJXVWlPbnNpWm1seWMzUk9ZVzFsSWpvaVUybHRSbWx5YzNRaUxDSnRhV1JrYkdWT1lXMWxJam9pVTJsdFRXbGtaR3hsSWl3aWJHRnpkRTVoYldVaU9pSlRhVzFNWVhOMEluMHNJbVJoZEdWUFprSnBjblJvSWpvaU1qQXhNQzB4TUMweE1DSjlmU3dpY0dGNVpYSWlPbnNpY0d
+GeWRIbEpaRWx1Wm04aU9uc2ljR0Z5ZEhsSlpGUjVjR1VpT2lKQlEwTlBWVTVVWDBsRUlpd2ljR0Z5ZEhsSlpHVnVkR2xtYVdWeUlqb2lNVGM0TlRVMU1ERTVNVFFpTENKbWMzQkpaQ0k2SW5CaGVXVnlabk53SW4wc0ltNWhiV1VpT2lKUVlYbGxja1pwY25OMElGQmhlV1Z5VEdGe
+mRDSjlMQ0poYlc5MWJuUWlPbnNpWVcxdmRXNTBJam9pTVRBaUxDSmpkWEp5Wlc1amVTSTZJbFZUUkNKOUxDSjBjbUZ1YzJGamRHbHZibFI1Y0dVaU9uc2ljMk5sYm1GeWFXOGlPaUpVVWtGT1UwWkZVaUlzSW1sdWFYUnBZWFJ2Y2lJNklsQkJXVVZTSWl3aWFXNXBkR2xoZEc5eVZ
+IbHdaU0k2SWtOUFRsTlZUVVZTSW4xOQA",
+        "condition": "FravH43bz3pO3AOwuaC5wo26Gv3p_rQiASsREK_ueoQ",
+        "payeeFspFee":{
+           "amount":"0",
+           "currency":"EUR"
+        },
+        "payeeFspCommission ":
+           "amount":"0",
+           "currency":"EUR"
+        },
+   "prepare":{
+      "body":{
+         "transferId":"85feac2f-39b2-491b-817e-4a03203d4f14",
+         "payeeFsp":"walletXYZ",
+         "payerFsp":"walletABC",
+         "amount":{
+            "currency":"EUR",
+            "amount":"50"
+         },
+         "ilpPacket":"AYIDUgAAAAAAAAPoIWcucGF5ZWVmc3AuYWNjb3VudF9pZC4xNzAzOTgxMTkwN4IDJGV5SjBjbUZ1YzJGamRHbHZia2xrSWpvaU4ySTRNbUZoT0RrdE0yTTNOeTAwWmpFNUxXSTFPRFl0TlRFNU5USXlaVEJtT0RNN
+Ulpd2ljWFZ2ZEdWSlpDSTZJamxpTWpWbFlqYzRMV05rWVRrdE5HUXhaaTFoWkRVM0xXRmlOV1pqWVdObU1EaGtaU0lzSW5CaGVXVmxJanA3SW5CaGNuUjVTV1JKYm1adklqcDdJbkJoY25SNVNXUlVlWEJsSWpvaVFVTkRUMVZPVkY5SlJDSXNJbkJoY25SNVNXUmxiblJwWm1sbGN
+pSTZJakUzTURNNU9ERXhPVEEzSWl3aVpuTndTV1FpT2lKd1lYbGxaV1p6Y0NKOUxDSndaWEp6YjI1aGJFbHVabThpT25zaVkyOXRjR3hsZUU1aGJXVWlPbnNpWm1seWMzUk9ZVzFsSWpvaVUybHRSbWx5YzNRaUxDSnRhV1JrYkdWT1lXMWxJam9pVTJsdFRXbGtaR3hsSWl3aWJHR
+npkRTVoYldVaU9pSlRhVzFNWVhOMEluMHNJbVJoZEdWUFprSnBjblJvSWpvaU1qQXhNQzB4TUMweE1DSjlmU3dpY0dGNVpYSWlPbnNpY0dGeWRIbEpaRWx1Wm04aU9uc2ljR0Z5ZEhsSlpGUjVjR1VpT2lKQlEwTlBWVTVVWDBsRUlpd2ljR0Z5ZEhsSlpHVnVkR2xtYVdWeUlqb2l
+NVGM0TlRVMU1ERTVNVFFpTENKbWMzQkpaQ0k2SW5CaGVXVnlabk53SW4wc0ltNWhiV1VpT2lKUVlYbGxja1pwY25OMElGQmhlV1Z5VEdGemRDSjlMQ0poYlc5MWJuUWlPbnNpWVcxdmRXNTBJam9pTVRBaUxDSmpkWEp5Wlc1amVTSTZJbFZUUkNKOUxDSjBjbUZ1YzJGamRHbHZib
+FI1Y0dVaU9uc2ljMk5sYm1GeWFXOGlPaUpVVWtGT1UwWkZVaUlzSW1sdWFYUnBZWFJ2Y2lJNklsQkJXVVZTSWl3aWFXNXBkR2xoZEc5eVZIbHdaU0k2SWtOUFRsTlZUVVZTSW4xOQA",
+         "condition":"FravH43bz3pO3AOwuaC5wo26Gv3p_rQiASsREK_ueoQ",
+         "expiration":"2021-06-15T13:31:19.879Z"
+      },
+      "headers":{
+         "content-type":"application/vnd.interoperability.transfers+json;version=1.0",
+         "date":"Tue, 15 Jun 2021 13:30:19 GMT",
+         "fspiop-source":"walletABC",
+         "fspiop-destination":"walletXYZ",
+         "authorization":"Bearer 74b241a2-4200-3938-8dfc-0e26ba21dc22",
+         "accept":"application/vnd.interoperability.transfers+json;version=1",
+         "content-length":1391,
+         "host":"walletXYZ-mojaloop-connector:4000",
+         "connection":"close"
+      }
+   },
+   "fulfil":{
+      "headers":{
+         "content-type":"application/vnd.interoperability.transfers+json;version=1.0",
+         "date":"Tue, 15 Jun 2021 13:30:19 GMT",
+         "fspiop-source":"walletABC",
+         "fspiop-destination":"walletXYZ",
+         "Authorization":"Bearer 74b241a2-4200-3938-8dfc-0e26ba21dc22",
+         "content-length":135
+      },
+      "body":{
+         "completedTimestamp":"2021-06-15T13:30:19.912Z",
+         "transferState":"RESERVED",
+         "fulfilment":"ZhrKmchS4bCpaGIcu5fuLOsIFDZqTpJeYf4Q9HOYF0c"
+      }
+   },
+   "finalNotification":{
+      "completedTimestamp":"2021-06-15T13:30:19.920Z",
+      "transferState":"COMMITTED"
+   }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To ensure that the Switch does send a notification, the following environment variables must be configured in Mojaloop Connector:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>RESERVE_NOTIFICATION</code> must be set to <code>true</code></p>
+</li>
+<li>
+<p><code>RESOURCE_VERSIONS</code> must contain the string <code>transfers=1.1,</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><code>RESOURCE_VERSIONS</code> is used to assign API versions to <code>Content-Type</code> and <code>Accept</code> headers dynamically. Given that the Switch notification is a feature that was introduced in Mojaloop FSPIOP API version 1.1, and that it is a feature of the <code>/transfers</code> resource, Payment Manager must be set so that it uses version 1.1. of the <code>/transfers</code> resource. Here is how to set resource versions:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>RESOURCE_VERSIONS="resouceOneName=1.0,resourceTwoName=1.1,"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>RESOURCE_VERSIONS="parties=1.0,transfers=1.1,"</pre>
+</div>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Getting started with the Mojaloop Connector SDK :: Payment Manager OSS Documentation</title>
+    <meta name="generator" content="Antora 2.3.3">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../..">Payment Manager OSS Documentation</a>
+
+    </div>
+
+    <div id="topbar-nav" class="navbar-menu">
+    <div class="navbar-end">
+
+        <!--
+        <div class="navbar-item has-dropdown is-hoverable">
+      <a class="navbar-link" href="#">Products</a>
+      <div class="navbar-dropdown ">
+        <a class="navbar-item" href="http://staging.docs.portx.io/portx/latest/index.html">Payment Manager</a>
+        <a class="navbar-item" href="http://staging.docs.portx.io/camel/portx/latest/index.html">Forex</a>
+      </div>
+      !--> 
+      
+    </div>
+ 
+
+
+        <!--
+
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Resources</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Resource A</a>
+            <a class="navbar-item" href="#">Resource B</a>
+            <a class="navbar-item" href="#">Resource C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+      !-->
+    </div>
+</div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="payment_manager" data-version="latest">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Payment Manager OSS</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../how_to_read_docs/index.html">How to read Payment Manager documents</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../how_to_read_docs/how_to_read.html">Overview of Payment Manager documents</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../api_integration/index.html">API Integration Guide for DFSPs</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../api_integration/introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../api_integration/integration.html">API integration</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../api_integration/payer_dfsp_integration.html">Integration as a Payer DFSP</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../api_integration/payee_dfsp_integration.html">Integration as a Payee DFSP</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../core_connector_rest/index.html">Core Connector Guide for REST-Based Implementations</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/overview_of_technologies.html">Overview of technologies and resources</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/template_components.html">Components of a Core Connector template</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/customise_template.html">Customising a template</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/update_template_api_changes.html">Updating a template when the Payment Manager API changes</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/testing.html">Testing Core Connector</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/deploy_core_connector.html">Deploying Core Connector</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../connection_wizard/index.html">Guide to Connection Wizard</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/security.html">Mojaloop security</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/introduction.html">Introduction to Connection Wizard</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/overview_page.html">Connection Wizard overview page</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/phase_1_business_setup.html">Phase 1: Business Setup</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../connection_wizard/phase_2_technical_setup.html">Phase 2: Technical Setup</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/endpoints.html">Endpoints</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/csr_exchange.html">CSR Exchange</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/certificate_authority.html">Certificate Authority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/server_certificates_exchange.html">Server Certificates Exchange</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/jws_certificates.html">JWS Certificates</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/appendix_create_tls_cert.html">Appendix A: Create TLS certificates</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/appendix_create_jws_cert.html">Appendix B: Create a JWS certificate</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/appendix_extract_public_key_from_JWS_cert.html">Appendix C: Extract a public key from a JWS certificate</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../transfers_overview/index.html">Guide to Transfers Overview</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../transfers_overview/introduction.html">Introduction to Transfers Overview</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../transfers_overview/transfers_overview.html">Transfers Overview page</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../technical_dashboard/index.html">Guide to Technical Dashboard</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../technical_dashboard/introduction.html">Introduction to the Technical Dashboard</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../technical_dashboard/technical_dashboard.html">Technical Dashboard page</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../user_access_management/index.html">User Access Management Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../user_access_management/introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../user_access_management/user_authentication.html">User authentication with OpenID Connect</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../user_access_management/getting_started.html">Getting started with Keycloak</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../user_access_management/configuring_user_access.html">Managing user access in Keycloak</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Payment Manager OSS</span>
+    <span class="version">latest</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Payment Manager OSS</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+  <!--
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Payment Manager OSS</a></li>
+    <li><a href="getting_started_with_sdk.html">Getting started with the Mojaloop Connector SDK</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/pm4ml/documents/edit/master/modules/mojaloop_connector/pages/getting_started_with_sdk.adoc">Edit this Page</a></div>
+    !-->
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Getting started with the Mojaloop Connector SDK</h1>
+<div class="paragraph">
+<p>The Mojaloop Connector SDK Scheme Adapter is provided via the following GitHub repository: <a href="https://github.com/modusintegration/mojaloop-connector" class="bare">https://github.com/modusintegration/mojaloop-connector</a>. It is also available as a pre-built Docker image via the Docker Hub repository: https://hub.docker.com/r/mojaloop/sdk-scheme-adapter. <strong>Question: Is the Docker info correct?</strong></p>
+</div>
+<div class="paragraph">
+<p>This Docker image contains the Scheme Adapter, which exemplifies the use of the Standard Components (to perform the operations related to security and header processing). The Scheme Adapter comes with a set of configuration options to allow DFSPs to define scheme-specific ways of working. Configuration values are provided by DFSPs as environment variables in an environment file, which is passed to the Docker container when running it. For further details on Sheme Adapter configuration options, see xref:???.adoc[Configuring the Mojaloop Connector SDK (Scheme Adapter)].</p>
+</div>
+<div class="paragraph">
+<p>The Standard Components reference implementations of TLS authentication, JWS signing of messages, and ILP packet generation used in the SDK Scheme Adapter. They offer a good reference for those wishing to use them, or implement their own. The Standard Components are provided in the Mojaloop GitHub repository: <a href="https://github.com/mojaloop/sdk-standard-components" class="bare">https://github.com/mojaloop/sdk-standard-components</a>. <strong>Question: Is this link correct?</strong></p>
+</div>
+<div class="paragraph">
+<p>To integrate with a Mojaloop Hub leveraging the Mojaloop Connector SDK, DFSPs are required to implement the simplified API for communication between their backend applications and the Mojaloop Connector SDK Scheme Adapter.</p>
+</div>
+<div class="paragraph">
+<p>DFSPs' backend must implement the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Inbound API: This enables the Scheme Adapter to make incoming transfers to a DFSP, that is, to receive funds to a customer account.</p>
+</li>
+<li>
+<p>Outbound API: This enables the DFSP to make outgoing transfers via the Scheme Adapter, that is, to send funds from a customer account.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following tables provide a summary of DFSP operations and API services that the Mojaloop Connector SDK enables:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<caption class="title">Table 1. Summary of DFSP operations enabled by the Mojaloop Connector SDK – Outbound API (DFSP → SDK → Hub)</caption>
+<colgroup>
+<col style="width: 22.2222%;">
+<col style="width: 33.3333%;">
+<col style="width: 44.4445%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Category</th>
+<th class="tableblock halign-left valign-top">Operation</th>
+<th class="tableblock halign-left valign-top">Simplified API request</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Register account information</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create account information in the Account Lookup Service (ALS) regarding the provided list of identities</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>POST /accounts</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Account lookup</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="paragraph">
+<p>Quotes</p>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="paragraph">
+<p>Transfers</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Request a transfer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>POST /transfers</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Transfers</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>In the case of two-stage and three-stage transfers, continue a transfer that has paused after the party lookup or quote stage in order to accept or reject the party or quote, respectively</p>
+</div>
+<div class="paragraph">
+<p>For details on multi-stage transfers, see xref:???.adoc[Single-stage, two-stage, and three-stage transfers].</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PUT /transfers/{transferId}</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Respond to <code>GET /transfers/{transferId}</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Respond to <code>POST /requestToPay</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Check transfer status</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Retrieve information about a specific transfer</p>
+</div>
+<div class="paragraph">
+<p>For best practice tips, see <a href="#:???.adoc" class="page unresolved">Determining the status of a transfer</a>.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GET /transfers/{transferId}</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Payee initiates transaction (for example, when a merchant requests payment)</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Payee requests funds from the Payer</p>
+</div>
+<div class="paragraph">
+<p>(Phase 1 of Payee-initiated transaction)</p>
+</div>
+<div class="paragraph">
+<p>For more information, see xref:???.adoc[Merchant transfers].</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>POST /requestToPay</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Follow-up call to Payee-initiated transaction</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Payer sends money in reponse to Payee&#8217;s request for funds</p>
+</div>
+<div class="paragraph">
+<p>(Phase 2 of Payee-initiated transaction)</p>
+</div>
+<div class="paragraph">
+<p>For more information, see <a href="#:???.adoc" class="page unresolved">Merchant transfers</a>.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>POST /requestToPayTransfer</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Continue Payee-initiated transaction</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Continue a transfer that has paused after the quote stage in order to accept or reject the quote</p>
+</div>
+<div class="paragraph">
+<p>(Phase 2 of Payee-initiated transaction)</p>
+</div>
+<div class="paragraph">
+<p>For more information, see xref:???.adoc[Merchant transfers].</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PUT /requestToPayTransfer/{requestToPayTransactionId}</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bulk quote</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Request a bulk quote for a group of financial transactions that the Payer DFSP wants to carry out in a single bulk transfer</p>
+</div>
+<div class="paragraph">
+<p>For more information, see xref:???.adoc[Bulk quotes and bulk transfers].</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>POST /bulkQuotes</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Retrieve information for a specific bulk quote</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GET /bulkQuotes/{bulkQuoteId}</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bulk transfer</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Perform a bulk transfer sending money to multiple Payee accounts</p>
+</div>
+<div class="paragraph">
+<p>For more information, see xref:???.adoc[Bulk quotes and bulk transfers].</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>POST /bulkTransfers</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Retrieve information for a specific bulk transfer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GET /bulkTransfers/{bulkTransferId}</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Health check</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Check health of Mojaloop-SDK</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GET /</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><strong>Question: Is this table correct?</strong>
+.Summary of DFSP operations enabled by the Mojaloop Connector SDK – Inbound API (Hub → SDK → DFSP)</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 22.2222%;">
+<col style="width: 33.3333%;">
+<col style="width: 44.4445%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Category</th>
+<th class="tableblock halign-left valign-top">Operation</th>
+<th class="tableblock halign-left valign-top">Simplified API request</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Account lookup</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Participants lookup</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GET /participants/{idType}/{idValue}</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parties lookup</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GET /parties/{idType}/{idValue}</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Quotes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Request a quote</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>POST /quoterequests</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Transfers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Request a transfer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>POST /transfers</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Retrieve information about a specific transfer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GET /transfers/{transferId}</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>Receive transfer status notification for a specific transfer</p>
+</div>
+<div class="paragraph">
+<p>(Corresponds to the <code>PATCH /transfers/{id}</code> notification sent by the Hub.)</p>
+</div>
+<div class="paragraph">
+<p>For more information, see <a href="#:???.adoc" class="page unresolved">Notification from Hub about transfer status</a>.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>PUT /transfers/{transferId}</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>API specifications documentation is provided in the form of Swagger <code>.yaml</code> files, they are available in the following GitHub repository:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Outbound API: https://github.com/modusintegration/mojaloop-connector/blob/master/src/OutboundServer/api.yaml</p>
+</li>
+<li>
+<p>Inbound API: https://github.com/modusintegration/mojaloop-connector/blob/master/src/InboundServer/api.yaml</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/Mojaloop_SDK_with_APIs.png" alt="Mojaloop SDK with APIs">
+</div>
+<div class="title">Figure 1. Mojaloop Connector SDK and APIs</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

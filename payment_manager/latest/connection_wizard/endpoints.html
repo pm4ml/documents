@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Endpoints :: Payment Manager OSS Documentation</title>
+    <meta name="generator" content="Antora 2.3.3">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../..">Payment Manager OSS Documentation</a>
+
+    </div>
+
+    <div id="topbar-nav" class="navbar-menu">
+    <div class="navbar-end">
+
+        <!--
+        <div class="navbar-item has-dropdown is-hoverable">
+      <a class="navbar-link" href="#">Products</a>
+      <div class="navbar-dropdown ">
+        <a class="navbar-item" href="http://staging.docs.portx.io/portx/latest/index.html">Payment Manager</a>
+        <a class="navbar-item" href="http://staging.docs.portx.io/camel/portx/latest/index.html">Forex</a>
+      </div>
+      !--> 
+      
+    </div>
+ 
+
+
+        <!--
+
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Resources</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Resource A</a>
+            <a class="navbar-item" href="#">Resource B</a>
+            <a class="navbar-item" href="#">Resource C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+      !-->
+    </div>
+</div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="payment_manager" data-version="latest">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Payment Manager OSS</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../how_to_read_docs/index.html">How to read Payment Manager documents</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../how_to_read_docs/how_to_read.html">Overview of Payment Manager documents</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../api_integration/index.html">API Integration Guide for DFSPs</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../api_integration/introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../api_integration/integration.html">API integration</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../api_integration/payer_dfsp_integration.html">Integration as a Payer DFSP</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../api_integration/payee_dfsp_integration.html">Integration as a Payee DFSP</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../core_connector_rest/index.html">Core Connector Guide for REST-Based Implementations</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/overview_of_technologies.html">Overview of technologies and resources</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/template_components.html">Components of a Core Connector template</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/customise_template.html">Customising a template</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/update_template_api_changes.html">Updating a template when the Payment Manager API changes</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/testing.html">Testing Core Connector</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/deploy_core_connector.html">Deploying Core Connector</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">Guide to Connection Wizard</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="security.html">Mojaloop security</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="introduction.html">Introduction to Connection Wizard</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="overview_page.html">Connection Wizard overview page</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="phase_1_business_setup.html">Phase 1: Business Setup</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="phase_2_technical_setup.html">Phase 2: Technical Setup</a>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="endpoints.html">Endpoints</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="csr_exchange.html">CSR Exchange</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="certificate_authority.html">Certificate Authority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="server_certificates_exchange.html">Server Certificates Exchange</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="jws_certificates.html">JWS Certificates</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="appendix_create_tls_cert.html">Appendix A: Create TLS certificates</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="appendix_create_jws_cert.html">Appendix B: Create a JWS certificate</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="appendix_extract_public_key_from_JWS_cert.html">Appendix C: Extract a public key from a JWS certificate</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../transfers_overview/index.html">Guide to Transfers Overview</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../transfers_overview/introduction.html">Introduction to Transfers Overview</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../transfers_overview/transfers_overview.html">Transfers Overview page</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../technical_dashboard/index.html">Guide to Technical Dashboard</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../technical_dashboard/introduction.html">Introduction to the Technical Dashboard</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../technical_dashboard/technical_dashboard.html">Technical Dashboard page</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../user_access_management/index.html">User Access Management Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../user_access_management/introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../user_access_management/user_authentication.html">User authentication with OpenID Connect</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../user_access_management/getting_started.html">Getting started with Keycloak</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../user_access_management/configuring_user_access.html">Managing user access in Keycloak</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Payment Manager OSS</span>
+    <span class="version">latest</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Payment Manager OSS</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+  <!--
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Payment Manager OSS</a></li>
+    <li><a href="index.html">Guide to Connection Wizard</a></li>
+    <li><a href="phase_2_technical_setup.html">Phase 2: Technical Setup</a></li>
+    <li><a href="endpoints.html">Endpoints</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/pm4ml/documents/edit/master/modules/connection_wizard/pages/endpoints.adoc">Edit this Page</a></div>
+    !-->
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Endpoints</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <strong>Endpoints</strong> page allows you to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>record your <a href="#egress_endpoints">egress</a> (outbound) and <a href="#ingress_endpoints">ingress</a> (inbound) endpoints for sharing with the Hub</p>
+</li>
+<li>
+<p>retrieve <a href="#hub_endpoints">Hub endpoint</a> information</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/phase2_technical_setup.png" alt="phase2 technical setup">
+</div>
+<div class="title">Figure 1. Endpoints page</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="egress-endpoints"><a class="anchor" href="#egress-endpoints"></a>Egress Endpoints<a id="egress_endpoints"></a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Egress or outbound endpoints are the IP addresses from which the DFSP will initiate connections to the Hub.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/egress_endpoints.png" alt="egress endpoints">
+</div>
+<div class="title">Figure 2. Egress Endpoints</div>
+</div>
+<div class="paragraph">
+<p>To configure egress (outbound) endpoints on the <strong>Egress Endpoints</strong> tab:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In the <strong>Egress IP Address</strong> field, enter the IP address from which you will make API calls to the Hub.</p>
+</li>
+<li>
+<p>In the <strong>Port(s)</strong> field, you can specify a specific port or a range.</p>
+</li>
+<li>
+<p>To add further ports, click the <strong>Add Port</strong> button. There is no limit on the number of ports that can be specified.</p>
+</li>
+<li>
+<p>To add further IP addresses or hostnames, click the Add <strong>Additional IP Address</strong> button.</p>
+</li>
+<li>
+<p>Once you are done entering your data, click <strong>Submit for Confirmation</strong>. This will send the data to the Hub for processing.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you do not click <strong>Submit for Confirmation</strong> and switch to another tab or page, the data you have entered will be lost.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you wish to discard changes while entering data, click the <strong>Undo Changes</strong> button.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The <strong>Status</strong> indicator tells you whether or not you have sent your data for processing to the Hub, and whether or not your data has been processed:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Not yet sent for processing</strong> (grey dot): You have not yet clicked <strong>Submit for Confirmation</strong> and not yet sent your endpoint data to the Hub.</p>
+</li>
+<li>
+<p><strong>Awaiting Processing</strong> (yellow dot): You have clicked <strong>Submit for Confirmation</strong> and sent your endpoint data to the Hub. The Hub has not yet processed your data.</p>
+</li>
+<li>
+<p><strong>Processed and Confirmed</strong> (green dot): You have clicked <strong>Submit for Confirmation</strong> and the Hub has processed your endpoint data.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="ingress-endpoints"><a class="anchor" href="#ingress-endpoints"></a>Ingress Endpoints<a id="ingress_endpoints"></a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ingress or inbound endpoints are the DFSP callback IP addresses and URLs that the Hub will initiate connections to.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/ingress_endpoints.png" alt="ingress endpoints">
+</div>
+<div class="title">Figure 3. Ingress Endpoints</div>
+</div>
+<div class="paragraph">
+<p>To configure inbound endpoints on the <strong>Ingress Endpoints</strong> tab:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In the <strong>URL</strong> field, enter the URL that the Hub will connect to in order to make API callbacks to you. You must provide a full URL with protocol information (<code>http://</code> or <code>https://</code>) included. You can provide a port number and path information too. For example: <code>https://inbound.dfsp.io:9876/example</code></p>
+</li>
+<li>
+<p>In the <strong>Ingress IP Address</strong> field, enter the IP address that the Hub will connect to in order to make API callbacks to you.</p>
+</li>
+<li>
+<p>In the <strong>Port(s)</strong> field, you can specify a specific port or a range.</p>
+</li>
+<li>
+<p>To add further ports, click the <strong>Add Port</strong> button. There is no limit on the number of ports that can be specified.</p>
+</li>
+<li>
+<p>To add further IP addresses or hostnames, click the <strong>Add Additional IP Address</strong> button.</p>
+</li>
+<li>
+<p>Once you are done entering your data, click <strong>Submit for Confirmation</strong>. This will send the data to the Hub for processing.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you do not click <strong>Submit for Confirmation</strong> and switch to another tab or page, the data you have entered will be lost.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you wish to discard changes while entering data, click the <strong>Undo Changes</strong> button.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The <strong>Status</strong> indicator tells you whether or not you have sent your data for processing to the Hub, and whether or not your data has been processed:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Not yet sent for processing</strong> (grey dot): You have not yet clicked <strong>Submit for Confirmation</strong> and not yet sent your endpoint data to the Hub.</p>
+</li>
+<li>
+<p><strong>Awaiting Processing</strong> (yellow dot): You have clicked <strong>Submit for Confirmation</strong> and sent your endpoint data to the Hub. The Hub has not yet processed your data.</p>
+</li>
+<li>
+<p><strong>Processed and Confirmed</strong> (green dot): You have clicked <strong>Submit for Confirmation</strong> and the Hub has processed your endpoint data.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="hub-endpoints"><a class="anchor" href="#hub-endpoints"></a>Hub Endpoints<a id="hub_endpoints"></a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <strong>Hub Endpoints</strong> tab allows you to retrieve endpoint information submitted by the Hub.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/hub_endpoints.png" alt="hub endpoints">
+</div>
+<div class="title">Figure 4. Hub Endpoints</div>
+</div>
+<div class="paragraph">
+<p>The tab displays all Hub outbound and inbound endpoints waiting to be whitelisted in firewall rules or configured in the backend.</p>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

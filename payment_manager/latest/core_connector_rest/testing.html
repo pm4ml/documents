@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Testing Core Connector :: Payment Manager OSS Documentation</title>
+    <meta name="generator" content="Antora 2.3.3">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../..">Payment Manager OSS Documentation</a>
+
+    </div>
+
+    <div id="topbar-nav" class="navbar-menu">
+    <div class="navbar-end">
+
+        <!--
+        <div class="navbar-item has-dropdown is-hoverable">
+      <a class="navbar-link" href="#">Products</a>
+      <div class="navbar-dropdown ">
+        <a class="navbar-item" href="http://staging.docs.portx.io/portx/latest/index.html">Payment Manager</a>
+        <a class="navbar-item" href="http://staging.docs.portx.io/camel/portx/latest/index.html">Forex</a>
+      </div>
+      !--> 
+      
+    </div>
+ 
+
+
+        <!--
+
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Resources</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Resource A</a>
+            <a class="navbar-item" href="#">Resource B</a>
+            <a class="navbar-item" href="#">Resource C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+      !-->
+    </div>
+</div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="payment_manager" data-version="latest">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Payment Manager OSS</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../how_to_read_docs/index.html">How to read Payment Manager documents</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../how_to_read_docs/how_to_read.html">Overview of Payment Manager documents</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../api_integration/index.html">API Integration Guide for DFSPs</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../api_integration/introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../api_integration/integration.html">API integration</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../api_integration/payer_dfsp_integration.html">Integration as a Payer DFSP</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../api_integration/payee_dfsp_integration.html">Integration as a Payee DFSP</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">Core Connector Guide for REST-Based Implementations</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="overview_of_technologies.html">Overview of technologies and resources</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="template_components.html">Components of a Core Connector template</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="customise_template.html">Customising a template</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="update_template_api_changes.html">Updating a template when the Payment Manager API changes</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="testing.html">Testing Core Connector</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="deploy_core_connector.html">Deploying Core Connector</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../connection_wizard/index.html">Guide to Connection Wizard</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/security.html">Mojaloop security</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/introduction.html">Introduction to Connection Wizard</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/overview_page.html">Connection Wizard overview page</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/phase_1_business_setup.html">Phase 1: Business Setup</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../connection_wizard/phase_2_technical_setup.html">Phase 2: Technical Setup</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/endpoints.html">Endpoints</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/csr_exchange.html">CSR Exchange</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/certificate_authority.html">Certificate Authority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/server_certificates_exchange.html">Server Certificates Exchange</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/jws_certificates.html">JWS Certificates</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/appendix_create_tls_cert.html">Appendix A: Create TLS certificates</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/appendix_create_jws_cert.html">Appendix B: Create a JWS certificate</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/appendix_extract_public_key_from_JWS_cert.html">Appendix C: Extract a public key from a JWS certificate</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../transfers_overview/index.html">Guide to Transfers Overview</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../transfers_overview/introduction.html">Introduction to Transfers Overview</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../transfers_overview/transfers_overview.html">Transfers Overview page</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../technical_dashboard/index.html">Guide to Technical Dashboard</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../technical_dashboard/introduction.html">Introduction to the Technical Dashboard</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../technical_dashboard/technical_dashboard.html">Technical Dashboard page</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../user_access_management/index.html">User Access Management Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../user_access_management/introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../user_access_management/user_authentication.html">User authentication with OpenID Connect</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../user_access_management/getting_started.html">Getting started with Keycloak</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../user_access_management/configuring_user_access.html">Managing user access in Keycloak</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Payment Manager OSS</span>
+    <span class="version">latest</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Payment Manager OSS</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+  <!--
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Payment Manager OSS</a></li>
+    <li><a href="index.html">Core Connector Guide for REST-Based Implementations</a></li>
+    <li><a href="testing.html">Testing Core Connector</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/pm4ml/documents/edit/master/modules/core_connector_rest/pages/testing.adoc">Edit this Page</a></div>
+    !-->
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Testing Core Connector</h1>
+<div class="sect1">
+<h2 id="testing-locally"><a class="anchor" href="#testing-locally"></a>Testing locally</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="testing-the-sending-side"><a class="anchor" href="#testing-the-sending-side"></a>Testing the sending side</h3>
+<div class="paragraph">
+<p>When testing the sending side, you can use Postman (or some other testing tool, or curl) to make a call directly to the Core Connector of the sending side, and check if the Core Connector is making a call to the Mojaloop Connector SDK using the right message format.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/test_sending_side.png" alt="test sending side">
+</div>
+<div class="title">Figure 1. Testing the sending side</div>
+</div>
+<div class="paragraph">
+<p>To test the sending side, follow these steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Build the Core Connector Maven project:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Change directory to the root folder of the Core Connector project&#8201;&#8212;&#8201;taking the generic template as an example, to <code>pm4ml-core-connector-rest-template</code>.</p>
+</li>
+<li>
+<p>Issue the <code>mvn clean install</code> command.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Run <code>java -jar client-adapter/target/client-adapter-1.1.0-SNAPSHOT.jar</code>.</p>
+</li>
+<li>
+<p>To test <code>POST /sendmoney</code>, issue a <code>POST /sendmoney</code> request to where Core Connector is running locally.<br>
+<br>
+Remove/set headers as indicated in the <code>from("direct:postSendmoney")</code> route in the Apache Camel router.</p>
+</li>
+<li>
+<p>To test <code>PUT /sendmoney/{transferId}</code>, issue a <code>PUT /sendmoney/{transferId}</code> request to where Core Connector is running locally.<br>
+<br>
+Remove/set headers as indicated in the <code>from("direct:putSendmoneyById")</code> route in the Apache Camel router.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="testing-the-receiving-side"><a class="anchor" href="#testing-the-receiving-side"></a>Testing the receiving side</h3>
+<div class="paragraph">
+<p>When testing the receiving side, you can use Postman (or some other testing tool, or curl) to make a call directly to the Core Connector of the receiving side.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="_images/test_receiving_side.png" alt="test receiving side">
+</div>
+<div class="title">Figure 2. Testing the receiving side</div>
+</div>
+<div class="paragraph">
+<p>The DFSP Core Backend will either be a sandbox environment of the DFSP backend, or&#8201;&#8212;&#8201;if you do not have access to that&#8201;&#8212;&#8201;you can mock up the backend based on the Swagger specification of the DFSP backend API (provided to you by the DFSP CBS vendor) and use dummy responses.</p>
+</div>
+<div class="paragraph">
+<p>Alternatively, you can use Postman to create a mock version of the DFSP backend.</p>
+</div>
+<div class="sect3">
+<h4 id="testing-against-a-sandbox-dfsp-backend"><a class="anchor" href="#testing-against-a-sandbox-dfsp-backend"></a>Testing against a sandbox DFSP backend</h4>
+<div class="paragraph">
+<p>To test the receiving side when you have access to the DFSP backend in the vendor&#8217;s sandbox environment, follow these steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Build the Core Connector Maven project:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Change directory to the root folder of the Core Connector project&#8201;&#8212;&#8201;taking the generic REST template as an example, to <code>pm4ml-core-connector-rest-template</code>.</p>
+</li>
+<li>
+<p>Issue the <code>mvn clean install</code> command.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Run <code>java -jar client-adapter/target/client-adapter-1.1.0-SNAPSHOT.jar</code>.</p>
+</li>
+<li>
+<p>In Postman, issue the relevant request (<code>GET /parties/{idType}/{idValue}</code>, <code>POST /quoterequests</code>, <code>POST /transfers</code>) to the DFSP backend running in the sandbox environment:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Retrieve the sandbox url from the <code>client-adapter/src/main/resources/application.yaml</code> file and add it in the request URL field in Postman.<br></p>
+</li>
+<li>
+<p>To authenticate yourself to the DFSP backend, take the username and password from the <code>client-adapter/src/main/resources/application.yaml</code> file, and base64-encode the <code>username:password</code> string (using base64encode.org).</p>
+</li>
+<li>
+<p>In Postman, set <strong>Authorization</strong> to <strong>Basic Auth</strong> and provide the username and password.</p>
+</li>
+<li>
+<p>In Postman, on the <strong>Headers</strong> tab, enter the <strong>Authorization</strong> key, and set the value to <code>Basic &lt;base64-encoded username:password string&gt;</code>.</p>
+</li>
+<li>
+<p>Remove/set additional headers as indicated in the relevant <code>from("direct:&lt;request-name&gt;")</code> route in the Apache Camel router.</p>
+</li>
+<li>
+<p>Click <strong>Send</strong>.</p>
+</li>
+<li>
+<p>Check the response in the <strong>Response</strong> pane.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="testing-against-a-mock-dfsp-backend"><a class="anchor" href="#testing-against-a-mock-dfsp-backend"></a>Testing against a mock DFSP backend</h4>
+<div class="paragraph">
+<p>To test the receiving side when the DFSP backend is a mock version, follow these steps:</p>
+</div>
+<div class="paragraph">
+<p><strong>Prerequisites:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Make sure you have provided the following value in the <code>client-adapter/src/main/resources/application.yaml</code> file:<br></p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>outbound
+	endpoint: http://localhost:&lt;port-where-mock-DFSP-backend-is-running&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Steps:</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Build the Core Connector Maven project:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Change directory to the root folder of the Core Connector project&#8201;&#8212;&#8201;taking the generic REST template as an example, to <code>pm4ml-core-connector-rest-template</code>.</p>
+</li>
+<li>
+<p>Issue the <code>mvn clean install</code> command.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Run <code>java -jar client-adapter/target/client-adapter-1.1.0-SNAPSHOT.jar</code>.</p>
+</li>
+<li>
+<p>In Postman, issue the relevant request (<code>GET /parties/{idType}/{idValue}</code>, <code>POST /quoterequests</code>, <code>POST /transfers</code>) to the mock DFSP backend:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Retrieve the url and port number from the <code>client-adapter/src/main/resources/application.yaml</code> file and add it in the request URL field in Postman.<br></p>
+</li>
+<li>
+<p>Remove/set headers as indicated in the relevant <code>from("direct:&lt;request-name&gt;")</code> route in the Apache Camel router.</p>
+</li>
+<li>
+<p>Click <strong>Send</strong>.</p>
+</li>
+<li>
+<p>Check the response in the <strong>Response</strong> pane.</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="end-to-end-testing"><a class="anchor" href="#end-to-end-testing"></a>End-to-end testing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Hub Operator will have set up a test environment with simulator DFSPs and a Switch. Once changes have been deployed in the test environment, you can perform end-to-end testing leveraging the simulators and the Switch.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="unit-testing"><a class="anchor" href="#unit-testing"></a>Unit testing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Route-level and bean-level changes have to be tested individually, this is done using the Apache Camel testing framework. You can think of this as "black-box testing" where you are only validating the response.</p>
+</div>
+<div class="paragraph">
+<p>In addition, individual DataSonnet mappings must be tested too. An example of such tests is provided in the <a href="https://github.com/pm4ml/pm4ml-core-connector-rest-template">pm4ml-core-connector-rest-template repository</a>, in <code>client-adapter/src/test/java/com/modus/client/</code>.</p>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

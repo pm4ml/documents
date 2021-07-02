@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Deploying Core Connector :: Payment Manager OSS Documentation</title>
+    <meta name="generator" content="Antora 2.3.3">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../..">Payment Manager OSS Documentation</a>
+
+    </div>
+
+    <div id="topbar-nav" class="navbar-menu">
+    <div class="navbar-end">
+
+        <!--
+        <div class="navbar-item has-dropdown is-hoverable">
+      <a class="navbar-link" href="#">Products</a>
+      <div class="navbar-dropdown ">
+        <a class="navbar-item" href="http://staging.docs.portx.io/portx/latest/index.html">Payment Manager</a>
+        <a class="navbar-item" href="http://staging.docs.portx.io/camel/portx/latest/index.html">Forex</a>
+      </div>
+      !--> 
+      
+    </div>
+ 
+
+
+        <!--
+
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Resources</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Resource A</a>
+            <a class="navbar-item" href="#">Resource B</a>
+            <a class="navbar-item" href="#">Resource C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="#">Download</a>
+          </span>
+        </div>
+      </div>
+      !-->
+    </div>
+</div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="payment_manager" data-version="latest">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Payment Manager OSS</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../how_to_read_docs/index.html">How to read Payment Manager documents</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../how_to_read_docs/how_to_read.html">Overview of Payment Manager documents</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../api_integration/index.html">API Integration Guide for DFSPs</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../api_integration/introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../api_integration/integration.html">API integration</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../api_integration/payer_dfsp_integration.html">Integration as a Payer DFSP</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../api_integration/payee_dfsp_integration.html">Integration as a Payee DFSP</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">Core Connector Guide for REST-Based Implementations</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="overview_of_technologies.html">Overview of technologies and resources</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="template_components.html">Components of a Core Connector template</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="customise_template.html">Customising a template</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="update_template_api_changes.html">Updating a template when the Payment Manager API changes</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="testing.html">Testing Core Connector</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="deploy_core_connector.html">Deploying Core Connector</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../connection_wizard/index.html">Guide to Connection Wizard</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/security.html">Mojaloop security</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/introduction.html">Introduction to Connection Wizard</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/overview_page.html">Connection Wizard overview page</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/phase_1_business_setup.html">Phase 1: Business Setup</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../connection_wizard/phase_2_technical_setup.html">Phase 2: Technical Setup</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/endpoints.html">Endpoints</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/csr_exchange.html">CSR Exchange</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/certificate_authority.html">Certificate Authority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/server_certificates_exchange.html">Server Certificates Exchange</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/jws_certificates.html">JWS Certificates</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/appendix_create_tls_cert.html">Appendix A: Create TLS certificates</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/appendix_create_jws_cert.html">Appendix B: Create a JWS certificate</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/appendix_extract_public_key_from_JWS_cert.html">Appendix C: Extract a public key from a JWS certificate</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../transfers_overview/index.html">Guide to Transfers Overview</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../transfers_overview/introduction.html">Introduction to Transfers Overview</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../transfers_overview/transfers_overview.html">Transfers Overview page</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../technical_dashboard/index.html">Guide to Technical Dashboard</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../technical_dashboard/introduction.html">Introduction to the Technical Dashboard</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../technical_dashboard/technical_dashboard.html">Technical Dashboard page</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../user_access_management/index.html">User Access Management Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../user_access_management/introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../user_access_management/user_authentication.html">User authentication with OpenID Connect</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../user_access_management/getting_started.html">Getting started with Keycloak</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../user_access_management/configuring_user_access.html">Managing user access in Keycloak</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Payment Manager OSS</span>
+    <span class="version">latest</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Payment Manager OSS</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+  <!--
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Payment Manager OSS</a></li>
+    <li><a href="index.html">Core Connector Guide for REST-Based Implementations</a></li>
+    <li><a href="deploy_core_connector.html">Deploying Core Connector</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/pm4ml/documents/edit/master/modules/core_connector_rest/pages/deploy_core_connector.adoc">Edit this Page</a></div>
+    !-->
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Deploying Core Connector</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Readers of this section are advised to have basic familiarity with Kubernetes and Helm.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Core Connector is deployed as a pod in a <a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/">Kubernetes cluster</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="helm-charts"><a class="anchor" href="#helm-charts"></a>Helm charts</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To deploy Core Connector, a Helm chart is used. Helm acts as a package manager for Kubernetes, with the Helm chart containing all of the pre-configured resource definitions necessary to run Core Connector inside a Kubernetes cluster.</p>
+</div>
+<div class="paragraph">
+<p>Helm charts are created as files organised into a particular directory tree. The directory name is the name of the chart (without versioning information), for example: <a href="https://github.com/modusintegration/cbs-core-connectors-helm-repo/tree/master/mambu-core-connector"><code>mambu-core-connector</code></a>.</p>
+</div>
+<div class="paragraph">
+<p>Inside this directory, Helm expects this structure:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>mambu-core-connector
+    templates/  # A directory of templates that, when combined with values, will generate valid Kubernetes manifest files.
+    Chart.yaml  # A YAML file containing information about the chart.
+    values.yaml # The configuration values for this chart.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For further background information on how charts are organised, see <a href="https://helm.sh/docs/topics/charts/#the-chart-file-structure">The Chart File Structure</a> Helm documentation.</p>
+</div>
+<div class="sect2">
+<h3 id="templates-folder"><a class="anchor" href="#templates-folder"></a><code>templates</code> folder</h3>
+<div class="paragraph">
+<p>A Helm chart is defined in templates, written in the <a href="https://golang.org/pkg/text/template/">Go template language</a>. Each resource that is necessary to run Core Connector has a template. Templates generate manifest files, that is, resource descriptions in <code>.yaml</code> format that Kubernetes can understand. All template files are stored in the chart&#8217;s <code>templates/</code> folder. When Helm renders a chart, it will pass every file in that directory through the template engine.</p>
+</div>
+<div class="paragraph">
+<p>If you look at the <code>templates/</code> directory of the <code>mambu-core-connector</code> Helm chart, you will see the following files:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>NOTES.txt</code>: The "help text" for the chart. This will be displayed in the command-line terminal when you run <code>helm install</code>.</p>
+</li>
+<li>
+<p><code>_helpers.tpl</code>: A "partial" or "subtemplate" that can be used by other templates. Contains template helpers that you can re-use throughout the chart.</p>
+</li>
+<li>
+<p><code>deployment.yaml</code>: The manifest for creating the <code>mambu-core-connector</code> Kubernetes <a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/">deployment</a>.</p>
+</li>
+<li>
+<p><code>image-cred-secret.yaml</code>: Holds credentials for pulling the <code>mambu-core-connector</code> Docker images from a private <code>modusintegration</code> jfrog repository.</p>
+</li>
+<li>
+<p><code>ingress.yaml</code>: Enables communication initiated outside the cluster to reach inside the cluster, specifically to reach the <code>mambu-core-connector</code> application.</p>
+</li>
+<li>
+<p><code>service.yaml</code>: A manifest for creating a <a href="https://kubernetes.io/docs/concepts/services-networking/service/">service endpoint</a> for the <code>mambu-core-connector</code> deployment. This enables communication between applications inside the cluster, and is required (but not sufficient) for communication from outside the cluster to access applications inside the cluster.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For further details on templates, see the following Helm documentation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://helm.sh/docs/topics/charts/#templates-and-values">Templates and Values</a></p>
+</li>
+<li>
+<p><a href="https://helm.sh/docs/chart_template_guide/getting_started/">Chart Template Guide</a></p>
+</li>
+<li>
+<p><a href="https://helm.sh/docs/chart_template_guide/">The Chart Template Developer&#8217;s Guide</a></p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="deployment-yaml-file"><a class="anchor" href="#deployment-yaml-file"></a><code>deployment.yaml</code> file</h4>
+<div class="paragraph">
+<p>Two details to point out in the <code>deployment.yaml</code> file are in the <code>container</code> &gt; <code>env</code> section:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Core Connector must know where it can reach the DFSP Core Backend, this information must be provided in <code>BACKEND_ENDPOINT</code>.</p>
+</li>
+<li>
+<p>Core Connector must know where it can reach Mojaloop Connector, this information must be provided in <code>MLCONN_OUTBOUND_ENDPOINT</code>.<br>
+<br>
+Note that Mojaloop Connector must also know where to reach Core Connector. This is configured in the Mojaloop Connector&#8217;s <code>deployment.yaml</code> file, in <code>container</code> &gt; <code>env</code> &gt; <code>BACKEND_ENDPOINT</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="chart-yaml-file"><a class="anchor" href="#chart-yaml-file"></a><code>Chart.yaml</code> file</h3>
+<div class="paragraph">
+<p>The <code>Chart.yaml</code> file contains the following fields (taking the <code>mambu-core-connector</code> Helm chart as our example):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>apiVersion: v1
+appVersion: "1.0"
+description: A Helm chart for Kubernetes
+name: mambu-core-connector
+version: 0.1.0</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Where:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>apiVersion</code>: The chart API version (required). It should be <code>v2</code> for Helm charts that require at least Helm 3. Charts supporting previous Helm versions have <code>apiVersion</code> set to <code>v1</code> and are still installable by Helm 3.</p>
+</li>
+<li>
+<p><code>appVersion</code>: The version of the application itself (optional). Need not be <a href="https://semver.org/spec/v2.0.0.html">SemVer</a>. Wrapping the version in quotes is highly recommended. It forces the YAML parser to treat the version number as a string. Leaving it unquoted can lead to parsing issues in some cases.</p>
+</li>
+<li>
+<p><code>description</code>: A single-sentence description for the chart (optional).</p>
+</li>
+<li>
+<p><code>name</code>: The name of the chart (required).</p>
+</li>
+<li>
+<p><code>version</code>: The version number of the chart (required). Versioning must follow the <a href="https://semver.org/spec/v2.0.0.html">SemVer 2</a> standard.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For further background information on the fields of a <code>Chart.yaml</code> file, see <a href="https://helm.sh/docs/topics/charts/#the-chartyaml-file">The Chart.yaml File</a> Helm documentation.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="values-yaml-file"><a class="anchor" href="#values-yaml-file"></a><code>values.yaml</code> file</h3>
+<div class="paragraph">
+<p>Templates use variables that are substituted with values when the manifest is created. The configuration values to replace the variables defined in the templates are supplied through a file called <code>values.yaml</code>.</p>
+</div>
+<div class="paragraph">
+<p>When testing against a CBS vendor sandbox environment, <code>env</code> &gt; <code>coreApplicationEndpoint</code> must be the CBS sandbox url.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="installing-a-core-connector-helm-chart"><a class="anchor" href="#installing-a-core-connector-helm-chart"></a>Installing a Core Connector Helm chart</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Installing the Core Connector Helm chart will deploy Core Connector.</p>
+</div>
+<div class="paragraph">
+<p>Helm charts get installed when running the Infrastructure-as-Code (IaC) deployment process that builds the service components making up the Payment Manager infrastructure.</p>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
