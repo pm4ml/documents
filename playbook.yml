@@ -45,9 +45,3 @@ ui:
     contents: |
       static_files: [ .nojekyll ]
   - path: .nojekyll
-  - path: css/search.css
-  - path: js/vendor/lunr.js
-  - path: js/vendor/search.js
-  - path: partials/footer-scripts.hbs
-  - path: partials/header-content.hbs
-  - path: partials/head-meta.hbs
