@@ -44,3 +44,4 @@ ui:
   - path: ui.yml
     contents: |
       static_files: [ .nojekyll ]
+  - path: .nojekyll
