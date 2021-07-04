@@ -44,4 +44,3 @@ ui:
   - path: ui.yml
     contents: |
       static_files: [ .nojekyll ]
-  - path: ./supplemental_ui
