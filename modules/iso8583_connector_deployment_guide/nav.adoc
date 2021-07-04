@@ -1,2 +1,0 @@
-.xref:index.adoc[ISO 8583 Connector: Deployment Guide]
-* xref:introduction.adoc[Introduction]

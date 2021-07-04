@@ -1,1 +1,0 @@
-NOTE: The DFSP backend must set an HTTP error status code in the response. 

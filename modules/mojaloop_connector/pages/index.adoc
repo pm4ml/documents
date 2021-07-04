@@ -1,5 +1,0 @@
-ifndef::backend-pdf[]
-= {company-name} Guide to {product-name} {transfers}
-
-<placeholder>
-endif::[]

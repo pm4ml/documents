@@ -1,9 +1,0 @@
-ifndef::backend-pdf[]
-= Guide to {product-name} {transfers}
-
-The *{transfers}* page of {product-name} acts as a service monitoring tool, allowing Digital Financial Service Providers (DFSPs) to:
-
-* track the status of transfers
-* investigate failed transfers
-* drill down to the lowest level of technical detail when debugging errors
-endif::[]

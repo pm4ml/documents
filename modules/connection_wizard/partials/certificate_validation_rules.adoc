@@ -1,6 +1,0 @@
-* The root certificate is a root certificate indeed. It can be self-signed or signed by a global root.
-* The intermediate chain is made up of valid CAs and the top of the chain is signed by the root.
-* The certificate and its chain must form a valid trust chain.
-* The certificate must have the "TLS WWW server authentication" key usage extension.
-* The certificate must be valid at the present time according to the certificate validity period.
-* The certificate key length must be 4096 bits.

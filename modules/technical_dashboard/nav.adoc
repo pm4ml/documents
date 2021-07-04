@@ -1,3 +1,0 @@
-.xref:index.adoc[Guide to {tech-dashboard}]
-* xref:introduction.adoc[Introduction to the {tech-dashboard}]
-* xref:technical_dashboard.adoc[{tech-dashboard} page]

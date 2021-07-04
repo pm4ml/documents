@@ -1,1 +1,0 @@
-NOTE: For a detailed list of Mojaloop error codes and their description, see  https://github.com/mojaloop/mojaloop-specification/blob/master/fspiop-api/documents/v1.1-document-set/API%20Definition_v1.1.pdf[API Definition v1.1 (Open API for FSP Interoperability Specification)].

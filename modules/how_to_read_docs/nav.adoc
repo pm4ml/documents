@@ -1,2 +1,0 @@
-.xref:index.adoc[How to read {product-name} documents]
-* xref:how_to_read.adoc[Overview of {product-name} documents]

@@ -1,5 +1,0 @@
-.xref:index.adoc[API Integration Guide for DFSPs]
-* xref:introduction.adoc[Introduction]
-* xref:integration.adoc[API integration]
- ** xref:payer_dfsp_integration.adoc[Integration as a Payer DFSP]
- ** xref:payee_dfsp_integration.adoc[Integration as a Payee DFSP]

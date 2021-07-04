@@ -1,5 +1,0 @@
-.xref:index.adoc[User Access Management Guide]
-* xref:introduction.adoc[Introduction]
-* xref:user_authentication.adoc[User authentication with OpenID Connect]
-* xref:getting_started.adoc[Getting started with Keycloak]
-* xref:configuring_user_access.adoc[Managing user access in Keycloak]
