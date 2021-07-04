@@ -3,8 +3,8 @@ on:
   push:
     branches:
       - master
-    #paths:
-      #- 'docs/**'
+    paths:
+      - '/**'
 jobs:
   build_site:
     name: "Build site with Antora"
