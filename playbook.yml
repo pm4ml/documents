@@ -41,7 +41,7 @@ ui:
   #supplemental_files: ./supplemental_ui
   # see: https://docs.antora.org/antora/2.3/publish-to-github-pages/#use-the-supplemental-ui
   supplemental_files: 
-  #- path: ui.yml
-    #contents: |
-      #static_files: [ .nojekyll ]
-  - path: ./supplemental_ui/.nojekyll
+  - path: ui.yml
+    contents: |
+      static_files: [ .nojekyll ]
+  - path: ./supplemental_ui
