@@ -1,10 +1,10 @@
-name: docs
+name: 
 on:
   push:
     branches:
       - master
-    paths:
-      - ''
+    #paths:
+      #- 'docs/**'
 jobs:
   build_site:
     name: "Build site with Antora"
