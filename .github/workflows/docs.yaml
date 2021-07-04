@@ -24,6 +24,9 @@ jobs:
           antora_playbook: playbook.yml
           # optional path within the repo, defaults to ${{github.workspace}}
           #site_sources_path: 'site-sources-folder'
+      - name: Add nojekyll
+        run: |
+          touch build/site/.nojekyll
       - name: "Upload generated site"
         uses: actions/upload-artifact@v1.0.0
         with:
