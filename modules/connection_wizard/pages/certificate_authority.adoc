@@ -1,0 +1,58 @@
+= Certificate Authority
+
+The *Certificate Authority* page allows you to:
+
+* record details of the Certificate Authority (CA) that you use to sign the Hub's TLS client certificate
+* retrieve the root certificate of the Hub' CA for installing in your outbound gateway
+
+.Certificate Authority
+image::certificate_authority.png[]
+
+== DFSP CA certificates
+
+The CA used to sign the Hub's TLS client certificate can be your own self-signed CA or a trusted third-party CA. If you wish to use your own self-signed CA and you need help creating it, xref:appendix_create_tls_cert.adoc[Appendix A: Create TLS certificates] provides detailed information about the required steps:
+
+NOTE: Some of the cross-references provided below take you to sections that talk about server certificates, and this might be confusing. The instructions in those sections are valid for all types of certificates.
+
+. xref:appendix_create_tls_cert.adoc#create-keystore[Create a keystore to hold your keys].
+. xref:appendix_create_tls_cert.adoc#root_keypair[Create a root key pair].
+. xref:appendix_create_tls_cert.adoc#intermediate-keypair[Create an intermediate key pair].
+. xref:appendix_create_tls_cert.adoc#create-chain-of-trust[Generate a CSR from the intermediate key pair, have it signed by the root key pair, and import the sign response into the intermediate key pair].
+. xref:appendix_create_tls_cert.adoc#export-certificate[Create the root certificate by exporting it from the root key pair].
+. xref:appendix_create_tls_cert.adoc#export-certificate[Create the intermediate certificate by exporting it from the intermediate key pair]. +
+It is the exported certificate files that you will upload to {connection-wizard}.
+
+{connection-wizard} uses the DFSP CA details added here to validate that the Hub TLS client certificate was signed by your CA.
+
+.DFSP CA certificates
+image::dfsp_certificate_authority.png[]
+
+=== Upload certificates
+
+To record details of your CA, complete the following steps:
+
+. Upload the root certificate of your CA. In the *DFSP Root Certificate* field, click **Choose File**, and select the root certificate saved on your computer.
+. Upload the intermediate certificate of your CA. In the *DFSP Intermediate Chain* field, click **Choose File**, and select the intermediate certificate saved on your computer.
+
+include::partial$certificate_file_name_change.adoc[]
+
+include::partial$intermediate_chain_as_single_file.adoc[]
+
+On uploading the certificates, they are validated. To see validation rules or issues found during validation, click **View Details**. The following details are validated:
+
+* The root certificate is a root certificate indeed. It can be self-signed or signed by a global root.
+* The root and intermediate CA certificates must have the CA basic constraint extension (CA = true) and the keyCertSign key usage extension.
+* The intermediate chain is made up of valid CAs and the top of the chain is signed by the root.
+
+Click *View* to view details of a certificate. Click *Download* to download a certificate for manually handing over to the Hub (if required).
+
+include::partial$remove_replace_certificate.adoc[]
+
+== Hub CA certificate
+
+The *Hub Root's Certificate* field gives you access to the root certificate of the Hub's CA for installing in your outbound gateway.
+
+.Hub CA certificate
+image::hub_certificate_authority.png[]
+
+Click *View* to view details of a certificate, or click *Download* to download a certificate.

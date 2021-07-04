@@ -1,0 +1,62 @@
+= Server Certificates Exchange
+
+The *Server Certificates Exchange* page allows you to:
+
+* upload your CA-signed TLS server certificate, as well as the root and intermediate certificates of the Certificate Authroity (CA) that signed the TLS server certificate
+* retrieve the Hub's CA-signed TLS server certificate, as well as the root and intermediate certificates of the CA that signed the Hub's TLS server certificate
+
+.Server Certificates Exchange
+image::server_certificates_exchange.png[]
+
+If you want to set up your own CA and need help creating the required server certificates, perform the procedures described in xref:appendix_create_tls_cert.adoc[Appendix A: Create TLS certificates]:
+
+. xref:appendix_create_tls_cert.adoc#create-keystore[Create a keystore].
+. xref:appendix_create_tls_cert.adoc#root_keypair[Create a root key pair].
+. xref:appendix_create_tls_cert.adoc#intermediate-keypair[Create an intermediate key pair].
+. xref:appendix_create_tls_cert.adoc#create-server-client-key-pair[Create a server key pair].
+. xref:appendix_create_tls_cert.adoc#create-chain-of-trust[Create the server certificate chain of trust].
+. xref:appendix_create_tls_cert.adoc#export-certificate[Export server certificates from key pairs].
+
+== DFSP server certificates
+
+The *DFSP Server Certificates* tab allows you to share your CA-signed TLS server certificate chain with the Hub Operator.
+
+.DFSP Server Certificates
+image::dfsp_server_certificates.png[]
+
+=== Upload certificates
+
+To upload your CA-signed TLS server certificate chain, complete the following steps:
+
+NOTE: If your server certificate has been signed by a trusted Certificate Authority, then uploading the root and intermediate certificates of your CA is optional. +
+If your server certificate has been self-signed by your own Certificate Authority, uploading the root certificate of your CA is mandatory, while the intermediate certificate is optional.
+
+. In the *Server Certificate* field, click **Choose File**, and select your CA-signed TLS server certificate saved on your computer.
+. To upload the root certificate of your CA, in the *Root Certificate* field, click **Choose File**, and select the root certificate of your CA saved on your computer.
+. To upload the intermediate certificate of your CA, in the *Intermediate Chain* field, click **Choose File**, and select the intermediate certificate of your CA saved on your computer.
+. Click **Submit**. On submitting the certificates, they are validated. To see validation rules or issues found during validation, click **View Details**. The following details are validated:
+
+include::partial$certificate_validation_rules.adoc[]
+
+include::partial$certificate_file_name_change.adoc[]
+
+include::partial$intermediate_chain_as_single_file.adoc[]
+
+Click *View* to view details of the certificate. Click *Download* to download a certificate for manually handing over to the Hub (if required).
+
+include::partial$remove_replace_certificate.adoc[]
+
+== Hub server certificates
+
+The *Hub Server Certificates* tab allows you to download the Hub Operator's TLS server certificate chain.
+
+The DFSP must obtain the root and intermediate certificates of the Hub's CA that signed the Hub's TLS server certificate. These need to be installed in the DFSP's outbound firewall.
+
+.Hub Server Certificates
+image::hub_server_certificates.png[]
+
+To retrieve the Hub's TLS server certificate chain, click *Download* for each certificate that you want to download.
+
+Information about the validity of each certificate is also displayed. Click *View Details* for details on validation rules or issues found during validation. The following details are validated:
+
+include::partial$certificate_validation_rules.adoc[]

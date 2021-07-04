@@ -1,0 +1,47 @@
+site:
+  title: Payment Manager OSS Documentation
+  #url: https://pm4ml.github.io/documents
+  start_page: payment_manager::index.adoc
+content:
+  sources:
+  - url: .
+    branches: master
+    start_path: 
+asciidoc:
+  attributes:
+    idprefix: ''
+    idseparator: '-'
+    hide: ''
+    company-name: ModusBox
+    product-name: Payment Manager
+    hub: Mojaloop
+    connection-wizard: Connection Wizard
+    transfers: Transfers Overview
+    tech-dashboard: Technical Dashboard
+    mojaloop-connector: Mojaloop Connector
+    core-connector: Core Connector
+    sdk: Mojaloop Connector SDK
+    mcm-client: Connection Manager Client
+    internal: internal
+    external: external
+##ui:
+  ##bundle:
+    ##url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/master/raw/build/ui-bundle.zip?job=bundle-stable
+    ##snapshot: true
+#output:
+  #dir: ./public
+#runtime:
+  #cache_dir: ./.cache/antora
+
+ui:
+  bundle:
+    url: ui-bundle/ui-bundle.zip
+    snapshot: true
+  # https://github.com/Mogztter/antora-lunr#enable-the-search-component-in-the-ui
+  #supplemental_files: ./supplemental_ui
+  # see: https://docs.antora.org/antora/2.3/publish-to-github-pages/#use-the-supplemental-ui
+  supplemental_files: ./supplemental_ui  
+  #- path: ui.yml
+    #contents: |
+      #static_files: [ .nojekyll ]
+  #- path: .nojekyll

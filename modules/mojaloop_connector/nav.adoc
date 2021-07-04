@@ -1,0 +1,6 @@
+.xref:index.adoc[{company-name} Guide to {mojaloop-connector}]
+* xref:introduction.adoc[Introduction]
+* xref:getting_started_with_sdk.adoc[Getting started with the {sdk}]
+* xref:getting_started_with_mock_dfsp_backend.adoc[Getting started with the {sdk} mock DFSP backend]
+* xref:starting_up_sdk_scheme_adapter.adoc[Starting up the {sdk} Scheme Adapter]
+* xref:setting_up_sdk_scheme_adapter_with_mock_DFSP_backend.adoc[Setting up the {sdk} Scheme Adapter with a mock DFSP backend]

@@ -1,0 +1,4 @@
+This document provides guidance about how to create, maintain, and manage identity information for users of {product-name}.
+
+It is intended for DFSPs who have deployed {product-name} on premise or in the cloud, and Hub Operators who manage {product-name} instances in the cloud.
+

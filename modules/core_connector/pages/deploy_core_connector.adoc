@@ -1,0 +1,92 @@
+= Deploying {core-connector}
+
+NOTE: Readers of this section are advised to have basic familiarity with Kubernetes and Helm.
+
+{core-connector} is deployed as a pod in a https://kubernetes.io/docs/tutorials/kubernetes-basics/[Kubernetes cluster].
+
+== Helm charts
+
+To deploy {core-connector}, a Helm chart is used. Helm acts as a package manager for Kubernetes, with the Helm chart containing all of the pre-configured resource definitions necessary to run {core-connector} inside a Kubernetes cluster.
+
+All {core-connector} templates have a Helm chart, here: https://github.com/modusintegration/cbs-core-connectors-helm-repo. Note that at the time of writing, this repository is not up-to-date.
+
+{product-name} Helm charts are maintained here: https://github.com/modusintegration/mojaloop-payment-manager-helm
+
+Helm charts are created as files organised into a particular directory tree. The directory name is the name of the chart (without versioning information), for example: `mambu-core-connector`.
+
+Inside this directory, Helm expects this structure:
+
+----
+mambu-core-connector
+    templates/  # A directory of templates that, when combined with values, will generate valid Kubernetes manifest files.
+    Chart.yaml  # A YAML file containing information about the chart.
+    values.yaml # The configuration values for this chart.
+----
+
+For further background information on how charts are organised, see https://helm.sh/docs/topics/charts/#the-chart-file-structure[The Chart File Structure] Helm documentation.
+
+=== `templates` folder
+
+A Helm chart is defined in templates, written in the https://golang.org/pkg/text/template/[Go template language]. Each resource that is necessary to run {core-connector} has a template. Templates generate manifest files, that is, resource descriptions in `.yaml` format that Kubernetes can understand. All template files are stored in the chart's `templates/` folder. When Helm renders a chart, it will pass every file in that directory through the template engine.
+
+If you look at the `templates/` directory of the `mambu-core-connector` Helm chart, you will see the following files:
+
+* `NOTES.txt`: The "help text" for the chart. This will be displayed in the command-line terminal when you run `helm install`.
+* `_helpers.tpl`: A "partial" or "subtemplate" that can be used by other templates. Contains template helpers that you can re-use throughout the chart.
+* `deployment.yaml`: The manifest for creating the `mambu-core-connector` Kubernetes https://kubernetes.io/docs/concepts/workloads/controllers/deployment/[deployment]. 
+* `image-cred-secret.yaml`: Holds credentials for pulling the `mambu-core-connector` Docker images from a private `modusintegration` jfrog repository.
+* `ingress.yaml`: Enables communication initiated outside the cluster to reach inside the cluster, specifically to reach the `mambu-core-connector` application.
+* `service.yaml`: A manifest for creating a https://kubernetes.io/docs/concepts/services-networking/service/[service endpoint] for the `mambu-core-connector` deployment. This enables communication between applications inside the cluster, and is required (but not sufficient) for communication from outside the cluster to access applications inside the cluster.
+
+In addition, there is also a folder called `tests`. The `test-connection.yaml` is used to ??? *Question: What is the role of this file?*
+
+For further details on templates, see the following Helm documentation:
+
+* https://helm.sh/docs/topics/charts/#templates-and-values[Templates and Values]
+* https://helm.sh/docs/chart_template_guide/getting_started/[Chart Template Guide]
+* https://helm.sh/docs/chart_template_guide/[The Chart Template Developer's Guide]
+
+==== `deployment.yaml` file
+
+Two details to point out in the `deployment.yaml` file are in the `container` > `env` section:
+
+* {core-connector} must know where it can reach the DFSP Core Backend, this information must be provided in `BACKEND_ENDPOINT`.
+* {core-connector} must know where it can reach {mojaloop-connector}, this information must be provided in `MLCONN_OUTBOUND_ENDPOINT`. +
+ +
+Note that {mojaloop-connector} must also know where to reach {core-connector}. This is configured in the {mojaloop-connector}'s `deployment.yaml` file, in `container` > `env` > `BACKEND_ENDPOINT`.
+
+=== `Chart.yaml` file
+
+The `Chart.yaml` file contains the following fields (taking the `mambu-core-connector` Helm chart as our example):
+
+----
+apiVersion: v1
+appVersion: "1.0"
+description: A Helm chart for Kubernetes
+name: mambu-core-connector
+version: 0.1.0
+----
+
+Where:
+
+* `apiVersion`: The chart API version (required). It should be `v2` for Helm charts that require at least Helm 3. Charts supporting previous Helm versions have `apiVersion` set to `v1` and are still installable by Helm 3.
+* `appVersion`: The version of the application itself (optional). Need not be https://semver.org/spec/v2.0.0.html[SemVer]. Wrapping the version in quotes is highly recommended. It forces the YAML parser to treat the version number as a string. Leaving it unquoted can lead to parsing issues in some cases.
+* `description`: A single-sentence description for the chart (optional).
+* `name`: The name of the chart (required).
+* `version`: The version number of the chart (required). Versioning must follow the https://semver.org/spec/v2.0.0.html[SemVer 2] standard.
+
+For further background information on the fields of a `Chart.yaml` file, see https://helm.sh/docs/topics/charts/#the-chartyaml-file[The Chart.yaml File] Helm documentation.
+
+=== `values.yaml` file
+
+Templates use variables that are substituted with values when the manifest is created. The configuration values to replace the variables defined in the templates are supplied through a file called `values.yaml`. 
+
+When testing against a CBS vendor sandbox environment, `env` > `coreApplicationEndpoint` must be the CBS sandbox url.
+
+== Installing a {core-connector} Helm chart
+
+Installing the {core-connector} Helm chart will deploy {core-connector}. 
+
+Helm charts get installed when running the Infrastructure-as-Code (IaC) deployment process that builds the service components making up the {product-name} infrastructure. 
+
+NOTE: At the time of writing, the IaC code is not up-to-date yet.

@@ -1,0 +1,5 @@
+* **Hosted by System Integrator**: A third-party System Integrator deploys {product-name} in the cloud, and syncs up the Core Connector template with the DFSP's core backend implementation.
+* **Self-hosted by DFSP**: The DFSP deploys {product-name} on premise or in the cloud, and the customisation of the Core Connector template can be done by a number of actors (depending on the outcome of an initial assessment of DFSP capabilities):
+** the System Integrator
+** the System Integrator and the vendor of the DFSP's core backend solution (in close collaboration)
+** the DFSP and the vendor of the DFSP's core backend solution (in close collaboration)
