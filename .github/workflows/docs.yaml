@@ -31,7 +31,7 @@ jobs:
           path: "${{ github.workspace }}/build/site"
       - name: "Add nojekyll"
         run: |
-          touch ${{ github.workspace }}/build/site/.nojekyll
+          sudo touch ${{ github.workspace }}/build/site/.nojekyll
   deploy_site:
     name: "Deploy GitHub Pages"
     runs-on: [ ubuntu-latest ]
