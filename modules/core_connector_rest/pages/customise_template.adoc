@@ -10,7 +10,7 @@ When creating or customising a template, at a high level, you are required to co
 
 == Which template to use? [[which-template]]
 
-When you start developing a template, check if the CBS vendor already has a template in place. 
+When you start developing a template, check if the CBS vendor already has a template in place in https://github.com/pm4ml/[the *pm4ml* GitHub repository]. Try searching on CBS vendor names (for example, `mambu`, `finflux`) and keywords such as `adapter` and `core-connector`.
 
 When creating a template for a CBS vendor who provides a REST-based solution and for whom no vendor-specific template exists yet, create a copy of https://github.com/pm4ml/pm4ml-core-connector-rest-template[the generic {core-connector} REST template] and make changes to that. Name the new template as `<CBS vendor name>-core-connector.`
 
