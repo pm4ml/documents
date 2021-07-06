@@ -4,30 +4,52 @@
 
 To learn more about how to integrate your Core Backend with the Mojaloop Switch on the API level, see the following documentation:
 
+ifdef::backend-html5[]
+* xref:api_integration:index.adoc[API Integration Guide for DFSPs]
+* xref:core_connector_rest:index.adoc[Core Connector Guide for REST-Based Implementations]
+* `mojaloop_payment_manager_API.yaml` Swagger file
+endif::[]
+
+ifdef::backend-pdf[]
 * *_API Integration Guide for DFSPs_*
 * *_Core Connector Guide for REST-Based Implementations_*
 * `mojaloop_payment_manager_API.yaml` Swagger file
-////
-The document is available at the following url: ???
-////
+endif::[]
+
 == Connectivity
 
-For information about Mojaloop security requirements and detailed onboarding steps regarding the management of security keys and certificates, as well as the sharing of endpoint information, see the document titled *_Guide to {connection-wizard}_*. 
-////
-The document is available at the following url: ???
-////
+For information about Mojaloop security requirements and detailed onboarding steps regarding the management of security keys and certificates, as well as the sharing of endpoint information, see the following document:
+
+ifdef::backend-html5[]
+* xref:connection_wizard:index.adoc[Guide to {connection-wizard}]
+endif::[]
+
+ifdef::backend-pdf[]
+* *_Guide to {connection-wizard}_* 
+endif::[]
 
 == Access to portals
 
-For information about how to create, maintain, and manage identity information for users of the {product-name} portals ({connection-wizard}, {transfers}, {tech-dashboard}), see the document titled *_User Access Management Guide_*.
+For information about how to create, maintain, and manage identity information for users of the {product-name} portals ({connection-wizard}, {transfers}, {tech-dashboard}), see the following document:
 
+ifdef::backend-html5[]
+* xref:user_access_management:index.adoc[User Access Management Guide]
+endif::[]
+
+ifdef::backend-pdf[]
+* *_User Access Management Guide_*
+endif::[]
 
 == Dashboards
 
-Once a DFSP has successfully integrated with the Mojaloop Switch, {product-name} provides a set of dashboards that help with the monitoring of transactions and service status, as well as the debugging of errors. The dashboards provide a visualisation of important metrics and are accessible via an easy-to-use DFSP portal. For details on how to use the dashboards, see *_Guide to {transfers}_* and *_Guide to {tech-dashboard}_*. 
-////
-These documents are available at the following urls:
+Once a DFSP has successfully integrated with the Mojaloop Switch, {product-name} provides a set of dashboards that help with the monitoring of transactions and service status, as well as the debugging of errors. The dashboards provide a visualisation of important metrics and are accessible via an easy-to-use DFSP portal. For details on how to use the dashboards, see the following documents:
 
-* ???
-* ???
-////
+ifdef::backend-html5[]
+* xref:transfers_overview:index.adoc[Guide to {transfers}]
+* xref:technical_dashboard:index.adoc[Guide to {tech-dashboard}]
+endif::[]
+
+ifdef::backend-pdf[]
+* *_Guide to {transfers}_*
+* *_Guide to {tech-dashboard}_*
+endif::[]
