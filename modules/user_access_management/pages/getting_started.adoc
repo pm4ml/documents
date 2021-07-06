@@ -12,7 +12,9 @@ This is created by the Infrastructure team deploying {product-name}. The admin a
 This is also provided by the Infrastructure team.
 * VPN access to the Admin Console.
 
+////
 NOTE: In the case of a cloud deployment, VPN access can be requested through the https://support.modusbox.com[{company-name} Enterprise Support portal].
+////
 
 For further information on the Admin Console, see section https://www.keycloak.org/docs/latest/server_admin/index.html#admin-console[Admin Console] in the *Keycloak Server Administration Guide*.
 
