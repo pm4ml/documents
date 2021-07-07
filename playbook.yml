@@ -1,7 +1,7 @@
 site:
   title: Payment Manager OSS Documentation
   #url: https://pm4ml.github.io/documents
-  start_page: payment_manager::index.adoc
+  start_page: payment_manager_oss::index.adoc
 content:
   sources:
   - url: .
