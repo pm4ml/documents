@@ -8,7 +8,7 @@ image::api_interfaces_payee_side.png[width=481,height=85]
 
 The interface between the Mojaloop Switch and the {mojaloop-connector} is the https://docs.mojaloop.io/mojaloop-specification/#api-definition[asynchronous Mojaloop FSPIOP API].
 
-The simplified API between the {mojaloop-connector} and the {core-connector} is a synchronous HTTP API ({product-name} API: `mojaloop_payment_manager_API.yaml`).
+The simplified API between the {mojaloop-connector} and the {core-connector} is a synchronous HTTP API (https://github.com/pm4ml/documents/blob/master/payment_manager_OSS_API.yaml[{product-name} OSS API]).
 ====
 
 .Peer-to-peer transfer

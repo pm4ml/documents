@@ -7,13 +7,13 @@ To learn more about how to integrate your Core Backend with the Mojaloop Switch 
 ifdef::backend-html5[]
 * xref:api_integration:index.adoc[API Integration Guide for DFSPs]
 * xref:core_connector_rest:index.adoc[Core Connector Guide for REST-Based Implementations]
-* `mojaloop_payment_manager_API.yaml` Swagger file
+* https://github.com/pm4ml/documents/blob/master/payment_manager_OSS_API.yaml[`payment_manager_OSS_API.yaml` Swagger file]
 endif::[]
 
 ifdef::backend-pdf[]
 * *_API Integration Guide for DFSPs_*
 * *_Core Connector Guide for REST-Based Implementations_*
-* `mojaloop_payment_manager_API.yaml` Swagger file
+* https://github.com/pm4ml/documents/blob/master/payment_manager_OSS_API.yaml[`payment_manager_OSS_API.yaml` Swagger file]
 endif::[]
 
 == Connectivity
