@@ -12,9 +12,7 @@ Building, validating, and operating a service that connects a Digital Financial 
 ** A Connection Manager Client, which simplifies and automates certificate creation, signing and exchange, as well as the configuration of the connections required to different environments.
 * **Business and Technical Portals**: Provide dashboards for monitoring transactions and service status. They also allow DFSPs to manage their security keys, certificates and endpoint configuration required for connecting to {hub}-based schemes. 
 
-image::PM4ML_system_architecture_4.png[]
-
-//image::integration_via_pm4ml.png[]
+image::PM4ML_system_architecture.png[]
 
 {product-name} abstracts away the complexity of the {hub} API and helps the DFSP understand their relationship with the scheme, focusing on the key business and technical areas.
 

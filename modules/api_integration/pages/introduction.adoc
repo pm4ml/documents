@@ -10,7 +10,7 @@ At a high level, onboarding to a Mojaloop-based scheme requires a Digital Financ
 The following diagram provides a high-level view of the integration between a Mojaloop Real-Time Payment System and a DFSP's Core Backend.
 
 .{product-name} – system architecture
-image::PM4ML_system_architecture_4.png[]
+image::PM4ML_system_architecture.png[]
 
 {product-name} provides the following components:
 
