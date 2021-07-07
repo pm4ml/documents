@@ -5,7 +5,6 @@ title: Payment Manager OSS
 nav:
 - modules/how_to_read_docs/nav.adoc
 - modules/api_integration/nav.adoc
-#- modules/core_connector/nav.adoc
 - modules/core_connector_rest/nav.adoc
 #- modules/iso8583_connector_api_guide/nav.adoc
 #- modules/iso8583_connector_deployment_guide/nav.adoc
@@ -13,4 +12,3 @@ nav:
 - modules/transfers_overview/nav.adoc
 - modules/technical_dashboard/nav.adoc
 - modules/user_access_management/nav.adoc
-#- modules/mojaloop_connector/nav.adoc
