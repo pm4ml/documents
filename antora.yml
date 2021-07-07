@@ -1,4 +1,4 @@
-name: payment_manager
+name: payment_manager_oss
 version: 'latest'
 #for PDF generation this must be 1.0
 title: Payment Manager OSS
