@@ -29,9 +29,6 @@ jobs:
         with:
           name: site
           path: "${{ github.workspace }}/build/site"
-      #- name: "Add nojekyll"
-        #run: |
-          #sudo touch ${{ github.workspace }}/build/site/.nojekyll
   deploy_site:
     name: "Deploy GitHub Pages"
     runs-on: [ ubuntu-latest ]
@@ -44,9 +41,6 @@ jobs:
         with:
           name: site
           path: "${{ github.workspace }}/site"
-      #- name: Add nojekyll
-        #run: |
-          #sudo touch ${{ github.workspace }}/site/.nojekyll
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
