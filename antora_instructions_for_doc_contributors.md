@@ -1,26 +1,24 @@
-# Payment Manager OSS Documents
+# How to install and use Antora site generator with PDF Exporter
 
-This repository holds documentation resources relating to Payment Manager for Mojaloop.
+This repository holds documentation resources relating to Payment Manager OSS.
 
 If you wish to generate a doc site and PDFs out of these documents locally, on your computer:
 
 1. Clone the repository.
-2. Install the Antora site generator following the instructions below.
-3. Use the Antora site generator following the instructions below.
+2. [Install the Antora site generator](#install-antora) following the instructions below.
+3. Use the Antora site generator following the instructions [here](#generate-a-doc-site-with-PDFs) or [here](#generate-a-doc-site-without-PDFs).
 
-## How to install and use Antora site generator with PDF Exporter
+## Install Antora
 
-### Installation
-
-#### Directory
+### Directory
 
 We highly recommend that you install this software and its prerequisites directly in the directory where your site’s Antora playbook file (e.g., playbook.yml) is located.
 If you install them globally on your system, conflicts between other instances of the dependencies, Asciidoctor PDF, and core Antora components will likely occur.
 The documentation for this site generator assumes that you are executing the commands from your playbook directory; in other words, from the directory where your Antora playbook is located.
 
-#### Prerequisites
+### Prerequisites
 
-##### Node.js
+#### Node.js
 
 This custom Antora site generator (=the one that includes the Antora PDF Exporter) requires Node.js (commands: `node` and `npm`).
 First, install [Node.js](https://nodejs.org/en/) 12, preferably using [nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
@@ -43,7 +41,7 @@ You should also be able to run the `npm` command:
  $ npm -v
 ```
 
-##### Ruby
+#### Ruby
 
 Antora PDF Exporter relies heavily on Asciidoctor PDF, and Asciidoctor PDF requires Ruby (commands: `ruby` and `bundle`).
 Next, install [Ruby](https://ruby-lang.org) 2.7, preferably using [RVM](https://rvm.io/).
@@ -64,7 +62,7 @@ You should also be able to run the `bundle` command:
  $ bundle -v
 ```
 
-##### hexapdf
+#### hexapdf
 
 To optimize PDFs, [hexapdf](https://hexapdf.gettalong.org/) is used.
 It is a pure Ruby application, so you don't need to worry about installing an extra system command.
@@ -131,7 +129,7 @@ asciidoc:
 
 Now Asciidoctor PDF will automatically optimize the PDFs it generates by running hexapdf on them.
 
-#### Install the Antora PDF Exporter
+### Install the Antora PDF Exporter
 
 To install the custom site generator that includes the PDF Exporter, you must create a _package.json_ file and define the required Antora components. 
 
@@ -180,7 +178,7 @@ Windows PowerShell
 
 These commands essentially amount to executing `node_modules/.bin/antora -v`, which you can also use.
 
-#### Install Asciidoctor PDF
+### Install Asciidoctor PDF
 
 The site generator with the PDF Exporter uses Asciidoctor PDF to generate PDF files.
 You can install Asciidoctor PDF however you like, but we recommend using the `bundle` command to install and manage it.
@@ -221,7 +219,7 @@ To verify you've installed Asciidoctor PDF correctly, run the `asciidoctor-pdf` 
 
 All you have left to do is to create a PDF configuration file and you'll be ready to start generating PDFs by running the custom Antora site generator with the PDF Exporter enabled.
 
-### Configuration
+## Configure Antora PDF Exporter
 
 **NOTE:** For this particular repo, just use the `pdf-config.yml` and `pdf-theme.yml` files provided. There is no need to change anything in them, they are ready to be used as-is. The below information is provided for the sake of completeness only.
 
@@ -241,7 +239,7 @@ asciidoc:
     pdf-theme: ./pdf-theme.yml
 ```
 
-### Usage with PDF Exporter
+## Generate a doc site with PDFs
 
 To run the Antora site generator with the PDF exporter enabled, execute the following command in your terminal from your playbook directory.
 
@@ -281,7 +279,7 @@ This location can be customized by assigning a new value to the `build_dir` key 
 The PDFs are also published to your site by default unless you deactivate the `publish` key in your _pdf-config.yml_ file.
 The PDFs are always available for your review in the build directory, even when `publish` is assigned the value `false`.
 
-### Usage without PDF Exporter
+## Generate a doc site without PDFs
 
 In some cases, you may not need any PDFs and you just wish to view a document or the whole doc site locally. In that case, run the Antora site generator without the PDF exporter enabled, and execute the following command in your terminal from your playbook directory.
 
