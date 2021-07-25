@@ -48,10 +48,10 @@ On submitting the issue, the documentation team is notified. As soon as we fix a
 
 If you choose to create/update content yourself, then the process at a high level is as follows:
 
-1. Clone [pm4ml/documents](https://github.com/pm4ml/documents/issues) GitHub repo.
-1. Create your branch. The default branch (master) is protected so we are asking that you create your own branch.
+1. Clone the [pm4ml/documents](https://github.com/pm4ml/documents/issues) GitHub repo.
+1. Create your branch. The default branch (`master`) is protected so we are asking that you create your own branch.
 1. Create/update content.
 1. Build doc site locally to check if all is OK.
 1. Submit your changes to your branch via a pull request. Request a review from vandaillyes-modusbox.
 1. Wait until your PR is reviewed.
-1. Once your PR has been approved, merge your content to the master branch.
+1. Once your PR has been approved, merge your content to the `master` branch.
