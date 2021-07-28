@@ -14,7 +14,7 @@
 The following diagram illustrates where the identity provider is situated within {product-name} architecture.
 
 .Keycloak in {product-name}
-image::payment_manager_architecture_keycloak_2.png[]
+image::payment_manager_architecture_keycloak.png[]
 
 When there is an existing OAuth 2.0 or OpenID Connect compliant identity service that the Digital Financial Services Provider (DFSP) already has, then that may be used in place of Keycloak. Otherwise, the identity provider is Keycloak.
 
