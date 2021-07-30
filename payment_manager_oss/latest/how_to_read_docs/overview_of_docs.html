@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Guide to Payment Manager Transfers Overview :: Payment Manager OSS Documentation</title>
+    <title>Untitled :: Payment Manager OSS Documentation</title>
     <meta name="generator" content="Antora 2.3.4">
     <link rel="stylesheet" href="../../../_/css/site.css">
 <link rel="stylesheet" href="../../../_/css/search.css">
@@ -52,8 +52,8 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../how_to_read_docs/overview_of_docs.html">Overview of Payment Manager documents</a>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="overview_of_docs.html">Overview of Payment Manager documents</a>
   </li>
 </ul>
   </li>
@@ -153,15 +153,15 @@
   </li>
 </ul>
   </li>
-  <li class="nav-item is-current-page" data-depth="0">
+  <li class="nav-item" data-depth="0">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="index.html">Guide to Transfers Overview</a>
+    <a class="nav-link" href="../transfers_overview/index.html">Guide to Transfers Overview</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="introduction.html">Introduction to Transfers Overview</a>
+    <a class="nav-link" href="../transfers_overview/introduction.html">Introduction to Transfers Overview</a>
   </li>
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="transfers_overview.html">Transfers Overview page</a>
+    <a class="nav-link" href="../transfers_overview/transfers_overview.html">Transfers Overview page</a>
   </li>
 </ul>
   </li>
@@ -225,30 +225,82 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">Payment Manager OSS</a></li>
-    <li><a href="index.html">Guide to Transfers Overview</a></li>
+    <li><a href="overview_of_docs.html">Overview of Payment Manager documents</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="https://github.com/pm4ml/documents/edit/master/modules/transfers_overview/pages/index.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="https://github.com/pm4ml/documents/edit/master/modules/how_to_read_docs/pages/overview_of_docs.adoc">Edit this Page</a></div>
     !-->
 </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">Guide to Payment Manager Transfers Overview</h1>
+<div class="sect1">
+<h2 id="api-integration"><a class="anchor" href="#api-integration"></a>API integration</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>The <strong>Transfers Overview</strong> page of Payment Manager acts as a service monitoring tool, allowing Digital Financial Service Providers (DFSPs) to:</p>
+<p>To learn more about how to integrate your Core Backend with the Mojaloop Switch on the API level, see the following documentation:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>track the status of transfers</p>
+<p><a href="../api_integration/index.html" class="page">API Integration Guide for DFSPs</a></p>
 </li>
 <li>
-<p>investigate failed transfers</p>
+<p><a href="../core_connector_rest/index.html" class="page">Core Connector Guide for REST-Based Implementations</a></p>
 </li>
 <li>
-<p>drill down to the lowest level of technical detail when debugging errors</p>
+<p><a href="https://github.com/pm4ml/documents/blob/master/payment_manager_OSS_API.yaml"><code>payment_manager_OSS_API.yaml</code> Swagger file</a></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="connectivity"><a class="anchor" href="#connectivity"></a>Connectivity</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For information about Mojaloop security requirements and detailed onboarding steps regarding the management of security keys and certificates, as well as the sharing of endpoint information, see the following document:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../connection_wizard/index.html" class="page">Guide to Connection Wizard</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="access-to-portals"><a class="anchor" href="#access-to-portals"></a>Access to portals</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For information about how to create, maintain, and manage identity information for users of the Payment Manager portals (Connection Wizard, Transfers Overview, Technical Dashboard), see the following document:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../user_access_management/index.html" class="page">User Access Management Guide</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="dashboards"><a class="anchor" href="#dashboards"></a>Dashboards</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once a DFSP has successfully integrated with the Mojaloop Switch, Payment Manager provides a set of dashboards that help with the monitoring of transactions and service status, as well as the debugging of errors. The dashboards provide a visualisation of important metrics and are accessible via an easy-to-use DFSP portal. For details on how to use the dashboards, see the following documents:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="../transfers_overview/index.html" class="page">Guide to Transfers Overview</a></p>
+</li>
+<li>
+<p><a href="../technical_dashboard/index.html" class="page">Guide to Technical Dashboard</a></p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
@@ -263,7 +315,7 @@
 </footer>
 <script src="../../../_/js/site.js"></script>
 <script src="../../../_/js/vendor/lunr.js"></script>
-<script src="../../../_/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/payment_manager_oss/latest/transfers_overview/index.html"></script>
+<script src="../../../_/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/payment_manager_oss/latest/how_to_read_docs/overview_of_docs.html"></script>
 <script async src="../../../_/../search-index.js"></script>
 <script async src="../../../_/js/vendor/highlight.js"></script>
   </body>
