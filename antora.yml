@@ -3,7 +3,7 @@ version: 'latest'
 #for PDF generation this must be 1.0
 title: Payment Manager OSS
 nav:
-- modules/how_to_read_docs/nav.adoc
+- modules/overview_of_docs/nav.adoc
 - modules/api_integration/nav.adoc
 - modules/core_connector_rest/nav.adoc
 #- modules/iso8583_connector_api_guide/nav.adoc
