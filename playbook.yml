@@ -15,6 +15,7 @@ asciidoc:
     company-name: ModusBox
     product-name: Payment Manager
     hub: Mojaloop
+    hub-generic: Platform
     connection-wizard: Connection Wizard
     transfers: Transfers Overview
     tech-dashboard: Technical Dashboard
@@ -22,6 +23,8 @@ asciidoc:
     core-connector: Core Connector
     sdk: Mojaloop Connector SDK
     mcm-client: Connection Manager Client
+    mcm-long: Mojaloop Connection Manager
+    mcm-short: MCM 
     internal: internal
     external: external
 ##ui:

@@ -1,0 +1,1 @@
+NOTE: If you have accidentally uploaded the wrong certificate, you can re-upload a new certificate and that will replace the old one.

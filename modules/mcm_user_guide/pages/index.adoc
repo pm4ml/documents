@@ -1,0 +1,3 @@
+The {mcm-long} ({mcm-short}) tool is a portal that allows a Hub Operator to manage information sharing around endpoints and certificate-related processes.
+
+This document provides step-by-step guidance about how to use the {mcm-short} portal.

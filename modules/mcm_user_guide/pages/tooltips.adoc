@@ -1,0 +1,8 @@
+= Tooltips
+
+You may notice an orange dot displayed next to certain items in the menu or on the tabs of a page. The orange dot indicates that you are required to view, add, process, or confirm information related to the item with the orange dot.
+
+An example is shown in the figure below.
+
+.{mcm-short} status indicator
+image::orange_dot.png[]

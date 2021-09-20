@@ -1,0 +1,50 @@
+= Managing TLS server certificates
+
+The TLS Server Certificates page allows you to:
+
+* *<<upload-hub-cert,Hub Server Certificates>>* tab: Upload the Hub's CA-signed TLS server certificate, as well as the CA's root and intermediate certificates. 
+* *<<retrieve-dfsp-cert,DFSPs Server Certificates>>* tab: Retrieve DFSPs' CA-signed TLS server certificates, as well as the CAs' root and intermediate certificates.
+
+== Uploading the Hub's TLS server certificate chain [[upload-hub-cert]]
+
+.Uploading the Hub TLS server certificate chain
+image::Hub_TLS_server_cert.png[]
+
+To upload the Hub's CA-signed TLS server certificate chain:
+
+include::partial$note_rename_file.adoc[]
+
+. Go to the *Hub Server Certificates* tab.
+. Click *Choose File* in the *Server Certificate* field, and select your TLS server certificate signed by your CA saved on your computer.
+. To upload the root certificate of your CA, click *Choose File* in the *Root Certificate* field, and select the root certificate of your CA saved on your computer.
+. To upload the intermediate certificate of your CA, click *Choose File* in the *Intermediate Chain* field, and select the intermediate certificate of your CA saved on your computer. +
+ +
+include::partial$note_intermediate_chain.adoc[]
+. Click **Submit**. On submitting the certificates, they are validated. The following details are validated:
+* The root certificate is a root certificate indeed. It can be self-signed or signed by a global root.
+* The intermediate chain is made up of valid CAs and the top of the chain is signed by the root.
+* The certificate and its chain must form a valid trust chain.
+* The certificate must have the "TLS WWW server authentication" key usage extension.
+* The certificate must be valid at the present time according to the certificate validity period.
+* The certificate key length must be 4096 bits.
+
+include::partial$note_replace_wrong_cert.adoc[]
+
+== Retrieving a DFSP's TLS server certificate chain [[retrieve-dfsp-cert]]
+
+.Retrieving a DFSP's TLS server certificate chain
+image::Hub_DFSP_server_cert.png[]
+
+The Hub must obtain the root and intermediate certificates of the DFSP's CA that signed the DFSP TLS server certificate. These need to be installed in the outbound API gateway.
+
+To retrieve a DFSP's TLS server certificate chain after they have uploaded it:
+
+. Go to the *DFSPs Server Certificates* tab. +
+Information about the validity of the server certificate is also displayed. Click *View Details* for details on validation. The following details are validated:
+* The root certificate is a root certificate indeed. It can be self-signed or signed by a global root.
+* The intermediate chain is made up of valid CAs and the top of the chain is signed by the root.
+* The certificate and its chain must form a valid trust chain.
+* The certificate must have the "TLS WWW server authentication" key usage extension.
+* The certificate must be valid at the present time according to the certificate validity period.
+* The certificate key length must be 4096 bits.
+. Click *Download* for each certificate that you want to download.

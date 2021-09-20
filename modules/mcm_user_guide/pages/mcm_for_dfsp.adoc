@@ -1,0 +1,3 @@
+= {mcm-short} for DFSPs
+
+This section provides detailed information about {mcm-short} functionality relevant for DFSPs.

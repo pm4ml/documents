@@ -1,0 +1,42 @@
+= Introduction to {mcm-long}
+
+Setting up Public Key Infrastructure (PKI) for a new Mojaloop environment and subsequently onboarding Digital Financial Service Providers (DFSPs) involves a number of steps around the generation, signing, and sharing of certificates, as well as identifying the various endpoints required to establish connections. DFSPs and the Hub communicate over TLSv1.2 with mutually authenticated X.509 certificates, which are signed by a trusted Certificate Authority (CA). The use of digital certificates is necessary to verify the identity of the parties exchanging data with each other and ensure secure communications. In addition to TLS client and server certificates, all DFSPs and the Hub itself must have a JSON Web Signature (JWS) certificate, which they then share among themselves.
+
+Previous experience shows that the certificate management process is prone to human errors. To reduce the probability of mistakes and miscommunication, a connectivity management tool, {mcm-long} ({mcm-short}), has been developed, which allows the Hub Operator to exchange endpoint data and certificates with DFSPs through an easy-to-use portal.
+
+The following diagram provides an illustration of how information gets exchanged between {product-name} (its component called MCM Client) and the {mcm-short} portal (which pulls data from the MCM Server).
+
+.Data exchange between {product-name} and {mcm-short}
+image::payment_manager_architecture_mcm.png[]
+
+{mcm-short} has functionality to support the following steps of endpoint mapping and certificate management for the Hub Operator.
+
+.Certificate and endpoint management supported by {mcm-short}
+[width="100%",options="header", cols="4,2"]
+|====================
+|Step  |  Where to read more
+a|The Hub provides endpoint information to DFSPs:
+
+* IP addresses from which the Hub will initiate connections to DFSPs
+* Hub URLs / IP addresses that DFSPs will initiate connections to  
+|  xref:hub_endpoints.adoc#endpoint-config[Configuring Hub outbound and inbound endpoints]
+a| The Hub collects outbound / inbound endpoint information from DFSPs to update firewalls and configure the backend:
+
+* IP addresses from which the DFSP will initiate connections to the Hub
+* DFSP callback URLs / IP addresses that the Hub will initiate connections to 
+|  xref:hub_endpoints.adoc#process-endpoints[Processing DFSPs' outbound and inbound endpoints]
+| The Hub sets up a Certificate Authority to sign TLS client and server certificates, and to create Hub client CSRs (to send to DFSPs). |  xref:hub_ca.adoc#set-up-hub-ca[Setting up a Hub Certificate Authority (CA)]
+| The Hub obtains DFSPs' CA root certificates for importing into the Hub trust store. |  xref:hub_ca.adoc#retrieve-dfsp-ca[Retrieving the certificates of a DFSP's CA]
+| The Hub creates a CSR for its TLS client certificate and sends it to the DFSPs for signing. |  xref:hub_tls_client.adoc#hub-csr[Creating a Hub certificate signing request]
+| The Hub retrieves the TLS client certificate signed by the DFSP's CA. |  xref:hub_tls_client.adoc#retrieve-hub-csr[Retrieving the Hub's TLS client certificate CSR signed by a DFSP]
+| The Hub signs and returns the DFSP's TLS client certificate together with the Hub CA root certificate for installation by the DFSP. |  xref:hub_tls_client.adoc#sign-dfsp-csr[Signing a DFSP's TLS client certificate CSR]
+| The Hub generates a TLS server certificate for installation in the firewalls. |  xref:hub_tls_server.adoc#upload-hub-cert[Uploading the Hub's TLS server certificate chain]
+| The Hub retrieves the root and intermediate certificates of the DFSP's CA that signed the DFSP TLS server certificate. These need to be installed in the outbound API gateway. |  xref:hub_tls_server.adoc#retrieve-dfsp-cert[Retrieving a DFSP's TLS server certificate chain]
+| The Hub sets up a JWS certificate for installation in WSO2 and for sharing with DFSPs. |  xref:upload_hub_jws_cert.adoc[Uploading a Hub JWS certificate]
+|====================
+
+The next sections of this document describe how to use {mcm-short} to complete the steps outlined above.
+
+== Browser support
+
+Currently, the recommended browser is Google Chrome. Using {mcm-short} in Mozilla Firefox has some known issues.

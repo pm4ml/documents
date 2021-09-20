@@ -1,0 +1,17 @@
+= Adding a DFSP
+
+Adding a new DFSP in the {mcm-short} portal enables you to authorise user account(s) for the DFSP. An authorised DFSP user account, in turn, can perform tasks such as uploading a new certificate, viewing existing certificates, and so on for the added DFSP. In addition, when a new user account for that DFSP is onboarded, the new account can be associated with the relevant DFSP.
+
+.Adding a DFSP
+image::Hub_add_DFSP.png[]
+
+To add a DFSP to an environment, perform the following steps:
+
+. Go to **Administration > DFSPs**.
+. Click *Add DFSP* on the right-hand side of the screen.
+. In the *Add DFSP* pop-up window:
+.. Enter a **Name**. This is the name of the DFSP that will be created within the environment.
+.. The *ID* is the unique identifier of the DFSP. This field will be auto-filled for you as both the name and the ID must be the same as the `fspId` registered in the Hub.
+.. Optionally, add a monetary zone by selecting one from the *Monetary Zone* drop-down list.
+. Click **Submit**.
+. Click **Close**.
