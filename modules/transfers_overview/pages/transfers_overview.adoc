@@ -31,7 +31,10 @@ The *Basic Information* tab displays the following information:
 * **Transfer ID**: The unique identifier of the transfer.
 * **Transfer State**: Indicates if the transfer has succeeded, is pending, or an error has occurred.
 * **Batch**: The unique identifier of the settlement batch in which the transfer was settled. If the transfer has not been settled yet, it says **N/A**.
-* **Date Submitted**: The date and time when the transfer was initiated.
+* **Date Submitted**: The date and time when the transfer was initiated, expressed as an https://www.iso.org/iso-8601-date-and-time-format.html[ISO-8601] formatted timestamp. A more readable version of the format is `yyyy-MM-ddTHH:mm:ss.SSS[±HH:MM]` +
+ +
+If the time is in UTC, there is a `Z` added directly after the time without a space. For example, "09:30 UTC" is represented as `09:30:00:000Z`. +
+If the time is not in UTC, a UTC offset is appended to the time in the place of `Z`, in the form: `[±HH:MM]`. For example, "09:30 in New York" is `09:30:00:000−05:00`, or "09:30 in Yangon" is `09:30:00:000+06:30`.
 * **Amount**: The transfer amount.
 * **Currency**: The transfer currency.
 * **Sender**: The payer of the transfer.
@@ -113,7 +116,7 @@ For further information on the details that the *Transfer Details* pop-up window
 
 == Successful Transfers
 
-The *Successful Transfers* graph is showing a timeline of the past 24 hours and displays the percentage of successful transfers per minute.
+The *Successful Transfers* graph is showing a timeline of the past 24 hours and displays the percentage of successful transfers per minute. The time zone of the timeline is UTC.
 
 .Successful Transfers
 image::successful_transfers.png[]

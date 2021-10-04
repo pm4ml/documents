@@ -1,0 +1,1 @@
+NOTE: On uploading a certificate, {mcm-short} renames the file so that the file name includes information about: 1) the type of certificate (for example: root, intermediate, server), 2) the environment (for example: sandbox, staging, production), 3) the name of the DFSP.

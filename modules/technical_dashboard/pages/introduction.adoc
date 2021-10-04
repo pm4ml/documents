@@ -1,5 +1,7 @@
 = {tech-dashboard} page
 
+include::ROOT:partial$note_business_dashboard_mock.adoc[]
+
 The *{tech-dashboard}* page provides visualisation of system metrics and the ability to observe trends in system behaviour.
 
 Having easy access to these metrics means that technical operational control becomes proactive as potential problems can be picked up before they become real system problems. Use these metrics to fine-tune the system to ensure the best operational efficiency.

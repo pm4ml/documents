@@ -9,6 +9,7 @@ nav:
 #- modules/iso8583_connector_api_guide/nav.adoc
 #- modules/iso8583_connector_deployment_guide/nav.adoc
 - modules/connection_wizard/nav.adoc
+- modules/mcm_user_guide/nav.adoc
 - modules/transfers_overview/nav.adoc
 - modules/technical_dashboard/nav.adoc
 - modules/user_access_management/nav.adoc

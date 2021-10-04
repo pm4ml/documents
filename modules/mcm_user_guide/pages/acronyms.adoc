@@ -1,0 +1,17 @@
+= Acronyms
+
+CA:: Certificate Authority
+
+CSR:: Certificate Signing Request
+
+DFSP:: Digital Financial Service Provider
+
+ILP:: Interledger Protocol
+
+JWS:: JSON Web Signature
+
+{mcm-short}:: {mcm-long}
+
+PKI:: Public Key Infrastructure
+
+TLS:: Transport Layer Security

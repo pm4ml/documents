@@ -1,0 +1,3 @@
+= {mcm-short} for the Hub
+
+This section provides detailed information about {mcm-short} functionality relevant for the Hub.

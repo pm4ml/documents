@@ -1,0 +1,27 @@
+= Uploading a Hub JWS certificate
+
+.Uploading a Hub JWS certificate
+image::hub_JWS_cert.png[]
+
+To upload a Hub JWS certificate, complete the following steps.
+
+*Prerequisites:*
+
+* A DFSP account has been created for the Hub specifically for the purposes of uploading the Hub JWS certificate to that.
+* A "wrapped" public key has been created for uploading. For details on how this is done, see xref:appendix_create_jws_cert.adoc[Appendix A: Create a JWS certificate].
+
+*Steps:*
+
+include::partial$note_rename_file.adoc[]
+
+. Log in to {mcm-short} using the DFSP account created for JWS certificate upload purposes.
+. Go to the *DFSP JWS Certificates* tab.
+. Click *Choose File* in the *JWS Certificate* field, and select your JWS certificate saved on your computer.
+The *Intermediate Chain* field is optional. +
+ +
+include::partial$note_intermediate_chain.adoc[]
+. Click **Submit**. On submitting the certificate, it is validated. The following details are validated:
+* The certificate must be valid at the present time according to the certificate validity period.
+* The certificate key length must be 2048 bits.
+
+include::partial$note_replace_wrong_cert.adoc[]

@@ -1,0 +1,33 @@
+= Accessing {mcm-long} functionalities
+
+NOTE: To connect to the {mcm-long} portal, VPN access is required.
+
+*Prerequisites:*
+
+You have installed the Google Authenticator application on your mobile phone.
+
+*Steps:*
+
+To access {mcm-long}, complete the following steps:
+
+. Enter your credentials on the login page, and click **Login**. +
+image:login.png[width=289, height=159]
+. On logging in for the first time, you will be prompted to change your password. Enter your old password in the *Old Password* field, then your new password in the *New Password* field. Re-type your new password in the *Confirm New Password* field. Click **Change Password**. +
+image:password_reset.png[width=299, height=221]
+. After changing your password, you are prompted to log in using your new password. Enter your credentials and click **Login**. +
+image:password_reset_successful.png[width=314, height=232]
+. Next, you are prompted to scan the QR code displayed on screen. Scan the QR code using the Google Authenticator mobile application. +
+image:qr_code.png[width=404, height=357] +
+Note that the QR code is only displayed when you log in for the first time. 
+. Once you have scanned the QR code, select the *I have scanned the QR* checkbox, and click **Continue**. 
+. On the next page, you are prompted to enter the six-digit code displayed in your Google Authenticator mobile application. Enter the code in the *Code* field and click **Login**. +
+image:code_authentication_field.png[width=402, height=144] +
+If the digits that you entered are correct, you are authenticated to proceed further. In case you fail to enter the correct digits displayed in the Google Authenticator mobile application, then you will be redirected to the
+login screen. +
+ +
+*NOTE:* If you unknowingly delete the Google Authenticator application or change your mobile phone where you have installed the application, then you must contact the support team for guidance.
+. You are presented with the widgets of all the environments that your organisation has privileges to configure. Click the widget of the environment that you want to configure. +
+image:environments.png[width=627, height=393]
+. You are taken to the main page of {mcm-long} functionalities available to you. +
+image:DFSP_main_page.png[] +
+image:Hub_main_page.png[]

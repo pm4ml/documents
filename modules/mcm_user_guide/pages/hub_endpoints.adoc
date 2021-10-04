@@ -1,0 +1,71 @@
+= Configuring and processing endpoints
+
+Pages in the *General* menu allow you to:
+
+* *<<endpoint-config,Endpoint Configuration>>* page: Record your outbound and inbound endpoints for sharing with DFSPs.
+* *<<process-endpoints,Unprocessed Endpoints>>* page: Retrieve endpoint information submitted by DFSPs.
+
+== Configuring Hub outbound and inbound endpoints [[endpoint-config]]
+
+The *Endpoint Configuration* page allows you to specify:
+
+* *<<egress,Egress Endpoints>>* tab: Outbound endpoints, that is, the IP addresses from which the Hub will initiate connections to DFSPs.
+* *<<ingress,Ingress Endpoints>>* tab: Inbound endpoints, that is, the Hub URLs / IP addresses that DFSPs will initiate connections to.
+
+As you are entering data, it is being validated. If invalid data is entered, a tooltip is displayed to help you resolve the issue.
+
+If you wish to clear all data in one click, click the *Undo Changes* button.
+
+=== Configuring Hub outbound endpoints [[egress]]
+
+.Configuring Hub outbound endpoints
+image::Hub_egress.png[]
+
+To configure outbound endpoints for the Hub:
+
+. On the *Egress Endpoints* tab, in the *Egress IP Address* field, enter the IP address from which you will make API calls to DFSPs.
+. In the *Port(s)* field, you can specify a specific port or a range.
+. To add further ports, click the *Add Port* button. There is no limit on the number of ports that can be specified.
+. To add further IP addresses or hostnames, click the *Add Additional IP Address* button.
+. Once you are done entering your data, click **Submit for Confirmation**. This will send the data to DFSPs for processing. +
+The *Status* indicator tells you whether or not you have sent your data for processing to DFSPs, and whether or not your data has been processed:
+* *Not yet sent for processing* (with a grey dot): You have not yet clicked *Submit for Confirmation* and not yet sent your endpoint data to DFSPs.
+* *Awaiting Processing* (with a yellow dot): You have clicked *Submit for Confirmation* and sent your endpoint data to DFSPs. 
+
+NOTE: If you do not click *Submit for Confirmation* and switch to another tab or page, the data you have entered will be lost.
+
+=== Configuring Hub inbound endpoints [[ingress]]
+
+.Configuring Hub inbound endpoints
+image::Hub_ingress.png[]
+
+To configure inbound endpoints for the Hub:
+
+. On the *Ingress Endpoints* tab, in the *URL* field, enter the URL that DFSPs will connect to in order to make API calls to you. +
+You must provide a full URL with protocol information (`http://` or `https://`) included. +
+You can provide a port number and path information too. +
+For example: `\https://inbound.hub.io:9876/example`
+. In the *Ingress IP Address* field, enter the IP address that the DFSP will connect to in order to make API calls to you.
+. In the *Port(s)* field, you can specify a specific port or a range.
+. To add further ports, click the *Add Port* button. There is no limit on the number of ports that can be specified.
+. To add further IP addresses or hostnames, click the *Add Additional IP Address* button.
+. Once you are done entering your data, click **Submit for Confirmation**. This will send the data to DFSPs for processing. +
+The *Status* indicator tells you whether or not you have sent your data for processing to DFSPs:
+* *Not yet sent for processing* (with a grey dot): You have not yet clicked Submit for Confirmation and sent your endpoint data to DFSPs.
+* *Awaiting Processing* (with a yellow dot): You have clicked *Submit for Confirmation* and sent your endpoint data to DFSPs.
+
+NOTE: If you do not click *Submit for Confirmation* and switch to another tab or page, the data you have entered will be lost.
+
+== Processing DFSPs' outbound and inbound endpoints [[process-endpoints]]
+
+The *Unprocessed Endpoints* page allows you to retrieve endpoint information submitted by DFSPs. The page displays all the DFSP outbound and inbound endpoints waiting to be whitelisted in firewall rules or configured in the backend.
+
+.Processing DFSP endpoints
+image::Hub_unprocessed_endpoints.png[]
+
+To search for the data of one particular DFSP, type the name of the DFSP in the *Search DFSP Endpoints* search box and press **Enter**.
+
+Once you have updated Hub firewall rules and configured the backend to allow traffic from the DFSP's environment:
+
+. Use the checkboxes to select the endpoint that you wish to mark as "processed".
+. Click *Confirm Selected Endpoints* to notify the DFSP that their data has been successfully processed.

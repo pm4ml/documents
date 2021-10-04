@@ -1,0 +1,6 @@
+=== Removing or replacing a certificate
+
+If you wish to remove or replace a certificate after it has been uploaded, complete the following steps:
+
+. Click *Remove File* next to the relevant field. This removes the certificate.
+. To add a new certificate in place of the one you removed in Step 1, upload the new certificate by clicking *Choose File* next to the relevant field and selecting the certificate file on your computer.
