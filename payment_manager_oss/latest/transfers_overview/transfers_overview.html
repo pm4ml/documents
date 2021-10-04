@@ -155,6 +155,48 @@
   </li>
   <li class="nav-item" data-depth="0">
     <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../mcm_user_guide/index.html">Mojaloop Connection Manager (MCM) User Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../mcm_user_guide/acronyms.html">Acronyms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../mcm_user_guide/introduction.html">Introduction to MCM</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../mcm_user_guide/accessing_mcm.html">Accessing MCM functionalities</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../mcm_user_guide/tooltips.html">Tooltips</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../mcm_user_guide/hub_endpoints.html">Configuring and processing endpoints</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../mcm_user_guide/hub_ca.html">Managing Certificate Authority details</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../mcm_user_guide/hub_tls_client.html">Managing TLS client certificates</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../mcm_user_guide/hub_tls_server.html">Managing TLS server certificates</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../mcm_user_guide/upload_hub_jws_cert.html">Uploading a Hub JWS certificate</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../mcm_user_guide/add_dfsp.html">Adding a DFSP</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../mcm_user_guide/appendix_create_jws_cert.html">Appendix A: Create a JWS certificate</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../mcm_user_guide/appendix_extract_public_key_from_JWS_cert.html">Appendix B: Extract a public key from a JWS certificate</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
     <a class="nav-link" href="index.html">Guide to Transfers Overview</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
@@ -302,7 +344,10 @@ The <strong>Transfer Details</strong> window pops up showing detailed informatio
 <p><strong>Batch</strong>: The unique identifier of the settlement batch in which the transfer was settled. If the transfer has not been settled yet, it says <strong>N/A</strong>.</p>
 </li>
 <li>
-<p><strong>Date Submitted</strong>: The date and time when the transfer was initiated.</p>
+<p><strong>Date Submitted</strong>: The date and time when the transfer was initiated, expressed as an <a href="https://www.iso.org/iso-8601-date-and-time-format.html">ISO-8601</a> formatted timestamp. A more readable version of the format is <code>yyyy-MM-ddTHH:mm:ss.SSS[±HH:MM]</code><br>
+<br>
+If the time is in UTC, there is a <code>Z</code> added directly after the time without a space. For example, "09:30 UTC" is represented as <code>09:30:00:000Z</code>.<br>
+If the time is not in UTC, a UTC offset is appended to the time in the place of <code>Z</code>, in the form: <code>[±HH:MM]</code>. For example, "09:30 in New York" is <code>09:30:00:000−05:00</code>, or "09:30 in Yangon" is <code>09:30:00:000+06:30</code>.</p>
 </li>
 <li>
 <p><strong>Amount</strong>: The transfer amount.</p>
@@ -509,7 +554,7 @@ The <strong>Transfer Details</strong> window pops up showing detailed informatio
 <h2 id="successful-transfers"><a class="anchor" href="#successful-transfers"></a>Successful Transfers</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <strong>Successful Transfers</strong> graph is showing a timeline of the past 24 hours and displays the percentage of successful transfers per minute.</p>
+<p>The <strong>Successful Transfers</strong> graph is showing a timeline of the past 24 hours and displays the percentage of successful transfers per minute. The time zone of the timeline is UTC.</p>
 </div>
 <div class="imageblock">
 <div class="content">

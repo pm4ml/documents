@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Managing TLS client certificates :: Payment Manager OSS Documentation</title>
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+<link rel="stylesheet" href="../../../_/css/search.css">
+  </head>
+  <body class="article">
+<header class="header" role="banner">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../..">Payment Manager OSS Documentation</a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <!-- <a class="navbar-item" href="#">Home</a> -->
+        <!-- <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div> -->
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <!-- <a class="button is-primary" href="#">Download</a> -->
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="payment_manager_oss" data-version="latest">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Payment Manager OSS</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../overview_of_docs/overview_of_docs.html">Overview of Payment Manager documents</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../api_integration/index.html">API Integration Guide for DFSPs</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../api_integration/introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../api_integration/integration.html">API integration</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../api_integration/payer_dfsp_integration.html">Integration as a Payer DFSP</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../api_integration/payee_dfsp_integration.html">Integration as a Payee DFSP</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../core_connector_rest/index.html">Core Connector Guide for REST-Based Implementations</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/overview_of_technologies.html">Overview of technologies and resources</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/template_components.html">Components of a Core Connector template</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/customise_template.html">Customising a template</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/update_template_api_changes.html">Updating a template when the Payment Manager API changes</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/testing.html">Testing Core Connector</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/deploy_core_connector.html">Deploying Core Connector</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../connection_wizard/index.html">Guide to Connection Wizard</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/security.html">Mojaloop security</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/introduction.html">Introduction to Connection Wizard</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/overview_page.html">Connection Wizard overview page</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/phase_1_business_setup.html">Phase 1: Business Setup</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../connection_wizard/phase_2_technical_setup.html">Phase 2: Technical Setup</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/endpoints.html">Endpoints</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/csr_exchange.html">CSR Exchange</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/certificate_authority.html">Certificate Authority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/server_certificates_exchange.html">Server Certificates Exchange</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/jws_certificates.html">JWS Certificates</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/appendix_create_tls_cert.html">Appendix A: Create TLS certificates</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/appendix_create_jws_cert.html">Appendix B: Create a JWS certificate</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/appendix_extract_public_key_from_JWS_cert.html">Appendix C: Extract a public key from a JWS certificate</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">Mojaloop Connection Manager (MCM) User Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="acronyms.html">Acronyms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="introduction.html">Introduction to MCM</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="accessing_mcm.html">Accessing MCM functionalities</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="tooltips.html">Tooltips</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="hub_endpoints.html">Configuring and processing endpoints</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="hub_ca.html">Managing Certificate Authority details</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="hub_tls_client.html">Managing TLS client certificates</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="hub_tls_server.html">Managing TLS server certificates</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="upload_hub_jws_cert.html">Uploading a Hub JWS certificate</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="add_dfsp.html">Adding a DFSP</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="appendix_create_jws_cert.html">Appendix A: Create a JWS certificate</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="appendix_extract_public_key_from_JWS_cert.html">Appendix B: Extract a public key from a JWS certificate</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../transfers_overview/index.html">Guide to Transfers Overview</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../transfers_overview/introduction.html">Introduction to Transfers Overview</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../transfers_overview/transfers_overview.html">Transfers Overview page</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../technical_dashboard/index.html">Guide to Technical Dashboard</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../technical_dashboard/introduction.html">Introduction to the Technical Dashboard</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../technical_dashboard/technical_dashboard.html">Technical Dashboard page</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../user_access_management/index.html">User Access Management Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../user_access_management/introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../user_access_management/user_authentication.html">User authentication with OpenID Connect</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../user_access_management/getting_started.html">Getting started with Keycloak</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../user_access_management/configuring_user_access.html">Managing user access in Keycloak</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Payment Manager OSS</span>
+    <span class="version">latest</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Payment Manager OSS</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Payment Manager OSS</a></li>
+    <li><a href="index.html">Mojaloop Connection Manager (MCM) User Guide</a></li>
+    <li><a href="hub_tls_client.html">Managing TLS client certificates</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/pm4ml/documents/edit/master/modules/mcm_user_guide/pages/hub_tls_client.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Managing TLS client certificates</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>The TLS Client Certificates page allows you to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong><a href="#hub-csr">CSR</a></strong> tab: Submit a certificate signing request (CSR) to a DFSP to request that your TLS client certificate be signed by a DFSP&#8217;s CA.</p>
+</li>
+<li>
+<p><strong><a href="#retrieve-hub-csr">Sent CSRs</a></strong> tab: View the status of sent CSRs and view or download the CSR or the signed certificate itself.</p>
+</li>
+<li>
+<p><strong><a href="#sign-dfsp-csr">Unprocessed DFSP CSRs</a></strong> tab: Manage DFSP CSRs, that is, view and download CSRs and certificates, sign certificates, and upload signed certificates.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="hub-csr"><a class="anchor" href="#hub-csr"></a>Creating a Hub certificate signing request</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="_images/Hub_CSR.png" alt="Hub CSR">
+</div>
+<div class="title">Figure 1. Creating a certificate signing request</div>
+</div>
+<div class="paragraph">
+<p>To create a certificate signing request (CSR) for sending to a DFSP, complete the following steps:</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+On uploading a certificate, MCM renames the file so that the file name includes information about: 1) the type of certificate (for example: root, intermediate, server), 2) the environment (for example: sandbox, staging, production), 3) the name of the DFSP.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>This means that when uploading a certificate to MCM, you will see the original file name of your certificate change to a value assigned by MCM.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Go to the <strong>CSR</strong> tab.</p>
+</li>
+<li>
+<p>In the <strong>Requested DFSP</strong> field, select the DFSP that you want to send the CSR to.</p>
+</li>
+<li>
+<p>In the <strong>CSR Type</strong> field, select how you want to create the CSR:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>To upload a CSR already created:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Select <strong>Upload CSR</strong>.</p>
+</li>
+<li>
+<p>In the <strong>CSR</strong> field, click <strong>Choose File</strong>, and select the CSR file saved on your computer.<br>
+NOTE: If you have accidentally uploaded the wrong CSR, you can re-upload a new CSR and that will replace the old one.</p>
+</li>
+<li>
+<p>Go to Step 4.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>To manually create a CSR:</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Select <strong>Manual Entry</strong>. Note that this option is only available if you have already set up the Hub CA.</p>
+</li>
+<li>
+<p>Fill in the fields displayed, they are all mandatory: <strong>Common Name</strong>, <strong>Email</strong>, <strong>Organization</strong>, <strong>Organization Unit</strong>.<br>
+<strong>NOTE:</strong> Some additional mandatory fields are currently not displayed and hence cannot be specified here, they are: Locality, State, Country. This is a known issue and will be fixed in a future version of the product.</p>
+</li>
+<li>
+<p>Optionally, fill in the <strong>DNS</strong> and <strong>IP</strong> fields under <strong>Extensions</strong>.</p>
+</li>
+<li>
+<p>Go to Step 4.</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Click <strong>Submit</strong> to send the CSR to the DFSP.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="retrieve-hub-csr"><a class="anchor" href="#retrieve-hub-csr"></a>Retrieving the Hub&#8217;s TLS client certificate CSR signed by a DFSP</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="_images/hub_sent_csr.png" alt="hub sent csr">
+</div>
+<div class="title">Figure 2. Retrieving a signed CSR</div>
+</div>
+<div class="paragraph">
+<p>To retrieve a TLS client certificate signed by a DFSP, complete the following steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Go to the <strong>Sent CSRs</strong> tab. You can search for a sent CSR by typing a keyword (such as the DFSP&#8217;s name) in the <strong>Search Sent CSRs</strong> search box and pressing <strong>Enter</strong>.<br>
+The <strong>Status</strong> indicator displays the status of your sent CSR. If it says <strong>Certificate created</strong>, then that means that the CSR has been signed by the receiving DFSP.</p>
+</li>
+<li>
+<p>You can click <strong>Validate Certificate</strong> to check the validity of your signed certificate. The following details are validated:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The CSR&#8217;s signature must match the public key.</p>
+</li>
+<li>
+<p>The CSR&#8217;s signature algorithm must be "sha256WithRSAEncryption". Note that the validation also accepts "sha512WithRSAEncryption".</p>
+</li>
+<li>
+<p>The CSR public key length must be 4096 bits.</p>
+</li>
+<li>
+<p>The CSR and certificate must have the same public key.</p>
+</li>
+<li>
+<p>The CSR and certificate must have the same Subject information.</p>
+</li>
+<li>
+<p>The CSR must have all mandatory Distinguished Name attributes. These are: Common Name (CN), Organizational Unit (OU), Organization (O), Locality (L), State (ST), Country (C), and Email Address (E).</p>
+</li>
+<li>
+<p>The certificate public key must match the private key used to sign the CSR. Only available if the CSR was manually created (MCM has the private key) instead of uploaded.</p>
+</li>
+<li>
+<p>The certificate must be valid at the present time according to the certificate validity period.</p>
+</li>
+<li>
+<p>The certificate&#8217;s signature algorithm must be "sha256WithRSAEncryption".</p>
+</li>
+<li>
+<p>The certificate must be signed by the DFSP CA.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Click <strong>Download Certificate</strong> to download your signed certificate, which is now ready to be installed in the outbound API gateway.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sign-dfsp-csr"><a class="anchor" href="#sign-dfsp-csr"></a>Signing a DFSP&#8217;s TLS client certificate CSR</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="_images/Hub_unprocessed_DFSP_CSR.png" alt="Hub unprocessed DFSP CSR">
+</div>
+<div class="title">Figure 3. Signing a DFSP&#8217;s TLS client certificate CSR</div>
+</div>
+<div class="paragraph">
+<p>After a DFSP has sent a CSR for their TLS client certificate, you are able to retrieve it for signature. To sign a DFSP&#8217;s TLS client certificate CSR using the CA set up on the <strong>Certificate Authorities</strong> page, complete the following steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Go to the <strong>Unprocessed DFSP CSRs</strong> tab. You can search for a sent CSR by typing a keyword in the <strong>Search Sent CSRs</strong> search box and pressing <strong>Enter</strong>.</p>
+</li>
+<li>
+<p>To sign the DFSP&#8217;s CSR using the embedded CA, click <strong>Use Provided CA To Sign CSR</strong>. This will use the CA set up on the <strong>Certificate Authorities</strong> page to sign the CSR.<br>
+The <strong>Status</strong> indicator will change to <strong>CSR created</strong> to indicate that signing the DFSP&#8217;s CSR has been successful.<br>
+Information about the validity of the certificate will also be displayed. Click <strong>View Details</strong> for information on possible validity issues. The following details are validated:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The CSR&#8217;s signature algorithm must be sha256WithRSAEncryption. Note that the validation also accepts sha512WithRSAEncryption.</p>
+</li>
+<li>
+<p>The CSR public key length must be 4096 bits.</p>
+</li>
+<li>
+<p>The CSR and certificate must have the same public key.</p>
+</li>
+<li>
+<p>The CSR and certificate must have the same Subject information.</p>
+</li>
+<li>
+<p>The CSR must have all mandatory Distinguished Name attributes. These are: Common Name (CN), Organizational Unit (OU), Organization (O), Locality (L), State (ST), Country (C), and Email Address (E).</p>
+</li>
+<li>
+<p>The certificate public key must match the private key used to sign the CSR. Only available if the CSR was manually created (MCM has the private key) instead of uploaded.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>To sign a DFSP&#8217;s TLS client certificate CSR using an external third-party CA, complete the following steps:</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+For this option to work, you must have uploaded external Hub CA certificates through the <strong>Certificate Authorities</strong> page &gt; the <strong>HUB External Certificate Authority</strong> tab.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Go to the <strong>Unprocessed DFSP CSRs</strong> tab. You can search for a sent CSR by typing a keyword in the <strong>Search Sent CSRs</strong> search box and pressing <strong>Enter</strong>.</p>
+</li>
+<li>
+<p>To sign the DFSP&#8217;s CSR using an external CA, click <strong>Upload Certificate</strong>. This will use the external CA recorded on the <strong>Certificate Authorities</strong> page &gt; <strong>HUB External Certificate Authority</strong> tab to sign the CSR.<br>
+The <strong>Upload certificate</strong> pop-up window will be displayed, prompting you to select the CA you want to use to sign the DFSP&#8217;s CSR.</p>
+</li>
+<li>
+<p>In the <strong>Certificate</strong> field, click <strong>Choose File</strong> and select the relevant external CA. This will fill in the <strong>External CA</strong> field with the name of the CA that you have selected.</p>
+</li>
+<li>
+<p>Click <strong>Choose File</strong> again, and select the root certificate of the CA saved on your computer.<br>
+<span class="image"><img src="_images/upload_certificate_popup.png" alt="upload certificate popup"></span></p>
+</li>
+<li>
+<p>Click <strong>Save</strong>.<br>
+The <strong>Status</strong> indicator will change to <strong>CSR created</strong> to indicate that signing the DFSP&#8217;s CSR has been successful.<br>
+Information about the validity of the certificate will also be displayed. Click <strong>View Details</strong> for information on possible validity issues. The following details are validated:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The CSR&#8217;s signature algorithm must be sha256WithRSAEncryption. Note that the validation also accepts sha512WithRSAEncryption.</p>
+</li>
+<li>
+<p>The CSR public key length must be 4096 bits.</p>
+</li>
+<li>
+<p>The CSR and certificate must have the same public key.</p>
+</li>
+<li>
+<p>The CSR and certificate must have the same Subject information.</p>
+</li>
+<li>
+<p>The CSR must have all mandatory Distinguished Name attributes. These are: Common Name (CN), Organizational Unit (OU), Organization (O), Locality (L), State (ST), Country (C), and Email Address (E).</p>
+</li>
+<li>
+<p>The certificate public key must match the private key used to sign the CSR. Only available if the CSR was manually created (MCM has the private key) instead of uploaded.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>You can also download the signed certificate for installation in the API gateway trust store. To do that, click <strong>Download Certificate</strong>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+When downloading an uploaded certificate, the default extension is set to <code>.csr</code>. If you wish to download the certificate in another format (for example, <code>.cer</code>), in the <strong>Save As</strong> dialog box, edit the file name and the file type so you get the certificate in the required format.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/payment_manager_oss/latest/mcm_user_guide/hub_tls_client.html"></script>
+<script async src="../../../_/../search-index.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

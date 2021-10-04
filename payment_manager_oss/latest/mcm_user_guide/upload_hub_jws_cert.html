@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Uploading a Hub JWS certificate :: Payment Manager OSS Documentation</title>
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+<link rel="stylesheet" href="../../../_/css/search.css">
+  </head>
+  <body class="article">
+<header class="header" role="banner">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../..">Payment Manager OSS Documentation</a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <!-- <a class="navbar-item" href="#">Home</a> -->
+        <!-- <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div> -->
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <!-- <a class="button is-primary" href="#">Download</a> -->
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="payment_manager_oss" data-version="latest">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Payment Manager OSS</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../overview_of_docs/overview_of_docs.html">Overview of Payment Manager documents</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../api_integration/index.html">API Integration Guide for DFSPs</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../api_integration/introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../api_integration/integration.html">API integration</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../api_integration/payer_dfsp_integration.html">Integration as a Payer DFSP</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../api_integration/payee_dfsp_integration.html">Integration as a Payee DFSP</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../core_connector_rest/index.html">Core Connector Guide for REST-Based Implementations</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/overview_of_technologies.html">Overview of technologies and resources</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/template_components.html">Components of a Core Connector template</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/customise_template.html">Customising a template</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/update_template_api_changes.html">Updating a template when the Payment Manager API changes</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/testing.html">Testing Core Connector</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/deploy_core_connector.html">Deploying Core Connector</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../connection_wizard/index.html">Guide to Connection Wizard</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/security.html">Mojaloop security</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/introduction.html">Introduction to Connection Wizard</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/overview_page.html">Connection Wizard overview page</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/phase_1_business_setup.html">Phase 1: Business Setup</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../connection_wizard/phase_2_technical_setup.html">Phase 2: Technical Setup</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/endpoints.html">Endpoints</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/csr_exchange.html">CSR Exchange</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/certificate_authority.html">Certificate Authority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/server_certificates_exchange.html">Server Certificates Exchange</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/jws_certificates.html">JWS Certificates</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/appendix_create_tls_cert.html">Appendix A: Create TLS certificates</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/appendix_create_jws_cert.html">Appendix B: Create a JWS certificate</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/appendix_extract_public_key_from_JWS_cert.html">Appendix C: Extract a public key from a JWS certificate</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">Mojaloop Connection Manager (MCM) User Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="acronyms.html">Acronyms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="introduction.html">Introduction to MCM</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="accessing_mcm.html">Accessing MCM functionalities</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="tooltips.html">Tooltips</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="hub_endpoints.html">Configuring and processing endpoints</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="hub_ca.html">Managing Certificate Authority details</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="hub_tls_client.html">Managing TLS client certificates</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="hub_tls_server.html">Managing TLS server certificates</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="upload_hub_jws_cert.html">Uploading a Hub JWS certificate</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="add_dfsp.html">Adding a DFSP</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="appendix_create_jws_cert.html">Appendix A: Create a JWS certificate</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="appendix_extract_public_key_from_JWS_cert.html">Appendix B: Extract a public key from a JWS certificate</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../transfers_overview/index.html">Guide to Transfers Overview</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../transfers_overview/introduction.html">Introduction to Transfers Overview</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../transfers_overview/transfers_overview.html">Transfers Overview page</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../technical_dashboard/index.html">Guide to Technical Dashboard</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../technical_dashboard/introduction.html">Introduction to the Technical Dashboard</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../technical_dashboard/technical_dashboard.html">Technical Dashboard page</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../user_access_management/index.html">User Access Management Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../user_access_management/introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../user_access_management/user_authentication.html">User authentication with OpenID Connect</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../user_access_management/getting_started.html">Getting started with Keycloak</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../user_access_management/configuring_user_access.html">Managing user access in Keycloak</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Payment Manager OSS</span>
+    <span class="version">latest</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Payment Manager OSS</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Payment Manager OSS</a></li>
+    <li><a href="index.html">Mojaloop Connection Manager (MCM) User Guide</a></li>
+    <li><a href="upload_hub_jws_cert.html">Uploading a Hub JWS certificate</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/pm4ml/documents/edit/master/modules/mcm_user_guide/pages/upload_hub_jws_cert.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Uploading a Hub JWS certificate</h1>
+<div class="imageblock">
+<div class="content">
+<img src="_images/hub_JWS_cert.png" alt="hub JWS cert">
+</div>
+<div class="title">Figure 1. Uploading a Hub JWS certificate</div>
+</div>
+<div class="paragraph">
+<p>To upload a Hub JWS certificate, complete the following steps.</p>
+</div>
+<div class="paragraph">
+<p><strong>Prerequisites:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A DFSP account has been created for the Hub specifically for the purposes of uploading the Hub JWS certificate to that.</p>
+</li>
+<li>
+<p>A "wrapped" public key has been created for uploading. For details on how this is done, see <a href="appendix_create_jws_cert.html" class="page">Appendix A: Create a JWS certificate</a>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Steps:</strong></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+On uploading a certificate, MCM renames the file so that the file name includes information about: 1) the type of certificate (for example: root, intermediate, server), 2) the environment (for example: sandbox, staging, production), 3) the name of the DFSP.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Log in to MCM using the DFSP account created for JWS certificate upload purposes.</p>
+</li>
+<li>
+<p>Go to the <strong>DFSP JWS Certificates</strong> tab.</p>
+</li>
+<li>
+<p>Click <strong>Choose File</strong> in the <strong>JWS Certificate</strong> field, and select your JWS certificate saved on your computer.
+The <strong>Intermediate Chain</strong> field is optional.<br>
+<br>
+<strong>NOTE:</strong> The intermediate chain must be presented as a single file. If your intermediate chain is made up of multiple files, combine them into one file in the following order: host certificate first, then the certificate that signs it, then the certificate that signs the previous certificate, and so on. Go from the most specific certificate to the least specific certificate, with each certificate verifying the previous one.</p>
+</li>
+<li>
+<p>Click <strong>Submit</strong>. On submitting the certificate, it is validated. The following details are validated:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The certificate must be valid at the present time according to the certificate validity period.</p>
+</li>
+<li>
+<p>The certificate key length must be 2048 bits.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you have accidentally uploaded the wrong certificate, you can re-upload a new certificate and that will replace the old one.
+</td>
+</tr>
+</table>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/payment_manager_oss/latest/mcm_user_guide/upload_hub_jws_cert.html"></script>
+<script async src="../../../_/../search-index.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

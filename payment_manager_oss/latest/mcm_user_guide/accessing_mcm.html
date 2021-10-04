@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Accessing Mojaloop Connection Manager functionalities :: Payment Manager OSS Documentation</title>
+    <meta name="generator" content="Antora 2.3.4">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+<link rel="stylesheet" href="../../../_/css/search.css">
+  </head>
+  <body class="article">
+<header class="header" role="banner">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../..">Payment Manager OSS Documentation</a>
+        <div class="navbar-item">
+          <input id="search-input" type="text" placeholder="Search docs">
+        </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <!-- <a class="navbar-item" href="#">Home</a> -->
+        <!-- <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Services</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Service A</a>
+            <a class="navbar-item" href="#">Service B</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div> -->
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+            <!-- <a class="button is-primary" href="#">Download</a> -->
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="payment_manager_oss" data-version="latest">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Payment Manager OSS</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../overview_of_docs/overview_of_docs.html">Overview of Payment Manager documents</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../api_integration/index.html">API Integration Guide for DFSPs</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../api_integration/introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../api_integration/integration.html">API integration</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../api_integration/payer_dfsp_integration.html">Integration as a Payer DFSP</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../api_integration/payee_dfsp_integration.html">Integration as a Payee DFSP</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../core_connector_rest/index.html">Core Connector Guide for REST-Based Implementations</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/overview_of_technologies.html">Overview of technologies and resources</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/template_components.html">Components of a Core Connector template</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/customise_template.html">Customising a template</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/update_template_api_changes.html">Updating a template when the Payment Manager API changes</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/testing.html">Testing Core Connector</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../core_connector_rest/deploy_core_connector.html">Deploying Core Connector</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../connection_wizard/index.html">Guide to Connection Wizard</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/security.html">Mojaloop security</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/introduction.html">Introduction to Connection Wizard</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/overview_page.html">Connection Wizard overview page</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/phase_1_business_setup.html">Phase 1: Business Setup</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../connection_wizard/phase_2_technical_setup.html">Phase 2: Technical Setup</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/endpoints.html">Endpoints</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/csr_exchange.html">CSR Exchange</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/certificate_authority.html">Certificate Authority</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/server_certificates_exchange.html">Server Certificates Exchange</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../connection_wizard/jws_certificates.html">JWS Certificates</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/appendix_create_tls_cert.html">Appendix A: Create TLS certificates</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/appendix_create_jws_cert.html">Appendix B: Create a JWS certificate</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../connection_wizard/appendix_extract_public_key_from_JWS_cert.html">Appendix C: Extract a public key from a JWS certificate</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">Mojaloop Connection Manager (MCM) User Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="acronyms.html">Acronyms</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="introduction.html">Introduction to MCM</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="accessing_mcm.html">Accessing MCM functionalities</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="tooltips.html">Tooltips</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="hub_endpoints.html">Configuring and processing endpoints</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="hub_ca.html">Managing Certificate Authority details</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="hub_tls_client.html">Managing TLS client certificates</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="hub_tls_server.html">Managing TLS server certificates</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="upload_hub_jws_cert.html">Uploading a Hub JWS certificate</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="add_dfsp.html">Adding a DFSP</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="appendix_create_jws_cert.html">Appendix A: Create a JWS certificate</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="appendix_extract_public_key_from_JWS_cert.html">Appendix B: Extract a public key from a JWS certificate</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../transfers_overview/index.html">Guide to Transfers Overview</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../transfers_overview/introduction.html">Introduction to Transfers Overview</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../transfers_overview/transfers_overview.html">Transfers Overview page</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../technical_dashboard/index.html">Guide to Technical Dashboard</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../technical_dashboard/introduction.html">Introduction to the Technical Dashboard</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../technical_dashboard/technical_dashboard.html">Technical Dashboard page</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="../user_access_management/index.html">User Access Management Guide</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../user_access_management/introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../user_access_management/user_authentication.html">User authentication with OpenID Connect</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../user_access_management/getting_started.html">Getting started with Keycloak</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../user_access_management/configuring_user_access.html">Managing user access in Keycloak</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Payment Manager OSS</span>
+    <span class="version">latest</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">Payment Manager OSS</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">latest</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Payment Manager OSS</a></li>
+    <li><a href="index.html">Mojaloop Connection Manager (MCM) User Guide</a></li>
+    <li><a href="accessing_mcm.html">Accessing MCM functionalities</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/pm4ml/documents/edit/master/modules/mcm_user_guide/pages/accessing_mcm.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Accessing Mojaloop Connection Manager functionalities</h1>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+To connect to the Mojaloop Connection Manager portal, VPN access is required.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Prerequisites:</strong></p>
+</div>
+<div class="paragraph">
+<p>You have installed the Google Authenticator application on your mobile phone.</p>
+</div>
+<div class="paragraph">
+<p><strong>Steps:</strong></p>
+</div>
+<div class="paragraph">
+<p>To access Mojaloop Connection Manager, complete the following steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Enter your credentials on the login page, and click <strong>Login</strong>.<br>
+<span class="image"><img src="_images/login.png" alt="login" width="289" height="159"></span></p>
+</li>
+<li>
+<p>On logging in for the first time, you will be prompted to change your password. Enter your old password in the <strong>Old Password</strong> field, then your new password in the <strong>New Password</strong> field. Re-type your new password in the <strong>Confirm New Password</strong> field. Click <strong>Change Password</strong>.<br>
+<span class="image"><img src="_images/password_reset.png" alt="password reset" width="299" height="221"></span></p>
+</li>
+<li>
+<p>After changing your password, you are prompted to log in using your new password. Enter your credentials and click <strong>Login</strong>.<br>
+<span class="image"><img src="_images/password_reset_successful.png" alt="password reset successful" width="314" height="232"></span></p>
+</li>
+<li>
+<p>Next, you are prompted to scan the QR code displayed on screen. Scan the QR code using the Google Authenticator mobile application.<br>
+<span class="image"><img src="_images/qr_code.png" alt="qr code" width="404" height="357"></span><br>
+Note that the QR code is only displayed when you log in for the first time.</p>
+</li>
+<li>
+<p>Once you have scanned the QR code, select the <strong>I have scanned the QR</strong> checkbox, and click <strong>Continue</strong>.</p>
+</li>
+<li>
+<p>On the next page, you are prompted to enter the six-digit code displayed in your Google Authenticator mobile application. Enter the code in the <strong>Code</strong> field and click <strong>Login</strong>.<br>
+<span class="image"><img src="_images/code_authentication_field.png" alt="code authentication field" width="402" height="144"></span><br>
+If the digits that you entered are correct, you are authenticated to proceed further. In case you fail to enter the correct digits displayed in the Google Authenticator mobile application, then you will be redirected to the
+login screen.<br>
+<br>
+<strong>NOTE:</strong> If you unknowingly delete the Google Authenticator application or change your mobile phone where you have installed the application, then you must contact the support team for guidance.</p>
+</li>
+<li>
+<p>You are presented with the widgets of all the environments that your organisation has privileges to configure. Click the widget of the environment that you want to configure.<br>
+<span class="image"><img src="_images/environments.png" alt="environments" width="627" height="393"></span></p>
+</li>
+<li>
+<p>You are taken to the main page of Mojaloop Connection Manager functionalities available to you.<br>
+<span class="image"><img src="_images/DFSP_main_page.png" alt="DFSP main page"></span><br>
+<span class="image"><img src="_images/Hub_main_page.png" alt="Hub main page"></span></p>
+</li>
+</ol>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../_/js/site.js"></script>
+<script src="../../../_/js/vendor/lunr.js"></script>
+<script src="../../../_/js/vendor/search.js" id="search-script" data-base-path="../../.." data-page-path="/payment_manager_oss/latest/mcm_user_guide/accessing_mcm.html"></script>
+<script async src="../../../_/../search-index.js"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>
