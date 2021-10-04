@@ -1,4 +1,4 @@
-= Appendix C: Extract a public key from a JWS certificate
+= Appendix B: Extract a public key from a JWS certificate
 
 The JWS certificates of DFSPs and the Hub are certificate chains, the public keys have to be extracted.
 

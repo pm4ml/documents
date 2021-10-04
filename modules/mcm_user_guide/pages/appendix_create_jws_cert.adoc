@@ -1,4 +1,4 @@
-= Appendix B: Create a JWS certificate
+= Appendix A: Create a JWS certificate
 
 The JWS certificates of the Hub and DFSPs must be "wrapped" public keys. To generate a JWS certificate, you can use openssl or https://keystore-explorer.org/[KeyStore Explorer].
 
