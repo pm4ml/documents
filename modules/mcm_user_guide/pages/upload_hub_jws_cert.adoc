@@ -7,7 +7,7 @@ To upload a Hub JWS certificate, complete the following steps.
 
 *Prerequisites:*
 
-* A DFSP account has been created for the Hub specifically for the purposes of uploading the Hub JWS certificate to that.
+* A DFSP account has been created for the Hub specifically for the purposes of uploading the Hub JWS certificate to that. For details on how to add a DFSP account, see xref:add_dfsp.adoc[Adding a DFSP].
 * A "wrapped" public key has been created for uploading. For details on how this is done, see xref:appendix_create_jws_cert.adoc[Appendix A: Create a JWS certificate].
 
 *Steps:*
