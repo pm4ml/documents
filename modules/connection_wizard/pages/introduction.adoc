@@ -1,5 +1,7 @@
 = Introduction to {connection-wizard}
 
+include::ROOT:partial$note_business_dashboard_mock.adoc[]
+
 The {connection-wizard} guides Digital Financial Service Providers (DFSPs) through their onboarding to the {hub} Hub, allowing them to share certificates, as well as to exchange  endpoint information with the Hub Operator using a web portal.
 
 The {connection-wizard} is built around the major stages of the DFSP onboarding journey, reflecting the environments that the DFSP will be required to connect to:

@@ -1,0 +1,1 @@
+NOTE: The *Business Dashboard* page (accessible from the left-hand navigation pane) currently contains only mock data and the related functionality is not available yet. It is planned to be added in a future version of the product.
