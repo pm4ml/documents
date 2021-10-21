@@ -12,7 +12,7 @@ If you wish to generate a doc site and PDFs out of these documents locally, on y
 
 ### Directory
 
-We highly recommend that you install this software and its prerequisites directly in the directory where your site’s Antora playbook file (e.g., playbook.yml) is located.
+We highly recommend that you install this software and its prerequisites directly in the directory where your site’s Antora playbook file (e.g., _playbook.yml_) is located.
 If you install them globally on your system, conflicts between other instances of the dependencies, Asciidoctor PDF, and core Antora components will likely occur.
 The documentation for this site generator assumes that you are executing the commands from your playbook directory; in other words, from the directory where your Antora playbook is located.
 
@@ -29,7 +29,7 @@ First, install [Node.js](https://nodejs.org/en/) 12, preferably using [nvm](http
 
 **NOTE:** When using nvm for Windows, you have to specify the full Node.js version, such as 12.19.0.
 
-Run the `node` command to verify Node.js is properly installed and active:
+Run the `node` command to verify that Node.js is properly installed and active:
 
 ```
  $ node -v
@@ -221,10 +221,10 @@ All you have left to do is to create a PDF configuration file and you'll be read
 
 ## Configure Antora PDF Exporter
 
-**NOTE:** For this particular repo, just use the `pdf-config.yml` and `pdf-theme.yml` files provided. There is no need to change anything in them, they are ready to be used as-is. The below information is provided for the sake of completeness only.
+**NOTE:** For this particular repo, just use the _pdf-config.yml_ and _pdf-theme.yml_ files provided. There is no need to change anything in them, they are ready to be used as-is. The below information is provided for the sake of completeness only.
 
 **IMPORTANT:** The Antora PDF exporter depends on your site's [Antora playbook file](https://docs.antora.org/antora/latest/playbook/).
-Your playbook directory must contain a playbook file (e.g., _antora-playbook.yml_) and a PDF configuration file (_pdf-config.yml_).
+Your playbook directory must contain a playbook file (e.g., _playbook.yml_) and a PDF configuration file (_pdf-config.yml_).
 
 In addition to an Antora playbook file, the Antora PDF exporter is configured using a file named _pdf-config.yml_.
 This YAML file defines the PDF configuration keys and AsciiDoc attributes that are only applied to the PDFs.
@@ -239,6 +239,52 @@ asciidoc:
     pdf-theme: ./pdf-theme.yml
 ```
 
+## OPTIONAL Adding search functionality to Antora
+
+**NOTE:** The instructions provided below are completely optional. To generate a documentation site locally, it is not necessary to add the search functionality to Antora.
+
+To integrate Lunr client-side search in Antora, modify your current site generator pipeline.
+
+Antora provides a default pipeline named `@antora/site-generator-default`. Edit the file _node_modules/@antora/site-generator-default/lib/generate-site.js_ adding the following line after `use strict`:
+
+```
+const generateIndex = require('antora-lunr')
+```
+In the `generateSite` function, add the following two lines after `const siteFiles = mapSite(playbook, pages).concat(produceRedirects(playbook, contentCatalog))`:
+
+```
+const index = generateIndex(playbook, pages, contentCatalog, env)
+siteFiles.push(generateIndex.createIndexFile(index))
+```
+Install the following module (either in your playbook directory or globally with the `-g` flag):
+
+```
+$ npm i antora-lunr
+```
+When generating your documentation site, an index file will be created at the root of your output directory. This document set uses the default output dir so the index file will be located here: _build/site/search-index.js_.
+
+Now that we have a _search-index.js_, we need to enable the search component in the UI. Copy the _supplemental_ui_ directory from the npm package _node_modules/antora-lunr/supplemental_ui_ into your Antora playbook repository.
+
+The `supplemental_files` key must also be configured in the Antora playbook. In this repo, this step has already been done for you.
+
+When generating your documentation site, use the following environment variables to make sure that the search index file gets generated/updated:
+
+- `DOCSEARCH_ENABLED=true`
+- `DOCSEARCH_ENGINE=lunr`
+
+For instance, as a command line:
+
+```
+$ DOCSEARCH_ENABLED=true DOCSEARCH_ENGINE=lunr antora playbook.yml
+```
+On Windows:
+
+```
+$ set DOCSEARCH_ENABLED=true
+$ set DOCSEARCH_ENGINE=lunr
+$ node_modules\.bin\antora generate playbook.yml
+```
+
 ## Generate a doc site with PDFs
 
 To run the Antora site generator with the PDF exporter enabled, execute the following command in your terminal from your playbook directory.
@@ -246,18 +292,18 @@ To run the Antora site generator with the PDF exporter enabled, execute the foll
 Linux or macOS
 
 ```
- $ $(npm bin)/antora --clean --generator=@antora/site-generator-with-pdf-exporter antora-playbook.yml
+ $ $(npm bin)/antora --clean --generator=@antora/site-generator-with-pdf-exporter playbook.yml
 ```
 
 Windows CMD
 ```
- $ for /f usebackq %bin in (`npm bin`) do %bin\antora --clean --generator=@antora/site-generator-with-pdf-exporter antora-playbook.yml
+ $ for /f usebackq %bin in (`npm bin`) do %bin\antora --clean --generator=@antora/site-generator-with-pdf-exporter playbook.yml
 ```
 
 Windows Powershell
 
 ```
- $ cmd /c "(npm bin)/antora --clean --generator=@antora/site-generator-with-pdf-exporter antora-playbook.yml"
+ $ cmd /c "(npm bin)/antora --clean --generator=@antora/site-generator-with-pdf-exporter playbook.yml"
 ```
 
 Let's break down this command.
@@ -267,17 +313,17 @@ The prefix `$(npm bin)/` tells the shell to use the `antora` command that is ins
 * The `--clean` option flag removes all of the files and folders in the build directory prior to generating your site and PDFs.
 * The `--generator` flag specifies the name of the custom site generator, `@antora/site-generator-with-pdf-exporter`.
 This generator will be used instead of the default Antora generator.
-* `antora-playbook.yml` is the required playbook argument.
+* `playbook.yml` is the required playbook argument.
 The site generator uses the playbook file to generate your site and your PDFs.
 Notice that you don't specify the name of the PDF configuration file; Antora will locate that file automatically.
 
-Once this command is executed, each PDF will be written to the build directory.
-The build directory is where the artifacts for the PDF files are assembled and the PDF files are generated.
+Once this command is executed, each PDF will be written to the _build_ directory.
+The _build_ directory is where the artifacts for the PDF files are assembled and the PDF files are generated.
 By default, the directory location is _./build/pdf_.
 This location can be customized by assigning a new value to the `build_dir` key in the _pdf-config.yml_ file.
 
 The PDFs are also published to your site by default unless you deactivate the `publish` key in your _pdf-config.yml_ file.
-The PDFs are always available for your review in the build directory, even when `publish` is assigned the value `false`.
+The PDFs are always available for your review in the _build_ directory, even when `publish` is assigned the value `false`.
 
 ## Generate a doc site without PDFs
 
@@ -300,6 +346,6 @@ Windows Powershell
  $ antora playbook.yml
 ```
 
-Once this command is executed, the doc site will be written to the build directory.
-The build directory is where the artifacts for the doc site are assembled and the HTML files are generated.
+Once this command is executed, the doc site will be written to the _build_ directory.
+The _build_ directory is where the artifacts for the doc site are assembled and the HTML files are generated.
 In this doc set, the directory location is _./build_. To open your doc site in a browser, click the `index.html` file in _./build/site_.
